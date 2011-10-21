@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Peddle</title>
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<p class="notice"><%= notice %></p>
+
+<p class="alert"><%= alert %></p>
+
+<%= link_to "Signout", "/users/sign_out", :method => :delete%>
+
+
+<%= yield %>
+
+</body>
+</html>
