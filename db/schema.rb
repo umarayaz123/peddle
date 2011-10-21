@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20111020220003) do
   end
 
   create_table "stores", :force => true do |t|
+    t.integer  "package_id"
     t.string   "name"
     t.text     "description"
     t.string   "url"

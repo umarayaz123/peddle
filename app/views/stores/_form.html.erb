@@ -23,6 +23,10 @@
     <%= f.label :url %><br />
     <%= f.text_field :url %>
   </div>
+  <div class="field">
+    <%= f.label :package_id %><br />
+    <%= f.select("package_id", @packages.collect {|p| [p.name,p.id] })%>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

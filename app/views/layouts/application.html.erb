@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Peddle</title>
+  <title>Peddle.com</title>
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -12,6 +12,7 @@
 <p class="alert"><%= alert %></p>
 
 <%= link_to "Signout", "/users/sign_out", :method => :delete%>
+<%= link_to "Sign In", "users/sign_in"%>
 
 
 <%= yield %>
