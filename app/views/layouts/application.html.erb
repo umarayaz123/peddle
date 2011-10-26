@@ -1,18 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Peddle.com</title>
+  <title>PEDDLE-online</title>
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="header">
+
+  <div class="container">
+    <div class="logo">
+      <a href="/">
+        <img src="/assets/logo.png">
+      </a>
+    </div>
+
+    <div class="topNav">
+      <ul>
+        <li>
+          <a href="#">Sales Floor </a>
+        </li>
+
+        <li>
+          <a href="#">Shopping Mall </a>
+        </li>
+
+        <li>
+          <a href="#">Inbox </a>
+        </li>
+
+        <li>
+          <a href="#">Settings </a>
+        </li>
+
+        <li>
+          <% if user_signed_in? %>
+              <%#= current_user.email %>
+              <%= link_to "Logout", "/users/sign_out", :method => :delete %>
+          <% else %>
+              <%= link_to "Login", "/users/sign_in" %>
+              <%= link_to "Sign up", "/users/sign_up" %>
+          <% end %>
+        </li>
+
+      </ul>
+    </div>
+
+    <div class="searchfield">
+      <input type="text"></input>
+      <input type="button"></input>
+    </div>
+
+
+  </div>
+
+
+</div>
 <p class="notice"><%= notice %></p>
 
 <p class="alert"><%= alert %></p>
-
-<%= link_to "Signout", "/users/sign_out", :method => :delete%>
-<%= link_to "Sign In", "users/sign_in"%>
 
 <%= yield %>
 

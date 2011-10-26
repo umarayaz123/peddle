@@ -5,3 +5,365 @@
  *= require_self
  *= require_tree . 
 */
+
+* {
+    border: medium none;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #000000;
+    font-family: Arial;
+    font-size: 14px;
+}
+h1, h2, h3, h4, h5, h6, p, img {
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    color: #000000;
+    font-size: 20px;
+}
+h2 {
+    color: #666666;
+    font-size: 14px;
+}
+img {
+    border: medium none;
+}
+a {
+    color: #000000;
+}
+.container {
+    margin: 0 auto;
+    width: 950px;
+	padding: 0 10px;
+}
+.header {
+    background-color: #F2F3F4;
+    border-bottom: 1px solid #D1D1D1;
+    float: left;
+    height: 105px;
+    width: 100%;
+}
+.header .container{
+padding: 0;
+}
+.topNav {
+    float: left;
+    margin-left: 70px;
+    margin-top: 40px;
+    width: auto;
+}
+.topNav li {
+    display: inline;
+    float: left;
+    list-style: none outside none;
+    margin:0 4px;
+    width: auto;
+}
+.topNav li a:link {
+    text-decoration: none;
+}
+.topNav li a:visited {
+    text-decoration: none;
+}
+.topNav li a:active {
+    text-decoration: none;
+}
+.topNav li a:hover {
+    text-decoration: underline;
+}
+.logo {
+    float: left;
+    margin-top: 20px;
+    width: 254px;
+}
+.searchfield {
+    background-image: url("../assets/search-icon.png");
+    float: right;
+    height: 36px;
+    width: 243px;
+	margin-top:35px;
+}
+.searchfield input[type="text"]{
+    margin: 10px 0 0 8px;
+    width: 201px;
+}
+
+.searchfield input[type="button"]{
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none transparent;
+    cursor: pointer;
+    height: 30px;
+    margin: 3px 0;
+    width: 30px;
+}
+
+.bodyholder{
+margin-top:45px;
+float:left;
+width:100%;
+}
+
+.partitionleft{
+	float:left;
+	width:253px;
+	margin-right:-2px;
+	border-right:2px solid #f3f3f3;
+	padding-right:15px;
+	padding-bottom:100px;
+	margin-bottom:20px;
+
+}
+
+.partitionright{
+	float:left;
+    border-left: 2px solid #F3F3F3;
+    float: left;
+    padding-left: 20px;
+    width: 659px;
+	padding-bottom:100px;
+	margin-bottom:20px;
+}
+
+.picnbasicinfoholder {
+    float: left;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.picnbasicinfoholder img{
+float:left;
+margin-right:15px;
+}
+
+.picnbasicinfoholder .username{
+    float: left;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 25px;
+	min-width: 147px;
+}
+.picnbasicinfoholder .subtitle{
+    color: #A2A2A2;
+    float: left;
+    font-size: 16px;
+    font-weight: normal;
+    min-width: 147px;
+}
+.leftcatholder{
+    float: left;
+    margin-bottom: 30px;
+}
+.leftcatholder .catagory{
+    background-image: url("../assets/suggest-header.png");
+    color: #FFFFFF;
+    float: left;
+    font-size: 16px;
+    font-weight: bold;
+    height: 37px;
+    line-height: 38px;
+    margin-bottom: 20px;
+    padding: 0 10px;
+    width: 233px;
+}
+.leftcatholder  .sugeststoriesentry{
+    float: left;
+    margin-bottom: 30px;
+}
+.leftcatholder  .profilepic{
+float:left;
+margin-right:10px;
+}
+.leftcatholder  .sugeststoriesentry .ltcatclose{
+float:right;
+}
+
+.leftcatholder  .sugeststoriesentry .storyheading{
+float:left;
+color:#3eacc8;
+font-weight:bold;
+font-size:16px;
+}
+
+.leftcatholder  .sugeststoriesentry .storysubheading{
+float:left;
+color:#8d8d8d;
+font-weight:bold
+}
+.leftcatholder  .sugeststoriesentry .tag{
+    background-image: url("../assets/tag.png");
+    background-position: left center;
+    background-repeat: no-repeat;
+    float: left;
+    height: 35px;
+    line-height: 36px;
+    padding-left: 45px;
+	font-weight:bold;
+}
+.leftcatholder  .sugeststoriesentry .tag a{
+color:#8d8d8d;
+text-decoration:none;
+}
+
+.leftcatholder .leftcolentry{
+    background-image: url("../assets/lidot.png");
+    background-position: left center;
+    background-repeat: no-repeat;
+    color: #8D8D8D;
+    float: left;
+    font-size: 16px;
+    font-weight: bold;
+    height: 16px;
+    line-height: 16px;
+    margin-bottom: 12px;
+    margin-left: 20px;
+    padding-left: 30px;
+    width: 200px;
+}
+
+.leftcatholder .leftcolentry a{
+color:#8d8d8d;
+text-decoration:none;
+}
+.partitionleft .invitefriends{
+    float: left;
+    margin-bottom: 30px;
+    width: 100%;
+}
+.partitionleft .invitefriends .heading{
+font-size:16px;
+font-weight:bold;
+color:#8d8d8d;
+line-height:38px;
+}
+.partitionleft .invitefriends .buttonholder{
+    border-bottom: 1px solid #CECECE;
+    border-top: 1px solid #CECECE;
+    float: left;
+    padding: 2px 0;
+    text-align: center;
+    width: 100%;
+}
+.partitionright h1{
+font-size:30px;
+line-height:34px;
+color:#3eacc8;
+font-weight:normal;
+}
+
+.partitionright .posttext{
+    background-image: url("../assets/post.png");
+    background-position: left top;
+    background-repeat: no-repeat;
+    float: left;
+    height: 140px;
+    margin-bottom: 7px;
+    padding: 4px;
+    width: 630px;
+}
+.partitionright .addimage{
+    color: #2F8774;
+    float: left;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 26px;
+    text-align: left;
+}
+.partitionright .addimage a{
+    color: #2F8774;
+	text-decoration:none;
+}
+.partitionright .addimage img{
+float:left;
+margin-right:3px;
+}
+
+
+.partitionright .share{
+    color: #2F8774;
+    float: right;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 26px;
+    margin-right: 30px;
+    text-align: left;
+	margin-bottom:40px;
+}
+
+.partitionright .share .square{
+    border: 1px solid #D8D8D8;
+    float: left;
+    height: 18px;
+    margin: 4px 2px 0;
+    width: 18px;
+}
+
+.partitionright .share img{
+    float: left;
+    margin: 0 2px;
+}
+
+.partitionright .mainentry{
+    background-image: url("../assets/partition.png");
+    background-position: center top;
+    background-repeat: repeat-x;
+    color: #9C9C9C;
+    float: left;
+    margin-bottom: 27px;
+    padding-top: 14px;
+    width: 627px;
+}
+
+.partitionright .mainentry .contentholder{
+width:527px;
+float:left;
+}
+
+.partitionright .mainentry  .ltlogos{
+float:left;
+width:56px;
+}
+
+.partitionright  .mainentry .ltlogos img{
+float:left;
+margin-bottom:25px;
+}
+
+.partitionright .mainentry h2{
+    color: #9C9C9C;
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 8px;
+    margin-top: 10px;
+}
+
+.partitionright .mainentry h3{
+    color: #9C9C9C;
+    float: left;
+    font-size: 16px;
+    font-weight: normal;
+    margin-top: 12px;
+}
+
+.partitionright .mainentry .viewstorelink{
+    color: #3EACC8;
+    float: right;
+    font-size: 16px;
+    margin-top: 12px;
+    text-decoration: none;
+}
+.partitionright .mainentry .miantext{
+font-size:16px;
+width:100%;
+float:left;
+}
+.partitionright .mainentry .miantext img{
+margin-top:10px;
+margin-right:12px;
+border:1px solid #d8d8d8;
+}
+

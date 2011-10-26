@@ -20,6 +20,10 @@ puts "Destroying All Default Users..."
 users = User.all
 users.each{ |user| user.destroy } unless users.blank?
 
+puts "Creating Admin of Site"
+admin = User.create!(:email=>'admin@peddle.com',:password=>'123456',:password_confirmation => '123456')
+admin.roles << admin_role
+admin.save!
 
 #puts "Creating Default Administrator..."
 #admin = User.new(:email=>'admin@peddle.com',
@@ -33,7 +37,7 @@ puts " Destroying All Stores"
 stores = Store.all
 stores.each{|store| store.destroy} unless stores.blank?
 
-puts " =================================================================================="
+puts " ==============================================================================="
 
 puts " Destroying All Packages"
 packages = Package.all
@@ -117,7 +121,7 @@ package_rule = PackageRule.create!(:key => "discount_count", :value => "yes" )
 package.package_rules << package_rule
 package.save!
 
-puts " =================================================================================="
+puts " ==============================================================================="
 
 puts " Destroying All Products"
 products = Product.all

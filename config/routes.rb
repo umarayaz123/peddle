@@ -3,6 +3,10 @@ Peddle::Application.routes.draw do
 
   get "home/index"
 
+  namespace :admin do
+    resources :store_admin
+  end
+
   resources :products
 
   resources :stores
