@@ -13,9 +13,11 @@ class StoresController < ApplicationController
   # GET /stores/1
   # GET /stores/1.json
   def show
-    #@store = Store.find(params[:id])
-    @store = Store.find_by_name!(request.subdomain)
-
+  	if params[:id]
+  		@store = Store.find(params[:id])
+ 		else
+  		@store = Store.find_by_name!(request.subdomain)
+  	end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @store }
