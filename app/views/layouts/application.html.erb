@@ -35,7 +35,7 @@
         </li>
 
         <li>
-          <% if user_signed_in? %>
+          <% if current_user %>
               <%#= current_user.email %>
               <%= link_to "Logout", "/users/sign_out", :method => :delete %>
           <% else %>

@@ -1,4 +1,4 @@
-class Devise::RegistrationsController < ApplicationController
+class Users::RegistrationsController < ApplicationController
   prepend_before_filter :require_no_authentication, :only => [ :new, :create, :cancel ]
   prepend_before_filter :authenticate_scope!, :only => [:edit, :update, :destroy]
   include Devise::Controllers::InternalHelpers
@@ -12,8 +12,22 @@ class Devise::RegistrationsController < ApplicationController
   # POST /resource
   def create
     build_resource
+    seller =  Role.find_by_name('Seller')
+    buyer =  Role.find_by_name('Buyer')
 
-    if resource.save
+    if params[:seller].nil? && params[:buyer].nil?
+      resource.roles << buyer
+    end
+    unless params[:seller].nil?
+      resource.roles << seller
+    end
+    unless params[:buyer].nil?
+      resource.roles << buyer
+    end
+    store = Store.new(:package_id => 1, :name => params[:store_name])
+    store.save
+    resource.store_id = store.id
+    if resource.save && store.save
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?
         sign_in(resource_name, resource)

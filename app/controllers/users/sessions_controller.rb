@@ -1,7 +1,8 @@
-class Devise::SessionsController < ApplicationController
+class Users::SessionsController < ApplicationController
   prepend_before_filter :require_no_authentication, :only => [ :new, :create ]
   prepend_before_filter :allow_params_authentication!, :only => :create
   include Devise::Controllers::InternalHelpers
+#  after_sign_in_path_for :check_role
 
   # GET /resource/sign_in
   def new
@@ -23,7 +24,8 @@ class Devise::SessionsController < ApplicationController
     signed_in = signed_in?(resource_name)
     Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
     set_flash_message :notice, :signed_out if signed_in
-
+    session["role_checked"] = ""
+    session["admin_role_checked"] = ""
     # We actually need to hardcode this, as Rails default responder doesn't
     # support returning empty response on GET request
     respond_to do |format|

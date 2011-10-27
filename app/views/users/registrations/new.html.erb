@@ -14,32 +14,31 @@
             </div>
             <div class="signin_small_input_holder">
               <label>Store Name</label>
-              <input type="text" value="">
-
+              <%= text_field_tag 'store_name' %>
               <p>.peddleonline.com</p>
             </div>
             <div class="signin_input_holder">
               <label>Email</label>
               <%= f.email_field :email %>
             </div>
-            <div class="signin_input_holder">
-              <label>Re-type Your Email</label>
-              <input type="text" value="">
-            </div>
+            <!--<div class="signin_input_holder">-->
+              <!--<label>Re-type Your Email</label>-->
+              <!--<input type="text" value="">-->
+            <!--</div>-->
 
             <div class="checkbox_holder">
               <div class="checkbox_input_holder">
-                <input type="checkbox" value="">
+                <%= check_box_tag 'seller'%>
                 <label>Seller</label>
               </div>
               <div class="checkbox_input_holder">
-                <input type="checkbox" value="">
+                <%= check_box_tag 'buyer'%>
                 <label>Buyer</label>
               </div>
-              <div class="checkbox_input_holder">
-                <input type="checkbox" value="">
-                <label>Both</label>
-              </div>
+              <!--<div class="checkbox_input_holder">-->
+                <!--<input type="checkbox" value="">-->
+                <!--<label>Both</label>-->
+              <!--</div>-->
             </div>
             <div class="signin_small_input_holder">
               <label>Password</label>
