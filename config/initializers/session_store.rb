@@ -1,1 +1,2 @@
-Peddle::Application.config.session_store :cookie_store, :key => '_peddle_session', :domain => "lvh.me"
+#Peddle::Application.config.session_store :cookie_store, :key => '_peddle_session', :domain => "lvh.me"
+Peddle::Application.config.session_store :cookie_store, :key => '_peddle_session', :domain => "ilsainteractive.com"
