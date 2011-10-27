@@ -19,7 +19,7 @@ end
 
 gem 'jquery-rails'
 
-gem 'execjs'
+#gem 'execjs'
 
 #gem 'therubyracer'
 
