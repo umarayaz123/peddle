@@ -1,8 +1,12 @@
 Peddle::Application.routes.draw do
 
 #  get "home/index"
+
+  match '/' => 'admin/store_admin#index', :constraints => { :subdomain => /.+/ }
   match '/' => 'admin/store_admin#index'
-#  match '/' => 'stores#show', :constraints => { :subdomain => /.+/ }
+  match '/' => 'home#index', :constraints => {:subdomain => 'www'}
+  match '/' => 'home#index', :constraints => { :subdomain => /.+/ }
+  match '/' => 'home#index'
 
   devise_for :users, :controllers => {
     :sessions => "users/sessions",
@@ -16,6 +20,7 @@ Peddle::Application.routes.draw do
     get "login" => "users/sessions#new"
     get "sign_in", :to => "users/sessions#new"
     get "sign_out", :to => "users/sessions#destroy"
+    match 'sign_out',  :to => "users/sessions#destroy"
     get "log_out", :to => "users/careers#destroy"
     get "sign_up", :to => "users/registrations#new"    
   end
@@ -80,7 +85,7 @@ Peddle::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.  
-  root :to => 'home#index'
+#  root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"
 

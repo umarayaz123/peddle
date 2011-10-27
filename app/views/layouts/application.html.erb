@@ -37,9 +37,11 @@
         <li>
           <% if current_user %>
               <%#= current_user.email %>
-              <%= link_to "Logout", "/users/sign_out", :method => :delete %>
+            <%#*root_url(:subdomain => false)%>
+
+              <%= link_to "Logout", "/sign_out" %>
           <% else %>
-              <%= link_to "Login", "/users/sign_in" %>
+              <%= link_to "Login", "sign_in" %>
           <% end %>
         </li>
 
