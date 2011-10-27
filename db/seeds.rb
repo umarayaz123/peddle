@@ -12,8 +12,8 @@ roles.each{ |role| role.destroy } unless roles.blank?
 
 puts "Creating Default Roles..."
 admin_role = Role.create!(:name=>'Admin')
-member = Role.create!(:name=>'Seller')
-member = Role.create!(:name=>'Buyer')
+seller = Role.create!(:name=>'Seller')
+buyer = Role.create!(:name=>'Buyer')
 
 
 puts "Destroying All Default Users..."
@@ -24,14 +24,6 @@ puts "Creating Admin of Site"
 admin = User.create!(:email=>'admin@peddle.com',:password=>'123456',:password_confirmation => '123456')
 admin.roles << admin_role
 admin.save!
-
-#puts "Creating Default Administrator..."
-#admin = User.new(:email=>'admin@peddle.com',
-#  :encrypted_password =>'$2a$10$pNOqdqvzymfXS6haNzz6s..nK/uqCw5tXOeYdrpB/Dm3quhXvFiAO'
-#)
-#
-#admin.roles << admin_role
-#admin.save!
 
 puts " Destroying All Stores"
 stores = Store.all
