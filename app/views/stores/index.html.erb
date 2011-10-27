@@ -1,201 +1,149 @@
-<h1>Listing stores</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Url</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @stores.each do |store| %>
-  <tr>
-    <td><%= store.name %></td>
-    <td><%= store.description %></td>
-    <td><%= store.url %></td>
-    <td><%= link_to 'Show', store %></td>
-    <td><%= link_to 'Edit', edit_store_path(store) %></td>
-    <%#*<td><%= link_to 'Destroy', store, confirm: 'Are you sure?', method: :delete %></td>%>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Store', new_store_path %>
-
-
 <div class="container">
 
 
-	<div class="partitionleft">
+  <div class="partitionleft">
 
-	<div class="picnbasicinfoholder">
-		<img src="../assets/pro-pic.png"/>
-		<div class="username">
+    <div class="picnbasicinfoholder">
+      <img src="../assets/pro-pic.png"/>
+      <div class="username">
 			Robert Thomas
-		</div>
+      </div>
 
-		<div class="subtitle">
+      <div class="subtitle">
 			Peddler / Buyer
-		</div>
+      </div>
 
-	</div>
+    </div>
 
-		<div class="leftcatholder">
-			<div class="catagory">
+    <div class="leftcatholder">
+      <div class="catagory">
 				Suggested Stores
-			</div>
-			<div class="sugeststoriesentry">
-				<img class="profilepic" src="../assets/pic.png" />
-				<img class="ltcatclose" src="../assets/x.png" />
-				<div class="storyheading">
-					The Best Store Out
-				</div>
-				<div class="storysubheading">
-					Home / Outdoor / Sports
-				</div>
-				<div class="tag">
-					<a href="#">Tag to this store</a>
-				</div>
-			</div>
-			<div class="sugeststoriesentry">
-				<img class="profilepic" src="../assets/pic.png" />
-				<img class="ltcatclose" src="../assets/x.png" />
-				<div class="storyheading">
-					The Best Store Out
-				</div>
-				<div class="storysubheading">
-					Home / Outdoor / Sports
-				</div>
-				<div class="tag">
-					<a href="#">Tag to this store</a>
-				</div>
-			</div>
-			<div class="sugeststoriesentry">
-				<img class="profilepic" src="../assets/pic.png" />
-				<img class="ltcatclose" src="../assets/x.png" />
-				<div class="storyheading">
-					The Best Store Out
-				</div>
-				<div class="storysubheading">
-					Home / Outdoor / Sports
-				</div>
-				<div class="tag">
-					<a href="#">Tag to this store</a>
-				</div>
-			</div>
-		</div>
+      </div>
+      <%unless @stores.blank?%>
+        <% @stores.each do |store| %>
+          <div class="sugeststoriesentry">
+            <img class="profilepic" src="../assets/pic.png" />
+            <img class="ltcatclose" src="../assets/x.png" />
+            <div class="storyheading">
+              <%=store.name%>
+            </div>
+            <div class="storysubheading">
+              Home / Outdoor / Sports
+            </div>
+            <div class="tag">
+              <a href="#">Tag to this store</a>
+            </div>
+          </div>
+        <%end%>
+      <%end%>
+    </div>
 
-		<div class="leftcatholder">
-			<div class="catagory">
+    <div class="leftcatholder">
+      <div class="catagory">
 				Suggested Stores
-			</div>
-			<div class="leftcolentry">
-				<a href="#" >The Best Store Out</a>
-			</div>
-			<div class="leftcolentry">
-				<a href="#" >The Best Store Out</a>
-			</div>
-			<div class="leftcolentry">
-				<a href="#" >The Best Store Out</a>
-			</div>
-		</div>
+      </div>
+      <%unless @stores.blank?%>
+        <% @stores.each do |store| %>
+          <div class="leftcolentry">
+            <%#*<a href="#" >The Best Store Out</a>%>
+            <%=link_to store.name , :controller => "store", :action => "cat", :id => store.id%>
+          </div>
+        <%end%>
+      <%end%>
+    </div>
 
-		<div class="invitefriends">
-			<div class="heading">
+    <div class="invitefriends">
+      <div class="heading">
 				Send invitation
-			</div>
-			<div class="buttonholder">
-				<img src="../assets/invitefriends.png" />
-			</div>
+      </div>
+      <div class="buttonholder">
+        <img src="../assets/invitefriends.png" />
+      </div>
 
-		</div>
+    </div>
 
-	</div>
+  </div>
 
-	<div class="partitionright">
+  <div class="partitionright">
 
-		<h1>
+    <h1>
 			Sales Floor
-		</h1>
+    </h1>
 
-		<textarea class="posttext"></textarea>
-		<div class="addimage">
-			<img src="../assets/addimage.png">
-			<a href"#">add an image</a>
-		</div>
+    <textarea class="posttext"></textarea>
+    <div class="addimage">
+      <img src="../assets/addimage.png">
+      <a href"#">add an image</a>
+    </div>
 
-		<div class="share">
-			<div class="square">
-			</div>
-			<img src="../assets/fb.png" />
-			<div class="square">
-			</div>
-			<img src="../assets/tw.png" />
+    <div class="share">
+      <div class="square">
+      </div>
+      <img src="../assets/fb.png" />
+      <div class="square">
+      </div>
+      <img src="../assets/tw.png" />
 			Share
-		</div>
+    </div>
 
-		<div class="mainentry">
-			<div class="ltlogos">
-				<img src="../assets/mainentrylogo.png" />
-				<img src="../assets/tagcopy.png" />
-			</div>
-			<div class="contentholder">
-				<h2>
+    <div class="mainentry">
+      <div class="ltlogos">
+        <img src="../assets/mainentrylogo.png" />
+        <img src="../assets/tagcopy.png" />
+      </div>
+      <div class="contentholder">
+        <h2>
 					The Company
-				</h2>
-				<h3>
+        </h2>
+        <h3>
 					24 minutes ago
-				</h3>
-				<a class="viewstorelink" href="#">View store</a>
-				<div class="miantext">
+        </h3>
+        <a class="viewstorelink" href="#">View store</a>
+        <div class="miantext">
 					Get top exercise and fitness equipment at Walmart.com. Whether you?re shopping
-abdominal toners, exercise machines, or mixed martial arts products, we've got it all
-covered, from ab toners to yoga gear. Our exercise and fitness equipment can help
-you get in shape with everything from pedometers and GPS units to punching bags
-and home gyms, at everyday low prices.
-<br />
-<img src="../assets/detailimg1.png">
-<img src="../assets/detailimg2.png">
-<img src="../assets/detailimg3.png">
+          abdominal toners, exercise machines, or mixed martial arts products, we've got it all
+          covered, from ab toners to yoga gear. Our exercise and fitness equipment can help
+          you get in shape with everything from pedometers and GPS units to punching bags
+          and home gyms, at everyday low prices.
+          <br />
+          <img src="../assets/detailimg1.png">
+          <img src="../assets/detailimg2.png">
+          <img src="../assets/detailimg3.png">
 
-				</div>
-			</div>
-		</div>
-<div class="mainentry">
-			<div class="ltlogos">
-				<img src="../assets/mainentrylogo.png" />
-				<img src="../assets/tagcopy.png" />
-			</div>
-			<div class="contentholder">
-				<h2>
+        </div>
+      </div>
+    </div>
+    <div class="mainentry">
+      <div class="ltlogos">
+        <img src="../assets/mainentrylogo.png" />
+        <img src="../assets/tagcopy.png" />
+      </div>
+      <div class="contentholder">
+        <h2>
 					The Company
-				</h2>
-				<h3>
+        </h2>
+        <h3>
 					24 minutes ago
-				</h3>
-				<a class="viewstorelink" href="#">View store</a>
-				<div class="miantext">
+        </h3>
+        <a class="viewstorelink" href="#">View store</a>
+        <div class="miantext">
 					Get top exercise and fitness equipment at Walmart.com. Whether you?re shopping
-abdominal toners, exercise machines, or mixed martial arts products, we've got it all
-covered, from ab toners to yoga gear. Our exercise and fitness equipment can help
-you get in shape with everything from pedometers and GPS units to punching bags
-and home gyms, at everyday low prices.
-<br />
-<img src="../assets/detailimg1.png">
-<img src="../assets/detailimg2.png">
-<img src="../assets/detailimg3.png">
+          abdominal toners, exercise machines, or mixed martial arts products, we've got it all
+          covered, from ab toners to yoga gear. Our exercise and fitness equipment can help
+          you get in shape with everything from pedometers and GPS units to punching bags
+          and home gyms, at everyday low prices.
+          <br />
+          <img src="../assets/detailimg1.png">
+          <img src="../assets/detailimg2.png">
+          <img src="../assets/detailimg3.png">
 
-				</div>
-			</div>
-		</div>
+        </div>
+      </div>
+    </div>
 
 
 
-	</div>
+  </div>
 
 
 
