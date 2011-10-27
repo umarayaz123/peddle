@@ -6,29 +6,6 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
 
-puts "Destroying All Default Roles..."
-roles = Role.all
-roles.each{ |role| role.destroy } unless roles.blank?
-
-puts "Creating Default Roles..."
-admin_role = Role.create!(:name=>'Admin')
-seller = Role.create!(:name=>'Seller')
-buyer = Role.create!(:name=>'Buyer')
-
-
-puts "Destroying All Default Users..."
-users = User.all
-users.each{ |user| user.destroy } unless users.blank?
-
-puts "Creating Admin of Site"
-admin = User.create!(:email=>'admin@peddle.com',:password=>'123456',:password_confirmation => '123456')
-admin.roles << admin_role
-admin.save!
-
-puts " Destroying All Stores"
-stores = Store.all
-stores.each{|store| store.destroy} unless stores.blank?
-
 puts " ==============================================================================="
 
 puts " Destroying All Packages"
@@ -114,6 +91,45 @@ package.package_rules << package_rule
 package.save!
 
 puts " ==============================================================================="
+
+
+puts "Destroying All Default Roles..."
+roles = Role.all
+roles.each{ |role| role.destroy } unless roles.blank?
+
+puts "Creating Default Roles..."
+admin_role = Role.create!(:name=>'Admin')
+seller = Role.create!(:name=>'Seller')
+buyer = Role.create!(:name=>'Buyer')
+
+puts " Destroying All Stores"
+stores = Store.all
+stores.each{|store| store.destroy} unless stores.blank?
+
+puts "Creating Admin Store"
+admin_store = Store.create!(:package_id => 1, :name => "adminstore")
+admin_store.save!
+
+puts "Creating Buyer Store"
+buyer_store = Store.create!(:package_id => 1, :name => "buyerstore")
+buyer_store.save!
+
+
+puts "Destroying All Default Users..."
+users = User.all
+users.each{ |user| user.destroy } unless users.blank?
+
+puts "Creating Admin of Site"
+admin = User.create!(:email=>'admin@peddle.com',:password=>'123456',:password_confirmation => '123456')
+admin.store_id = admin_store.id
+admin.roles << admin_role
+admin.save!
+
+puts "Creating default Buyer of Site"
+buyer_user = User.create!(:email=>'buyer@peddle.com',:password=>'123456',:password_confirmation => '123456')
+buyer_user.store_id = buyer_store.id
+buyer_user.roles << buyer
+buyer_user.save!
 
 puts " Destroying All Products"
 products = Product.all
