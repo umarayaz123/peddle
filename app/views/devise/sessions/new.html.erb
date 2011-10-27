@@ -1,17 +1,35 @@
-<h2>Sign in</h2>
+<div class="bodyholder">
+  <div class="container">
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+        <div class="signin_holder">
+          <div class="top_login_bg"></div>
+          <div class="mid_login_bg">
+            <div class="signin_heading">Sign In To Peddle</div>
+            <div class="signin_text">Don't have a peddle
+              Account <%= link_to "Sign up", new_registration_path(resource_name) %></div>
+            <div class="signin_input_holder">
+              <label>Email Address Or User Name</label>
+              <!--<input type="text" value="">-->
+              <%= f.email_field :email %>
+            </div>
+            <div class="signin_input_holder">
+              <label>Password</label>
+              <!--<input type="text" value="">-->
+              <%= f.password_field :password %>
+            </div>
+            <% if devise_mapping.rememberable? -%>
+                <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+            <% end -%>
+            <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+                <div class="signin_text"><%= link_to "Forgot your password", new_password_path(resource_name) %></div>
+            <% end -%>
+            <div class="submit_holder">
+              <%= f.submit "Sign In" %>
+            </div>
+          </div>
+          <div class="bot_login_bg"></div>
+        </div>
+    <% end %>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
-
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+  </div>
+</div>

@@ -366,4 +366,136 @@ margin-top:10px;
 margin-right:12px;
 border:1px solid #d8d8d8;
 }
-
+.signin_text, .signin_heading{
+	color: #3EACC8;
+    font-size: 30px;
+    font-weight: normal;
+    line-height: 34px;
+	float:left;
+	width:100%;
+}
+.signin_text{
+	font-size:14px;
+	color:#000;
+	margin-top:10px;
+	line-height:20px;
+}
+.signin_text a{
+	color: #3EACC8;
+	text-decoration:underline;
+	font-weight:bold;
+}
+.signin_text a:hover{
+	text-decoration:none;
+}
+.signin_input_holder{
+	float:left;
+	width:100%;
+	margin-top:10px;
+}
+.signin_input_holder label{
+	float:left;
+	width:100%;
+	font-size:14px;
+	color:#9c9c9c;
+}
+.signin_input_holder input{
+	background: url("../assets/input_bg.png") no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 30px;
+    margin-top: 5px;
+    padding: 3px;
+    width: 100%;
+}
+.submit_holder{
+	float:left;
+	margin-top:10px;
+	width:100%;
+}
+.submit_holder input{
+	background: url("../assets/input_btn.png") no-repeat scroll 0 0 transparent;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: right;
+    font-size: 14px;
+    margin-right: 10px;
+    padding: 6px 12px;
+    text-align: center;
+}
+.signin_holder{
+    float: left;
+    margin-left: 25%;
+    width: 50%;
+	padding-bottom:20px;
+}
+.top_login_bg{
+	float:left;
+	width:515px;
+	height:11px;
+	background:url(../assets/top_login_bg.png) no-repeat;
+}
+.mid_login_bg{
+	background: url("../assets/mid_login_bg.png") repeat-y scroll 0 0 transparent;
+    float: left;
+    height: auto;
+    padding: 0 4%;
+    width: 477px;
+}
+.bot_login_bg{
+	float:left;
+	width:515px;
+	height:11px;
+	background:url(../assets/bot_login_bg.png) no-repeat;
+}
+.checkbox_holder, .signin_small_input_holder{
+	float:left;
+	width:100%;
+	margin-top:10px;
+}
+.signin_small_input_holder label{
+	float:left;
+	width:100%;
+	font-size:14px;
+	color:#9c9c9c;
+}
+.signin_small_input_holder p{
+	color: #000000;
+    float: left;
+    font-size: 12px;
+    line-height: 33px;
+    margin-left: 10px;
+    width: auto;
+}
+.signin_small_input_holder input{
+	background: url("../assets/small_input.png") no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 30px;
+    margin-top: 5px;
+    padding: 3px;
+    width: 258px;
+}
+.checkbox_input_holder_small, .checkbox_input_holder{
+	float:left;
+	width:auto;
+}
+.checkbox_input_holder_small input, .checkbox_input_holder input{
+	float:left;
+	width:auto;
+	margin-right:10px;
+	margin-top:2px;
+}
+.checkbox_input_holder_small label, .checkbox_input_holder label{
+	color: #9C9C9C;
+    float: left;
+    font-size: 14px;
+    width: auto;
+	margin-right:10px;
+}
+.checkbox_input_holder_small{
+	float:left;
+	width:100%!important;
+}
+.checkbox_input_holder_small label{
+	width: 92%!important;
+	font-size:12px!important;
+}
