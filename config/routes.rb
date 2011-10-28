@@ -2,11 +2,12 @@ Peddle::Application.routes.draw do
 
 #  get "home/index"
 
-  match '/' => 'admin/store_admin#index', :constraints => { :subdomain => /.+/ }
-  match '/' => 'admin/store_admin#index'
+  match '/admin' => 'admin/store_admin#index', :constraints => { :subdomain => /.+/ }
+  match '/admin' => 'admin/store_admin#index'
   match '/' => 'home#index', :constraints => {:subdomain => 'www'}
   match '/' => 'home#index', :constraints => { :subdomain => /.+/ }
   match '/' => 'home#index'
+  match '/cart' => 'stores#cart'
 
   devise_for :users, :controllers => {
     :sessions => "users/sessions",

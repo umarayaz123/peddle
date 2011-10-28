@@ -1,5 +1,5 @@
 class Admin::StoreAdminController < ApplicationController
-  before_filter :authenticate_user!
+#  before_filter :authenticate_user!
   before_filter :check_role
   
   def index    
@@ -11,7 +11,7 @@ class Admin::StoreAdminController < ApplicationController
 		@products = current_user.store.products.all
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @products }
+#      format.json { render json: @products }
     end
   end
 end

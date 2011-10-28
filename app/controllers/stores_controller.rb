@@ -1,5 +1,5 @@
 class StoresController < ApplicationController
-  before_filter :authenticate_user!
+#  before_filter :authenticate_user!
   # GET /stores
   # GET /stores.json
   before_filter :check_role
@@ -29,6 +29,11 @@ class StoresController < ApplicationController
       format.html # show.html.erb
       format.json { render :json => @store }
     end
+  end
+
+  def cart
+    @store = Store.find(params[:id])
+    redirect_to :controller => "stores", :subdomain => @store.name
   end
 
   # GET /stores/new

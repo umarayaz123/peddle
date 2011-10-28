@@ -19,6 +19,12 @@ class Users::SessionsController < ApplicationController
     respond_with resource, :location => redirect_location(resource_name, resource)
   end
 
+#  def create
+#    resource = warden.authenticate!(:scope => resource_name, :recall => "new")
+#    puts "sign_in_and_redirect #{resource_name} #{resource}"
+#    sign_in_and_redirect(resource_name, resource)
+#  end
+
   # GET /resource/sign_out
     def destroy
     signed_in = signed_in?(resource_name)
