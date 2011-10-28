@@ -10,7 +10,7 @@ class StoresController < ApplicationController
 #    end
     
     @stores = Store.all
- 
+    @products = Product.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @stores }

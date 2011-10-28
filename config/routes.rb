@@ -29,7 +29,9 @@ Peddle::Application.routes.draw do
 
   namespace :admin do
     resources :store_admin
-    resources :products
+    resources :products do
+      resources :product_details
+    end
   end
   
   resources :stores do

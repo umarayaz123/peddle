@@ -15,7 +15,10 @@
     <td><%= product.name %></td>
     <td><%= product.description %></td>
     <td><%= product.store_id %></td>
-    <td><%= link_to 'Show', '/products/'+product.id.to_s %></td>
+    <%product.images.each do |image|%>
+        <td><%= image_tag(image.snap, :width => "200", :height => "150") %></td>
+    <%end%>
+    <td><%= link_to 'Show', '/admin/products/'+product.id.to_s %></td>
     <td><%= link_to 'Edit', edit_admin_product_path(product) %></td>
     <td><%= link_to 'Destroy', '/admin/products/destroy/'+product.id.to_s, confirm: 'Are you sure?', method: :delete %></td>
   </tr>

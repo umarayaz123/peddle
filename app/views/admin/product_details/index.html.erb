@@ -1,0 +1,32 @@
+<h1>
+    welcome to product_details page
+</h1>
+
+<h1>Listing products</h1>
+
+<table>
+  <tr>
+    <th>Size</th>
+    <th>Color</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @product_detail.each do |product| %>
+  <tr>
+    <td><%= product.size %></td>
+    <td><%= product.color %></td>
+    <td><%= product.price %></td>
+    <td><%#= link_to 'Show', product %></td>
+    <td><#%= link_to 'Edit', '/admin/products/'+@product_id+'/product_details/edit/'+product.id.to_s %></td>
+    <td><%#= link_to 'Edit', edit_product_path(product) %></td>
+    <%#*<td><%= link_to 'Destroy', product, confirm: 'Are you sure?', method: :delete %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= link_to 'New Product Deatil' , new_admin_product_product_detail_path %><br/>
+<%= link_to 'Go Back to Product', '/admin/products/'+@product_id %>
