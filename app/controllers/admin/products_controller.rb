@@ -1,26 +1,20 @@
-class Admin::StoreAdminController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :check_role
-  
-  def index    
-#    unless is_admin?
-#      redirect_to "/"
-#    end		
-		#@products = Product.all
-		@store = current_user.store
+class Admin::ProductsController < ApplicationController
+  # GET /products
+  # GET /products.json
+  def index
+    @store = current_user.store
 		@products = current_user.store.products.all
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @products }
     end
-
   end
-  
+
   # GET /products/1
   # GET /products/1.json
   def show
-  	@store = current_user.store
-    @product = current_user.store.products.find(params[:id])
+    @product = Product.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -31,7 +25,6 @@ class Admin::StoreAdminController < ApplicationController
   # GET /products/new
   # GET /products/new.json
   def new
-  	@store = current_user.store
     @product = Product.new
 
     respond_to do |format|
@@ -42,8 +35,7 @@ class Admin::StoreAdminController < ApplicationController
 
   # GET /products/1/edit
   def edit
-  	@store = current_user.store
-    @product = current_user.store.products..find(params[:id])
+    @product = Product.find(params[:id])
   end
 
   # POST /products
@@ -53,8 +45,8 @@ class Admin::StoreAdminController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render json: @product, status: :created, location: @product }
+        format.html { redirect_to [:admin, @product], notice: 'Product was successfully created.' }
+        format.json { render json: [:admin, @product], status: :created, location: @product }
       else
         format.html { render action: "new" }
         format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -69,7 +61,7 @@ class Admin::StoreAdminController < ApplicationController
 
     respond_to do |format|
       if @product.update_attributes(params[:product])
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to [:admin, @product], notice: 'Product was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -85,9 +77,8 @@ class Admin::StoreAdminController < ApplicationController
     @product.destroy
 
     respond_to do |format|
-      format.html { redirect_to products_url }
+      format.html { redirect_to admin_products_url }
       format.json { head :ok }
     end
   end
-
 end

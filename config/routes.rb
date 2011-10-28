@@ -28,12 +28,15 @@ Peddle::Application.routes.draw do
 
   namespace :admin do
     resources :store_admin
+    resources :products
+  end
+  
+  resources :stores do
+  	resources :products
   end
   
   resources :products
-
-  resources :stores
-
+  
   resources :packages
 
   # The priority is based upon order of creation:
