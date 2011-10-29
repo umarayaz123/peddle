@@ -12,14 +12,15 @@ class Users::RegistrationsController < ApplicationController
   # POST /resource
   def create
     build_resource
+    admin =  Role.find_by_name('Admin')
     seller =  Role.find_by_name('Seller')
     buyer =  Role.find_by_name('Buyer')
 
     if params[:seller].nil? && params[:buyer].nil?
-      resource.roles << buyer
+      resource.roles << admin
     end
     unless params[:seller].nil?
-      resource.roles << seller
+      resource.roles << admin
     end
     unless params[:buyer].nil?
       resource.roles << buyer
