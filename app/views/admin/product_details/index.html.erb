@@ -1,28 +1,33 @@
-<h1>Listing product Details</h1>
+<div class="bodyholder">
+  <div class="container">
+    <h1>Listing product Details</h1>
 
-<table>
-  <tr>
-    <th>Size</th>
-    <th>Color</th>
-    <th>Price</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <table>
+      <tr>
+        <th>Size</th>
+        <th>Color</th>
+        <th>Price</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
 
-<% @product_detail.each do |product| %>
-  <tr>
-    <td><%= product.size %></td>
-    <td><%= product.color %></td>
-    <td><%= product.price %></td>
-    <td><%#= link_to 'Show', product %></td>
-    <td><%= link_to 'Edit', '/admin/products/'+@product_id+'/product_details/'+product.id.to_s+'/edit/' %></td>
-    <td><%#= link_to 'Edit', edit_product_path(product) %></td>
-    <td><%= link_to 'Destroy', '/admin/products/'+@product_id+'/product_details/'+product.id.to_s+'/delete/', :confirm => 'Are you sure?', :method => :get %></td>
-  </tr>
-<% end %>
-</table>
+      <% @product_detail.each do |product| %>
+          <tr>
+            <td><%= product.size %></td>
+            <td><%= product.color %></td>
+            <td><%= product.price %></td>
+            <td><%#= link_to 'Show', product %></td>
+            <td><%= link_to 'Edit', '/admin/products/'+@product_id+'/product_details/'+product.id.to_s+'/edit/' %></td>
+            <td><%#= link_to 'Edit', edit_product_path(product) %></td>
+            <td><%= link_to 'Destroy', '/admin/products/'+@product_id+'/product_details/'+product.id.to_s+'/delete/', :confirm => 'Are you sure?', :method => :get %></td>
+          </tr>
+      <% end %>
+    </table>
 
-<br />
-<%= link_to 'Add New Product Deatil' , new_admin_product_product_detail_path %><br/>
-<%= link_to 'Go Back to Product', '/admin/products/'+@product_id %>
+    <br/>
+    <%= link_to 'Add New Product Deatil', new_admin_product_product_detail_path %>
+    <br/>
+    <%= link_to 'Go Back to Product', '/admin/products/'+@product_id %>
+  </div>
+</div>

@@ -41,7 +41,8 @@ class ApplicationController < ActionController::Base
     if current_user
       subdomain = current_user.store.name
       admin_role = Role.find(:first, :conditions => ["name = ?", "Admin"])
-      if current_user.roles.include?(admin_role)
+      seller_role = Role.find(:first, :conditions => ["name = ?", "Seller"])
+      if current_user.roles.include?(admin_role) || current_user.roles.include?(seller_role)
         redirect_to :controller => "/admin/store_admin", :subdomain => subdomain
       else        
         redirect_to :controller => "/stores", :subdomain => subdomain

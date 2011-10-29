@@ -1,33 +1,38 @@
-<p id="notice"><%= notice %></p>
+<div class="bodyholder">
+  <div class="container">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @product.name %>
-</p>
+    <p>
+      <b>Name:</b>
+      <%= @product.name %>
+    </p>
 
-<p>
-  <b>Description:</b>
-  <%= @product.description %>
-</p>
+    <p>
+      <b>Description:</b>
+      <%= @product.description %>
+    </p>
 
-<p>
-  <b>Store:</b>
-  <%= @product.store_id %>
-</p>
-<p>
-  <b>Image:</b>
-  <% @product.images.each do |image| %>
-      <%= image_tag(image.snap, :width => "200", :height => "150") %>
-  <% end %>
+    <p>
+      <b>Store:</b>
+      <%= @product.store_id %>
+    </p>
 
-</p>
+    <p>
+      <b>Image:</b>
+      <% @product.images.each do |image| %>
+          <%= image_tag(image.snap, :width => "200", :height => "150") %>
+      <% end %>
 
-<p>
-  <b>Product_details: </b>
-  <%= link_to 'Product_details', '/admin/products/'+@product.id.to_s+'/product_details' %>
-</p>
+    </p>
+
+    <p>
+      <b>Product_details: </b>
+      <%= link_to 'Product_details', '/admin/products/'+@product.id.to_s+'/product_details' %>
+    </p>
 
 
 
-<%= link_to 'Edit', edit_admin_product_path(@product) %> |
-<%= link_to 'Back', admin_products_path %>
+    <%= link_to 'Edit', edit_admin_product_path(@product) %> |
+    <%= link_to 'Back', admin_products_path %>
+  </div>
+</div>
