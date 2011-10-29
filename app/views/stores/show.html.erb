@@ -14,8 +14,8 @@
           <ul class="ad-thumb-list">
             <%@product.images.each_with_index do |image, index|%>
             <li>
-              <a href="<%=image.snap%>">
-                <img src="<%=image.snap%>" class="image<%=index%>"/>
+              <a href="<%=image.snap(:medium)%>">
+                <img src="<%=image.snap(:thumb)%>" class="image<%=index%>"/>
               </a>
             </li>              
             <%end%>
