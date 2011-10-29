@@ -19,16 +19,15 @@ class StoresController < ApplicationController
 
   # GET /stores/1
   # GET /stores/1.json
-  def show
-  	if params[:id]
-  		@store = Store.find(params[:id])
- 		else
-  		@store = Store.find_by_name!(request.subdomain)
-  	end
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @store }
-    end
+  def show  	
+    @product = Product.find(params[:id])
+    @product.images.each do |image|
+              puts 'DDDD', image.inspect
+            end
+#    respond_to do |format|
+#      format.html # show.html.erb
+#      format.json { render :json => @store }
+#    end
   end
 
   def cart

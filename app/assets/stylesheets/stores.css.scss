@@ -1,3 +1,149 @@
 // Place all the styles related to the stores controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.w100{
+	float:left;
+	width:100%;
+}
+
+.contentLeftHolder{
+	width:220px;
+}
+
+.flt{
+	float:left !important;
+}
+.frt{
+	float:right !important;
+}
+.contentRightHolder{
+	width:736px;
+}
+.mtop40{
+	margin-top:40px !important;
+}
+.mainHeading{
+	border-bottom:3px solid #250101;
+	font-size:20px;
+	font-weight:bold;
+	color:#98152a;
+	padding-bottom:5px;
+}
+.w100{
+	float:left;
+	width:100%;
+}
+
+.leftLink{
+	list-style:none;
+}
+.leftLink li{
+	background: url("../images/link_arrow.png") no-repeat scroll left center transparent;
+    border-bottom: 1px dashed #000000;
+    color: #5E5D5D;
+    float: left;
+    font-size: 14px;
+    line-height: 26px;
+    padding-left: 8%;
+    width: 92%;
+}
+.leftLink li a{
+	color:#5e5d5d;
+	text-decoration:none;
+}
+
+.galleryHolder{
+	width:174px;
+	margin-left:5px;
+	margin-right:5px;
+	text-align:center;
+}
+.galleryHolder h1{
+	float:left;
+	width:100%;
+	font-size:12px;
+	margin-top:10px;
+	text-align:left;
+}
+.galleryHolder h2{
+	float:left;
+	width:100%;
+	font-size:16px;
+	font-weight:bold;
+	color:#98152a;
+	text-align:left;
+}
+.mtop30{
+	margin-top:30px !important;
+}
+.detailsLeftHolder{
+	width:268px;
+}
+.largImgHolder{
+	border:1px solid #dedede;
+	background:none scroll 0 0 #fbfbfb;
+	text-align:center;
+}
+.largImgHolder{
+	border:1px solid #dedede;
+	background:none scroll 0 0 #fbfbfb;
+	text-align:center;
+}
+.mtop10{
+	margin-top:10px !important;
+}
+.smallImgHolder{
+	border:1px solid #dedede;
+	background:none scroll 0 0 #fbfbfb;
+	text-align:center;
+	padding:0 5px;
+}
+
+.mright{
+	margin-right:7px;
+}
+.detailsRightHolder{
+	width:450px;
+}
+.inStockHeading{
+	font-size:20px;
+	font-weight:bold;
+	color:#250101;
+}
+.price{
+	font-size:20px;
+	color:#98152a;
+	font-weight:bold;
+}
+.selectHolder{
+	border-bottom: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    padding: 20px 0;
+}
+.selectHolder{
+	border-bottom: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    padding: 20px 0;
+}
+.select{
+	float:left;
+	width:100%;
+}
+.select label{
+	float:left;
+	width:150px;
+	color:#494949;
+	line-height:20px;
+}
+.select select{
+	border: 1px solid #CCCCCC;
+    float: left;
+    padding: 1px;
+    width: auto;
+}
+
+.gray{
+	color:#666;
+}

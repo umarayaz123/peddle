@@ -2,8 +2,9 @@
 <html>
 <head>
   <title>PEDDLE-online</title>
-  <%= stylesheet_link_tag "application" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag "application", "jquery.ad-gallery", "store" %>
+  <%= javascript_include_tag "application", "jquery.ad-gallery", "jquery.ad-gallery.pack"%>
+  
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -18,8 +19,8 @@
 
     <div class="topNav">
       <ul>
-        <li>
-          <a href="#">Sales Floor </a>
+        <li>          
+          <%=link_to "Sales Floor", "/home/index"%>
         </li>
 
         <li>
@@ -41,7 +42,7 @@
 
               <%= link_to "Logout", "/sign_out" %>
           <% else %>
-              <%= link_to "Login", "sign_in" %>
+              <%= link_to "Login", "/sign_in" %>
           <% end %>
         </li>
 
