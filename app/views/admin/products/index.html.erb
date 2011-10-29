@@ -20,7 +20,8 @@
     <%end%>
     <td><%= link_to 'Show', '/admin/products/'+product.id.to_s %></td>
     <td><%= link_to 'Edit', edit_admin_product_path(product) %></td>
-    <td><%= link_to 'Destroy', '/admin/products/destroy/'+product.id.to_s, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Product_details', '/admin/products/'+product.id.to_s+'/product_details' %></td>
+    <td><%= link_to 'Destroy', '/admin/products/destroy/'+product.id.to_s, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

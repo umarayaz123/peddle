@@ -30,7 +30,11 @@ Peddle::Application.routes.draw do
   namespace :admin do
     resources :store_admin
     resources :products do
-      resources :product_details
+      resources :product_details do
+        member do
+          get 'delete'
+        end
+      end
     end
   end
   

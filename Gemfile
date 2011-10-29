@@ -5,7 +5,8 @@ gem 'rails', '3.1.0'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql'
+gem 'mysql
+#gem 'sqlite3'
 
 gem 'json'
 
@@ -32,4 +33,6 @@ gem 'devise'
 
 # To use debugger
 # gem 'ruby-debug'
+
+gem 'paperclip'
 

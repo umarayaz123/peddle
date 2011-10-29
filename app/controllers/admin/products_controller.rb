@@ -1,13 +1,20 @@
 class Admin::ProductsController < ApplicationController
+
+  before_filter :authenticate_user!
+  before_filter do
+    admin_role = Role.find(:first, :conditions => ["name = ?", "Admin"])
+    redirect_to '/' unless current_user && current_user.roles.include?(admin_role)
+  end
+
   # GET /products
   # GET /products.json
   def index
     @store = current_user.store
-		@products = current_user.store.products.all
+    @products = current_user.store.products.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @products }
+      format.json { render :json => @products }
     end
   end
 
@@ -18,7 +25,7 @@ class Admin::ProductsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @product }
+      format.json { render :json => @product }
     end
   end
 
@@ -29,7 +36,7 @@ class Admin::ProductsController < ApplicationController
     @product.images.build
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @product }
+      format.json { render :json => @product }
     end
   end
 
@@ -45,11 +52,11 @@ class Admin::ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to [:admin, @product], notice: 'Product was successfully created.' }
-        format.json { render json: [:admin, @product], status: :created, location: @product }
+        format.html { redirect_to [:admin, @product], :notice => 'Product was successfully created.' }
+        format.json { render :json => [:admin, @product], :status => :created, :location => @product }
       else
-        format.html { render action: "new" }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json { render :json => @product.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -61,11 +68,11 @@ class Admin::ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.update_attributes(params[:product])
-        format.html { redirect_to [:admin, @product], notice: 'Product was successfully updated.' }
+        format.html { redirect_to [:admin, @product], :notice => 'Product was successfully updated.' }
         format.json { head :ok }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json { render :json => @product.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -81,4 +88,10 @@ class Admin::ProductsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def admin?
+    self.admin == true
+  end
+
+
 end
