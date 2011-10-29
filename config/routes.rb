@@ -7,7 +7,8 @@ Peddle::Application.routes.draw do
   match '/' => 'home#index', :constraints => {:subdomain => 'www'}
   match '/' => 'home#index', :constraints => { :subdomain => /.+/ }
   match '/' => 'home#index'
-  match '/cart' => 'stores#cart'
+  match 'cart' => 'stores#cart'
+  match 'store/:id' => 'stores#index'
 
   devise_for :users, :controllers => {
     :sessions => "users/sessions",
