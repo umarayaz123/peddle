@@ -1,47 +1,54 @@
 class Users::RegistrationsController < ApplicationController
-  prepend_before_filter :require_no_authentication, :only => [ :new, :create, :cancel ]
+  prepend_before_filter :require_no_authentication, :only => [:new, :create, :cancel]
   prepend_before_filter :authenticate_scope!, :only => [:edit, :update, :destroy]
   include Devise::Controllers::InternalHelpers
 
   # GET /resource/sign_up
   def new
     resource = build_resource({})
-    respond_with_navigational(resource){ render_with_scope :new }
+    respond_with_navigational(resource) { render_with_scope :new }
   end
 
   # POST /resource
   def create
-    build_resource
-    admin =  Role.find_by_name('Admin')
-    seller =  Role.find_by_name('Seller')
-    buyer =  Role.find_by_name('Buyer')
+    stores = Store.find_by_name(params[:store_name])
+    if stores.nil?
+      store = Store.new(:package_id => 1, :name => params[:store_name])
+      puts "******************", store.save
+      build_resource
+      admin = Role.find_by_name('Admin')
+      seller = Role.find_by_name('Seller')
+      buyer = Role.find_by_name('Buyer')
 
-    if params[:seller].nil? && params[:buyer].nil?
-      resource.roles << admin
-    end
-    unless params[:seller].nil?
-      resource.roles << admin
-    end
-    unless params[:buyer].nil?
-      resource.roles << buyer
-    end
-    store = Store.new(:package_id => 1, :name => params[:store_name])
-    store.save
-    resource.store_id = store.id
-    if resource.save && store.save
-      if resource.active_for_authentication?
-        set_flash_message :notice, :signed_up if is_navigational_format?
-        sign_in(resource_name, resource)
-        respond_with resource, :location => redirect_location(resource_name, resource)
+      if params[:seller].nil? && params[:buyer].nil?
+        resource.roles << admin
+      end
+      unless params[:seller].nil?
+        resource.roles << admin
+      end
+      unless params[:buyer].nil?
+        resource.roles << buyer
+      end
+      resource.store_id = store.id
+      if resource.save && store.save
+        if resource.active_for_authentication?
+          set_flash_message :notice, :signed_up if is_navigational_format?
+          sign_in(resource_name, resource)
+          respond_with resource, :location => redirect_location(resource_name, resource)
+        else
+          set_flash_message :notice, :inactive_signed_up, :reason => inactive_reason(resource) if is_navigational_format?
+          expire_session_data_after_sign_in!
+          respond_with resource, :location => after_inactive_sign_up_path_for(resource)
+        end
       else
-        set_flash_message :notice, :inactive_signed_up, :reason => inactive_reason(resource) if is_navigational_format?
-        expire_session_data_after_sign_in!
-        respond_with resource, :location => after_inactive_sign_up_path_for(resource)
+        clean_up_passwords(resource)
+        respond_with_navigational(resource) { render_with_scope :new }
       end
     else
-      clean_up_passwords(resource)
-      respond_with_navigational(resource) { render_with_scope :new }
+      flash[:notice] = "Store Name Already taken"
+      redirect_to '/users/sign_up'
     end
+
   end
 
   # GET /resource/edit
@@ -61,7 +68,7 @@ class Users::RegistrationsController < ApplicationController
       respond_with resource, :location => after_update_path_for(resource)
     else
       clean_up_passwords(resource)
-      respond_with_navigational(resource){ render_with_scope :edit }
+      respond_with_navigational(resource) { render_with_scope :edit }
     end
   end
 
@@ -70,7 +77,7 @@ class Users::RegistrationsController < ApplicationController
     resource.destroy
     Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
     set_flash_message :notice, :destroyed if is_navigational_format?
-    respond_with_navigational(resource){ redirect_to after_sign_out_path_for(resource_name) }
+    respond_with_navigational(resource) { redirect_to after_sign_out_path_for(resource_name) }
   end
 
   # GET /resource/cancel
@@ -85,51 +92,51 @@ class Users::RegistrationsController < ApplicationController
 
   protected
 
-    # Build a devise resource passing in the session. Useful to move
-    # temporary session data to the newly created user.
-    def build_resource(hash=nil)
-      hash ||= params[resource_name] || {}
-      self.resource = resource_class.new_with_session(hash, session)
-    end
+  # Build a devise resource passing in the session. Useful to move
+  # temporary session data to the newly created user.
+  def build_resource(hash=nil)
+    hash ||= params[resource_name] || {}
+    self.resource = resource_class.new_with_session(hash, session)
+  end
 
-    # The path used after sign up. You need to overwrite this method
-    # in your own RegistrationsController.
-    def after_sign_up_path_for(resource)
+  # The path used after sign up. You need to overwrite this method
+  # in your own RegistrationsController.
+  def after_sign_up_path_for(resource)
+    after_sign_in_path_for(resource)
+  end
+
+  # Overwrite redirect_for_sign_in so it takes uses after_sign_up_path_for.
+  def redirect_location(scope, resource)
+    stored_location_for(scope) || after_sign_up_path_for(resource)
+  end
+
+  # Returns the inactive reason translated.
+  def inactive_reason(resource)
+    reason = resource.inactive_message.to_s
+    I18n.t("devise.registrations.reasons.#{reason}", :default => reason)
+  end
+
+  # The path used after sign up for inactive accounts. You need to overwrite
+  # this method in your own RegistrationsController.
+  def after_inactive_sign_up_path_for(resource)
+    root_path
+  end
+
+  # The default url to be used after updating a resource. You need to overwrite
+  # this method in your own RegistrationsController.
+  def after_update_path_for(resource)
+    if defined?(super)
+      ActiveSupport::Deprecation.warn "Defining after_update_path_for in ApplicationController " <<
+                                          "is deprecated. Please add a RegistrationsController to your application and define it there."
+      super
+    else
       after_sign_in_path_for(resource)
     end
+  end
 
-    # Overwrite redirect_for_sign_in so it takes uses after_sign_up_path_for.
-    def redirect_location(scope, resource)
-      stored_location_for(scope) || after_sign_up_path_for(resource)
-    end
-
-    # Returns the inactive reason translated.
-    def inactive_reason(resource)
-      reason = resource.inactive_message.to_s
-      I18n.t("devise.registrations.reasons.#{reason}", :default => reason)
-    end
-
-    # The path used after sign up for inactive accounts. You need to overwrite
-    # this method in your own RegistrationsController.
-    def after_inactive_sign_up_path_for(resource)
-      root_path
-    end
-
-    # The default url to be used after updating a resource. You need to overwrite
-    # this method in your own RegistrationsController.
-    def after_update_path_for(resource)
-      if defined?(super)
-        ActiveSupport::Deprecation.warn "Defining after_update_path_for in ApplicationController " <<
-          "is deprecated. Please add a RegistrationsController to your application and define it there."
-        super
-      else
-        after_sign_in_path_for(resource)
-      end
-    end
-
-    # Authenticates the current scope and gets the current resource from the session.
-    def authenticate_scope!
-      send(:"authenticate_#{resource_name}!", :force => true)
-      self.resource = send(:"current_#{resource_name}")
-    end
+  # Authenticates the current scope and gets the current resource from the session.
+  def authenticate_scope!
+    send(:"authenticate_#{resource_name}!", :force => true)
+    self.resource = send(:"current_#{resource_name}")
+  end
 end
