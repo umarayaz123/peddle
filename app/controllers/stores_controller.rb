@@ -8,9 +8,9 @@ class StoresController < ApplicationController
 #    unless is_buyer?
 #      redirect_to "/"
 #    end
-    
+    @store = Store.find(params[:id])
     @stores = Store.all
-    @products = Product.all
+    @products = @store.products
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @stores }
@@ -20,10 +20,7 @@ class StoresController < ApplicationController
   # GET /stores/1
   # GET /stores/1.json
   def show  	
-    @product = Product.find(params[:id])
-    @product.images.each do |image|
-              puts 'DDDD', image.inspect
-            end
+    @product = Product.find(params[:id])    
 #    respond_to do |format|
 #      format.html # show.html.erb
 #      format.json { render :json => @store }
@@ -32,7 +29,7 @@ class StoresController < ApplicationController
 
   def cart
     @store = Store.find(params[:id])
-    redirect_to :controller => "stores", :subdomain => @store.name
+    redirect_to :controller => "store/#{@store.id}", :subdomain => @store.name
   end
 
   # GET /stores/new
