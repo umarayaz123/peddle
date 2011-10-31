@@ -33,7 +33,7 @@ class Admin::ProductsController < ApplicationController
   # GET /products/new.json
   def new
     @product = Product.new
-    #    @product.images.build
+    @stores = Store.all
     1.upto(1) { @product.images.build }
     respond_to do |format|
       format.html # new.html.erb
@@ -44,6 +44,8 @@ class Admin::ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+    1.upto(1) { @product.images.build }
+    @stores = Store.all    
   end
 
   # POST /products
@@ -96,17 +98,15 @@ class Admin::ProductsController < ApplicationController
   # PUT /products/1
   # PUT /products/1.json
   def update
-    @product = Product.find(params[:id])
-
-    respond_to do |format|
+    @product = Product.find(params[:id])   
       if @product.update_attributes(params[:product])
-        format.html { redirect_to [:admin, @product], :notice => 'Product was successfully updated.' }
-        format.json { head :ok }
+        @store = current_user.store
+        @products = current_user.store.products.all
+        render "index"
       else
-        format.html { render :action => "edit" }
-        format.json { render :json => @product.errors, :status => :unprocessable_entity }
+        render "edit"
       end
-    end
+    
   end
 
   # DELETE /products/1

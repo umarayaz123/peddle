@@ -1,10 +1,125 @@
-<div class="bodyholder">
-  <div class="container">
-    <h1>Editing product</h1>
+<%#*<div class="bodyholder">%>
+  <%#*<div class="container">%>
+    <%#*<h1>Editing product</h1>%>
 
-    <%= render 'form' %>
+    <%#= render 'form' %>
 
-    <%= link_to 'Show', '/admin/products/'+@product.id.to_s %> |
-    <%= link_to 'Back', admin_products_path %>
+    <%#= link_to 'Show', '/admin/products/'+@product.id.to_s %> |
+    <%#= link_to 'Back', admin_products_path %>
+  <%#*</div>%>
+<%#*</div>%>
+
+
+<%= form_for([:admin, @product], :html => {:multipart => true, :id => 'product_edit_form'}) do |f| %>
+<% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this image from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="contentRightHolder frt ptop40">
+  <div class="heading w100">Product Info</div>
+  <div class="inputFieldsHolder mtop20" style="width: 60%;">
+    <label>Product Name</label>
+    <%=f.text_field :name%>
   </div>
+  <div class="inputFieldsHolder mtop20" style="width: 60%;">
+    <label>Product Description</label>
+    <%=f.text_field :description%>
+  </div>
+  <div class="inputFieldsHolder mtop10" style="width: 60%;">
+    <label>Store</label>
+    <%= select_tag("product[store_id]", options_for_select(@stores.map { |store| [store.name, store.id] })) %>
+  </div>
+  <div id="photos" style="float: left;
+    margin-top: 20px;
+    width: 94%;">
+    <label class="w100">Images</label>
+    <%@product.images.each_with_index do |p_i, index|%>
+      <%unless index == @product.images.size - 1 %>
+      <div class="w100">
+        <%=image_tag(p_i.snap, :width => "200", :height => "150")%>
+      <div class="frt" style="margin-top: 60px;">
+        <%=image_tag("../assets/delete.png")%>
+      </div>
+      </div>
+    <%end%>
+    <%end%>
+    <%@product.images.each_with_index do |image, index|%>
+      <%if index == @product.images.size - 1 %>
+        <%= render :partial => 'admin/products/image', :locals => {:count => 0, :image => image} %>
+      <%end%>
+    <%end%>
+  </div>
+  <div id="test" style="color: blue;
+    float: left;
+    margin-bottom: 20px;
+    width: 94%; cursor: pointer;">Add Photo</div>
+  
+ <div  class="inputButtonHolder w100">
+  <input type="submit" value="Save" id="product_edit_btn" class="submitButton ui-button ui-widget ui-state-default ui-corner-all ui-state-hover"/>
+  <%#= f.submit %>
+ </div>
+
 </div>
+<%end%>
+
+<script type="text/javascript">
+
+    $("#product_edit_btn").click(function() {        
+        $("#product_edit_form").submit(function() {
+            if (!$("#product_edit_form").valid()) {
+              alert("ddd");
+                return false;
+            } else {
+                // alert("ddd");
+                return true;
+            }
+        });
+    });
+
+  $(document).ready(function() {
+
+    $("#product_edit_form").validate({
+      rules:{
+        "product[name]":
+          {
+          required: true
+        },
+        "product[description]":
+          {
+          required: true
+        },
+        "product[store_id]":
+          {
+          required: true
+        },
+        messages: {
+          "product[name]": "This field is required",
+          "product[description]": "This field is required",
+          "product[store_id]": "This field is required"
+        }
+      }
+    });
+  });
+
+</script>
+
+
+<script type="text/javascript">
+  $("#test").click(function(e){    
+    e.preventDefault();
+    $("#photos").append('<%= escape_javascript(render(:partial => "admin/products/image", :object => Image.new,:locals => {:count => 1})) %>');
+  });
+  function remove_field(element, item) {
+    element.parent(".photo").remove();
+  }
+</script>
+
+
+
