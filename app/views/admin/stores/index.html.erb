@@ -1,0 +1,23 @@
+<div class="bodyholder">
+  <div class="container">
+    <p id="notice"><%= notice %></p>
+
+    <p>
+      <b>Name:</b>
+      <%= @store.name %>
+    </p>
+
+    <p>
+      <b>Description:</b>
+      <%= @store.description %>
+    </p>
+
+    <p>
+      <b>Url:</b>
+      <%= @store.url %>
+    </p>
+
+    <%= link_to 'Edit', '/admin/stores/edit/'+current_user.store_id.to_s %> |
+    <%= link_to 'Back', '/admin' %>
+  </div>
+</div>
