@@ -36,8 +36,13 @@ class Users::SessionsController < ApplicationController
     # We actually need to hardcode this, as Rails default responder doesn't
     # support returning empty response on GET request
     respond_to do |format|
-      format.any(*navigational_formats) {        
-        redirect_to root_url(:subdomain => false)
+      format.any(*navigational_formats) {
+        url = root_url(:subdomain => false)
+        if request.subdomain != ""
+          new_url = request.subdomain+'.'
+             url = url.sub(new_url,'')
+        end
+        redirect_to url
       }
       format.all do
         method = "to_#{request_format}"
