@@ -107,11 +107,11 @@ stores = Store.all
 stores.each{|store| store.destroy} unless stores.blank?
 
 puts "Creating Admin Store"
-admin_store = Store.create!(:package_id => 1, :name => "adminstore")
+admin_store = Store.create!(:package_id => 1, :name => "adminstore", :description => 'This is admin Store for testing purposes', :url => 'adminstore.peddle.com')
 admin_store.save!
 
 puts "Creating Buyer Store"
-buyer_store = Store.create!(:package_id => 1, :name => "buyerstore")
+buyer_store = Store.create!(:package_id => 1, :name => "buyerstore", :description => 'This is buyer Store for testing purposes', :url => 'buyerstore.peddle.com')
 buyer_store.save!
 
 

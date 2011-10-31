@@ -174,7 +174,7 @@
 
   <div class="addimage">
     <img src="../assets/addimage.png">
-    <a href"#">add an image</a>
+    <a href="#">add an image</a>
   </div>
 
   <div class="share">
@@ -200,7 +200,7 @@
               </h2>
 
               <h3>
-                24 minutes ago
+                <%= duration(Time.now - store.created_at)%> ago
               </h3>
               <%= link_to 'View Store', {:controller => "stores", :action => "cart", :id => store.id}, :class => 'viewstorelink' %>
 
