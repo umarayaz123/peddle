@@ -1,27 +1,28 @@
-<h1>Listing products</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Store</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @products.each do |product| %>
-  <tr>
-    <td><%= product.name %></td>
-    <td><%= product.description %></td>
-    <td><%= product.store_id %></td>
-    <td><%= link_to 'Show', product %></td>
-    <td><%= link_to 'Edit', edit_product_path(product) %></td>
-    <%#*<td><%= link_to 'Destroy', product, confirm: 'Are you sure?', method: :delete %>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Product', new_product_path %>
+<div class="w100 mtop40">
+  <div class="contentLeftHolder flt">
+    <div class="mainHeading w100">Shop All Men</div>
+    <ul class="leftLink w100">
+      <li><a href="#">Accessories</a></li>
+      <li><a href="#">Activewear</a></li>
+      <li><a href="#">Coats & Jackets</a></li>
+      <li><a href="#">Formalwear</a></li>
+      <li><a href="#">Accessories</a></li>
+      <li><a href="#">Activewear</a></li>
+      <li><a href="#">Coats & Jackets</a></li>
+      <li><a href="#">Formalwear</a></li>
+    </ul>
+  </div>
+  <div class="contentRightHolder frt">
+    <div class="mainHeading w100">Shop Now</div>
+    <%unless @products.blank?%>
+    <%@products.each do |products|%>
+    <div class="galleryHolder mtop30 flt">
+      <img src="../assets/main_img.png" alt="" />
+      <h1>Lapel Ticket Pocket Suit</h1>
+      <h2>$268.00</h2>
+    </div>
+    <%end%>
+    <%end%>
+  </div>
+</div>

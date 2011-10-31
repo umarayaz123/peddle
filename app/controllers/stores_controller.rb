@@ -5,9 +5,6 @@ class StoresController < ApplicationController
   before_filter :check_role
   
   def index
-#    unless is_buyer?
-#      redirect_to "/"
-#    end
     @store = Store.find(params[:id])
     @stores = Store.all
     @products = @store.products
@@ -16,15 +13,9 @@ class StoresController < ApplicationController
       format.json { render :json => @stores }
     end
   end
-
-  # GET /stores/1
-  # GET /stores/1.json
+  
   def show  	
     @product = Product.find(params[:id])    
-#    respond_to do |format|
-#      format.html # show.html.erb
-#      format.json { render :json => @store }
-#    end
   end
 
   def cart

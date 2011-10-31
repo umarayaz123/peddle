@@ -1,35 +1,40 @@
-<div class="bodyholder">
-  <div class="container">
-    <h1>Listing products</h1>
+<div class="w100 mtop40">
+  <%#*<div class="contentRightHolder frt">%>
+    <div class="mainHeading w100">Product List</div>
+    <div class="addNew divButton  ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only mtop20">      
+        <span  class="ui-button-text">
+          <div class=""  style="cursor: pointer"><%= link_to 'New Product', new_admin_product_path %></div>
+        </span>      
+    </div>
+    <div class="darkgray flt mtop20">
+      <div class="list1stHeading flt"><strong>Name</strong></div>
+      <div class="list2ndHeading flt"><strong>Description</strong></div>
+      <div class="list3rdHeading flt"><strong>Store</strong></div>      
+      <div class="list7thHeading flt"><strong>Action</strong></div>
+    </div>  
+    <% unless @products.nil?%>
+      <%@products.each_with_index do |product , index| %>
+        <%if index%2 == 0%>
+          <div class="lightgray flt wite">
+          <%else%>
+            <div class="lightgray flt">
+            <% end%>
+            <div class="list1stHeading lineHeight30 flt">
+              <%=link_to product.name, product_path(product) %>
+            </div>
+            <div class="list2ndHeading lineHeight30 flt"><%=product.description %></div>
+            <%unless product.store.blank?%>
+              <div class="list3rdHeading flt lineHeight30"><%=product.store.name%></div>
+            <%end%>
+            <div class="list7thHeading flt lineHeight30"></div>    
+            <div class="list7thHeading flt lineHeight30"> <%=link_to image_tag("../assets/edit.png"), edit_product_path(product)%> </div>
+            <div class="list7thHeading flt lineHeight30">  <%= link_to image_tag("../assets/delete.png"), '/admin/products/destroy/'+product.id.to_s, :confirm => 'Are you sure?', :method => :delete %>
+            </div>
 
-    <table>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Store</th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-
-      <% @products.each do |product| %>
-          <tr>
-            <td><%= product.name %></td>
-            <td><%= product.description %></td>
-            <td><%= product.store_id %></td>
-            <% product.images.each do |image| %>
-                <td><%= image_tag(image.snap, :width => "200", :height => "150") %></td>
-            <% end %>
-            <td><%= link_to 'Show', '/admin/products/'+product.id.to_s %></td>
-            <td><%= link_to 'Edit', edit_admin_product_path(product) %></td>
-            <td><%= link_to 'Product_details', '/admin/products/'+product.id.to_s+'/product_details' %></td>
-            <td><%= link_to 'Destroy', '/admin/products/destroy/'+product.id.to_s, :confirm => 'Are you sure?', :method => :delete %></td>
-          </tr>
-      <% end %>
-    </table>
-
-    <br/>
-
-    <%= link_to 'New Product', new_admin_product_path %>
-  </div>
+          </div>
+        <%end%>
+      <%end%>
+    </div>
+  <%#*</div>%>
 </div>
+

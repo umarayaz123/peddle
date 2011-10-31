@@ -1,0 +1,11 @@
+<div class="photo">
+  <%= fields_for "product[images_attributes][]", image  do |image| %>
+    <%= image.file_field :snap %>
+    <%unless count.blank?%>
+      <%unless count ==0%>
+        <%= link_to_function "delete", "remove_field($(this), ('.photo'))" %>
+      <%end%>
+    <%end%>
+  <% end %>
+</div>
+

@@ -9,7 +9,7 @@ class Admin::ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @store = current_user.store
+    @store = current_user.store    
     @products = current_user.store.products.all
 
     respond_to do |format|
@@ -33,7 +33,8 @@ class Admin::ProductsController < ApplicationController
   # GET /products/new.json
   def new
     @product = Product.new
-    @product.images.build
+    #    @product.images.build
+    1.upto(1) { @product.images.build }
     respond_to do |format|
       format.html # new.html.erb
       format.json { render :json => @product }
@@ -49,17 +50,48 @@ class Admin::ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(params[:product])
-
-    respond_to do |format|
+#    @product.save    
       if @product.save
-        format.html { redirect_to [:admin, @product], :notice => 'Product was successfully created.' }
-        format.json { render :json => [:admin, @product], :status => :created, :location => @product }
+        @store = current_user.store
+        @products = current_user.store.products.all
+        render "index"
       else
-        format.html { render :action => "new" }
-        format.json { render :json => @product.errors, :status => :unprocessable_entity }
-      end
-    end
+        render "new"
+      end    
   end
+  #  def create
+  #    @product = Product.new(params[:product])
+  #    unless params[:image].blank?
+  #      params[:image].each do |i|
+  #        if i[:image_data] && !i[:image_data].blank?
+  ##          puts 'IIIIIIIIIIIII', i.inspect
+  ##          dddd
+  ##          new_image = Image.new[i[:image_data]]
+  ##          new_image.save
+  ##          ddd
+  ##          new_image.uploaded_data = i[:image_data]
+  ##          if new_image.save
+  #          i[:image_data].
+  #            puts 'IIIIIIIIIIIIIIIIII', i.inspect
+  ##            @product.images << i[:image_data]
+  #            dd
+  ##          else
+  ##            image_errors.push(new_image.filename)
+  #          end
+  #        end
+  #      end
+  #
+  #
+  #    respond_to do |format|
+  #      if @product.save
+  #        format.html { redirect_to [:admin, @product], :notice => 'Product was successfully created.' }
+  #        format.json { render :json => [:admin, @product], :status => :created, :location => @product }
+  #      else
+  #        format.html { render :action => "new" }
+  #        format.json { render :json => @product.errors, :status => :unprocessable_entity }
+  #      end
+  #    end
+  #  end
 
   # PUT /products/1
   # PUT /products/1.json

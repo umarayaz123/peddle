@@ -23,6 +23,12 @@
     <%= f.label :store_id %><br />
     <%= f.number_field :store_id %>
   </div>
+  <%#= f.file_field :attachment %>
+  <% f.fields_for :images do |asset_fields| %>
+      <p>        
+        <%= asset_fields.file_field :attachment %>
+      </p>    
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>
