@@ -1,177 +1,176 @@
-
-        <div class="contentRightHolder frt">
-            	<div class="mainHeading w100">Charocal Mohair Look Suit </div>
-                <div class="w100 mtop30">
-                	<div class="detailsLeftHolder flt">
-                    	<div class="largImgHolder w100">
-                        	    <div id="gallery" class="ad-gallery">
-      <div class="ad-image-wrapper">
-      </div>
-      <div class="ad-controls">
-      </div>
-      <div class="ad-nav">
-        <div class="ad-thumbs">
-          <ul class="ad-thumb-list">
-            <%@product.images.each_with_index do |image, index|%>
-            <li>
-              <a href="<%=image.snap(:medium)%>">
-                <img src="<%=image.snap(:thumb)%>" class="image<%=index%>"/>
-              </a>
-            </li>              
-            <%end%>
-            <%#*<li>%>
-              <%#*<a href="../assets/1.jpg">%>
+<div class="contentRightHolder frt">
+  <div class="mainHeading w100">Charocal Mohair Look Suit</div>
+  <div class="w100 mtop30">
+    <div class="detailsLeftHolder flt">
+      <div class="largImgHolder w100">
+        <div id="gallery" class="ad-gallery">
+          <div class="ad-image-wrapper">
+          </div>
+          <div class="ad-controls">
+          </div>
+          <div class="ad-nav">
+            <div class="ad-thumbs">
+              <ul class="ad-thumb-list">
+                <% @product.images.each_with_index do |image, index| %>
+                    <li>
+                      <a href="<%= image.snap(:medium) %>">
+                        <img src="<%= image.snap(:thumb) %>" class="image<%= index %>"/>
+                      </a>
+                    </li>
+                <% end %>
+                <%#*<li>%>
+                <%#*<a href="../assets/1.jpg">%>
                 <%#*<img src="../assets/thumbs/t1.jpg" class="image0">%>
-              <%#*</a>%>
-            <%#*</li>%>
-            <%#*<li>%>
-              <%#*<a href="../assets/10.jpg">%>
+                <%#*</a>%>
+                <%#*</li>%>
+                <%#*<li>%>
+                <%#*<a href="../assets/10.jpg">%>
                 <%#*<img src="../assets/thumbs/t10.jpg" title="A title for 10.jpg" alt="This is a nice, and incredibly descriptive, description of the image 10.jpg" class="image1">%>
-              <%#*</a>%>
-            <%#*</li>%>
-            <%#*<li>%>
-              <%#*<a href="../assets/11.jpg">%>
+                <%#*</a>%>
+                <%#*</li>%>
+                <%#*<li>%>
+                <%#*<a href="../assets/11.jpg">%>
                 <%#*<img src="../assets/thumbs/t11.jpg" title="A title for 11.jpg" longdesc="http://coffeescripter.com" alt="This is a nice, and incredibly descriptive, description of the image 11.jpg" class="image2">%>
-              <%#*</a>%>
-            <%#*</li>%>
-            <%#*<li>%>
-              <%#*<a href="../assets/12.jpg">%>
+                <%#*</a>%>
+                <%#*</li>%>
+                <%#*<li>%>
+                <%#*<a href="../assets/12.jpg">%>
                 <%#*<img src="../assets/thumbs/t12.jpg" title="A title for 12.jpg" alt="This is a nice, and incredibly descriptive, description of the image 12.jpg" class="image3">%>
-              <%#*</a>%>
-            <%#*</li>%>
-            <%#*<li>%>
-              <%#*<a href="../assets/13.jpg">%>
+                <%#*</a>%>
+                <%#*</li>%>
+                <%#*<li>%>
+                <%#*<a href="../assets/13.jpg">%>
                 <%#*<img src="../assets/thumbs/t13.jpg" title="A title for 13.jpg" alt="This is a nice, and incredibly descriptive, description of the image 13.jpg" class="image4">%>
-              <%#*</a>%>
-            <%#*</li>%>
-            <%#*<li>%>
-              <%#*<a href="../assets/14.jpg">%>
+                <%#*</a>%>
+                <%#*</li>%>
+                <%#*<li>%>
+                <%#*<a href="../assets/14.jpg">%>
                 <%#*<img src="../assets/thumbs/t14.jpg" title="A title for 14.jpg" alt="This is a nice, and incredibly descriptive, description of the image 14.jpg" class="image5">%>
-              <%#*</a>%>
-            <%#*</li>%>
-            <%#*<li>%>
-              <%#*<a href="../assets/2.jpg">%>
+                <%#*</a>%>
+                <%#*</li>%>
+                <%#*<li>%>
+                <%#*<a href="../assets/2.jpg">%>
                 <%#*<img src="../assets/thumbs/t2.jpg" title="A title for 2.jpg" alt="This is a nice, and incredibly descriptive, description of the image 2.jpg" class="image6">%>
-              <%#*</a>%>
-            <%#*</li>%>
-            <%#*<li>%>
-              <%#*<a href="../assets/3.jpg">%>
+                <%#*</a>%>
+                <%#*</li>%>
+                <%#*<li>%>
+                <%#*<a href="../assets/3.jpg">%>
                 <%#*<img src="../assets/thumbs/t3.jpg" title="A title for 3.jpg" alt="This is a nice, and incredibly descriptive, description of the image 3.jpg" class="image7">%>
-              <%#*</a>%>
-            <%#*</li>%>
-            <%#*<li>%>
-              <%#*<a href="../assets/4.jpg">%>
+                <%#*</a>%>
+                <%#*</li>%>
+                <%#*<li>%>
+                <%#*<a href="../assets/4.jpg">%>
                 <%#*<img src="../assets/thumbs/t4.jpg" title="A title for 4.jpg" alt="This is a nice, and incredibly descriptive, description of the image 4.jpg" class="image8">%>
-              <%#*</a>%>
-            <%#*</li>%>
-            <%#*<li>%>
-              <%#*<a href="../assets/5.jpg">%>
+                <%#*</a>%>
+                <%#*</li>%>
+                <%#*<li>%>
+                <%#*<a href="../assets/5.jpg">%>
                 <%#*<img src="../assets/thumbs/t5.jpg" title="A title for 5.jpg" alt="This is a nice, and incredibly descriptive, description of the image 5.jpg" class="image9">%>
-              <%#*</a>%>
-            <%#*</li>%>
-            <%#*<li>%>
-              <%#*<a href="../assets/6.jpg">%>
+                <%#*</a>%>
+                <%#*</li>%>
+                <%#*<li>%>
+                <%#*<a href="../assets/6.jpg">%>
                 <%#*<img src="../assets/thumbs/t6.jpg" title="A title for 6.jpg" alt="This is a nice, and incredibly descriptive, description of the image 6.jpg" class="image10">%>
-              <%#*</a>%>
-            <%#*</li>%>
-            <%#*<li>%>
-              <%#*<a href="../assets/7.jpg">%>
+                <%#*</a>%>
+                <%#*</li>%>
+                <%#*<li>%>
+                <%#*<a href="../assets/7.jpg">%>
                 <%#*<img src="../assets/thumbs/t7.jpg" title="A title for 7.jpg" alt="This is a nice, and incredibly descriptive, description of the image 7.jpg" class="image11">%>
-              <%#*</a>%>
-            <%#*</li>%>
-            <%#*<li>%>
-              <%#*<a href="../assets/8.jpg">%>
+                <%#*</a>%>
+                <%#*</li>%>
+                <%#*<li>%>
+                <%#*<a href="../assets/8.jpg">%>
                 <%#*<img src="../assets/thumbs/t8.jpg" title="A title for 8.jpg" alt="This is a nice, and incredibly descriptive, description of the image 8.jpg" class="image12">%>
-              <%#*</a>%>
-            <%#*</li>%>
-            <%#*<li>%>
-              <%#*<a href="../assets/9.jpg">%>
+                <%#*</a>%>
+                <%#*</li>%>
+                <%#*<li>%>
+                <%#*<a href="../assets/9.jpg">%>
                 <%#*<img src="../assets/thumbs/t9.jpg" title="A title for 9.jpg" alt="This is a nice, and incredibly descriptive, description of the image 9.jpg" class="image13">%>
-              <%#*</a>%>
-            <%#*</li>%>
-          </ul>
+                <%#*</a>%>
+                <%#*</li>%>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w100 mtop10">
+        <div class="smallImgHolder mright flt">
+          <img src="images/small_detail_img.png" alt=""/>
+        </div>
+        <div class="smallImgHolder mright flt">
+          <img src="images/small_detail_img.png" alt=""/>
+        </div>
+        <div class="smallImgHolder mrightNone flt">
+          <img src="images/small_detail_img.png" alt=""/>
         </div>
       </div>
     </div>
-                        </div>
-                        <div class="w100 mtop10">
-                        	<div class="smallImgHolder mright flt">
-                            	<img src="images/small_detail_img.png" alt="" />
-                            </div>
-                            <div class="smallImgHolder mright flt">
-                            	<img src="images/small_detail_img.png" alt="" />
-                            </div>
-                            <div class="smallImgHolder mrightNone flt">
-                            	<img src="images/small_detail_img.png" alt="" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="detailsRightHolder frt">
-                    	<div class="inStockHeading w100">In Stock</div>
-                        <div class="w100 mtop10">PRODUCT CODE: <span class="gray">963714028</span></div>
-                        <div class="w100 mtop10 gray">
-                        	Mens Two Button Charocal Mohair Look Suit by DKNY. Trousers come 
-unfinished on the hem and can be altered to length at any Moss Bros 
-store for free.
-                        </div>
-                        <div class="w100 price mtop10">NOW &pound;249.00</div>
-                        <div class="selectHolder w100 mtop10">
-                        	<div class="select">
-                            	<label>Select Ypur Size</label>
-                                <select>
-                                	<option>Select Size</option>
-                                </select>
-                            </div>
-                            
-                            <div class="select mtop10">
-                            	<label>Choose Quantity</label>
-                                <select>
-                                	<option>1</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="mtop20 w100">
-                        	<img src="images/add_cart.png" />
-                        </div>
-                        
-                    </div>
-                </div>
-               
-                
-            </div>
+    <div class="detailsRightHolder frt">
+      <div class="inStockHeading w100">In Stock</div>
+      <div class="w100 mtop10">PRODUCT CODE: <span class="gray">963714028</span></div>
+      <div class="w100 mtop10 gray">
+        Mens Two Button Charocal Mohair Look Suit by DKNY. Trousers come
+        unfinished on the hem and can be altered to length at any Moss Bros
+        store for free.
+      </div>
+      <div class="w100 price mtop10">NOW &pound;249.00</div>
+      <div class="selectHolder w100 mtop10">
+        <div class="select">
+          <label>Select Ypur Size</label>
+          <select>
+            <option>Select Size</option>
+          </select>
+        </div>
+
+        <div class="select mtop10">
+          <label>Choose Quantity</label>
+          <select>
+            <option>1</option>
+          </select>
+        </div>
+      </div>
+      <div class="mtop20 w100">
+        <img src="images/add_cart.png"/>
+      </div>
+
+    </div>
+  </div>
+
+
+</div>
 
 
 
 
 
 <script type="text/javascript">
- $(function() {
-    $('img.image1').data('ad-desc', 'Whoa! This description is set through elm.data("ad-desc") instead of using the longdesc attribute.<br>And it contains <strong>H</strong>ow <strong>T</strong>o <strong>M</strong>eet <strong>L</strong>adies... <em>What?</em> That aint what HTML stands for? Man...');
-    $('img.image1').data('ad-title', 'Title through $.data');
-    $('img.image4').data('ad-desc', 'This image is wider than the wrapper, so it has been scaled down');
-    $('img.image5').data('ad-desc', 'This image is higher than the wrapper, so it has been scaled down');
-    var galleries = $('.ad-gallery').adGallery();
-    $('#switch-effect').change(
-      function() {
-        galleries[0].settings.effect = $(this).val();
-        return false;
-      }
-    );
-    $('#toggle-slideshow').click(
-      function() {
-        galleries[0].slideshow.toggle();
-        return false;
-      }
-    );
-    $('#toggle-description').click(
-      function() {
-        if(!galleries[0].settings.description_wrapper) {
-          galleries[0].settings.description_wrapper = $('#descriptions');
-        } else {
-          galleries[0].settings.description_wrapper = false;
-        }
-        return false;
-      }
-    );
-  });
+    $(function() {
+        $('img.image1').data('ad-desc', 'Whoa! This description is set through elm.data("ad-desc") instead of using the longdesc attribute.<br>And it contains <strong>H</strong>ow <strong>T</strong>o <strong>M</strong>eet <strong>L</strong>adies... <em>What?</em> That aint what HTML stands for? Man...');
+        $('img.image1').data('ad-title', 'Title through $.data');
+        $('img.image4').data('ad-desc', 'This image is wider than the wrapper, so it has been scaled down');
+        $('img.image5').data('ad-desc', 'This image is higher than the wrapper, so it has been scaled down');
+        var galleries = $('.ad-gallery').adGallery();
+        $('#switch-effect').change(
+                function() {
+                    galleries[0].settings.effect = $(this).val();
+                    return false;
+                }
+        );
+        $('#toggle-slideshow').click(
+                function() {
+                    galleries[0].slideshow.toggle();
+                    return false;
+                }
+        );
+        $('#toggle-description').click(
+                function() {
+                    if (!galleries[0].settings.description_wrapper) {
+                        galleries[0].settings.description_wrapper = $('#descriptions');
+                    } else {
+                        galleries[0].settings.description_wrapper = false;
+                    }
+                    return false;
+                }
+        );
+    });
 </script>
