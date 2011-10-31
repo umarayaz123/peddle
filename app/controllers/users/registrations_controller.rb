@@ -13,8 +13,8 @@ class Users::RegistrationsController < ApplicationController
   def create
     stores = Store.find_by_name(params[:store_name])
     if stores.nil?
-      store = Store.new(:package_id => 1, :name => params[:store_name])
-      puts "******************", store.save
+      surl = params[:store_name]+'.peddle.com'
+      store = Store.new(:package_id => 1, :name => params[:store_name], :url => surl)
       build_resource
       admin = Role.find_by_name('Admin')
       seller = Role.find_by_name('Seller')
@@ -29,20 +29,25 @@ class Users::RegistrationsController < ApplicationController
       unless params[:buyer].nil?
         resource.roles << buyer
       end
-      resource.store_id = store.id
-      if resource.save && store.save
-        if resource.active_for_authentication?
-          set_flash_message :notice, :signed_up if is_navigational_format?
-          sign_in(resource_name, resource)
-          respond_with resource, :location => redirect_location(resource_name, resource)
+      if store.save
+        resource.store_id = store.id
+        if store.save && resource.save
+          if resource.active_for_authentication?
+            set_flash_message :notice, :signed_up if is_navigational_format?
+            sign_in(resource_name, resource)
+            respond_with resource, :location => redirect_location(resource_name, resource)
+          else
+            set_flash_message :notice, :inactive_signed_up, :reason => inactive_reason(resource) if is_navigational_format?
+            expire_session_data_after_sign_in!
+            respond_with resource, :location => after_inactive_sign_up_path_for(resource)
+          end
         else
-          set_flash_message :notice, :inactive_signed_up, :reason => inactive_reason(resource) if is_navigational_format?
-          expire_session_data_after_sign_in!
-          respond_with resource, :location => after_inactive_sign_up_path_for(resource)
+          clean_up_passwords(resource)
+          respond_with_navigational(resource) { render_with_scope :new }
         end
       else
-        clean_up_passwords(resource)
-        respond_with_navigational(resource) { render_with_scope :new }
+        flash[:notice] = "Couldn't create your Store Please try again Later.'"
+        redirect_to '/users/sign_up'
       end
     else
       flash[:notice] = "Store Name Already taken"
