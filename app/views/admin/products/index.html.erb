@@ -20,14 +20,14 @@
             <div class="lightgray flt">
             <% end%>
             <div class="list1stHeading lineHeight30 flt">
-              <%=link_to product.name, product_path(product) %>
+              <%=link_to product.name, admin_product_path(product) %>
             </div>
             <div class="list2ndHeading lineHeight30 flt"><%=product.description %></div>
             <%unless product.store.blank?%>
               <div class="list3rdHeading flt lineHeight30"><%=product.store.name%></div>
             <%end%>
             <div class="list7thHeading flt lineHeight30"></div>    
-            <div class="list7thHeading flt lineHeight30"> <%=link_to image_tag("../assets/edit.png"), edit_product_path(product)%> </div>
+            <div class="list7thHeading flt lineHeight30"> <%=link_to image_tag("../assets/edit.png"), edit_admin_product_path(product)%> </div>
             <div class="list7thHeading flt lineHeight30">  <%= link_to image_tag("../assets/delete.png"), '/admin/products/destroy/'+product.id.to_s, :confirm => 'Are you sure?', :method => :delete %>
             </div>
 
