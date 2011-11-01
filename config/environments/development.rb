@@ -32,6 +32,10 @@ Peddle::Application.configure do
   config.assets.debug = true
 
 #  config.action_mailer.default_url_options = { :host => 'lvh.me' }
-  config.action_mailer.default_url_options = { :host => 'ilsainteractive.com:3003' }
-
+  TIME_ZONE = "UTC"
+  config.time_zone = TIME_ZONE
+#  config.action_mailer.default_url_options = { :host => 'ilsainteractive.com:3003' }
+config.register_javascript 'ckeditor/config.js'
+  config.assets.paths << File.join(Rails.root,'public','javascripts')
+  config.assets.initialize_on_precompile = false
 end
