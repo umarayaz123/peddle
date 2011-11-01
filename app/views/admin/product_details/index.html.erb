@@ -1,33 +1,43 @@
+
 <div class="bodyholder">
   <div class="container">
-    <h1>Listing product Details</h1>
-
-    <table>
-      <tr>
-        <th>Size</th>
-        <th>Color</th>
-        <th>Price</th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-
-      <% @product_detail.each do |product| %>
-          <tr>
-            <td><%= product.size %></td>
-            <td><%= product.color %></td>
-            <td><%= product.price %></td>
-            <td><%#= link_to 'Show', product %></td>
-            <td><%= link_to 'Edit', '/admin/products/'+@product_id+'/product_details/'+product.id.to_s+'/edit/' %></td>
-            <td><%#= link_to 'Edit', edit_product_path(product) %></td>
-            <td><%= link_to 'Destroy', '/admin/products/'+@product_id+'/product_details/'+product.id.to_s+'/delete/', :confirm => 'Are you sure?', :method => :get %></td>
-          </tr>
+    <div class="w100 mtop40">
+<%#*<div class="contentRightHolder frt">%>
+      <div class="mainHeading w100">Product Detail List</div>
+      <div class="addNew divButton  ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only mtop20">
+        <span class="ui-button-text">
+          <div class="" style="cursor: pointer"><%= link_to 'New Product Detail', :controller => "product_details", :action => "new", :id => @product.id %></div>
+        </span>
+      </div>
+      <div class="darkgray flt mtop20">
+        <div class="list1stHeading flt"><strong>Name</strong></div>
+        <div class="list2nDescriptiondHeading flt"><strong>Description</strong></div>
+        <div class="list3rdHeading flt"><strong>Store</strong></div>        
+        <div class="list7thHeading flt"><strong>Action</strong></div>
+      </div>
+      <% unless @product_details.nil? %>
+        <% @product_details.each_with_index do |product_detail, index| %>
+          <% if index%2 == 0 %>
+            <div class="lightgray flt wite">
+            <% else %>
+              <div class="lightgray flt">
+              <% end %>
+              <div class="list1stHeading lineHeight30 flt">
+                <%= product_detail.size%>
+              </div>
+              <div class="list2DescriptionndHeading lineHeight30 flt"><%= product_detail.color %></div>
+              <% unless product_detail.price.blank? %>
+                <div class="list3rdHeading flt lineHeight30"><%= product_detail.price %></div>
+              <% end %>              
+              <div class="list4thHeading flt lineHeight30"> <%= link_to image_tag("../assets/edit.png"), edit_admin_product_detail_path(product_detail) %><%= link_to image_tag("../assets/delete.png"), '/admin/product_details/destroy/'+product_detail.id.to_s, :confirm => 'Are you sure?', :method => :delete %> </div>
+            </div>
+          </div>
+        <% end %>
       <% end %>
-    </table>
 
-    <br/>
-    <%= link_to 'Add New Product Deatil', new_admin_product_product_detail_path %>
-    <br/>
-    <%= link_to 'Go Back to Product', '/admin/products/'+@product_id %>
-  </div>
-</div>
+        </div>
+<%#*</div>%>
+      </div>
+    </div>
+
+

@@ -4,8 +4,7 @@
   <title>PEDDLE-online</title>  
   <%= stylesheet_link_tag "application", "store", "Aristo", "jquery.ad-gallery" %>
   <%= javascript_include_tag "application", "jquery.ad-gallery", "jquery-ui.min"%>
-  <%= javascript_include_tag "jquery-1.6.3.min", "jquery.form", "jquery.validate"%>
-   
+  <%= javascript_include_tag "jquery-1.6.3.min", "jquery.form", "jquery.validate"%>   
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -63,8 +62,19 @@
 <p class="notice"><%= notice %></p>
 
 <p class="alert"><%= alert %></p>
+ <% if current_user %>
+<div class="bodyholder">
+  <div class="container">
+    <h3>
+      Welcome
+    </h3>
+    <%= link_to("Manage Products", '/admin/products') %>
+      </div>
+</div>
+
+ <%end%>
 
 <%= yield %>
-
+  
 </body>
 </html>

@@ -1,13 +1,83 @@
-<div class="bodyholder">
-  <div class="container">
-    <p>
-      please enter product_details
-    </p>
+<%= javascript_include_tag "/javascripts/ckeditor/ckeditor.js" %>
+<%= form_for([:admin, @product_detail], :html => {:id => 'product_deatils_add_form'}) do |f| %>
+  <% if @product_detail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product_detail.errors.count, "error") %> prohibited this image from being saved:</h2>
 
-    <h1>New product</h1>
+      <ul>
+        <% @product_detail.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="contentRightHolder frt ptop40">
+    <div class="heading w100">Product Detail</div>
+    <div class="inputFieldsHolder mtop20" style="width: 60%;">
+      <label>Product Size</label>
+      <%=f.text_field :size%>
+    </div>
 
-    <%= render 'form' %>
+    <div class="inputFieldsHolder mtop20" style="width: 60%;">
+      <label>Product Color</label>
+      <%=f.text_field :color%>
+    </div>
+    <div class="inputFieldsHolder mtop20" style="width: 60%;">
+      <label>Product Price</label>
+      <%=f.text_field :price%>
+    </div>
+    <div class="inputFieldsHolder mtop20" style="width: 60%;">      
+      <%= f.hidden_field :product_id, :value => @product_id, :readonly => true%>
+    </div>
+    <div  class="inputButtonHolder w100">
+      <input type="submit" value="Save" id="product_detail_add_btn" class="submitButton ui-button ui-widget ui-state-default ui-corner-all ui-state-hover"/>
+    </div>
 
-    <%= link_to 'Back', admin_product_product_details_path %>
   </div>
-</div>
+<%end%>
+
+<script type="text/javascript">
+
+  $("#product_detail_add_btn").click(function() {
+    $("#product_deatils_add_form").submit(function() {
+      if (!$("#product_deatils_add_form").valid()) {
+        return false;
+      } else {
+        // alert("ddd");
+        return true;
+      }
+    });
+  });
+
+  $(document).ready(function() {
+
+    $("#product_deatils_add_form").validate({
+      rules:{
+        "product_detail[size]":
+          {
+          required: true,
+          number: true
+        },
+        "product_detail[color]":
+          {
+          required: true,
+          number: true
+        },       
+        "product_detail[price]":
+          {
+          required: true,
+          number: true
+        },
+        messages: {
+          "product[size]": "This field is required",
+          "product[color]": "This field is required",
+          "product[price]": "This field is required"
+        }
+      }
+    });
+  });
+
+</script>
+
+
+

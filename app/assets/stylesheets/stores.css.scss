@@ -246,3 +246,46 @@ list2ndHeading{
     padding: 2px;
     width: 277px;
 }
+.bannerHeading{
+    text-align:center;
+}
+.bannerHeading img{
+    float:none;
+}
+.bannerHeadingSmall{
+    font-size:28px;
+    font-weight:bold;
+    color:#3db2c2;
+    text-align:center;
+}
+
+#product_add_form label.error {
+    border: medium none !important;
+    color: red;
+    display: inline;
+    float: left;
+    margin-left: 93px;
+    width: 100%;
+}
+.list2DescriptionndHeading{
+    width: 550px;
+}
+.list2nDescriptiondHeading{
+    width: 550px;
+}
+#product_deatils_add_form label.error {
+    border: medium none !important;
+    color: red;
+    display: inline;
+    float: left;
+    margin-left: 93px;
+    width: 100%;
+}
+#product_deatial_edit_form label.error {
+    border: medium none !important;
+    color: red;
+    display: inline;
+    float: left;
+    margin-left: 93px;
+    width: 100%;
+}

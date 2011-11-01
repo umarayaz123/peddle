@@ -22,7 +22,7 @@ gem 'jquery-rails'
 
 gem 'execjs'
 
-gem 'therubyracer'
+#gem 'therubyracer'
 
 gem 'devise'
 # Use unicorn as the web server
@@ -35,4 +35,5 @@ gem 'devise'
 # gem 'ruby-debug'
 
 gem 'paperclip'
-
+gem "ckeditor", :git => 'git://github.com/fxposter/ckeditor.git'
+gem 'sprockets', '2.0.0'

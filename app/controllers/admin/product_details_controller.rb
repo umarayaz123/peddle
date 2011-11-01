@@ -1,62 +1,62 @@
 class Admin::ProductDetailsController < ApplicationController
    before_filter :authenticate_user!
-  def index
+  def index    
 		#@product_detail = ProductDetail.find(params[:product_id])
-    @product_id = params[:product_id]
-    @product = Product.find(@product_id)
-		@product_detail = ProductDetail.find(:all, :conditions => ["product_id = ?",params[:product_id]])
+#    @product_id = params[:product_id]
+#    @product = Product.find(@product_id)
+    @product = Product.find(params[:id])
+		@product_details = ProductDetail.find(:all, :conditions => ["product_id = ?",params[:id]])
     #if @product_detail.empty?
     #  redirect_to :action => 'new'
     #end
   end
 
-  def new
-    @product_id = params[:product_id]
+  def new    
+    @product_id = params[:id]
     @product = Product.find(@product_id)
     @product_detail = ProductDetail.new
   end
 
   def create
-    @product_id = params[:product_id]
-    @product = Product.find(@product_id)
-    @product_detail = ProductDetail.new(params[:product_detail])
-
-    respond_to do |format|
+#    puts 'DSSSSSSS', params[:product_id].inspect
+#    @product_id = params[:product_id]
+#    @product = Product.find(@product_id)
+    @product_detail = ProductDetail.new(params[:product_detail])        
       if @product_detail.save
-        format.html { redirect_to '/admin/products/'+@product_id+'/product_details', :notice => 'Product was successfully created.' }
+        @product_details = ProductDetail.find(:all, :conditions => ["product_id = ?",@product_detail.product_id])
+        puts 'SSSSSSSSSSSS', @product_details.size
+        redirect_to :controller => "admin/product_details",  :id => @product_detail.product_id
       else
-        format.html { render :action => "new" }
-      end
-    end
+        render :action => "new"
+      end    
   end
 
   def edit
-    @product_id = params[:product_id]
-    @product = Product.find(@product_id)
+#    @product_id = params[:product_id]
+#    @product = Product.find(@product_id)
     @product_detail = ProductDetail.find(params[:id])
   end
 
-  def update
-    @product_id = params[:product_id]
-    @product = Product.find(@product_id)
-    @product_detail = ProductDetail.find(params[:id])
-    respond_to do |format|
+  def update    
+#    @product_id = params[:product_id]
+#    @product = Product.find(@product_id)
+     @product_detail = ProductDetail.find(params[:id])
       if @product_detail.update_attributes(params[:product_detail])
-        format.html { redirect_to '/admin/products/'+@product_id+'/product_details', :notice => 'Product was successfully updated.' }
-        format.json { head :ok }
+        redirect_to :controller => "admin/product_details",  :id => @product_detail.product_id
+#        format.html { redirect_to '/admin/products/'+@product_id+'/product_details', :notice => 'Product was successfully updated.' }
+#        format.json { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.json { render :json => @product.errors, :status => :unprocessable_entity }
-      end
-    end
+        render :action => "edit"
+      end    
   end
 
   def destroy
-    @product_id = params[:product_id]
-    @product = Product.find(@product_id)
+#    @product_id = params[:id]
+#    @product = Product.find(@product_id)
     @product_detail = ProductDetail.find(params[:id])
     @product_detail.destroy
-    redirect_to '/admin/products/'+@product_id+'/product_details', :notice => 'Product was successfully deleted.'
+    redirect_to :controller => "admin/product_details",  :id => @product_detail.product_id
+#    redirect_to '/admin/products/'+@product_id+'/product_details', :notice => 'Product was successfully deleted.'
   end
 
   def delete

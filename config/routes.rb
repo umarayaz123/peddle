@@ -9,6 +9,7 @@ Peddle::Application.routes.draw do
   match '/' => 'home#index'
   match 'cart' => 'stores#cart'
   match 'store/:id' => 'stores#index'
+#  match "admin/product_details/:id" => "admin/product_details#index"
 
   devise_for :users, :controllers => {
     :sessions => "users/sessions",
@@ -26,18 +27,20 @@ Peddle::Application.routes.draw do
     get "log_out", :to => "users/careers#destroy"
     get "sign_up", :to => "users/registrations#new"    
   end
-
-
+  
   namespace :admin do
     resources :store_admin
     resources :stores
-    resources :products do
-      resources :product_details do
-        member do
-          get 'delete'
-        end
-      end
-    end
+    resources :products
+    resources :product_details
+#    do
+#    end
+#      resources :product_details do
+#        member do
+#          get 'delete'
+#        end
+#      end
+#    end
   end
   
   resources :stores do
