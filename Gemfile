@@ -22,7 +22,7 @@ gem 'jquery-rails'
 
 gem 'execjs'
 
-#gem 'therubyracer'
+gem 'therubyracer'
 
 gem 'devise'
 # Use unicorn as the web server
