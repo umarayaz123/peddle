@@ -54,7 +54,8 @@
     <% @stores.each do |store| %>-->
         <!--<div class="leftcolentry">-->
         <!--<%#*<a href="#" >The Best Store Out</a>%>-->
-        <!--<%= link_to store.name, :controller => "stores", :action => "cart", :id => store.id %>-->
+        <!--<%#= link_to store.name, :controller => "stores", :action => "cart", :id => store.id %>-->
+        <%= link_to store.name, root_url(:subdomain =>store.name) %>
         <!--</div>-->
         <!--
     <% end %>-->
@@ -202,7 +203,8 @@
               <h3>
                 <%= duration(Time.now - store.created_at)%> ago
               </h3>
-              <%= link_to 'View Store', {:controller => "stores", :action => "cart", :id => store.id}, :class => 'viewstorelink' %>
+              <%#= link_to 'View Store', {:controller => "stores", :action => "cart", :id => store.id}, :class => 'viewstorelink' %>
+              <%= link_to 'View Store', root_url(:subdomain =>store.name), :class => 'viewstorelink' %>
 
               <div class="miantext">
                 <%= store.description %>

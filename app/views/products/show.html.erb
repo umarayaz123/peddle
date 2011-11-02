@@ -15,6 +15,26 @@
   <%= @product.store_id %>
 </p>
 
+<p>
+  <% @product.images.each do |image| %>
+      <%= image_tag(image.snap, :width => "150", :height => "120") %>
+  <% end %>
+</p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
+<% @product.product_details.each do |product_detail| %>
+    <p>
+      <b>Size:</b>
+      <%= product_detail.size%>
+    </p>
+    <p>
+      <b>Description</b>
+      <%= product_detail.description%>
+    </p>
+    <p>
+      <b>Price:</b>
+      <%= product_detail.price%>
+    </p>
+<% end %>
+
+<%#= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

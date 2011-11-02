@@ -20,8 +20,9 @@
               <%#*<img src="../assets/main_img.png" alt="" />%>
               <% unless product.images.first.blank?%>
                   <%= link_to image_tag(product.images.first.snap, :width => "150", :height => "120"), :controller => "stores", :action => "show", :id => product.id %>
+                  <%= link_to image_tag(product.images.first.snap, :width => "150", :height => "120"), :controller => "products", :action => "show", :id => product.id %>
               <% else %>
-                  <%= link_to image_tag("../assets/no-product-image.gif"), :controller => "stores", :action => "show", :id => product.id %>
+                  <%= link_to image_tag("../assets/main_img.png"), :controller => "stores", :action => "show", :id => product.id %>
               <% end %>
               <h1><%= product.name %></h1>
 

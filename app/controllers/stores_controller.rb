@@ -5,7 +5,7 @@ class StoresController < ApplicationController
   before_filter :check_role
   
   def index
-    @store = Store.find(params[:id])
+    @store = Store.find_by_name(request.subdomain)
     @stores = Store.all
     @products = @store.products
     respond_to do |format|
@@ -15,7 +15,7 @@ class StoresController < ApplicationController
   end
   
   def show  	
-    @product = Product.find(params[:id])    
+    @product = Product.find(params[:id])
   end
 
   def cart

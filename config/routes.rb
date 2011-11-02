@@ -4,8 +4,8 @@ Peddle::Application.routes.draw do
 
   match '/admin' => 'admin/store_admin#index', :constraints => { :subdomain => /.+/ }
   match '/admin' => 'admin/store_admin#index'
-  match '/' => 'home#index', :constraints => {:subdomain => 'www'}
-  match '/' => 'home#index', :constraints => { :subdomain => /.+/ }
+  match '/' => 'stores#index', :constraints => {:subdomain => 'www'}
+  match '/' => 'stores#index', :constraints => { :subdomain => /.+/ }
   match '/' => 'home#index'
   match 'cart' => 'stores#cart'
   match 'store/:id' => 'stores#index'
