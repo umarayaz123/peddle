@@ -1,5 +1,5 @@
 class Admin::ProductsController < ApplicationController
-
+  layout 'admin'
   before_filter :authenticate_user!
   skip_before_filter :verify_authenticity_token, :only => [:create]
   before_filter do
