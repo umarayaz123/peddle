@@ -24,7 +24,8 @@
   </div>
   <div class="inputFieldsHolder mtop10" style="width: 60%;">
     <label>Store</label>
-    <%= select_tag("product[store_id]", options_for_select(@stores.map { |store| [store.name, store.id] })) %>
+    <%store = Store.find(:first, :conditions => ["name = ?",request.subdomain])%>
+      <%=f.hidden_field :store_id, :value => store.id%>
   </div>
   <div id="photos" style="float: left;
     margin-top: 20px;

@@ -2,10 +2,10 @@ class Admin::ProductsController < ApplicationController
   layout 'admin'
   before_filter :authenticate_user!
   skip_before_filter :verify_authenticity_token, :only => [:create]
-  before_filter do
-    admin_role = Role.find(:first, :conditions => ["name = ?", "Admin"])
-    redirect_to '/' unless current_user && current_user.roles.include?(admin_role)
-  end
+#  before_filter do
+#    admin_role = Role.find(:first, :conditions => ["name = ?", "Admin"])
+#    redirect_to '/' unless current_user && current_user.roles.include?(admin_role)
+#  end
 
   # GET /products
   # GET /products.json

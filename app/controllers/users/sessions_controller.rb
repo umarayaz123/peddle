@@ -2,7 +2,7 @@ class Users::SessionsController < ApplicationController
   prepend_before_filter :require_no_authentication, :only => [ :new, :create ]
   prepend_before_filter :allow_params_authentication!, :only => :create
   include Devise::Controllers::InternalHelpers
-#  after_sign_in_path_for :check_role
+  #  after_sign_in_path_for :check_role
 
   # GET /resource/sign_in
   def new
@@ -19,30 +19,36 @@ class Users::SessionsController < ApplicationController
     respond_with resource, :location => redirect_location(resource_name, resource)
   end
 
-#  def create
-#    resource = warden.authenticate!(:scope => resource_name, :recall => "new")
-#    puts "sign_in_and_redirect #{resource_name} #{resource}"
-#    sign_in_and_redirect(resource_name, resource)
-#  end
+  #  def create
+  #    resource = warden.authenticate!(:scope => resource_name, :recall => "new")
+  #    puts "sign_in_and_redirect #{resource_name} #{resource}"
+  #    sign_in_and_redirect(resource_name, resource)
+  #  end
 
   # GET /resource/sign_out
-    def destroy
+
+  def destroy
     signed_in = signed_in?(resource_name)
     Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
     set_flash_message :notice, :signed_out if signed_in
     session["role_checked"] = ""
     session["admin_role_checked"] = ""    
-#    redirect_to root_url(:subdomain => subdomain)
+    #    redirect_to root_url(:subdomain => subdomain)
     # We actually need to hardcode this, as Rails default responder doesn't
     # support returning empty response on GET request
+
     respond_to do |format|
       format.any(*navigational_formats) {
-        url = root_url(:subdomain => false)
-        if request.subdomain != ""
-          new_url = request.subdomain+'.'
-             url = url.sub(new_url,'')
+        unless request.subdomain.blank?
+          redirect_to "/sign_in"
+        else
+          url = root_url(:subdomain => false)
+          if request.subdomain != ""
+            new_url = request.subdomain+'.'
+            url = url.sub(new_url,'')
+          end
+          redirect_to url
         end
-        redirect_to url
       }
       format.all do
         method = "to_#{request_format}"

@@ -9,6 +9,8 @@ Peddle::Application.routes.draw do
   match '/' => 'home#index'
   match 'cart' => 'stores#cart'
   match 'store/:id' => 'stores#index'
+  match 'store/:id' => 'stores#index'
+  match '/sysadmin' => 'admin/sys_admins#index'
 #  match "admin/product_details/:id" => "admin/product_details#index"
 
   devise_for :users, :controllers => {
@@ -30,6 +32,7 @@ Peddle::Application.routes.draw do
   
   namespace :admin do
     resources :store_admin
+    resources :sys_admins
     resources :stores
     resources :products
     resources :product_details
