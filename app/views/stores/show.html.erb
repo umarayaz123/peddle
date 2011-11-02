@@ -1,62 +1,61 @@
 <%#*<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>%>
-<%#*<script type="text/javascript">%>
-    <%#*$(function() {%>
-        <%#*$('img.image1').data('ad-desc', 'Whoa! This description is set through elm.data("ad-desc") instead of using the longdesc attribute.<br>And it contains <strong>H</strong>ow <strong>T</strong>o <strong>M</strong>eet <strong>L</strong>adies... <em>What?</em> That aint what HTML stands for? Man...');%>
-        <%#*$('img.image1').data('ad-title', 'Title through $.data');%>
-        <%#*$('img.image4').data('ad-desc', 'This image is wider than the wrapper, so it has been scaled down');%>
-        <%#*$('img.image5').data('ad-desc', 'This image is higher than the wrapper, so it has been scaled down');%>
-        <%#*var galleries = $('.ad-gallery').adGallery();%>
-        <%#*$('#switch-effect').change(%>
-                <%#*function() {%>
-                    <%#*galleries[0].settings.effect = $(this).val();%>
-                    <%#*return false;%>
-                <%#*}%>
-        <%#*);%>
-        <%#*$('#toggle-slideshow').click(%>
-                <%#*function() {%>
-                    <%#*galleries[0].slideshow.toggle();%>
-                    <%#*return false;%>
-                <%#*}%>
-        <%#*);%>
-        <%#*$('#toggle-description').click(%>
-                <%#*function() {%>
-                    <%#*if (!galleries[0].settings.description_wrapper) {%>
-                        <%#*galleries[0].settings.description_wrapper = $('#descriptions');%>
-                    <%#*} else {%>
-                        <%#*galleries[0].settings.description_wrapper = false;%>
-                    <%#*}%>
-                    <%#*return false;%>
-                <%#*}%>
-        <%#*);%>
-    <%#*});%>
-<%#*</script>%>
+<script type="text/javascript">
+    $(function() {
+        $('img.image1').data('ad-desc', 'Whoa! This description is set through elm.data("ad-desc") instead of using the longdesc attribute.<br>And it contains <strong>H</strong>ow <strong>T</strong>o <strong>M</strong>eet <strong>L</strong>adies... <em>What?</em> That aint what HTML stands for? Man...');
+        $('img.image1').data('ad-title', 'Title through $.data');
+        $('img.image4').data('ad-desc', 'This image is wider than the wrapper, so it has been scaled down');
+        $('img.image5').data('ad-desc', 'This image is higher than the wrapper, so it has been scaled down');
+        var galleries = $('.ad-gallery').adGallery();
+        $('#switch-effect').change(
+                function() {
+                    galleries[0].settings.effect = $(this).val();
+                    return false;
+                }
+        );
+        $('#toggle-slideshow').click(
+                function() {
+                    galleries[0].slideshow.toggle();
+                    return false;
+                }
+        );
+        $('#toggle-description').click(
+                function() {
+                    if (!galleries[0].settings.description_wrapper) {
+                        galleries[0].settings.description_wrapper = $('#descriptions');
+                    } else {
+                        galleries[0].settings.description_wrapper = false;
+                    }
+                    return false;
+                }
+        );
+    });
+</script>
 <div class="contentRightHolder frt">
   <div class="mainHeading w100"><%=@product.name%></div>
   <div class="w100 mtop30">
     <div class="detailsLeftHolder flt">
       <div class="largImgHolder w100">
         <%=image_tag(@product.images.first.snap, :width => "250", :height => "300")%>
-        <%#*<div id="gallery" class="ad-gallery">%>
-          <%#*<div class="ad-image-wrapper">%>
-          <%#*</div>%>
-          <%#*<div class="ad-controls">%>
-          <%#*</div>%>
-          <%#*<div class="ad-nav">%>
-            <%#*<div class="ad-thumbs">%>
-              <%#*<ul class="ad-thumb-list">%>
-                <%# @product.images.each_with_index do |image, index| %>
-                    <%#*<li>%>
-                      <%#*<a href="<%= image.snap(:medium) %>
-
-                        <%#*<img src="<%= image.snap(:thumb) %> 
-                        <%#*class="image<%= index %>
-                      <%#*</a>%>
-                    <%#*</li>%>
-                <%# end %>
-              <%#*</ul>%>
-            <%#*</div>%>
-          <%#*</div>%>
-        <%#*</div>%>
+        <div id="gallery" class="ad-gallery">
+          <div class="ad-image-wrapper">
+          </div>
+          <div class="ad-controls">
+          </div>
+          <div class="ad-nav">
+            <div class="ad-thumbs">
+              <ul class="ad-thumb-list">
+                <% @product.images.each_with_index do |image, index| %>
+                  
+                    <li>
+                        <a href="<%=image_tag(image.snap, :width => "250", :height => "300")%>">
+                          <img src="<%=image_tag(image.snap, :width => "250", :height => "300")%>" class="image<%=index%>"/>
+                        </a>
+                    </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
       <%#*<div class="w100 mtop10">%>
         <%#*<div class="smallImgHolder mright flt">%>
@@ -93,7 +92,7 @@
         </div>
       </div>
       <div class="mtop20 w100">
-        <img src="images/add_cart.png"/>
+        <img src="../assets/add_cart.png"/>
       </div>
 
     </div>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PEDDLE-online</title>  
+  <title>PEDDLE-online</title>
   <%= stylesheet_link_tag "application", "stores.css.scss", "Aristo", "jquery.ad-gallery" %>
   <%= javascript_include_tag "application", "jquery.ad-gallery", "jquery-ui.min"%>
-  <%= javascript_include_tag "jquery-1.6.3.min", "jquery.form", "jquery.validate"%>   
+  <%= javascript_include_tag "jquery-1.6.3.min", "jquery.form", "jquery.validate"%>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -19,7 +19,7 @@
 
     <div class="topNav">
       <ul>
-        <li>          
+        <li>
           <%=link_to "Sales Floor", "/home/index"%>
         </li>
 
@@ -30,16 +30,17 @@
         <li>
           <a href="#">Inbox </a>
         </li>
+
         <li>
-          <% if current_user %>
-            <%= link_to "My Account", "/admin/store_admin" %>
-          <%end%>
+          <a href="#">Settings </a>
         </li>
+
         <li>
           <% if current_user %>
               <%#= current_user.email %>
             <%#*root_url(:subdomain => false)%>
-              <%= link_to "Logout", "/sign_out" %>              
+
+              <%= link_to "Logout", "/sign_out" %>
           <% else %>
               <%= link_to "Login", "/sign_in" %>
           <% end %>
@@ -61,8 +62,19 @@
 <p class="notice"><%= notice %></p>
 
 <p class="alert"><%= alert %></p>
+ <% if current_user %>
+<div class="bodyholder">
+  <div class="container">
+    <h3>
+      Welcome
+    </h3>
+    <%= link_to("Manage Products", '/admin/products') %>
+      </div>
+</div>
+
+ <%end%>
 
 <%= yield %>
-  
+
 </body>
 </html>

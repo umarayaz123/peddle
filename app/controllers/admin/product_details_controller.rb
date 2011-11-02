@@ -1,5 +1,6 @@
 class Admin::ProductDetailsController < ApplicationController
-   before_filter :authenticate_user!
+  layout 'admin'
+  before_filter :authenticate_user!
   def index    
 		#@product_detail = ProductDetail.find(params[:product_id])
 #    @product_id = params[:product_id]
