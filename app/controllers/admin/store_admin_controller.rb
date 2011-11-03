@@ -3,6 +3,7 @@ class Admin::StoreAdminController < ApplicationController
   before_filter :authenticate_user!
   before_filter :check_role
   before_filter :check_domain
+  before_filter :not_super_admin
   
   def index    
 #    unless is_admin?

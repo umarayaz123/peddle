@@ -98,6 +98,7 @@ roles = Role.all
 roles.each{ |role| role.destroy } unless roles.blank?
 
 puts "Creating Default Roles..."
+super_admin = Role.create!(:name=>'SuperAdmin')
 admin_role = Role.create!(:name=>'Admin')
 seller = Role.create!(:name=>'Seller')
 buyer = Role.create!(:name=>'Buyer')
@@ -118,6 +119,12 @@ buyer_store.save!
 puts "Destroying All Default Users..."
 users = User.all
 users.each{ |user| user.destroy } unless users.blank?
+
+puts "Creating Super Admin of Site"
+sadmin = User.create!(:email=>'sadmin@peddle.com',:password=>'123456',:password_confirmation => '123456')
+#sadmin.store_id = super_admin.id
+sadmin.roles << super_admin
+sadmin.save!
 
 puts "Creating Admin of Site"
 admin = User.create!(:email=>'admin@peddle.com',:password=>'123456',:password_confirmation => '123456')

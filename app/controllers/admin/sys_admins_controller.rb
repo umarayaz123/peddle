@@ -1,13 +1,19 @@
 class Admin::SysAdminsController < ApplicationController
+
+  before_filter :authenticate_user!
+  before_filter :check_role
+  before_filter :check_domain
+  before_filter :not_admin
+
   # GET /sys_admins
   # GET /sys_admins.json
   def index
-    @sys_admins = SysAdmin.all
+    #@sys_admins = SysAdmin.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @sys_admins }
-    end
+    #respond_to do |format|
+    #  format.html # index.html.erb
+    #  format.json { render :json => @sys_admins }
+    #end
   end
 
   # GET /sys_admins/1

@@ -19,14 +19,19 @@
       </div>
     </div>
     <br/>
-      <% @product.product_details.each do |product_detail| %>
-          <div class="details_div">
-            Size:<%= product_detail.size %><br/>
-            Color:<%= product_detail.color %><br/>
-            Price:<%= product_detail.price %><br/>
-            <%=link_to "Checkout", "#"%>
-          </div>
-      <% end %>
+    <% unless @product.product_details.empty? %>
+        <% @product.product_details.each do |product_detail| %>
+            <div class="details_div">
+              Size:<%= product_detail.size %>
+              <br/>
+              Color:<%= product_detail.color %>
+              <br/>
+              Price:<%= product_detail.price %>
+              <br/>
+              <%= link_to "Checkout", "#" %>
+            </div>
+        <% end %>
+    <% end %>
 <%#= link_to 'Edit', edit_product_path(@product) %> |
     <%= link_to 'Back to Store', '/' %>
   </div>
