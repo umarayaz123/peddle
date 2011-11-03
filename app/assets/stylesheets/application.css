@@ -499,3 +499,22 @@ border:1px solid #d8d8d8;
 	width: 92%!important;
 	font-size:12px!important;
 }
+
+.img_div{
+    float:left;
+    margin-left: 100px;
+    width: 30%;
+}
+
+.description{
+    float:left;
+    width:58%;
+    height:200px;
+    margin-top: 25px;
+}
+.details_div{
+    float:left;
+    border: 2px;
+    margin-left: 90px;
+    margin-right: 40px;
+}

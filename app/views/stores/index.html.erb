@@ -1,6 +1,6 @@
 <div class="w100 mtop40">
   <div class="contentLeftHolder flt">
-    <div class="mainHeading w100">Shop All Men</div>
+    <div class="mainHeading w100"><%= @store_name%></div>
     <ul class="leftLink w100">
       <li><a href="#">Accessories</a></li>
       <li><a href="#">Activewear</a></li>
@@ -13,20 +13,26 @@
     </ul>
   </div>
   <div class="contentRightHolder frt">
-    <div class="mainHeading w100">Shop Now</div>
+    <div class="mainHeading w100">Products</div>
     <% unless @products.blank? %>
         <% @products.each do |product| %>
             <div class="galleryHolder mtop30 flt">
               <%#*<img src="../assets/main_img.png" alt="" />%>
-              <% unless product.images.first.blank?%>
-                  <%= link_to image_tag(product.images.first.snap, :width => "150", :height => "120"), :controller => "stores", :action => "show", :id => product.id %>
+              <% unless product.images.first.blank? %>
                   <%= link_to image_tag(product.images.first.snap, :width => "150", :height => "120"), :controller => "products", :action => "show", :id => product.id %>
               <% else %>
                   <%= link_to image_tag("../assets/main_img.png"), :controller => "stores", :action => "show", :id => product.id %>
               <% end %>
               <h1><%= product.name %></h1>
-
-              <h2>$268.00</h2>
+              <% lowest_price = -1 %>
+              <% product.product_details.each do |detail|
+                  lowest_price = detail.price if detail.price < lowest_price || lowest_price == -1
+              end %>
+              <% unless lowest_price == -1 %>
+                  <h2>$<%= lowest_price %></h2>
+              <% else %>
+                  <h2> $0 </h2>
+              <% end %>
             </div>
         <% end %>
     <% end %>

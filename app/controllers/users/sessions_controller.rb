@@ -47,7 +47,7 @@ class Users::SessionsController < ApplicationController
             new_url = request.subdomain+'.'
             url = url.sub(new_url,'')
           end
-          redirect_to url
+          #redirect_to url
         end
       }
       format.all do

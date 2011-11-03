@@ -6,6 +6,7 @@ class StoresController < ApplicationController
   
   def index
     @store = Store.find_by_name(request.subdomain)
+    @store_name = request.subdomain
     @stores = Store.all
     @products = @store.products
     respond_to do |format|

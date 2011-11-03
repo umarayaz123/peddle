@@ -12,12 +12,12 @@
 
   <div class="container">
     <div class="logo">
-      <%url = root_url
+      <%url = root_url(:subdomain => false)
         if request.subdomain != ""
           new_url = request.subdomain+'.'
              url = url.sub(new_url,'')
         end%>
-      <%= link_to url  %>
+      <%= link_to image_tag("/assets/logo.png"),url  %>
     </div>
 
     <div class="topNav">
