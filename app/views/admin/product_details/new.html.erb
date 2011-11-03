@@ -50,7 +50,7 @@
       </div>
     </div>
      
-    <%= f.hidden_field :product_id, :value => @product_id, :readonly => true %>
+    <%= f.text_field :product_id, :value => @product_id, :readonly => true %>
     <div id="photos" style="float: left;
               margin-top: 20px;
               width: 94%;">
@@ -61,15 +61,6 @@
         <% end %>
 
       </div>
-    <%store = Store.find(:first, :conditions => ["name = ?",request.subdomain])%>
-    <%=f.hidden_field :store_id, :value => store.id%>
-        <div id="photos" style="float: left;
-         margin-top: 20px;
-         width: 94%;">
-         <%@product.images.each_with_index do |image, index|%>
-           <%= render :partial => 'admin/products/image', :locals => {:count => 0, :image => image} %>
-         <%end%>
-    </div>
  
     <div class="submitInrBtn3" id="product_detail_add_btn"><input type="submit" value="Save all Changes" /></div>
 

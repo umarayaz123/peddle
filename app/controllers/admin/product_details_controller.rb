@@ -44,11 +44,11 @@ class Admin::ProductDetailsController < ApplicationController
 #    @product = Product.find(@product_id)
      @product_detail = ProductDetail.find(params[:id])
       if @product_detail.update_attributes(params[:product_detail])
-        redirect_to :controller => "admin/product_details",  :id => @product_detail.product_id
+        redirect_to "/admin/product_details?id="+@product_detail.product_id.to_s
 #        format.html { redirect_to '/admin/products/'+@product_id+'/product_details', :notice => 'Product was successfully updated.' }
 #        format.json { head :ok }
       else
-        render :action => "edit"
+        redirect_to '/admin/product_details/'+@product_detail.id.to_s+'/edit'
       end    
   end
 
