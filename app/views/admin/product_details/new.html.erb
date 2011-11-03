@@ -1,81 +1,108 @@
 <%= javascript_include_tag "/javascripts/ckeditor/ckeditor.js" %>
-<%= form_for([:admin, @product_detail], :html => {:id => 'product_deatils_add_form'}) do |f| %>
-  <% if @product_detail.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@product_detail.errors.count, "error") %> prohibited this image from being saved:</h2>
+<%= javascript_include_tag 'colorpicker', 'eye', 'layout', 'utils' %>
+<script>
+    $(document).ready(function() {
+        $('#colorpickerField1').ColorPicker({
+            onSubmit: function(hsb, hex, rgb, el) {
+                $(el).val(hex);
+                $(el).ColorPickerHide();
+            },
+            onBeforeShow: function () {
+                $(this).ColorPickerSetColor(this.value);
+            }
+        })
+                .bind('keyup', function() {
+                    $(this).ColorPickerSetColor(this.value);
+                });
+    });
+</script>
+<%= form_for([:admin, @product_detail], :html => {:multipart => true,:id => 'product_deatils_add_form'}) do |f| %>
+    <% if @product_detail.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@product_detail.errors.count, "error") %> prohibited this image from being saved:</h2>
 
-      <ul>
-        <% @product_detail.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+          <ul>
+            <% @product_detail.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="contentRightHolder frt ptop40">
+      <div class="heading w100">Product Detail</div>
+      <div class="inputFieldsHolder mtop20" style="width: 60%;">
+        <label>Product Size</label>
+        <%= f.select(:size, [['S', 'S'], ['M', 'M'], ['L', 'L'], ['XL', 'XL'], ['XXL', 'XXL']], {:include_blank => true}) %>
+      </div>
+
+      <div class="inputFieldsHolder mtop20" style="width: 60%;">
+        <label>Product Color</label>
+        <%= f.text_field :color, :id => "colorpickerField1" %>
+      </div>
+      <div class="inputFieldsHolder mtop20" style="width: 60%;">
+        <label>Product Price</label>
+        <%= f.text_field :price %>
+      </div>
+      <div class="inputFieldsHolder mtop20" style="width: 60%;">
+        <%= f.hidden_field :product_id, :value => @product_id, :readonly => true %>
+      </div>
+      <div id="photos" style="float: left;
+              margin-top: 20px;
+              width: 94%;">
+        <% @product_detail.images.each_with_index do |image, index| %>
+            <%= fields_for "product_detail[images_attributes][]", image do |image| %>
+                <%= image.file_field :snap %>
+            <% end %>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="contentRightHolder frt ptop40">
-    <div class="heading w100">Product Detail</div>
-    <div class="inputFieldsHolder mtop20" style="width: 60%;">
-      <label>Product Size</label>
-      <%=f.text_field :size%>
-    </div>
 
-    <div class="inputFieldsHolder mtop20" style="width: 60%;">
-      <label>Product Color</label>
-      <%=f.text_field :color%>
-    </div>
-    <div class="inputFieldsHolder mtop20" style="width: 60%;">
-      <label>Product Price</label>
-      <%=f.text_field :price%>
-    </div>
-    <div class="inputFieldsHolder mtop20" style="width: 60%;">      
-      <%= f.hidden_field :product_id, :value => @product_id, :readonly => true%>
-    </div>
-    <div  class="inputButtonHolder w100">
-      <input type="submit" value="Save" id="product_detail_add_btn" class="submitButton ui-button ui-widget ui-state-default ui-corner-all ui-state-hover"/>
-    </div>
+      </div>
+      <div class="inputButtonHolder w100">
+        <input type="submit" value="Save" id="product_detail_add_btn" class="submitButton ui-button ui-widget ui-state-default ui-corner-all ui-state-hover"/>
+      </div>
 
-  </div>
-<%end%>
+    </div>
+<% end %>
 
 <script type="text/javascript">
 
-  $("#product_detail_add_btn").click(function() {
-    $("#product_deatils_add_form").submit(function() {
-      if (!$("#product_deatils_add_form").valid()) {
-        return false;
-      } else {
-        // alert("ddd");
-        return true;
-      }
+    $("#product_detail_add_btn").click(function() {
+        $("#product_deatils_add_form").submit(function() {
+            if (!$("#product_deatils_add_form").valid()) {
+                return false;
+            } else {
+                // alert("ddd");
+                return true;
+            }
+        });
     });
-  });
 
-  $(document).ready(function() {
+    $(document).ready(function() {
 
-    $("#product_deatils_add_form").validate({
-      rules:{
-        "product_detail[size]":
-          {
-          required: true
+        $("#product_deatils_add_form").validate({
+            rules:{
+                "product_detail[size]":
+                {
+                    required: true
 //          number: true
-        },
-        "product_detail[color]":
-          {
-          required: true
+                },
+                "product_detail[color]":
+                {
+                    required: true
 //          number: true
-        },       
-        "product_detail[price]":
-          {
-          required: true
-//          number: true
-        },
-        messages: {
-          "product[size]": "This field is required",
-          "product[color]": "This field is required",
-          "product[price]": "This field is required"
-        }
-      }
+                },
+                "product_detail[price]":
+                {
+                    required: true,
+                    number: true
+                },
+                messages: {
+                    "product[size]": "This field is required",
+                    "product[color]": "This field is required",
+                    "product[price]": "This field is required"
+                }
+            }
+        });
     });
-  });
 
 </script>
 

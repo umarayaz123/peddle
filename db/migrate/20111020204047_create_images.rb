@@ -8,6 +8,7 @@ class CreateImages < ActiveRecord::Migration
       t.integer :attachable_id
       t.string :attachable_type
       t.integer :product_id
+      t.integer :product_detail_id
 
       t.timestamps
     end
