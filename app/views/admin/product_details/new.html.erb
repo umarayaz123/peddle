@@ -28,39 +28,53 @@
           </ul>
         </div>
     <% end %>
-    <div class="contentRightHolder frt ptop40">
-      <div class="heading w100">Product Detail</div>
-      <div class="inputFieldsHolder mtop20" style="width: 60%;">
-        <label>Product Size</label>
-        <%= f.select(:size, [['S', 'S'], ['M', 'M'], ['L', 'L'], ['XL', 'XL'], ['XXL', 'XXL']], {:include_blank => true}) %>
-      </div>
 
-      <div class="inputFieldsHolder mtop20" style="width: 60%;">
-        <label>Product Color</label>
+  <div class="rightContainer">
+    <div class="rightHeading1">
+      <div class="rgtHeading">ADD NEW Product Detail</div>
+    </div>
+    <div class="adminInrLogin">
+      <div class="adminInrText mtop20">Size</div>
+      <div class="adminInrInput"><%= f.select(:size, [['S', 'S'], ['M', 'M'], ['L', 'L'], ['XL', 'XL'], ['XXL', 'XXL']], {:include_blank => true}) %></div>
+    </div>
+    <div class="adminInrLogin">
+      <div class="adminInrText mtop20">Color</div>
+      <div style="width: 400px;clear: both;">
         <%= f.text_field :color, :id => "colorpickerField1" %>
       </div>
-      <div class="inputFieldsHolder mtop20" style="width: 60%;">
-        <label>Product Price</label>
+    </div>
+    <div class="adminInrLogin">
+      <div class="adminInrText mtop20">Price</div>
+      <div style="width: 400px;clear: both;">
         <%= f.text_field :price %>
       </div>
-      <div class="inputFieldsHolder mtop20" style="width: 60%;">
-        <%= f.hidden_field :product_id, :value => @product_id, :readonly => true %>
-      </div>
-      <div id="photos" style="float: left;
+    </div>
+     
+    <%= f.hidden_field :product_id, :value => @product_id, :readonly => true %>
+    <div id="photos" style="float: left;
               margin-top: 20px;
               width: 94%;">
         <% @product_detail.images.each_with_index do |image, index| %>
-            <%= fields_for "product_detail[images_attributes][]", image do |image| %>
+            <%= fields_for :images do |image| %>
                 <%= image.file_field :snap %>
             <% end %>
         <% end %>
 
       </div>
-      <div class="inputButtonHolder w100">
-        <input type="submit" value="Save" id="product_detail_add_btn" class="submitButton ui-button ui-widget ui-state-default ui-corner-all ui-state-hover"/>
-      </div>
-
+    <%store = Store.find(:first, :conditions => ["name = ?",request.subdomain])%>
+    <%=f.hidden_field :store_id, :value => store.id%>
+        <div id="photos" style="float: left;
+         margin-top: 20px;
+         width: 94%;">
+         <%@product.images.each_with_index do |image, index|%>
+           <%= render :partial => 'admin/products/image', :locals => {:count => 0, :image => image} %>
+         <%end%>
     </div>
+ 
+    <div class="submitInrBtn3" id="product_detail_add_btn"><input type="submit" value="Save all Changes" /></div>
+
+  </div>
+
 <% end %>
 
 <script type="text/javascript">

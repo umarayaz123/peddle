@@ -1,38 +1,27 @@
-<div class="bodyholder">
-  <div class="container">
-    <p id="notice"><%= notice %></p>
+<%= javascript_include_tag "/javascripts/ckeditor/ckeditor.js" %>
+<div class="rightContainer">
+  <div class="rightHeading1">
+    <div class="rgtHeading">Product Show</div>
+  </div>
 
-    <p>
-      <b>Name:</b>
-      <%= @product.name %>
-    </p>
+  <div class="inputMain mtop20">
+    <div class="label">TITTLE :</div>
+    <div class="inputText1"><%=@product.name%></div>
 
-    <p>
-      <b>Description:</b>
-      <%= @product.description %>
-    </p>
-
-    <p>
-      <b>Store:</b>
-      <%= @product.store_id %>
-    </p>
-
-    <p>
-      <b>Image:</b>
-      <% @product.images.each do |image| %>
-          <%= image_tag(image.snap, :width => "200", :height => "150") %>
-      <% end %>
-
-    </p>
-
-    <p>
-      <%#*<b>Product_details: </b>%>
-      <%#= link_to 'Product_details', '/admin/products/'+@product.id.to_s+'/product_details' %>
-    </p>
-
-
-
-    <%#= link_to 'Edit', edit_admin_product_path(@product) %> |
-    <%#= link_to 'Back', admin_products_path %>
+  </div>
+  <div class="inputMain" >    
+    <div class="textareaMain">
+      <%=raw(@product.description)%>
+    </div>
+    <div id="photos" style="float: left;
+    margin-top: 20px;
+    width: 94%;">
+    <label class="w100">Images</label>
+    <%@product.images.each_with_index do |p_i, index|%>      
+      <div class="w100">
+        <%=image_tag(p_i.snap, :width => "200", :height => "150")%>      
+      </div>
+    <%end%>        
+  </div>
   </div>
 </div>

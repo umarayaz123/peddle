@@ -11,44 +11,38 @@
       </ul>
     </div>
   <% end %>
-  <div class="contentRightHolder frt ptop40">
-    <div class="heading w100">Product Info</div>
-    <div class="inputFieldsHolder mtop20" style="width: 60%;">
-      <label>Product Name</label>
-      <%=f.text_field :name%>
+  <div class="rightContainer">
+    <div class="rightHeading1">
+      <div class="rgtHeading">ADD NEW Product</div>
     </div>
-
-    <div class="inputFieldsHolder mtop20" style="width: 60%;">
-      <label>Product Description</label>
+    <div class="adminInrLogin">
+      <div class="adminInrText mtop20">Product Name</div>
+      <div class="adminInrInput"><%=f.text_field :name%></div>
+    </div>
+    <div class="adminInrLogin">
+      <div class="adminInrText mtop20">DESCRIPTION</div>
       <div style="width: 400px;clear: both;">
         <%= f.cktext_area :description, :toolbar=>'Full', :width=>'400px', :height=>'200px' %>
       </div>
     </div>
-    <div class="inputFieldsHolder mtop10" style="width: 60%;">            
-      <%store = Store.find(:first, :conditions => ["name = ?",request.subdomain])%>
-      <%=f.hidden_field :store_id, :value => store.id%>
-      <%#= select_tag("product[store_id]", options_for_select(@stores.map { |store| [store.name, store.id] })) %>
-    </div>
-    <div id="photos" style="float: left;
+    <%store = Store.find(:first, :conditions => ["name = ?",request.subdomain])%>
+    <%=f.hidden_field :store_id, :value => store.id%>
+        <div id="photos" style="float: left;
          margin-top: 20px;
          width: 94%;">
          <%@product.images.each_with_index do |image, index|%>
            <%= render :partial => 'admin/products/image', :locals => {:count => 0, :image => image} %>
          <%end%>
     </div>
-    <div id="test" style="color: blue;
+     <div id="test" style="color: blue;
          float: left;
          margin-bottom: 20px;
          width: 94%; cursor: pointer;">Add Photo</div>
 
-    <div  class="inputButtonHolder w100">
-      <input type="submit" value="Save" id="product_add_btn" class="submitButton ui-button ui-widget ui-state-default ui-corner-all ui-state-hover"/>
-  <%#= f.submit %>
-    </div>
+    <div class="submitInrBtn3" id="product_add_btn"><input type="submit" value="Save all Changes" /></div>
 
   </div>
 <%end%>
-
 <script type="text/javascript">
 
   $("#product_add_btn").click(function() {

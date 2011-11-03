@@ -16,7 +16,7 @@ class Admin::ProductDetailsController < ApplicationController
     @product_id = params[:id]
     @product = Product.find(@product_id)
     @product_detail = ProductDetail.new
-    1.upto(1) { @product_detail.images.build }
+    @product_detail.images.build
   end
 
   def create
@@ -36,8 +36,7 @@ class Admin::ProductDetailsController < ApplicationController
   def edit
 #    @product_id = params[:product_id]
 #    @product = Product.find(@product_id)
-    @product_detail = ProductDetail.find(params[:id])
-    1.upto(1) { @product_detail.images.build }
+    @product_detail = ProductDetail.find(params[:id])    
   end
 
   def update    
