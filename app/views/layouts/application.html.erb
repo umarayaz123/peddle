@@ -20,8 +20,8 @@
       <%= link_to image_tag("/assets/logo.png"),url  %>
     </div>
 
-    <!--<div class="topNav">-->
-      <!--<ul>-->
+    <div class="topNav">
+      <ul>
         <!--<li>          -->
           <!--<%#=link_to "Sales Floor", "/home/index"%>-->
         <!--</li>-->
@@ -38,18 +38,18 @@
             <!--<%#= link_to "My Account", "/admin/store_admin" %>-->
           <!--<#%end%>-->
         <!--</li>-->
-        <!--<li>-->
-          <!--<%# if current_user %>-->
-              <!--<%#= current_user.email %>-->
-            <!--<%#*root_url(:subdomain => false)%>-->
-              <!--<#%= link_to "Logout", "/sign_out" %>              -->
-          <!--<%# else %>-->
-              <!--<#%= link_to "Login", "/sign_in" %>-->
-          <!--<%# end %>-->
-        <!--</li>-->
+        <li>
+          <% if current_user %>
+              <%= current_user.email %>
+            <%root_url(:subdomain => false)%>
+              <%= link_to "Logout", "/sign_out" %>   
+          <% else %>
+              <%= link_to "Login", "/sign_in" %>
+          <% end %>
+        </li>
 
-      <!--</ul>-->
-    <!--</div>-->
+      </ul>
+    </div>
 
     <div class="searchfield">
       <input type="text"></input>
