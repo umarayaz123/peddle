@@ -23,10 +23,10 @@ class Admin::SysAdminsController < ApplicationController
   def show
     @sys_admin = SysAdmin.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @sys_admin }
-    end
+#    respond_to do |format|
+#      format.html # show.html.erb
+#      format.json { render json: @sys_admin }
+#    end
   end
 
   # GET /sys_admins/new
@@ -35,8 +35,8 @@ class Admin::SysAdminsController < ApplicationController
     @sys_admin = SysAdmin.new
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @sys_admin }
+#      format.html # new.html.erb
+#      format.json { render json: @sys_admin }
     end
   end
 
@@ -52,11 +52,11 @@ class Admin::SysAdminsController < ApplicationController
 
     respond_to do |format|
       if @sys_admin.save
-        format.html { redirect_to @sys_admin, notice: 'Sys admin was successfully created.' }
-        format.json { render json: @sys_admin, status: :created, location: @sys_admin }
+#        format.html { redirect_to @sys_admin, notice: 'Sys admin was successfully created.' }
+#        format.json { render json: @sys_admin, status: :created, location: @sys_admin }
       else
-        format.html { render action: "new" }
-        format.json { render json: @sys_admin.errors, status: :unprocessable_entity }
+#        format.html { render action: "new" }
+#        format.json { render json: @sys_admin.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -68,11 +68,11 @@ class Admin::SysAdminsController < ApplicationController
 
     respond_to do |format|
       if @sys_admin.update_attributes(params[:sys_admin])
-        format.html { redirect_to @sys_admin, notice: 'Sys admin was successfully updated.' }
-        format.json { head :ok }
+#        format.html { redirect_to @sys_admin, notice: 'Sys admin was successfully updated.' }
+#        format.json { head :ok }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @sys_admin.errors, status: :unprocessable_entity }
+#        format.html { render action: "edit" }
+#        format.json { render json: @sys_admin.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -84,8 +84,8 @@ class Admin::SysAdminsController < ApplicationController
     @sys_admin.destroy
 
     respond_to do |format|
-      format.html { redirect_to sys_admins_url }
-      format.json { head :ok }
+#      format.html { redirect_to sys_admins_url }
+#      format.json { head :ok }
     end
   end
 end
