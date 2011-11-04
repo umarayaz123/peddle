@@ -21,6 +21,7 @@
   <div class="mngData">
     <% unless @users.nil? %>
       <% @users.each_with_index do |user, index| %>
+        
         <div class="fMngHeading1"><%= user.email%></div>
         <div class="sMngHeading1">dsd</div>
         <%unless user.store.blank?%>
@@ -29,13 +30,14 @@
           <div class="tMngHeading1">none</div>
         <%end%>          
         <div class="foMngHeading1">
-          <div class="mediaBtn2">
-            <%#*<input type="submit" value="Edit" class="smallBtn" />%>
-            <%#= link_to "Edit", edit_admin_user_path(user), :class => "smallBtn"%>
-            <%= link_to "Delete", '/admin/users/destroy/'+user.id.to_s, :confirm => 'Are you sure?', :method => :delete, :class => "smallBtn" %>
-            <%#*<input type="submit" value="Delete" class="smallBtn" />%>
+          <div class="mediaBtn2">            
+            <%unless index == 0%>
+              <%= link_to "Delete", '/admin/users/destroy/'+user.id.to_s, :confirm => 'Are you sure?', :method => :delete, :class => "smallBtn" %>
+            <%else%>
+              <input type="submit" value="Delete" class="smallBtn" />
+            <%end%>            
           </div>
-        </div>
+        </div>        
       <%end%>
     <%end%>
 

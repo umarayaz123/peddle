@@ -2,7 +2,7 @@
   <div class="logo"><%=link_to image_tag("../assets/logo.png"), root_url%></div>
   <div class="topRightNav">
     <%unless current_user.blank?%>
-      <div class="topLinks"><span class="gray">Hello</span><%=current_user.email%>| <a href="/sign_out">Logout</a></div>
+      <div class="topLinks"><span class="gray">Hello </span><%=current_user.email%>| <a href="/sign_out">Logout</a></div>
     <%end%>
     <%#*<div class="logoText"><a href="#">VIEW MEMBER WEBSITE</a></div>%>
   </div>

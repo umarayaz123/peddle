@@ -6,7 +6,7 @@ class PackagesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @packages }
+#      format.json { render json: @packages }
     end
   end
 
@@ -17,7 +17,7 @@ class PackagesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @package }
+#      format.json { render json: @package }
     end
   end
 
@@ -28,7 +28,7 @@ class PackagesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @package }
+#      format.json { render json: @package }
     end
   end
 
@@ -44,11 +44,11 @@ class PackagesController < ApplicationController
 
     respond_to do |format|
       if @package.save
-        format.html { redirect_to @package, notice: 'Package was successfully created.' }
-        format.json { render json: @package, status: :created, location: @package }
+#        format.html { redirect_to @package, notice: 'Package was successfully created.' }
+#        format.json { render json: @package, status: :created, location: @package }
       else
-        format.html { render action: "new" }
-        format.json { render json: @package.errors, status: :unprocessable_entity }
+#        format.html { render action: "new" }
+#        format.json { render json: @package.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -60,11 +60,11 @@ class PackagesController < ApplicationController
 
     respond_to do |format|
       if @package.update_attributes(params[:package])
-        format.html { redirect_to @package, notice: 'Package was successfully updated.' }
+#        format.html { redirect_to @package, notice: 'Package was successfully updated.' }
         format.json { head :ok }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @package.errors, status: :unprocessable_entity }
+#        format.html { render action: "edit" }
+#        format.json { render json: @package.errors, status: :unprocessable_entity }
       end
     end
   end

@@ -12,7 +12,7 @@
   </div>
 
   <div class="mngData mtop20">
-    <div class="fMngHeading"><strong>NAME</strong></div>
+    <%#*<div class="fMngHeading"><strong>NAME</strong></div>%>
     <div class="sMngHeading"><strong>EMAIL</strong></div>
     <div class="tMngHeading"><strong>STORE</strong></div>
     <div class="foMngHeading"><strong>ACTION</strong></div>
@@ -33,11 +33,8 @@
           <div class="tMngHeading1">none</div>
         <%end%>
         <div class="foMngHeading1">
-          <div class="mediaBtn2">
-            <%#*<input type="submit" value="Edit" class="smallBtn" />%>
-            <%#= link_to "Edit", edit_admin_user_path(user), :class => "smallBtn"%>
+          <div class="mediaBtn2">            
             <%= link_to "Delete", '/admin/stores/destroy/'+store.id.to_s, :confirm => 'Are you sure?', :method => :delete, :class => "smallBtn" %>
-            <%#*<input type="submit" value="Delete" class="smallBtn" />%>
           </div>
         </div>
       <%end%>
