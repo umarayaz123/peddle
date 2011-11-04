@@ -26,7 +26,6 @@ class Admin::ProductDetailsController < ApplicationController
     @product_detail = ProductDetail.new(params[:product_detail])        
       if @product_detail.save
         @product_details = ProductDetail.find(:all, :conditions => ["product_id = ?",@product_detail.product_id])
-        puts 'SSSSSSSSSSSS', @product_details.size
         redirect_to :controller => "admin/product_details",  :id => @product_detail.product_id
       else
         render :action => "new"
@@ -34,14 +33,11 @@ class Admin::ProductDetailsController < ApplicationController
   end
 
   def edit
-#    @product_id = params[:product_id]
-#    @product = Product.find(@product_id)
-    @product_detail = ProductDetail.find(params[:id])    
+    @product_detail = ProductDetail.find(params[:id])
+    @product_id = @product_detail.product_id
   end
 
   def update    
-#    @product_id = params[:product_id]
-#    @product = Product.find(@product_id)
      @product_detail = ProductDetail.find(params[:id])
       if @product_detail.update_attributes(params[:product_detail])
         redirect_to "/admin/product_details?id="+@product_detail.product_id.to_s

@@ -1,43 +1,40 @@
-
-<div class="bodyholder">
-  <div class="container">
-    <div class="w100 mtop40">
-<%#*<div class="contentRightHolder frt">%>
-      <div class="mainHeading w100">Product Detail List</div>
-      <div class="addNew divButton  ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only mtop20">
-        <span class="ui-button-text">
-          <div class="" style="cursor: pointer"><%= link_to 'New Product Detail', :controller => "product_details", :action => "new", :id => @product.id %></div>
-        </span>
-      </div>
-      <div class="darkgray flt mtop20">
-        <div class="list1stHeading flt"><strong>Size</strong></div>
-        <div class="list2nDescriptiondHeading flt"><strong>Color</strong></div>
-        <div class="list3rdHeading flt"><strong>Price</strong></div>
-        <div class="list7thHeading flt"><strong>Action</strong></div>
-      </div>
-      <% unless @product_details.nil? %>
-        <% @product_details.each_with_index do |product_detail, index| %>
-          <% if index%2 == 0 %>
-            <div class="lightgray flt wite">
-            <% else %>
-              <div class="lightgray flt">
-              <% end %>
-              <div class="list1stHeading lineHeight30 flt">
-                <%= product_detail.size%>
-              </div>
-              <div class="list2DescriptionndHeading lineHeight30 flt"><%= product_detail.color %></div>
-              <% unless product_detail.price.blank? %>
-                <div class="list3rdHeading flt lineHeight30"><%= product_detail.price %></div>
-              <% end %>              
-              <div class="list4thHeading flt lineHeight30"> <%= link_to image_tag("../assets/edit.png"), edit_admin_product_detail_path(product_detail) %><%= link_to image_tag("../assets/delete.png"), '/admin/product_details/destroy/'+product_detail.id.to_s, :confirm => 'Are you sure?', :method => :delete %> </div>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-
-        </div>
-<%#*</div>%>
-      </div>
+<div class="rightContainer">
+  <div class="rightHeading1">
+    <div class="rgtHeading1">MANAGE PRODUCT DETAILS</div>
+    <div class="submitInrBtn1"><%= link_to 'New Product Detail', '/admin/product_details/new?id='+@product.id.to_s %></div>
+  </div>
+  <div class="mngMain mtop20">
+    <div class="label">SEARCH MEMBER :</div>
+    <div class="inputText"><input type="text" value=""/></div>
+    <div class="mediaBtn1">
+      <input type="submit" value="Search" class="smallBtn"/>
     </div>
+  </div>
+
+  <div class="mngData mtop20">
+    <div class="fMngHeading"><strong>Size</div>
+    <div class="sMngHeading">Color</div>
+    <div class="tMngHeading">Price</div>
+    <div class="foMngHeading">Action</div>
+  </div>
+
+  <div class="mngData mtop20">
+    <% unless @product_details.nil? %>
+        <% @product_details.each_with_index do |product_detail, index| %>
+            <div class="fMngHeading1"><strong><%= product_detail.size %></strong></div>
+            <div class="sMngHeading1"><strong><%= product_detail.color %></strong></div>
+            <div class="tMngHeading1"><strong><%= product_detail.price %></strong></div>
+            <div class="foMngHeading1"><strong>
+              <%= link_to image_tag("../assets/edit.png"), edit_admin_product_detail_path(product_detail) %>
+              <%= link_to image_tag("../assets/delete.png"), '/admin/product_details/destroy/'+product_detail.id.to_s, :confirm => 'Are you sure?', :method => :delete %>
+            </strong></div>
+        <% end %>
+    <% end %>
+
+  </div>
+
+
+</div>
+
 
 
