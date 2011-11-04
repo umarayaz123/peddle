@@ -1,0 +1,70 @@
+<%= form_for([:admin, @package], :html => {:id => 'package_edit_form'}) do |f| %>
+    <% if @package.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@package.errors.count, "error") %> prohibited this image from being saved:</h2>
+
+          <ul>
+            <% @package.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+  <div class="rightContainer">
+    <div class="rightHeading1">
+      <div class="rgtHeading">Edit Package</div>
+    </div>
+    <div class="adminInrLogin">
+      <div class="adminInrText mtop20">Name</div>
+      <div class="adminInrInput"><%= f.text_field :name%></div>
+    </div>
+     <div class="adminInrLogin">
+      <div class="adminInrText mtop20">Price</div>
+      <div class="adminInrInput"><%= f.text_field :price%></div>
+    </div>
+    
+    <div class="submitInrBtn3" id="package_edit_btn"><input type="submit" value="Save all Changes" /></div>
+    
+  </div>
+
+<% end %>
+
+<script type="text/javascript">
+
+    $("#package_edit_btn").click(function() {
+        $("#package_edit_form").submit(function() {
+            if (!$("#package_edit_form").valid()) {
+                return false;
+            } else {
+                // alert("ddd");
+                return true;
+            }
+        });
+    });
+
+    $(document).ready(function() {
+
+        $("#package_edit_form").validate({
+            rules:{
+                "package[name]":
+                {
+                    required: true
+                },
+                "package[price]":
+                {
+                    required: true,
+                    number: true
+                },
+                messages: {
+                    "package[name]": "This field is required",
+                    "package[price]": "This field is required"
+                }
+            }
+        });
+    });
+
+</script>
+
+
+
