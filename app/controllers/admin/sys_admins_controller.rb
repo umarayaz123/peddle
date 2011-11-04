@@ -1,5 +1,7 @@
 class Admin::SysAdminsController < ApplicationController
 
+  layout "admin"
+  
   before_filter :authenticate_user!
   before_filter :check_role
   before_filter :check_domain

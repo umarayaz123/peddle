@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  def check_domain
-    unless current_user.store.blank?
+  def check_domain    
+    unless current_user.store.blank?      
       unless request.subdomain == current_user.store.name
         session["subdomain"] == request.subdomain
         redirect_to "/sign_out"

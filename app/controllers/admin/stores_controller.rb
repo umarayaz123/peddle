@@ -1,22 +1,21 @@
-class StoresController < ApplicationController
+class Admin::StoresController < ApplicationController
+  layout "admin"
   before_filter :authenticate_user!
   # GET /stores
   # GET /stores.json
   before_filter :check_role
   
-  def index
-    @store = Store.find_by_name(request.subdomain)
-    @store_name = request.subdomain
+  def index    
     @stores = Store.all
-    @products = @store.products
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @stores }
-    end
+#    @products = @store.products
+#    respond_to do |format|
+#      format.html # index.html.erb
+#      format.json { render :json => @stores }
+#    end
   end
   
   def show  	
-    @product = Product.find(params[:id])
+    @store = Store.find(params[:id])
   end
 
   def cart

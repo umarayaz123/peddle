@@ -1,6 +1,6 @@
 <div class="rightContainer">
   <div class="rightHeading1">
-    <div class="rgtHeading1">MANAGE STORES</div>
+    <div class="rgtHeading1">MANAGE Users</div>
     <%#*<div class="submitInrBtn1"><%= link_to 'New Product', new_admin_product_path %>
   </div>
   <div class="mngMain mtop20">
@@ -19,24 +19,20 @@
   </div>
 
   <div class="mngData">
-    <% unless @stores.nil? %>
-      <% @stores.each_with_index do |store, index| %>
-        <div class="fMngHeading1"><%= link_to store.name, admin_store_path(store) %></div>
-        <%unless store.package.blank?%>
-          <div class="sMngHeading1"><%=store.package.name%></div>
-        <%else%>
-          <div class="sMngHeading1">none</div>
-        <%end%>
-        <%unless store.package.blank?%>
-          <div class="tMngHeading1"><%= user.package.price%> </div>
+    <% unless @users.nil? %>
+      <% @users.each_with_index do |user, index| %>
+        <div class="fMngHeading1"><%= user.email%></div>
+        <div class="sMngHeading1">dsd</div>
+        <%unless user.store.blank?%>
+          <div class="tMngHeading1"><%= user.store.name%> </div>
         <%else%>
           <div class="tMngHeading1">none</div>
-        <%end%>
+        <%end%>          
         <div class="foMngHeading1">
           <div class="mediaBtn2">
             <%#*<input type="submit" value="Edit" class="smallBtn" />%>
             <%#= link_to "Edit", edit_admin_user_path(user), :class => "smallBtn"%>
-            <%= link_to "Delete", '/admin/stores/destroy/'+store.id.to_s, :confirm => 'Are you sure?', :method => :delete, :class => "smallBtn" %>
+            <%= link_to "Delete", '/admin/users/destroy/'+user.id.to_s, :confirm => 'Are you sure?', :method => :delete, :class => "smallBtn" %>
             <%#*<input type="submit" value="Delete" class="smallBtn" />%>
           </div>
         </div>
@@ -46,4 +42,4 @@
   </div>
 </div>
 
-
+  

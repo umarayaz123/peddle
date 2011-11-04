@@ -34,6 +34,7 @@ Peddle::Application.routes.draw do
     resources :store_admin
     resources :sys_admins
     resources :stores
+    resources :users
     resources :products
     resources :product_details
 #    do

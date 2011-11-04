@@ -12,7 +12,12 @@
         <%= render :partial => "/shared/header" %>
       </div>
       <div class="center">
-        <%= render :partial => "/shared/admin_left_pannel" %>
+        <%admin_role = Role.find(:first, :conditions => ["name = ?", "Admin"])%>
+        <%if current_user.roles.include?(admin_role)%>
+            <%= render :partial => "/shared/admin_left_pannel" %>
+        <%else%>
+            <%= render :partial => "/shared/sys_admin_left_pannel" %>
+        <%end%>        
         <%= yield %>
       </div>
     </div>
