@@ -1,8 +1,8 @@
 <%= javascript_include_tag "/javascripts/ckeditor/ckeditor.js" %>
-<%= javascript_include_tag 'colorpicker', 'eye', 'layout', 'utils' %>
 <script>
     $(document).ready(function() {
-        $('#colorpickerField1').ColorPicker({
+        //$('#colorpickerField').ColorPicker({flat: true});
+        $('#colorpickerField').ColorPicker({
             onSubmit: function(hsb, hex, rgb, el) {
                 $(el).val(hex);
                 $(el).ColorPickerHide();
@@ -10,13 +10,12 @@
             onBeforeShow: function () {
                 $(this).ColorPickerSetColor(this.value);
             }
-        })
-                .bind('keyup', function() {
+        }).bind('keyup', function() {
                     $(this).ColorPickerSetColor(this.value);
                 });
     });
 </script>
-<%= form_for([:admin, @product_detail], :html => {:multipart => true,:id => 'product_deatils_add_form'}) do |f| %>
+<%= form_for([:admin, @product_detail], :html => {:multipart => true, :id => 'product_deatils_add_form'}) do |f| %>
     <% if @product_detail.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@product_detail.errors.count, "error") %> prohibited this image from being saved:</h2>
@@ -29,42 +28,42 @@
         </div>
     <% end %>
 
-  <div class="rightContainer">
-    <div class="rightHeading1">
-      <div class="rgtHeading">ADD NEW Product Detail</div>
-    </div>
-    <div class="adminInrLogin">
-      <div class="adminInrText mtop20">Size</div>
-      <div class="adminInrInput"><%= f.select(:size, [['S', 'S'], ['M', 'M'], ['L', 'L'], ['XL', 'XL'], ['XXL', 'XXL']], {:include_blank => true}) %></div>
-    </div>
-    <div class="adminInrLogin">
-      <div class="adminInrText mtop20">Color</div>
-      <div style="width: 400px;clear: both;">
-        <%= f.text_field :color, :id => "colorpickerField1" %>
+    <div class="rightContainer">
+      <div class="rightHeading1">
+        <div class="rgtHeading">ADD NEW Product Detail</div>
       </div>
-    </div>
-    <div class="adminInrLogin">
-      <div class="adminInrText mtop20">Price</div>
-      <div style="width: 400px;clear: both;">
-        <%= f.text_field :price %>
+      <div class="adminInrLogin">
+        <div class="adminInrText mtop20">Size</div>
+        <div class="adminInrInput"><%= f.select(:size, [['S', 'S'], ['M', 'M'], ['L', 'L'], ['XL', 'XL'], ['XXL', 'XXL']], {:include_blank => true}) %></div>
       </div>
-    </div>
-     
-    <%= f.hidden_field :product_id, :value => @product_id, :readonly => true %>
-    <div id="photos" style="float: left;
+      <div class="adminInrLogin">
+        <div class="adminInrText mtop20">Color</div>
+        <div style="width: 400px;clear: both;">
+          <%= f.text_field :color, :id => "colorpickerField1" %>
+        </div>
+      </div>
+      <div class="adminInrLogin">
+        <div class="adminInrText mtop20">Price</div>
+        <div style="width: 400px;clear: both;">
+          <%= f.text_field :price %>
+        </div>
+      </div>
+
+      <%= f.hidden_field :product_id, :value => @product_id, :readonly => true %>
+      <div id="photos" style="float: left;
               margin-top: 20px;
               width: 94%;">
-        <% @product_detail.images.each_with_index do |image, index| %>
-            <%= fields_for :images do |image| %>
-                <%= image.file_field :snap %>
-            <% end %>
+        <%= f.label :snap, 'Attachment' %>
+        <br/>
+        <%= f.fields_for :images do |builder| %>
+            <%= render "image", :image => builder %>
         <% end %>
 
       </div>
- 
-    <div class="submitInrBtn3" id="product_detail_add_btn"><input type="submit" value="Save all Changes" /></div>
 
-  </div>
+      <div class="submitInrBtn3" id="product_detail_add_btn"><input type="submit" value="Save all Changes"/></div>
+
+    </div>
 
 <% end %>
 

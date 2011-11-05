@@ -1,8 +1,8 @@
 <%= javascript_include_tag "/javascripts/ckeditor/ckeditor.js" %>
-<%= javascript_include_tag 'colorpicker', 'eye', 'layout', 'utils' %>
 <script>
     $(document).ready(function() {
-        $('#colorpickerField1').ColorPicker({
+        //$('#colorpickerField').ColorPicker({flat: true});
+        $('#colorpickerField').ColorPicker({
             onSubmit: function(hsb, hex, rgb, el) {
                 $(el).val(hex);
                 $(el).ColorPickerHide();
@@ -10,8 +10,7 @@
             onBeforeShow: function () {
                 $(this).ColorPickerSetColor(this.value);
             }
-        })
-                .bind('keyup', function() {
+        }).bind('keyup', function() {
                     $(this).ColorPickerSetColor(this.value);
                 });
     });
@@ -41,7 +40,7 @@
       <div class="adminInrLogin">
         <div class="adminInrText mtop20">Color</div>
         <div style="width: 400px;clear: both;">
-          <%= f.text_field :color, :id => "colorpickerField1" %>
+          <%= f.text_field :color, :id => "colorpickerField"%>
         </div>
       </div>
       <div class="adminInrLogin">

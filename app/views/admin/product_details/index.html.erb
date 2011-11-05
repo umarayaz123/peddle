@@ -7,12 +7,12 @@
     <div class="label">SEARCH MEMBER :</div>
     <div class="inputText"><input type="text" value=""/></div>
     <div class="mediaBtn1">
-      <input type="submit" value="Search" class="smallBtn"/>
+      <input type="submit" value="Search" class="searchlBtn"/>
     </div>
   </div>
 
   <div class="mngData mtop20">
-    <div class="fMngHeading"><strong>Size</div>
+    <div class="fMngHeading">Size</div>
     <div class="sMngHeading">Color</div>
     <div class="tMngHeading">Price</div>
     <div class="foMngHeading">Action</div>
@@ -21,13 +21,17 @@
   <div class="mngData mtop20">
     <% unless @product_details.nil? %>
         <% @product_details.each_with_index do |product_detail, index| %>
-            <div class="fMngHeading1"><strong><%= product_detail.size %></strong></div>
-            <div class="sMngHeading1"><strong><%= product_detail.color %></strong></div>
-            <div class="tMngHeading1"><strong><%= product_detail.price %></strong></div>
-            <div class="foMngHeading1"><strong>
-              <%= link_to image_tag("../assets/edit.png"), edit_admin_product_detail_path(product_detail) %>
-              <%= link_to image_tag("../assets/delete.png"), '/admin/product_details/destroy/'+product_detail.id.to_s, :confirm => 'Are you sure?', :method => :delete %>
-            </strong></div>
+            <div>
+              <div class="fMngHeading2"><%= product_detail.size %></div>
+              <div class="sMngHeading2"><%= product_detail.color %></div>
+              <div class="tMngHeading2"><%= product_detail.price %></div>
+              <div class="foMngHeading2">
+                <strong>
+                  <%= link_to 'Edit', edit_admin_product_detail_path(product_detail), :class => "smallBtn" %>
+                  <%= link_to 'Delete', '/admin/product_details/destroy/'+product_detail.id.to_s, :class => "smallBtn", :confirm => 'Are you sure?', :method => :delete %>
+                </strong>
+              </div>
+            </div>
         <% end %>
     <% end %>
 

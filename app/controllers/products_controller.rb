@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @store = Store.find_by_name(request.subdomain)
     @product = Product.find(params[:id])
 
     respond_to do |format|

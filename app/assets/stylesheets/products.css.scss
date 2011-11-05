@@ -1,3 +1,231 @@
-// Place all the styles related to the products controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+    border: medium none;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background:url("../assets/body-bg.png") repeat !important;
+    color: #000000;
+    font-family: Arial;
+    font-size: 14px;
+}
+h1, h2, h3, h4, h5, h6, p, img {
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    color: #000000;
+    font-size: 20px;
+}
+h2 {
+    color: #666666;
+    font-size: 14px;
+}
+img {
+    border: medium none;
+}
+a {
+    color: #000000;
+}
+.body {
+    float:left;
+    width:100%;
+    /*width:100%;*/
+    background:url("../assets/body-bg.png") repeat !important;
+    color: #000000;
+    font-family: Arial;
+    font-size: 14px;
+}
+.wrapper {
+    margin: 0 auto;
+    width: 960px;
+}
+.w100{
+	float:left;
+	width:100%;
+}
+.logo{
+	width:255px;
+	float:left;
+    margin-top: -35px;
+}
+.logo img{
+	float:left;
+}
+.logo-text-holder{
+	color: #949494;
+    float: right;
+    font-family: "myriad Pro";
+    font-size: 20px;
+    line-height: 26px;
+    width: 704px;
+}
+.mtop80{
+	margin-top:80px;
+}
+.mtop60{
+	margin-top:60px;
+}
+.mtop20{
+	margin-top:20px;
+}
+.mtop40{
+	margin-top:40px;
+}
+.left-warrpper{
+	width:225px;
+	float:left;
+}
+.right-warrpper{
+	width:704px;
+	float:right;
+}
+.nav-top-holder{
+	background:url("../assets/nav-top-bg.png") no-repeat;
+	width:182px;
+	height:65px;
+	float:left;
+	font-size:20px;
+	color:#eeeeee;
+	font-family:"myriad Pro";
+	text-align:center;
+	line-height:65px;
+}
+.nav-mid-holder{
+	background:url(../assets/nav-mid-bg.png) repeat-y;
+	width:182px;
+	height:auto;
+	float:left;
+}
+.nav-bot-holder{
+	background:url(../assets/nav-bot-bg.png) no-repeat;
+	width:182px;
+	height:6px;
+	float:left;
+}
+.left-nav{
+	float:left;
+	width:100%;
+	list-style:none;
+}
+.left-nav li{
+	border-bottom: 1px solid #DCDCDC;
+    color: #555555;
+    float: left;
+    font-family: "myriad Pro";
+    font-size: 16px;
+    padding: 14px;
+    width: 85%;
+}
+.left-nav li a{
+	color:#555555;
+	text-decoration:none;
+}
+.active{
+	background: url("../assets/active-bg.png") no-repeat scroll 0 0 transparent;
+    border: 0 none !important;
+    color: #FFFFFF !important;
+    height: 40px;
+    line-height: 34px;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 5px;
+    padding-bottom: 0 !important;
+    padding-left: 10px;
+    padding-right: 0 !important;
+    padding-top: 0 !important;
+    width: 190px !important;
+}
+.active a{
+	color:#FFF!important;
+}
+.bdr-bot-none{
+	border-bottom:none!important;
+}
+.right-warrpper h1{
+	font-size:18px;
+	font-family:"myriad Pro";
+	color:#555555;
+	float:left;
+	width:100%;
+}
+.right-warrpper p{
+	font-size:14px;
+	color:#949494;
+	float:left;
+	width:100%;
+}
+.gellary-holder{
+	float:left;
+	width:322px;
+}
+.gellary-details{
+	float:right;
+	width:355px;
+}
+.gellary-details h1{
+	color: #555555;
+    float: left;
+    font-family: "myriad Pro";
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 25px;
+    text-transform: none;
+    width: 100%;
+}
+.gellary-details p{
+	float:left;
+	width:100%;
+	margin-top:10px;
+	font-size:14px;
+	color:#949494;
+	font-weight:normal;
+}
+.price-holder{
+	float:left;
+	width:100%;
+	color:#0078c9;
+	font-size:38px;
+	font-family:"myriad Pro";
+	margin-top:20px;
+}
+.sml{
+	font-size:18px;
+	color:#555555;
+}
+.add-to-cart{
+	float:left;
+	width:100%;
+}
+.add-to-cart img{
+	float:left;
+}
+.facebook-like img{
+	float:left;
+	margin-right:5px;
+}
+.facebook-like label{
+	float:left;
+	font-size:11px;
+	color:#747475;
+	line-height:22px;
+}
+.details{
+	float:left;
+	width:100%;
+	list-style:none;
+}
+.details li{
+	background:url("../assets/disc.png") no-repeat scroll left 6px transparent;
+	float:left;
+	width:90%;
+	padding-left:3%;
+	font-size:14px;
+	color:#949494;
+	margin-top:10px;
+}
+.details li a{
+	text-decoration:none;
+	color:#949494;
+}

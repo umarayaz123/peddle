@@ -1,38 +1,132 @@
-<div class="bodyholder">
-  <div class="container">
-    <p id="notice"><%= notice %></p>
-
-    <div>
-      <div class="img_div">
-        <%= image_tag(@product.images.first.snap, :width => "150", :height => "120") %>
-      </div>
-      <div class="description">
-        <p>
-          <b>Name:</b>
-          <%= @product.name %>
-        </p>
-
-        <p>
-          <b>Description:</b>
-          <%= @product.description %>
-        </p>
+<div class="body">
+  <div class="wrapper">
+    <div class="w100 mtop80">
+      <div class="logo"><%= link_to image_tag('/assets/clogo.png'), root_url %></div>
+      <div class="logo-text-holder">This is your store description. Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit. Donec ullamcorper sem in ipsum commodo accumsan.
       </div>
     </div>
-    <br/>
-    <% unless @product.product_details.empty? %>
-        <% @product.product_details.each do |product_detail| %>
-            <div class="details_div">
-              Size:<%= product_detail.size %>
-              <br/>
-              Color:<%= product_detail.color %>
-              <br/>
-              Price:<%= product_detail.price %>
-              <br/>
-              <%= link_to "Checkout", "#" %>
+    <div class="w100 mtop60">
+      <div class="left-warrpper">
+        <div class="w100">
+          <div class="nav-top-holder">Our products</div>
+          <div class="nav-mid-holder">
+            <ul class="left-nav">
+              <% @store.products.each do |product| %>
+                  <li class="<%= 'active' if params[:id]== product.id.to_s%>"><%= link_to product.name, :controller => "products", :action => "show", :id => product.id %></li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="nav-bot-holder"></div>
+        </div>
+
+
+        <div class="w100 mtop40">
+          <div class="nav-top-holder">Company</div>
+          <div class="nav-mid-holder">
+            <ul class="left-nav">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Faq</a></li>
+              <li><a href="#">Shipping</a></li>
+              <li class="bdr-bot-none"><a href="#">Contact Us</a></li>
+            </ul>
+
+          </div>
+          <div class="nav-bot-holder"></div>
+        </div>
+
+
+      </div>
+      <div class="right-warrpper">
+        <h1>You are here:</h1>
+
+        <p>Home > Products > <%= @product.name %></p>
+
+        <div class="w100 mtop20">
+          <div class="gellary-holder">
+            <%= image_tag(@product.images.first.snap, :width => "300", :height => "400") %>
+            <div class="carousel default">
+              <button class="prev" style="visibility:hidden"><<</button>
+              <div class="jCarouselLite">
+                <ul>
+                  <li>
+                    <!--<img src="image/1.jpg" alt="" width="150" height="118">-->
+                    <% unless @product.product_details.empty? %>
+                        <% @product.product_details.each do |product_detail| %>
+                            <% unless product_detail.images.blank? %>
+                                <%= image_tag(product_detail.images.first.snap, :width => "100", :height => "100", :id => product_detail.price) %>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                  </li>
+                </ul>
+              </div>
+              <button class="next" style="visibility:hidden">>></button>
+              <div class="clear"></div>
             </div>
-        <% end %>
-    <% end %>
-<%#= link_to 'Edit', edit_product_path(@product) %> |
-    <%= link_to 'Back to Store', '/' %>
+          </div>
+
+          <div class="gellary-details">
+            <h1><%= @product.name %></h1>
+
+            <p>Available in <%= @product.product_details.length %> different colors.</p>
+
+            <div class="price-holder"><span class="sml">$</span><span class="price">
+              <% lowest_price = -1 %>
+              <% @product.product_details.each do |detail|
+                  lowest_price = detail.price if detail.price < lowest_price || lowest_price == -1
+              end %>
+              <% unless lowest_price == -1 %>
+                  <%= lowest_price %>
+              <% else %>
+                  0
+              <% end %>
+            </span>
+            </div>
+
+            <div class="add-to-cart mtop20"><img src="/assets/add-to-cart.png" alt=""/></div>
+
+            <div class="w100 facebook-like mtop20">
+              <img src="/assets/facebook-like.png" alt=""/>
+              <label>Be the first of your friends to like this.</label>
+            </div>
+
+            <h2 class="mtop60">Product information</h2>
+
+            <p><%= raw(@product.description) %></p>
+
+            <h2 class="mtop40">Details</h2>
+
+            <ul class="details">
+              <li><a href="#">BVentilated CLIMACOOL &copy; keeps you dry and comfortable</a></li>
+            </ul>
+
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </div>
+
+
+<script>
+    $(document).ready(function() {
+//        $(".default .jCarouselLite").jCarouselLite({
+//            btnNext: ".default .next",
+//            btnPrev: ".default .prev"
+//        });
+        $('li img').click(function() {
+            $('.gellary-holder img:first').attr('src', this.src);
+            $('.price').html(this.id);
+        });
+    });
+
+
+</script>
+
+
+

@@ -211,9 +211,12 @@ a{
     float: right;
     font-size: 14px;
     font-weight: bold;
-    height: 40px;
+    height: 32px;
+    margin-right: 20px;
+    padding-top: 12px;
+    text-align: center;
+    text-decoration: none;
     width: 147px;
-	margin-right:20px;
 }
 .submitInrBtn1 input{
 	background: url("../assets/loginBG.png") no-repeat scroll 0 0 transparent;
@@ -455,8 +458,21 @@ a{
     float: left;
     font-size: 14px;
     font-weight: bold;
-    height: 30px;
-    width: 74px;
+    height: 26px;
+    padding-top: 7px;
+    text-decoration: none;
+    width: 71px;
+}
+.searchlBtn {
+    background: url("../assets/smallBtn.png") no-repeat scroll left bottom transparent;
+    color: #FFFFFF;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    height: 38px;
+    margin-top: -8px;
+    text-decoration: none;
+    width: 76px;
 }
 .mainInput{
 	float:left;
@@ -666,6 +682,37 @@ a{
 	color:#000;
 }
 .foMngHeading1{
+	float:left;
+	width:24%;
+	text-align:center;
+	font-size:14px;
+	color:#000;
+}
+.fMngHeading2{
+	float:left;
+	width:24%;
+	text-align:center;
+	font-size:14px;
+	color:#000;
+    margin-top:10px;
+}
+.sMngHeading2{
+	float:left;
+	width:24%;
+	text-align:center;
+	font-size:14px;
+	color:#000;
+    margin-top:10px;
+}
+.tMngHeading2{
+	float:left;
+	width:24%;
+	text-align:center;
+	font-size:14px;
+	color:#000;
+    margin-top:10px;
+}
+.foMngHeading2{
 	float:left;
 	width:24%;
 	text-align:center;
