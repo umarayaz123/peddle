@@ -15,7 +15,7 @@ Peddle::Application.routes.draw do
 
   devise_for :users, :controllers => {
     :sessions => "users/sessions",
-    :confirmation => "users/confirmations",
+    :confirmations => "users/confirmations",
     :passwords => "users/passwords",
     :registrations => "users/registrations",
   }

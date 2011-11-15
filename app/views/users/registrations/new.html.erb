@@ -12,7 +12,24 @@
               <label>Full Name</label>
               <input type="text" value="">
             </div>
-            <div class="signin_small_input_holder">
+            <div class="checkbox_holder">
+              <div class="checkbox_input_holder">
+                <%= check_box_tag 'seller' %>
+                <%#= radio_button_tag 'type', 'seller' %>
+                <label>Seller</label>
+
+              </div>
+              <div class="checkbox_input_holder">
+                <%= check_box_tag 'buyer' %>
+                <%#= radio_button_tag 'type', 'buyer' %>
+                <label>Buyer</label>
+              </div>
+              <!--<div class="checkbox_input_holder">-->
+              <!--<input type="checkbox" value="">-->
+              <!--<label>Both</label>-->
+              <!--</div>-->
+            </div>
+            <div id="store_name" class="signin_small_input_holder">
               <label>Store Name</label>
               <%= text_field_tag 'store_name' %>
               <p>.peddleonline.com</p>
@@ -22,29 +39,15 @@
               <%= f.email_field :email %>
             </div>
             <!--<div class="signin_input_holder">-->
-              <!--<label>Re-type Your Email</label>-->
-              <!--<input type="text" value="">-->
+            <!--<label>Re-type Your Email</label>-->
+            <!--<input type="text" value="">-->
             <!--</div>-->
 
-            <div class="checkbox_holder">
-              <div class="checkbox_input_holder">
-                <%= check_box_tag 'seller'%>
-                <label>Seller</label>
-              </div>
-              <div class="checkbox_input_holder">
-                <%= check_box_tag 'buyer'%>
-                <label>Buyer</label>
-              </div>
-              <!--<div class="checkbox_input_holder">-->
-                <!--<input type="checkbox" value="">-->
-                <!--<label>Both</label>-->
-              <!--</div>-->
-            </div>
             <div class="signin_small_input_holder">
               <label>Password</label>
               <%= f.password_field :password %>
 
-              <p>must be at least 8 characters in length</p>
+              <p>must be at least 6 characters in length</p>
             </div>
             <div class="signin_small_input_holder">
               <%= f.password_field :password_confirmation %>
@@ -57,13 +60,13 @@
             </div>
             <div class="checkbox_holder">
               <div class="checkbox_input_holder_small">
-                <input type="checkbox" value="">
+                <input id="terms" type="checkbox" value="">
                 <label>I HAVE READ AND AGREED TO THE FOLLOWING TERMS AND CONDITIONS</label>
               </div>
             </div>
 
             <div class="submit_holder">
-              <input type="submit" value="Sign Up">
+              <input id="submit_button" type="submit" value="Sign Up">
             </div>
           </div>
           <div class="bot_login_bg"></div>
@@ -73,3 +76,34 @@
 
   </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('#submit_button').attr('disabled', true);
+        $('#buyer').click(function() {
+            if ($('#buyer').is(':checked')) {
+                $('#seller').attr('checked', false);
+                $('#store_name').hide();
+            }
+            else {
+                $('#store_name').show();
+            }
+        });
+        $('#seller').click(function() {
+            if ($('#seller').is(':checked')) {
+                $('#buyer').attr('checked', false);
+                $('#store_name').show();
+            }
+        });
+        $('#terms').click(function(){
+            if($('#terms').is(":checked"))
+            {
+                $('#submit_button').attr('disabled', false);
+            }
+            else
+            {
+                $('#submit_button').attr('disabled', true);
+            }
+        });
+    });
+</script>

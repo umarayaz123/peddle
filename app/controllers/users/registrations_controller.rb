@@ -49,6 +49,29 @@ class Users::RegistrationsController < ApplicationController
         flash[:notice] = "Couldn't create your Store Please try again Later.'"
         redirect_to '/users/sign_up'
       end
+    elsif params[:store_name].blank?
+      flash[:notice] = "Buyers account"
+      surl = params[:store_name]+'.peddle.com'
+      store = Store.new(:package_id => 1, :name => params[:store_name], :url => surl)
+      build_resource
+      buyer = Role.find_by_name('Buyer')
+
+      resource.roles << buyer
+      if resource.save
+        if resource.active_for_authentication?
+          set_flash_message :notice, :signed_up if is_navigational_format?
+          sign_in(resource_name, resource)
+          respond_with resource, :location => redirect_location(resource_name, resource)
+        else
+          asas
+          set_flash_message :notice, :inactive_signed_up, :reason => inactive_reason(resource) if is_navigational_format?
+          expire_session_data_after_sign_in!
+          respond_with resource, :location => after_inactive_sign_up_path_for(resource)
+        end
+      else
+        clean_up_passwords(resource)
+        respond_with_navigational(resource) { render_with_scope :new }
+      end
     else
       flash[:notice] = "Store Name Already taken"
       redirect_to '/users/sign_up'

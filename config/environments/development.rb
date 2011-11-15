@@ -10,7 +10,7 @@ Peddle::Application.configure do
   config.whiny_nils = true
 
   # Show full error reports and disable caching
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
@@ -21,9 +21,9 @@ Peddle::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
-#  config.session_store = { :domain => '.lvh.me' } # for localhost
-#  config.action_dispatch.best_standards_support = :builtin
-  config.session_store                          = {:domain => '.ilsainteractive.com'}
+  config.session_store = {:domain => '.lvh.me'} # for localhost
+  #  config.action_dispatch.best_standards_support = :builtin
+  #  config.session_store                          = {:domain => '.ilsainteractive.com'}
 
   # Do not compress assets
   config.assets.compress = false
@@ -36,6 +36,19 @@ Peddle::Application.configure do
   config.time_zone = TIME_ZONE
 #  config.action_mailer.default_url_options = { :host => 'ilsainteractive.com:3003' }
 #  config.register_javascript 'ckeditor/config.js'
-  config.assets.paths << File.join(Rails.root,'public','javascripts')
+  config.assets.paths << File.join(Rails.root, 'public', 'javascripts')
   config.assets.initialize_on_precompile = false
+
+  config.action_mailer.default_url_options = {:host => 'lvh.me:3000'}
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+      :enable_starttls_auto => true,
+      :address => "smtp.gmail.com",
+      :port => 587,
+      :domain => "gmail.com",
+      :authentication => :plain,
+      :user_name => "adnan.arshad@ilsainteractive.com",
+      :password => "ad123456"
+  }
 end

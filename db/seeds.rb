@@ -124,18 +124,21 @@ puts "Creating Super Admin of Site"
 sadmin = User.create!(:email=>'sadmin@peddle.com',:password=>'123456',:password_confirmation => '123456')
 #sadmin.store_id = super_admin.id
 sadmin.roles << super_admin
+sadmin.confirmed_at =Time.now
 sadmin.save!
 
 puts "Creating Admin of Site"
 admin = User.create!(:email=>'admin@peddle.com',:password=>'123456',:password_confirmation => '123456')
 admin.store_id = admin_store.id
 admin.roles << admin_role
+admin.confirmed_at =Time.now
 admin.save!
 
 puts "Creating default Buyer of Site"
 buyer_user = User.create!(:email=>'buyer@peddle.com',:password=>'123456',:password_confirmation => '123456')
 buyer_user.store_id = buyer_store.id
 buyer_user.roles << buyer
+buyer_user.confirmed_at =Time.now
 buyer_user.save!
 
 puts " Destroying All Products"

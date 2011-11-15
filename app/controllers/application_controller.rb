@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :mailer_set_url_options
+
+  def mailer_set_url_options
+    #ActionMailer::Base.default_url_options[:host] = request.host_with_port
+  end
 
   def check_domain    
     unless current_user.store.blank?      
@@ -61,7 +66,8 @@ class ApplicationController < ActionController::Base
         if current_user.roles.include?(super_admin_role)
           sysadmin_url
         else
-          sign_out_url
+          #sign_out_url
+          root_url()
         end
       end
     end
@@ -88,7 +94,8 @@ class ApplicationController < ActionController::Base
           if current_user.roles.include?(super_admin_role)
             sysadmin_url
           else
-            sign_out_url
+            #sign_out_url
+            root_url()
           end
         end
       end

@@ -1,16 +1,17 @@
-class Users::ConfirmationsController < Devise::ConfirmationsController
+class Users::ConfirmationsController < ApplicationController
 #  before_filter :check_role
-#  include Devise::Controllers::InternalHelpers
+  include Devise::Controllers::InternalHelpers
 
-  # GET /resource/confirmation/new
+# GET /resource/confirmation/new
   def new
     build_resource
     render_with_scope :new
   end
 
   # POST /resource/confirmation
-  def create    
-#    params[resource_name].skip_confirmation!    
+  def create
+#    params[resource_name].skip_confirmation!
+    puts "*****************AAAAAAAAAAAAAAAAAA",resource_class
     self.resource = resource_class.send_confirmation_instructions(params[resource_name], request.protocol, request.host_with_port)
 
     if resource.errors.empty?
@@ -27,7 +28,11 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
 
     if resource.errors.empty?
       set_flash_message :notice, :confirmed
-      sign_in_and_redirect(resource_name, resource)
+      unless params[:store_name].blank?
+        stores_url(:subdomain => params[:store_name])
+      else
+        sign_in_and_redirect(resource_name, resource)
+      end
     else
       render_with_scope :new
     end
