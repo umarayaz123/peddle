@@ -3,8 +3,7 @@
 <p>You can confirm your account through the link below:</p>
 <% unless @resource.store_id.blank?%>
     <% @store = Store.find(@resource.store_id)%>
-    asasasasa111
-    <p><%= @store.name%></p>
+    <p><b>Store Name:</b><%= @store.name%></p>
     <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token, :store_name => @store.name) %></p>
 <%else%>
     asasasas

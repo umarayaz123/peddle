@@ -63,7 +63,6 @@ class Users::RegistrationsController < ApplicationController
           sign_in(resource_name, resource)
           respond_with resource, :location => redirect_location(resource_name, resource)
         else
-          asas
           set_flash_message :notice, :inactive_signed_up, :reason => inactive_reason(resource) if is_navigational_format?
           expire_session_data_after_sign_in!
           respond_with resource, :location => after_inactive_sign_up_path_for(resource)

@@ -1,6 +1,6 @@
 class Users::Mailer < ::ActionMailer::Base
-  include Devise::Controllers::ScopedViews
-  attr_reader :devise_mapping, :resource
+  #include Devise::Controllers::ScopedViews
+  #attr_reader :devise_mapping, :resource
   include Devise::Mailers::Helpers
 
   def confirmation_instructions(record)
