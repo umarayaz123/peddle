@@ -12,7 +12,7 @@ class Users::RegistrationsController < ApplicationController
   # POST /resource
   def create
     stores = Store.find_by_name(params[:store_name])
-    if stores.nil?
+    if stores.nil? && !params[:store_name].blank?
       surl = params[:store_name]+'.peddle.com'
       store = Store.new(:package_id => 1, :name => params[:store_name], :url => surl)
       build_resource
@@ -51,8 +51,8 @@ class Users::RegistrationsController < ApplicationController
       end
     elsif params[:store_name].blank?
       flash[:notice] = "Buyers account"
-      surl = params[:store_name]+'.peddle.com'
-      store = Store.new(:package_id => 1, :name => params[:store_name], :url => surl)
+      #surl = params[:store_name]+'.peddle.com'
+      #store = Store.new(:package_id => 1, :name => params[:store_name], :url => surl)
       build_resource
       buyer = Role.find_by_name('Buyer')
 

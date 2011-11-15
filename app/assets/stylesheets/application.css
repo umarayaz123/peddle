@@ -388,6 +388,11 @@ border:1px solid #d8d8d8;
 .signin_text a:hover{
 	text-decoration:none;
 }
+.signin_text a:visited{
+    color: #3EACC8;
+	text-decoration:underline;
+	font-weight:bold;
+}
 .signin_input_holder{
 	float:left;
 	width:100%;
@@ -398,6 +403,7 @@ border:1px solid #d8d8d8;
 	width:100%;
 	font-size:14px;
 	color:#9c9c9c;
+    text-align: left;
 }
 .signin_input_holder input{
 	background: url("../assets/input_bg.png") no-repeat scroll 0 0 transparent;
@@ -457,6 +463,7 @@ border:1px solid #d8d8d8;
 	width:100%;
 	font-size:14px;
 	color:#9c9c9c;
+    text-align: left;
 }
 .signin_small_input_holder p{
 	color: #000000;
