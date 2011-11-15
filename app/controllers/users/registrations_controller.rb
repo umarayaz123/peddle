@@ -65,7 +65,8 @@ class Users::RegistrationsController < ApplicationController
         else
           set_flash_message :notice, :inactive_signed_up, :reason => inactive_reason(resource) if is_navigational_format?
           expire_session_data_after_sign_in!
-          respond_with resource, :location => after_inactive_sign_up_path_for(resource)
+          #respond_with resource, :location => after_inactive_sign_up_path_for(resource)
+          respond_with resource, :location => root_url
         end
       else
         clean_up_passwords(resource)
