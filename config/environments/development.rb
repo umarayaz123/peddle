@@ -20,10 +20,10 @@ Peddle::Application.configure do
   config.active_support.deprecation = :log
 
   # Only use best-standards-support built into browsers
-  config.action_dispatch.best_standards_support = :builtin
-  config.session_store = {:domain => '.lvh.me'} # for localhost
-  #  config.action_dispatch.best_standards_support = :builtin
-  #  config.session_store                          = {:domain => '.ilsainteractive.com'}
+  #config.action_dispatch.best_standards_support = :builtin
+  #config.session_store = {:domain => '.lvh.me'} # for localhost
+    config.action_dispatch.best_standards_support = :builtin
+    config.session_store                          = {:domain => '.ilsainteractive.com'}
 
   # Do not compress assets
   config.assets.compress = false
@@ -39,7 +39,8 @@ Peddle::Application.configure do
   config.assets.paths << File.join(Rails.root, 'public', 'javascripts')
   config.assets.initialize_on_precompile = false
 
-  config.action_mailer.default_url_options = {:host => 'lvh.me:3000'}
+  #config.action_mailer.default_url_options = {:host => 'lvh.me:3000'}
+  config.action_mailer.default_url_options = {:host => 'ilsainteractive.com:3003'}
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
