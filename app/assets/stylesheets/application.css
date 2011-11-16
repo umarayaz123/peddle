@@ -525,3 +525,13 @@ border:1px solid #d8d8d8;
     margin-left: 90px;
     margin-right: 40px;
 }
+
+.small_imgs{
+    border: 1px solid #D9D9D9;
+    /*float: left;*/
+    /*height: 157px;*/
+    /*margin-left: 8px;*/
+    /*position: relative;*/
+    /*width: 208px;*/
+    z-index: 2;
+}

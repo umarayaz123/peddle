@@ -6,9 +6,10 @@
     border:none;
 }
 html{
-	background:url("../assets/armin_main_bg.png") repeat;
+	/*background:url("../assets/armin_main_bg.png") repeat;*/
 }
 body{
+    background:url("../assets/armin_main_bg.png") repeat;
     font-size:14px;
     color:#777777;
     font-family:Arial;

@@ -1,157 +1,207 @@
-<div class="container">
-  <% unless @stores.blank? %>
-      <% @stores.each do |store| %>
-          <%#= link_to store.name, root_url(:subdomain =>store.name) %>
-      <% end %>
-  <% end %>
-  <div class="partitionleft">
-
-    <div class="picnbasicinfoholder">
-      <img src="../assets/pro-pic.png"/>
-
-      <div class="username">
-        Robert Thomas
-      </div>
-
-      <div class="subtitle">
-        Peddler / Buyer
-      </div>
-
+<div class="wrapper">
+  <div class="w100 mtop50">
+    <div class="small-logo flt">
+      <img src="/assets/adidas.png" alt=""/>
+      <img src="/assets/logo-small-frame.png" alt="" class="frame"/>
     </div>
-
-    <div class="leftcatholder">
-      <div class="catagory">
-        Suggested Stores
-      </div>
-      <div class="sugeststoriesentry">
-        <img class="profilepic" src="../assets/pic.png"/>
-        <img class="ltcatclose" src="../assets/x.png"/>
-
-        <div class="storyheading">
-          The Best Store Out
-        </div>
-        <div class="storysubheading">
-          Home / Outdoor / Sports
-        </div>
-        <div class="tag">
-          <a href="#">Tag to this store</a>
-        </div>
-      </div>
-      <div class="sugeststoriesentry">
-        <img class="profilepic" src="../assets/pic.png"/>
-        <img class="ltcatclose" src="../assets/x.png"/>
-
-        <div class="storyheading">
-          The Best Store Out
-        </div>
-        <div class="storysubheading">
-          Home / Outdoor / Sports
-        </div>
-        <div class="tag">
-          <a href="#">Tag to this store</a>
-        </div>
-      </div>
-      <div class="sugeststoriesentry">
-        <img class="profilepic" src="../assets/pic.png"/>
-        <img class="ltcatclose" src="../assets/x.png"/>
-
-        <div class="storyheading">
-          The Best Store Out
-        </div>
-        <div class="storysubheading">
-          Home / Outdoor / Sports
-        </div>
-        <div class="tag">
-          <a href="#">Tag to this store</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="leftcatholder">
-      <div class="catagory">
-        Suggested Stores
-      </div>
-      <div class="leftcolentry">
-        <a href="#">The Best Store Out</a>
-      </div>
-      <div class="leftcolentry">
-        <a href="#">The Best Store Out</a>
-      </div>
-      <div class="leftcolentry">
-        <a href="#">The Best Store Out</a>
-      </div>
-    </div>
-
-    <div class="invitefriends">
-      <div class="heading">
-        Send invitation
-      </div>
-      <div class="buttonholder">
-        <img src="/assets/invitefriends.png"/>
-      </div>
-
+    <div class="logo-text flt">This is your store description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Donec ullamcorper sem in ipsum commodo accumsan.
     </div>
 
   </div>
-
-  <div class="partitionright">
-
-    <h1>
-      Sales Floor
-    </h1>
-
-    <textarea class="posttext"></textarea>
-
-    <div class="addimage">
-      <img src="../assets/addimage.png"/>
-      <a href="#">add an image</a>
-    </div>
-
-    <div class="share">
-      <div class="square">
-      </div>
-      <img src="../assets/fb.png"/>
-
-      <div class="square">
-      </div>
-      <img src="../assets/tw.png"/>
-      Share
-    </div>
-    <% unless @stores.blank? %>
-        <% @stores.each do |store| %>
-            <div class="mainentry">
-              <div class="ltlogos">
-                <img src="../assets/mainentrylogo.png"/>
-                <img src="../assets/tagcopy.png"/>
-              </div>
-              <div class="contentholder">
-                <h2>
-                  <%= store.name %>
-                </h2>
-
-                <h3>
-                  <%= duration(Time.now - store.created_at) %> ago
-                </h3>
-                <%= link_to 'View Store', root_url(:subdomain =>store.name), :class => 'viewstorelink' %>
-
-                <div class="miantext">
-                  <%= store.description %>
-                  <br/>
-                  <% unless store.products.nil? %>
-                      <% store.products.each do |product| %>
-                          <% unless product.images.nil? %>
-                              <% product.images.each do |image| %>
-                                  <%= image_tag(image.snap, :width => "79", :height => "79") %>
-                              <% end %>
-                          <% end %>
-                      <% end %>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-        <% end %>
-    <% end %>
-  </div>
-
 
 </div>
+
+<div class="wrapper">
+  <div class="w100 mtop40 bdr-bot">
+    <div class="left-content flt">
+      <div class="w100 bdr-bot">
+        <div class="data-holder-left flt">
+          <h1>Peddle your product</h1>
+
+          <p>It can be anything from a photo, video or website.</p>
+        </div>
+        <div class="data-holder-right flt">
+          <textarea></textarea>
+
+          <div class="w100 btn-holder mtop10">
+            <img src="/assets/pic.png" alt=""/>
+            <input type="submit" value=""/>
+          </div>
+        </div>
+      </div>
+
+      <div class="w100 mtop20">
+        <div class="content-top-bg flt">
+          <div class="heading-top flt">
+            <h1>Sales floor</h1>
+
+            <p>Our featured stores</p>
+          </div>
+          <div class="back-btn-holder frt">
+            <img src="images/next-btn.png"/>
+            <img src="/assetss/back-btn.png"/>
+          </div>
+        </div>
+        <div class="content-mid-bg flt">
+          <% unless @stores.blank? %>
+              <% @stores.each do |store| %>
+                  <div class="cont bdr-bot flt">
+                    <div class="gellery-left flt">
+                      <div class="gellary-logo flt">
+                        <img src="/assets/gellarg.png" alt=""/>
+                        <img src="/assets/larg-fram.png" alt="" class="gellary-frame"/>
+                      </div>
+
+                      <div class="moreinfo w100">
+                        <a href="#">more information</a>
+                        <img src="/assets/chat.png" alt=""/>
+                        <%= link_to image_tag("/assets/visit.png"), root_url(:subdomain =>store.name) %>
+                      </div>
+
+                    </div>
+                    <div class="gellery-right frt">
+                      <h1 class="mtop20"><%= store.name %> store</h1>
+
+                      <p><%= duration(Time.now - store.created_at) %> ago</p>
+
+                      <p class="mtop20"><%= store.description %></p>
+
+                      <div class="w100 g-img">
+                        <label>more photos</label>
+                        <% unless store.products.nil? %>
+                            <% store.products.each do |product| %>
+                                <% unless product.images.nil? %>
+                                    <% product.images.each do |image| %>
+                                        <div class="small-logo flt">
+                                          <%= image_tag(image.snap, :width => "60", :height => "60", :class => "small_imgs") %>
+                                          <img src="/assets/logo-small-frame.png" alt="" class="frame"/>
+                                        </div>
+                                    <% end %>
+                                <% end %>
+                            <% end %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+              <% end %>
+          <% end %>
+
+        </div>
+        <div class="content-bot-bg flt">
+          <img src="/assets/more-stores.png" alt=""/>
+          <label>View more of our stores</label>
+        </div>
+      </div>
+
+    </div>
+    <div class="right-content frt">
+
+      <div class="w100">
+        <div class="links-top-bg flt">Your Peddle</div>
+        <div class="links-mid-bg flt">
+          <ul class="menu flt">
+            <li>
+              <p>Messages</p>
+              <label>24</label>
+            </li>
+            <li>
+              <p>Window shopping</p>
+              <label>24</label>
+            </li>
+            <li>
+              <p>Purchase history</p>
+            </li>
+            <li>
+              <p>Account settings</p>
+            </li>
+            <li class="bdr-bot-none">
+              <p>
+                <% if current_user %>
+                    <% root_url(:subdomain => false) %>
+                    <%= link_to "Log out", "/sign_out", :style => "text-decoration:none;" %>
+                <% else %>
+                    <%= link_to "Log in", "/sign_in", :style => "text-decoration:none;"%>
+                <% end %>
+              </p>
+            </li>
+          </ul>
+
+        </div>
+        <div class="links-bot-bg flt"></div>
+      </div>
+
+      <div class="w100 mtop20">
+        <div class="links-top-bg flt">Live chat</div>
+        <div class="links-mid-bg flt">
+          <div class="online flt">15 contacts online</div>
+
+          <ul class="online-content flt">
+            <li><a href="#">Michael Jordan</a></li>
+            <li><a href="#">Michael Jordan</a></li>
+            <li><a href="#">Michael Jordan</a></li>
+            <li><a href="#">Michael Jordan</a></li>
+            <li class="bdr-bot-none"><a href="#">Michael Jordan</a></li>
+
+          </ul>
+
+        </div>
+        <div class="links-bot-bg flt"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="w100 mtop40">
+    <div class="blue-left flt"></div>
+    <div class="blue-mid flt">
+      <div class="w100">
+        <div class="heading-top flt">
+          <h1>Shopping mall</h1>
+
+          <p>Our featured stores</p>
+        </div>
+        <div class="back-btn-holder frt">
+          <img src="/assets/next-btn.png">
+          <img src="/assets/back-btn.png">
+        </div>
+      </div>
+      <div class="w100">
+        <div class="thumb-img flt ml18">
+          <img src="/assets/levis.png"/>
+
+          <p>levis</p>
+
+        </div>
+
+        <div class="thumb-img flt">
+          <img src="/assets/ikea.png"/>
+
+          <p>levis</p>
+
+        </div>
+
+        <div class="thumb-img flt">
+          <img src="/assets/apple.png"/>
+
+          <p>levis</p>
+
+        </div>
+
+        <div class="thumb-img flt">
+          <img src="/assets/mocy.png"/>
+
+          <p>levis</p>
+
+        </div>
+
+      </div>
+
+    </div>
+    <div class="blue-right flt"></div>
+  </div>
+
+</div>
+
+
+

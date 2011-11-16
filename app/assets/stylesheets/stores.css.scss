@@ -3,289 +3,983 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+* {
+    border: medium none;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background:url(../assets/body-bg.png) repeat ;
+    color: #000000;
+    font-family: Arial;
+    font-size: 14px;
+}
+h1, h2, h3, h4, h5, h6, p, img {
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    color: #000000;
+    font-size: 20px;
+}
+h2 {
+    color: #666666;
+    font-size: 14px;
+}
+img {
+    border: medium none;
+}
+a {
+    color: #000000;
+}
+.wrapper {
+    margin: 0 auto;
+    width: 960px;
+}
 .w100{
 	float:left;
 	width:100%;
 }
-
-.contentLeftHolder{
-	width:220px;
+.logo{
+	width:218px;
+	float:left;
 }
-
+.logo img{
+	float:left;
+}
 .flt{
-	float:left !important;
+	float:left;
 }
 .frt{
-	float:right !important;
+	float:right;
 }
-.contentRightHolder{
-	width:736px;
+.logo-text-holder{
+	float:right;
+	width:740px;
+	font-size:24px;
+	font-family:"myriad Pro";
+	color:#949494;
 }
-.mtop40{
-	margin-top:40px !important;
+.mtop80{
+	margin-top:80px;
 }
-.mainHeading{
-	border-bottom:3px solid #250101;
-	font-size:20px;
-	font-weight:bold;
-	color:#1f826d;
-	padding-bottom:5px;
-}
-.w100{
-	float:left;
-	width:100%;
-}
-
-.leftLink{
-	list-style:none;
-}
-.leftLink li{
-	background: url("../assets/link_arrow.png") no-repeat scroll left center transparent;
-    border-bottom: 1px dashed #000000;
-    color: #5E5D5D;
-    float: left;
-    font-size: 14px;
-    line-height: 26px;
-    padding-left: 8%;
-    width: 92%;
-}
-.leftLink li a{
-	color:#5e5d5d;
-	text-decoration:none;
-}
-
-.galleryHolder{
-	width:174px;
-	margin-left:5px;
-	margin-right:5px;
-	text-align:center;
-}
-.galleryHolder h1{
-	float:left;
-	width:100%;
-	font-size:12px;
-	margin-top:10px;
-	text-align:left;
-}
-.galleryHolder h2{
-	float:left;
-	width:100%;
-	font-size:16px;
-	font-weight:bold;
-	color:#1f826d;
-	text-align:left;
-}
-.mtop30{
-	margin-top:30px !important;
-}
-.detailsLeftHolder{
-	width:268px;
-}
-.largImgHolder{
-	border:1px solid #dedede;
-	background:none scroll 0 0 #fbfbfb;
-	text-align:center;
-}
-.largImgHolder{
-	border:1px solid #dedede;
-	background:none scroll 0 0 #fbfbfb;
-	text-align:center;
-}
-.mtop10{
-	margin-top:10px !important;
-}
-.smallImgHolder{
-	border:1px solid #dedede;
-	background:none scroll 0 0 #fbfbfb;
-	text-align:center;
-	padding:0 5px;
-}
-
-.mright{
-	margin-right:7px;
-}
-.detailsRightHolder{
-	width:450px;
-}
-.inStockHeading{
-	font-size:20px;
-	font-weight:bold;
-	color:#250101;
-}
-.price{
-	font-size:20px;
-	color:#1f826d;
-	font-weight:bold;
-}
-.selectHolder{
-	border-bottom: 1px solid #CCCCCC;
-    border-top: 1px solid #CCCCCC;
-    padding: 20px 0;
-}
-.selectHolder{
-	border-bottom: 1px solid #CCCCCC;
-    border-top: 1px solid #CCCCCC;
-    padding: 20px 0;
-}
-.select{
-	float:left;
-	width:100%;
-}
-.select label{
-	float:left;
-	width:150px;
-	color:#494949;
-	line-height:20px;
-}
-.select select{
-	border: 1px solid #CCCCCC;
-    float: left;
-    padding: 1px;
-    width: auto;
-}
-
-.gray{
-	color:#666;
-}
-.darkgray{
-    background: none repeat scroll 0 0 #444444;
-    color: #FFFFFF;
-    line-height: 30px;
-    padding-left: 1%;
-    width: 96%;
-}
-.flt{
-    float:left !important;
+.mtop60{
+	margin-top:60px;
 }
 .mtop20{
-    margin-top:20px !important;
+	margin-top:20px;
 }
-.list1stHeading{
-    width: 100px;
+.mtop40{
+	margin-top:40px;
 }
-.list2ndHeading{
+.mtop50{
+	margin-top:50px;
+}
+.mtop10{
+	margin-top:10px;
+}
+.left-warrpper{
+	width:218px;
+	float:left;
+}
+.right-warrpper{
+	width:740px;
+	float:right;
+}
+.nav-top-holder{
+	background:url(../assets/nav-top-bg.png) no-repeat;
+	width:182px;
+	height:65px;
+	float:left;
+	font-size:20px;
+	color:#eeeeee;
+	font-family:"myriad Pro";
+	text-align:center;
+	line-height:65px;
+}
+.nav-mid-holder{
+	background:url(../assets/nav-mid-bg.png) repeat-y;
+	width:182px;
+	height:auto;
+	float:left;
+}
+.nav-bot-holder{
+	background:url(../assets/nav-bot-bg.png) no-repeat;
+	width:182px;
+	height:6px;
+	float:left;
+}
+.left-nav{
+	float:left;
+	width:100%;
+	list-style:none;
+}
+.left-nav li{
+	border-bottom: 1px solid #DCDCDC;
+    color: #555555;
+    float: left;
+    font-family: "myriad Pro";
+    font-size: 16px;
+    padding: 14px;
+    width: 85%;
+}
+.left-nav li a{
+	color:#555555;
+	text-decoration:none;
+}
+.active{
+	background: url("../assets/active-bg.png") no-repeat scroll 0 0 transparent;
+    border: 0 none !important;
+    color: #FFFFFF !important;
+    height: 40px;
+    line-height: 34px;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 5px;
+    padding-bottom: 0 !important;
+    padding-left: 10px;
+    padding-right: 0 !important;
+    padding-top: 0 !important;
+    width: 190px !important;
+}
+.active a{
+	color:#FFF!important;
+}
+.bdr-bot-none{
+	border-bottom:none!important;
+}
+.right-warrpper h1{
+	font-size:18px;
+	font-family:"myriad Pro";
+	color:#555555;
+	float:left;
+	width:100%;
+}
+.right-warrpper p{
+	font-size:14px;
+	color:#949494;
+	float:left;
+	width:100%;
+}
+.gellary-holder{
+	float:left;
+	width:322px;
+}
+.gellary-details{
+	float:right;
+	width:355px;
+}
+.gellary-details h1{
+	float:left;
+	width:100%;
+	font-size:28px;
+	font-family:"myriad Pro";
+	color:#555555;
+	font-weight:normal;
+}
+.gellary-details h2{
+	float:left;
+	width:100%;
+	font-size:18px;
+	font-family:"myriad Pro";
+	color:#555555;
+	font-weight:normal;
+}
+.gellary-details p{
+	float:left;
+	width:100%;
+	margin-top:10px;
+	font-size:14px;
+	color:#949494;
+	font-weight:normal;
+}
+.price-holder{
+	float:left;
+	width:100%;
+	color:#0078c9;
+	font-size:38px;
+	font-family:"myriad Pro";
+	margin-top:20px;
+}
+.sml{
+	font-size:18px;
+	color:#555555;
+}
+.add-to-cart{
+	float:left;
+	width:100%;
+}
+.add-to-cart img{
+	float:left;
+}
+.facebook-like img{
+	float:left;
+	margin-right:5px;
+}
+.facebook-like label{
+	float:left;
+	font-size:11px;
+	color:#747475;
+	line-height:22px;
+}
+.details{
+	float:left;
+	width:100%;
+	list-style:none;
+}
+.details li{
+	background:url("../assets/disc.png") no-repeat scroll left 6px transparent;
+	float:left;
+	width:90%;
+	padding-left:3%;
+	font-size:14px;
+	color:#949494;
+	margin-top:10px;
+}
+.details li a{
+	text-decoration:none;
+	color:#949494;
+}
+.peddle-top-mid-bar, .peddle-top-right-bar, .peddle-top-left-bar{
+	background:url(../assets/peddle-tio-bar-left.png) no-repeat;
+	width:11px;
+	height:51px;
+}
+.peddle-top-mid-bar{
+	background:url(../assets/peddle-tio-bar-mid.png) repeat-x;
+	width: 938px !important;
+}
+.peddle-top-right-bar{
+	background:url(../assets/peddle-tio-bar-right.png) no-repeat;
+}
+.lego-peddle-small{
+	width:200px;
+}
+.lego-peddle-small img{
+	float: left;
+    margin-left: 10px;
+    margin-top: 14px;
+}
+.profile-pic{
+	width:402px;
+}
+.profile-pic img{
+	border: 3px solid #D3D5D5;
+    float: left;
+    height: 29px;
+    margin-right: 5px;
+    margin-top: 4px;
+    width: 29px;
+}
+.profile-pic label{
+	background: url("../assets/bdr-link.png") repeat-y scroll right top transparent;
+    color: #EEEEEE;
+    float: left;
+    font-family: "myriad Pro";
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 43px;
+    margin-right: 10px;
+    padding-right: 10px;
+}
+.profile-pic input[type="text"]{
+	background: url("../assets/search-bg.png") repeat-x scroll 0 0 transparent;
+    border: 1px solid #D4D5D5;
+    float: left;
+    height: 21px;
+    margin-top: 10px;
+    width: 200px;
+}
+.profile-pic input[type="submit"]{
+	background: url("../assets/search-btn.png") no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 23px;
+    margin-top: 10px;
+    width: 26px;
+}
+.top-links{
+	width:auto;
+	list-style:none;
+}
+.top-links li{
+	float:left;
+	width:auto;
+	font-size:14px;
+	font-family:"myriad Pro";
+	background: url("../assets/bdr-link.png") repeat-y scroll right top transparent;
+}
+.top-links li a{
+	color:#999999;
+	float:left;
+	line-height: 43px;
+	text-decoration:none;
+	padding:0 18px;
+}
+.bg-r-none{
+	background:none!important;
+}
+.active-link a{
+	background: url("../assets/active-link.png") repeat-x scroll 0 0 transparent !important;
+}
+.frame{
+	border: medium none !important;
+    height: 88px !important;
+    margin-left: 0 !important;
+    margin-top: -80px;
+    position: relative !important;
+    width: 88px !important;
+    z-index: 1 !important;
+}
+.small-logo{
+	float: left;
+    margin-top: 7px;
+    width: 95px;
+}
+.small-logo img{
+	border: 1px solid #D9D9D9;
+    float: left;
+    height: 70px;
+    margin-left: 8px;
+    position: relative;
+    width: 70px;
+    z-index: 2;
+}
+.logo-text{
+	width:704px;
+	font-size:24px;
+	font-family:"myriad Pro";
+	color:#949494;
+}
+.left-content{
+	width:685px;
+}
+.right-content{
+	width:250px;
+}
+.data-holder-left{
+	width:200px;
+}
+.data-holder-left h1{
+	float:left;
+	width:100%;
+	font-family:"myriad Pro";
+	font-size:20px;
+	color:#555555;
+	line-height:20px;
+}
+.data-holder-left p{
+	float:left;
+	width:100%;
+	font-family:"myriad Pro";
+	font-size:14px;
+	color:#949494;
+}
+.data-holder-right{
+	width:480px;
+}
+.data-holder-right textarea{
+	background:url(../assets/shadow-bottom.png) no-repeat;
+	width:476px;
+	height:77px;
+}
+.btn-holder img{
+	float:left;
+}
+.btn-holder input[type="submit"]{
+	background: url("../assets/peddle-btn.png") no-repeat scroll 0 0 transparent;
+    float: right;
+    height: 51px;
+    width: 99px;
+}
+.bdr-bot{
+	border-bottom:1px dotted #aaaaaa;
+	padding-bottom:20px;
+}
+.content-top-bg{
+	background:url(../assets/content-top-bg.png) no-repeat;
+	width:685px;
+	height:56px;
+}
+.content-mid-bg{
+	background: url("../assets/content-mid-bg.png") repeat-y scroll 0 0 transparent;
+    height: auto;
+    padding-bottom: 20px;
+    width: 685px;
+}
+.content-bot-bg{
+	background:url(../assets/content-bot-bg.png) no-repeat;
+	width:685px;
+	height:69px;
+}
+.heading-top{
+	margin-left: 20px;
+    width: auto;
+}
+.heading-top p, .heading-top h1{
+	color: #F6F6F6;
+    float: left;
+    font-family: "myriad Pro";
+    font-size: 20px;
+    line-height: 56px;
+    margin-right: 5px;
+    width: auto;
+}
+.heading-top p{
+	font-size:14px;
+	color:#f6f6f6;
+}
+.back-btn-holder{
+	margin-right: 8px;
+    margin-top: 20px;
+    width: auto;
+}
+.back-btn-holder img{
+	float:right;
+	margin-right:10px;
+}
+.cont{
+	margin-left: 6px;
+    width: 98.5%;
+}
+.gellery-left{
+	width:240px;
+}
+.gellery-right{
+	width:420px;
+}
+.gellary-frame{
+	border: medium none !important;
+    height: 178px !important;
+    margin-left: -1px !important;
+    margin-top: -169px;
+    position: relative !important;
+    width: 228px !important;
+    z-index: 1 !important;
+}
+.gellary-logo{
+	float: left;
+    margin-left: 20px;
+    margin-top: 33px;
+}
+.gellary-logo img{
+	border: 1px solid #D9D9D9;
+    float: left;
+    height: 157px;
+    margin-left: 8px;
+    position: relative;
+    width: 208px;
+    z-index: 2;
+}
+.moreinfo{
+	border-left:1px solid #c7c7c8;
+	padding-left:10px;
+	margin-left:20px;
+	margin-top:20px;
+}
+.moreinfo a{
+	float:left;
+	/*width:100%;*/
+	font-size:16px;
+	color:#555555;
+	font-family:"myriad Pro";
+	text-decoration:none;
+}
+.moreinfo a:hover{
+	float:left;
+	/*width:100%;*/
+	font-size:16px;
+	background-color:#fcfcfc !important;
+	font-family:"myriad Pro";
+	text-decoration:none;
+}
+.moreinfo img{
+	float:left;
+	margin-right:10px;
+	margin-top:5px;
+}
+.gellery-right p, .gellery-right h1{
+	color: #555;
+    float: left;
+    font-family: "myriad Pro";
+    font-size: 20px;
+    width: 100%;
+}
+.gellery-right p{
+    font-size: 16px;
+    line-height: 33px;
+}
+.g-img label{
+	color: #555;
+    float: left;
+    font-family: "myriad Pro";
+    font-size: 18px;
+    width: auto;
+	line-height:62px;
+	margin-right:10px;
+}
+.g-img img{
+	float:left;
+	margin-right:1px;
+}
+.content-bot-bg img{
+	float: right;
+    margin-right: 10px;
+    margin-top: 19px;
+}
+.content-bot-bg label{
+	 color: #5D5D5D;
+    float: right;
+    font-size: 16px;
+    line-height: 67px;
+    margin-right: 10px;
+    width: auto;
+}
+.links-top-bg{
+	background:url(../assets/links-top-bg.png) no-repeat;
+	width:250px;
+	height:69px;
+	font-size:20px;
+	color:#eeeeee;
+	font-family:"myriad Pro";
+	text-align:center;
+	line-height:65px;
+}
+.links-mid-bg{
+	background:url(../assets/links-mid-bg.png) repeat-y;
+	width:250px;
+	height:auto;
+}
+.links-bot-bg{
+	background:url(../assets/links-bot-bg.png) no-repeat;
+	width:250px;
+	height:11px;
+}
+.menu{
+	width:100%;
+	list-style:none;
+}
+.menu li{
+	border-bottom: 1px solid #DDDDDD;
+    float: left;
+    margin-left: 5px;
+    padding: 15px 14px;
+    width: 86%;
+}
+.menu li p{
+	float:left;
+	margin-right:10px;
+	font-family:16px;
+	font-family:"myriad Pro";
+	color:#555;
+}
+.menu li label{
+	float:left;
+	background:url(../assets/blue-box.png) no-repeat;
+	width:26px;
+	height:24px;
+	font-size:16px;
+	color:#eeeeee;
+	text-align:center;
+	line-height:24px;
+}
+.online{
+	border-bottom: 1px solid #E6E7E7;
+    color: #949494;
+    font-family: "myriad Pro";
+    margin-left: 5px;
+    padding: 7px 10px;
+    width: 90%;
+}
+.online-content{
+	width:100%;
+	list-style:none;
+}
+.online-content li{
+	border-bottom: 1px solid #DDDDDD;
+    float: left;
+    margin-left: 5px;
+    padding: 15px 14px;
+    width: 86%;
+}
+.online-content li a{
+	 background: url("../assets/online.png") no-repeat scroll left center transparent;
+    padding-left: 18px;
+    text-decoration: none;
+}
+.blue-left{
+	background:url(../assets/blue-left.png) no-repeat;
+	width:10px;
+	height:243px;
+}
+.blue-mid{
+	background:url(../assets/blue-mid.png) repeat-x;
+	width:940px;
+	height:243px;
+}
+.blue-right{
+	background:url(../assets/blue-right.png) no-repeat;
+	width:10px;
+	height:243px;
+}
+.thumb-img{
+	background:url(../assets/thumb-img.png) no-repeat;
+	width:218px;
+	text-align:center;
+	height:170px;
+	margin-right:10px;
+}
+.thumb-img img{
+	float:none;
+	margin-top:54px;
+}
+.thumb-img p{
+	border-top: 1px solid #E6E7E7;
+    float: left;
+    margin-top: 15px;
+    padding-top: 10px;
+    width: 100%;
+}
+.ml18{
+	margin-left:18px!important;
+}
+.footer{
+	background:url(../assets/footer-bg.png) repeat-x;
+	height:361px;
+   	padding:0;
+}
+.foot-links{
+	list-style: none outside none;
+    width: 80%;
+}
+.linksholder-new, .linksholder{
+	background: url("../assets/footer.png") repeat-y scroll right top transparent;
+    margin-top: 4px;
+    padding: 13px 0;
+    width: 188px;
+	min-height:331px;
+}
+.linksholder-new h1, .foot-links h1{
+	border-bottom: 1px solid #616767;
+    color: #999999;
+    float: left;
+    font-family: "myriad Pro";
+    font-size: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 2px;
+    width: 100%;
+}
+.foot-links li{
+	color: #999999;
+    float: left;
+    font-family: "myriad Pro";
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 23px;
+    width: 100%;
+}
+.foot-links li a{
+	text-decoration:none;
+	color:#999999;
+}
+.linksholder-new{
+	width:240px;
+	margin-left:20px;
+	padding-right:20px;
+}
+.footer-bar-links{
+	background:url(../assets/footer-bar-links.png) no-repeat;
+	width:240px;
+	height:77px;
+	margin-bottom:10px;
+}
+.footer-bar-links img{
+	float: left;
+    margin-left: 11px;
+    margin-top: 24px;
+    width: 60px;
+}
+.footer-bar-links h2, .footer-bar-links h1{
+	border: medium none;
+    color: #555555;
+    float: right;
+    font-size: 18px;
+    margin-bottom: 0;
+    margin-top: 13px;
+    padding: 0;
+    width: 154px;
+}
+.footer-bar-links h2{
+	color:#777777!important;
+	margin-top:0!important;
+}
+.footlogo{
+	float:left;
+	width:100%;
+	margin-top:40px;
+}
+.footlogo img{
+	float:left;
+}
+.linksholder1{
+    margin-top: 4px;
+    padding: 13px 0;
+    width: 190px;
+	margin-left:20px;
+	min-height:347px;
+}
+.linksholder1 h1{
+	border-bottom: 1px solid #616767;
+    color: #999999;
+    float: left;
+    font-family: "myriad Pro";
+    font-size: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    width: 100%;
+}
+.linksholder1 img{
+	margin-top:5px;
+	float:left;
+	margin-right:20px;
+}
+.copyright{
+	width:100%;
+	font-size:13px;
+	color:#999999;
+	margin-top:180px;
+}
+.featured-heading{
+	font-size:28px;
+	font-family:"myriad Pro";
+	color:#555555;
+}
+.gellary-main-img img{
+	float:left;
+}
+.icon-btn{
+	margin-top:-164px;
+}
+.icon-btn img{
+	float: left;
+    margin-left: -22px;
+}
+.icon-btn-next{
+	float: right !important;
+    margin-left: 0 !important;
+    margin-right: -22px!important;
+}
+.gellary-bg{
+	background:url(../assets/gellary-bg.png) no-repeat;
+	width:243px;
+	height:238px;
+	margin-right:5px;
+}
+.gellary-img{
+	background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #D9D9D9;
+    height: 158px;
+    margin-left: 10px;
+    margin-top: 12px;
+    text-align: center;
+    width: 218px;
+}
+.gellary-img img{
+	float:none;
+	height:158px;
+}
+.gellary-left-holder{
+	background: url("../assets/border-bg.png") repeat-y scroll right top transparent;
+    color: #EEEEEE;
+    font-family: "myriad Pro";
+    font-size: 14px;
+    margin-top: 7px;
+    min-height: 34px;
+    padding: 5px 10px 12px 14px;
+    width: 103px;
+}
+.price-div{
+	color: #EEEEEE;
+    font-family: "myriad Pro";
+    font-size: 30px;
+    margin-left: 6px;
+    margin-top: 22px;}
+.doller{
+	font-size:16px;
+}
+.mrNone{
+	margin-right:0!important;
+}
+.more-produts{
+	text-align:center;
+}
+.pbotton20{
+	padding-bottom:20px;
+}
+.body{
+	background:none scroll 0 0 #fff;
+}
+.gray-top-bar{
+	background:none scroll 0 0 #f2f3f4;
+	border-bottom:1px solid #d1d1d1;
+	min-height:100px;
+}
+.white-logo{
+	width:30%;
+}
+.white-logo img{
+	float:left;
+}
+.white-links{
+	list-style:none;
+	margin-top:45px;
+}
+.white-links li{
+	float:left;
+	width:auto;
+	margin-right:20px;
+	font-size:14px;
+}
+.white-links li a{
+	color:#000;
+	text-decoration:none;
+}
+.search-holder{
+	margin-top: 36px;
+	width:auto;
+}
+.search-holder input[type="text"]{
+	background: url("../assets/search-white.png") no-repeat scroll 0 0 transparent;
+    color: #777777;
+    float: left;
+    height: 26px;
+    padding: 3px;
+    width: 204px;
+}
+.search-holder input[type="submit"]{
+	background: url("../assets/search-white-btn.png") no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 32px;
+    width: 27px;
+}
+.white-left{
+	width:250px;
+	border-right:2px solid #f3f3f3;
+	padding-right:20px;
+}
+.white-right{
+	width:670px;
+}
+.rebort img{
+	float:left;
+	margin-right:10px;
+}
+.rebort h2, .rebort h1{
+	color: #000000;
+    float: right;
+    font-size: 16px;
     width: 150px;
 }
-.list3rdHeading{
-    width: 100px;
+.rebort h2{
+	color:#a2a2a2!important;
 }
-.list4thHeading{
-    width: 100px;
+.blue-heading{
+	 background: none repeat scroll 0 0 #3EACC8;
+    border: 1px solid #A0A0A0;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 36px;
+    padding-left: 10px;
+    width: 98% !important;
 }
-.list5thHeading{
-    width: 100px;
+.pro-left{
+	width:65px;
+	margin-right:10px;
 }
-.list6thHeading{
-    width: 100px;
+.pro-left img{
+	float:left;
 }
-.list7thHeading{
-    width: 50px;
+.pro-right{
+	width:170px;
 }
-.lightgray{
-    padding-left: 0.8%;
-    width: 96%;
-    border: 1px solid #444;
-    border-top: none !important;
+.pro-right img{
+	float:right;
 }
-.wite{
-    background: #f1f1f1;
-}
-list2ndHeading{
-    width: 150px;
-}
-.list3rdHeading{
-    width: 100px;
-}
-.list4thHeading{
-    width: 100px;
-}
-.list5thHeading{
-    width: 100px;
-}
-.list6thHeading{
-    width: 100px;
-}
-.list7thHeading{
-    width: 50px;
-}
-.lineHeight30{
-    line-height: 30px;
-}
-.flt{
-    float:left !important;
-}
-.flt{
-    float:left !important;
-}
-.inputFieldsHolder{
-    float:left;
-    width:50%;
-}
-.inputFieldsHolder label{
+.pro-right h1{
+	 color: #3EACC8;
     float: left;
-    line-height: 27px;
-    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 7px;
 }
-.inputFieldsHolder input{
-    border:none;
-    -webkit-border-radius:5px;
-    -moz-border-radius:5px;
-    border-radius:5px;
-    -webkit-box-shadow:0 0 5px #666 inset;
-    -moz-box-shadow:0 0 5px #666 inset;
-    box-shadow:0 0 5px #666 inset;
-    height:25px;
-    line-height:25px;
-    width:275px;
-    text-indent:5px;
+.pro-right p{
+	float:left;
+	font-size:14px;
+	font-weight:bold;
 }
-.inputFieldsHolder select{
-    border: 1px solid #CCCCCC;
+.pro-right p a{
+	text-decoration:none;
+	color:#8d8d8d;
+}
+.pro-right label{
+	background: url("../assets/tag.png") no-repeat scroll 0 0 transparent;
     float: left;
-    height: 27px;
-    padding: 2px;
-    width: 277px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 36px;
+    margin-top: 5px;
+    padding-left: 44px;
+	color:#8d8d8d;
 }
-.bannerHeading{
-    text-align:center;
+.showmore{
+    font-size: 16px;
+    font-weight: bold;
+	color: #8d8d8d;
 }
-.bannerHeading img{
-    float:none;
+.showmore a{
+	color: #8d8d8d;
+	text-decoration:none;
 }
-.bannerHeadingSmall{
-    font-size:28px;
-    font-weight:bold;
-    color:#3db2c2;
-    text-align:center;
+.showmore a:hover{
+	text-decoration:underline;
 }
-
-#product_add_form label.error {
-    border: medium none !important;
-    color: red;
-    display: inline;
-    float: left;
-    margin-left: 93px;
-    width: 100%;
+.store{
+	list-style:none;
 }
-.list2DescriptionndHeading{
-    width: 550px;
+.store li{
+	background: url("../assets/green-icon.png") no-repeat scroll left center transparent;
+    color: #8D8D8D;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 31px;
+    padding-left: 28px;
 }
-.list2nDescriptiondHeading{
-    width: 550px;
+.store li a{
+	color: #8d8d8d;
+	text-decoration:none;
 }
-#product_deatils_add_form label.error {
-    border: medium none !important;
-    color: red;
-    display: inline;
-    float: left;
-    margin-left: 93px;
-    width: 100%;
+.gray-bdr{
+	border-bottom:1px solid #e6e6e6;
+	border-top:1px solid #e6e6e6;
+	padding:5px 0;
 }
-#product_deatial_edit_form label.error {
-    border: medium none !important;
-    color: red;
-    display: inline;
-    float: left;
-    margin-left: 93px;
-    width: 100%;
+.gray-bdr img{
+	float:left;
+	margin-left:12px;
+	margin-right:20px;
+}
+.white-right h1{
+	float:left;
+	width:100%;
+	font-size:30px;
+	color:#3eacc8;
+	font-weight:normal;
+}
+.white-right textarea{
+	border:1px solid #d3d3d3;
+	float:left;
+	width:100%;
+	margin-top:10px;
+	min-height:100px;
 }
