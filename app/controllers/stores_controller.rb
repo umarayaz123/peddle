@@ -1,21 +1,23 @@
 class StoresController < ApplicationController
 #  before_filter :authenticate_user!
-  # GET /stores
-  # GET /stores.json
+# GET /stores
+# GET /stores.json
   before_filter :check_role
-  
-  def index 
+
+  def index
     @store = Store.find_by_name(request.subdomain)
     @store_name = request.subdomain
     @stores = Store.all
-    @products = @store.products
+    unless @store.blank?
+      @products = @store.products
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @stores }
     end
   end
-  
-  def show  	
+
+  def show
     @product = Product.find(params[:id])
   end
 
