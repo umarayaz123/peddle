@@ -4,8 +4,8 @@
 <% unless @resource.store_id.blank?%>
     <% @store = Store.find(@resource.store_id)%>
     <p><b>Store Name:</b><%= @store.name%></p>
-    <p><%= link_to 'Confirm my account', user_confirmation_url(@resource, :confirmation_token => @resource.confirmation_token, :store_name => @store.name) %></p>
+    <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token, :store_name => @store.name) %></p>
 <%else%>
     asasasas
-    <p><%= link_to 'Confirm my account', user_confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
-
+    <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+<%end%>
