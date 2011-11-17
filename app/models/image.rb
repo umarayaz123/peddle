@@ -5,4 +5,5 @@ class Image < ActiveRecord::Base
 #  validates_presence_of :snap
   belongs_to :product
   belongs_to :product_detail
+  belongs_to :store
 end

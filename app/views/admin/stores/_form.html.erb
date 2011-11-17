@@ -1,4 +1,4 @@
-<%= form_for([:admin, @store]) do |f| %>
+<%= form_for([:admin, @store], :html => {:multipart => true}) do |f| %>
     <% if @store.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@store.errors.count, "error") %> prohibited this store from being saved:</h2>
@@ -14,7 +14,7 @@
     <div class="signin_small_input_holder">
       <%= f.label :name %>
       <br/>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, :readonly => true %>
     </div>
     <div class="signin_small_input_holder">
       <%= f.label :description %>
@@ -30,6 +30,16 @@
       <%= f.label :package_id %>
       <br/>
       <%= f.select("package_id", @packages.collect { |p| [p.name, p.id] }) %>
+    </div>
+    <div id="photos" style="float: left;
+            margin-top: 20px;
+            width: 94%;">
+      <%= f.label :snap, 'Attachment' %>
+      <br/>
+      <%= f.fields_for :image do |builder| %>
+          <%= render "image", :image => builder %>
+      <% end %>
+
     </div>
     <div class="actions">
       <%= f.submit %>

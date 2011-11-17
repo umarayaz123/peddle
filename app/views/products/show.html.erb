@@ -1,7 +1,13 @@
 <div class="body">
   <div class="wrapper">
     <div class="w100 mtop80">
-      <div class="logo"><%= link_to image_tag('/assets/clogo.png'), root_url %></div>
+      <div class="logo">
+      <% unless @store.image.blank? %>
+          <%= image_tag(@store.image.snap, :width => '100px', :height => '100px') %>
+      <% else %>
+          <img src="/assets/clogo.png" alt=""/>
+      <% end %>
+    </div>
       <div class="logo-text-holder">This is your store description. Lorem ipsum dolor sit amet, consectetur adipiscing
         elit. Donec ullamcorper sem in ipsum commodo accumsan.
       </div>

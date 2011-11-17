@@ -39,6 +39,7 @@ class Admin::StoresController < ApplicationController
   def edit
     @store = Store.find(params[:id])
     @packages = Package.all
+    @store.build_image
   end
 
   # POST /stores
