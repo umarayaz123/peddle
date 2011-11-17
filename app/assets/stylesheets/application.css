@@ -11,35 +11,43 @@
     margin: 0;
     padding: 0;
 }
+
 body {
     background: none repeat scroll 0 0 #FFFFFF;
     color: #000000;
     font-family: Arial;
     font-size: 14px;
 }
+
 h1, h2, h3, h4, h5, h6, p, img {
     margin: 0;
     padding: 0;
 }
+
 h1 {
     color: #000000;
     font-size: 20px;
 }
+
 h2 {
     color: #666666;
     font-size: 14px;
 }
+
 img {
     border: medium none;
 }
+
 a {
     color: #000000;
 }
+
 .container {
     margin: 0 auto;
     width: 950px;
-	padding: 0 10px;
+    padding: 0 10px;
 }
+
 .header {
     background-color: #F2F3F4;
     border-bottom: 1px solid #D1D1D1;
@@ -47,52 +55,62 @@ a {
     height: 105px;
     width: 100%;
 }
-.header .container{
-padding: 0;
+
+.header .container {
+    padding: 0;
 }
+
 .topNav {
     float: left;
     margin-left: 70px;
     margin-top: 40px;
     width: auto;
 }
+
 .topNav li {
     display: inline;
     float: left;
     list-style: none outside none;
-    margin:0 4px;
+    margin: 0 4px;
     width: auto;
 }
+
 .topNav li a:link {
     text-decoration: none;
 }
+
 .topNav li a:visited {
     text-decoration: none;
 }
+
 .topNav li a:active {
     text-decoration: none;
 }
+
 .topNav li a:hover {
     text-decoration: underline;
 }
+
 .logo {
     float: left;
     margin-top: 20px;
     width: 254px;
 }
+
 .searchfield {
     background-image: url("../assets/search-icon.png");
     float: right;
     height: 36px;
     width: 243px;
-	margin-top:35px;
+    margin-top: 35px;
 }
-.searchfield input[type="text"]{
+
+.searchfield input[type="text"] {
     margin: 10px 0 0 8px;
     width: 201px;
 }
 
-.searchfield input[type="button"]{
+.searchfield input[type="button"] {
     background: none repeat scroll 0 0 transparent;
     border: 0 none transparent;
     cursor: pointer;
@@ -101,31 +119,31 @@ padding: 0;
     width: 30px;
 }
 
-.bodyholder{
-margin-top:45px;
-float:left;
-width:100%;
+.bodyholder {
+    margin-top: 45px;
+    float: left;
+    width: 100%;
 }
 
-.partitionleft{
-	float:left;
-	width:253px;
-	margin-right:-2px;
-	border-right:2px solid #f3f3f3;
-	padding-right:15px;
-	padding-bottom:100px;
-	margin-bottom:20px;
+.partitionleft {
+    float: left;
+    width: 253px;
+    margin-right: -2px;
+    border-right: 2px solid #f3f3f3;
+    padding-right: 15px;
+    padding-bottom: 100px;
+    margin-bottom: 20px;
 
 }
 
-.partitionright{
-	float:left;
+.partitionright {
+    float: left;
     border-left: 2px solid #F3F3F3;
     float: left;
     padding-left: 20px;
     width: 659px;
-	padding-bottom:100px;
-	margin-bottom:20px;
+    padding-bottom: 100px;
+    margin-bottom: 20px;
 }
 
 .picnbasicinfoholder {
@@ -134,30 +152,33 @@ width:100%;
     width: 100%;
 }
 
-.picnbasicinfoholder img{
-float:left;
-margin-right:15px;
+.picnbasicinfoholder img {
+    float: left;
+    margin-right: 15px;
 }
 
-.picnbasicinfoholder .username{
+.picnbasicinfoholder .username {
     float: left;
     font-size: 16px;
     font-weight: bold;
     margin-top: 25px;
-	min-width: 147px;
+    min-width: 147px;
 }
-.picnbasicinfoholder .subtitle{
+
+.picnbasicinfoholder .subtitle {
     color: #A2A2A2;
     float: left;
     font-size: 16px;
     font-weight: normal;
     min-width: 147px;
 }
-.leftcatholder{
+
+.leftcatholder {
     float: left;
     margin-bottom: 30px;
 }
-.leftcatholder .catagory{
+
+.leftcatholder .catagory {
     background-image: url("../assets/suggest-header.png");
     color: #FFFFFF;
     float: left;
@@ -169,31 +190,35 @@ margin-right:15px;
     padding: 0 10px;
     width: 233px;
 }
-.leftcatholder  .sugeststoriesentry{
+
+.leftcatholder  .sugeststoriesentry {
     float: left;
     margin-bottom: 30px;
 }
-.leftcatholder  .profilepic{
-float:left;
-margin-right:10px;
-}
-.leftcatholder  .sugeststoriesentry .ltcatclose{
-float:right;
+
+.leftcatholder  .profilepic {
+    float: left;
+    margin-right: 10px;
 }
 
-.leftcatholder  .sugeststoriesentry .storyheading{
-float:left;
-color:#3eacc8;
-font-weight:bold;
-font-size:16px;
+.leftcatholder  .sugeststoriesentry .ltcatclose {
+    float: right;
 }
 
-.leftcatholder  .sugeststoriesentry .storysubheading{
-float:left;
-color:#8d8d8d;
-font-weight:bold
+.leftcatholder  .sugeststoriesentry .storyheading {
+    float: left;
+    color: #3eacc8;
+    font-weight: bold;
+    font-size: 16px;
 }
-.leftcatholder  .sugeststoriesentry .tag{
+
+.leftcatholder  .sugeststoriesentry .storysubheading {
+    float: left;
+    color: #8d8d8d;
+    font-weight: bold
+}
+
+.leftcatholder  .sugeststoriesentry .tag {
     background-image: url("../assets/tag.png");
     background-position: left center;
     background-repeat: no-repeat;
@@ -201,14 +226,15 @@ font-weight:bold
     height: 35px;
     line-height: 36px;
     padding-left: 45px;
-	font-weight:bold;
-}
-.leftcatholder  .sugeststoriesentry .tag a{
-color:#8d8d8d;
-text-decoration:none;
+    font-weight: bold;
 }
 
-.leftcatholder .leftcolentry{
+.leftcatholder  .sugeststoriesentry .tag a {
+    color: #8d8d8d;
+    text-decoration: none;
+}
+
+.leftcatholder .leftcolentry {
     background-image: url("../assets/lidot.png");
     background-position: left center;
     background-repeat: no-repeat;
@@ -224,22 +250,25 @@ text-decoration:none;
     width: 200px;
 }
 
-.leftcatholder .leftcolentry a{
-color:#8d8d8d;
-text-decoration:none;
+.leftcatholder .leftcolentry a {
+    color: #8d8d8d;
+    text-decoration: none;
 }
-.partitionleft .invitefriends{
+
+.partitionleft .invitefriends {
     float: left;
     margin-bottom: 30px;
     width: 100%;
 }
-.partitionleft .invitefriends .heading{
-font-size:16px;
-font-weight:bold;
-color:#8d8d8d;
-line-height:38px;
+
+.partitionleft .invitefriends .heading {
+    font-size: 16px;
+    font-weight: bold;
+    color: #8d8d8d;
+    line-height: 38px;
 }
-.partitionleft .invitefriends .buttonholder{
+
+.partitionleft .invitefriends .buttonholder {
     border-bottom: 1px solid #CECECE;
     border-top: 1px solid #CECECE;
     float: left;
@@ -247,14 +276,15 @@ line-height:38px;
     text-align: center;
     width: 100%;
 }
-.partitionright h1{
-font-size:30px;
-line-height:34px;
-color:#3eacc8;
-font-weight:normal;
+
+.partitionright h1 {
+    font-size: 30px;
+    line-height: 34px;
+    color: #3eacc8;
+    font-weight: normal;
 }
 
-.partitionright .posttext{
+.partitionright .posttext {
     background-image: url("../assets/post.png");
     background-position: left top;
     background-repeat: no-repeat;
@@ -264,7 +294,8 @@ font-weight:normal;
     padding: 4px;
     width: 630px;
 }
-.partitionright .addimage{
+
+.partitionright .addimage {
     color: #2F8774;
     float: left;
     font-size: 16px;
@@ -272,17 +303,18 @@ font-weight:normal;
     line-height: 26px;
     text-align: left;
 }
-.partitionright .addimage a{
+
+.partitionright .addimage a {
     color: #2F8774;
-	text-decoration:none;
-}
-.partitionright .addimage img{
-float:left;
-margin-right:3px;
+    text-decoration: none;
 }
 
+.partitionright .addimage img {
+    float: left;
+    margin-right: 3px;
+}
 
-.partitionright .share{
+.partitionright .share {
     color: #2F8774;
     float: right;
     font-size: 16px;
@@ -290,10 +322,10 @@ margin-right:3px;
     line-height: 26px;
     margin-right: 30px;
     text-align: left;
-	margin-bottom:40px;
+    margin-bottom: 40px;
 }
 
-.partitionright .share .square{
+.partitionright .share .square {
     border: 1px solid #D8D8D8;
     float: left;
     height: 18px;
@@ -301,12 +333,12 @@ margin-right:3px;
     width: 18px;
 }
 
-.partitionright .share img{
+.partitionright .share img {
     float: left;
     margin: 0 2px;
 }
 
-.partitionright .mainentry{
+.partitionright .mainentry {
     background-image: url("../assets/partition.png");
     background-position: center top;
     background-repeat: repeat-x;
@@ -317,22 +349,22 @@ margin-right:3px;
     width: 627px;
 }
 
-.partitionright .mainentry .contentholder{
-width:527px;
-float:left;
+.partitionright .mainentry .contentholder {
+    width: 527px;
+    float: left;
 }
 
-.partitionright .mainentry  .ltlogos{
-float:left;
-width:56px;
+.partitionright .mainentry  .ltlogos {
+    float: left;
+    width: 56px;
 }
 
-.partitionright  .mainentry .ltlogos img{
-float:left;
-margin-bottom:25px;
+.partitionright  .mainentry .ltlogos img {
+    float: left;
+    margin-bottom: 25px;
 }
 
-.partitionright .mainentry h2{
+.partitionright .mainentry h2 {
     color: #9C9C9C;
     float: left;
     font-size: 18px;
@@ -341,7 +373,7 @@ margin-bottom:25px;
     margin-top: 10px;
 }
 
-.partitionright .mainentry h3{
+.partitionright .mainentry h3 {
     color: #9C9C9C;
     float: left;
     font-size: 16px;
@@ -349,77 +381,89 @@ margin-bottom:25px;
     margin-top: 12px;
 }
 
-.partitionright .mainentry .viewstorelink{
+.partitionright .mainentry .viewstorelink {
     color: #3EACC8;
     float: right;
     font-size: 16px;
     margin-top: 12px;
     text-decoration: none;
 }
-.partitionright .mainentry .miantext{
-font-size:16px;
-width:100%;
-float:left;
+
+.partitionright .mainentry .miantext {
+    font-size: 16px;
+    width: 100%;
+    float: left;
 }
-.partitionright .mainentry .miantext img{
-margin-top:10px;
-margin-right:12px;
-border:1px solid #d8d8d8;
+
+.partitionright .mainentry .miantext img {
+    margin-top: 10px;
+    margin-right: 12px;
+    border: 1px solid #d8d8d8;
 }
-.signin_text, .signin_heading{
-	color: #3EACC8;
+
+.signin_text, .signin_heading {
+    color: #3EACC8;
     font-size: 30px;
     font-weight: normal;
     line-height: 34px;
-	float:left;
-	width:100%;
+    float: left;
+    width: 100%;
 }
-.signin_text{
-	font-size:14px;
-	color:#000;
-	margin-top:10px;
-	line-height:20px;
+
+.signin_text {
+    font-size: 14px;
+    color: #000;
+    margin-top: 10px;
+    line-height: 20px;
 }
-.signin_text a{
-	color: #3EACC8;
-	text-decoration:underline;
-	font-weight:bold;
-}
-.signin_text a:hover{
-	text-decoration:none;
-}
-.signin_text a:visited{
+
+.signin_text a {
     color: #3EACC8;
-	text-decoration:underline;
-	font-weight:bold;
+    text-decoration: underline;
+    font-weight: bold;
 }
-.signin_input_holder{
-	float:left;
-	width:100%;
-	margin-top:10px;
+
+.signin_text a:hover {
+    text-decoration: none;
 }
-.signin_input_holder label{
-	float:left;
-	width:100%;
-	font-size:14px;
-	color:#9c9c9c;
+
+.signin_text a:visited {
+    color: #3EACC8;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.signin_input_holder {
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.signin_input_holder label {
+    float: left;
+    width: 100%;
+    font-size: 14px;
+    color: #9c9c9c;
     text-align: left;
 }
-.signin_input_holder input{
-	background: url("../assets/input_bg.png") no-repeat scroll 0 0 transparent;
+
+.signin_input_holder input {
+    background: url("../assets/input_bg.png") no-repeat scroll 0 0 transparent;
     float: left;
     height: 30px;
     margin-top: 5px;
     padding: 3px;
     width: 100%;
 }
-.submit_holder{
-	float:left;
-	margin-top:10px;
-	width:100%;
+
+.submit_holder {
+    float: left;
+    margin-top: 10px;
+    width: 100%;
 }
-.submit_holder input{
-	background: url("../assets/input_btn.png") no-repeat scroll 0 0 transparent;
+
+.submit_holder input {
+    background: url("../assets/input_btn.png") no-repeat scroll 0 0 transparent;
     color: #FFFFFF;
     cursor: pointer;
     float: right;
@@ -428,105 +472,119 @@ border:1px solid #d8d8d8;
     padding: 6px 12px;
     text-align: center;
 }
-.signin_holder{
+
+.signin_holder {
     float: left;
     margin-left: 25%;
     width: 50%;
-	padding-bottom:20px;
+    padding-bottom: 20px;
 }
-.top_login_bg{
-	float:left;
-	width:515px;
-	height:11px;
-	background:url(../assets/top_login_bg.png) no-repeat;
+
+.top_login_bg {
+    float: left;
+    width: 515px;
+    height: 11px;
+    background: url(../assets/top_login_bg.png) no-repeat;
 }
-.mid_login_bg{
-	background: url("../assets/mid_login_bg.png") repeat-y scroll 0 0 transparent;
+
+.mid_login_bg {
+    background: url("../assets/mid_login_bg.png") repeat-y scroll 0 0 transparent;
     float: left;
     height: auto;
     padding: 0 4%;
     width: 477px;
 }
-.bot_login_bg{
-	float:left;
-	width:515px;
-	height:11px;
-	background:url(../assets/bot_login_bg.png) no-repeat;
+
+.bot_login_bg {
+    float: left;
+    width: 515px;
+    height: 11px;
+    background: url(../assets/bot_login_bg.png) no-repeat;
 }
-.checkbox_holder, .signin_small_input_holder{
-	float:left;
-	width:100%;
-	margin-top:10px;
+
+.checkbox_holder, .signin_small_input_holder {
+    float: left;
+    width: 100%;
+    margin-top: 10px;
 }
-.signin_small_input_holder label{
-	float:left;
-	width:100%;
-	font-size:14px;
-	color:#9c9c9c;
+
+.signin_small_input_holder label {
+    float: left;
+    width: 100%;
+    font-size: 14px;
+    color: #9c9c9c;
     text-align: left;
 }
-.signin_small_input_holder p{
-	color: #000000;
+
+.signin_small_input_holder p {
+    color: #000000;
     float: left;
     font-size: 12px;
     line-height: 33px;
     margin-left: 10px;
     width: auto;
 }
-.signin_small_input_holder input{
-	background: url("../assets/small_input.png") no-repeat scroll 0 0 transparent;
+
+.signin_small_input_holder input {
+    background: url("../assets/small_input.png") no-repeat scroll 0 0 transparent;
     float: left;
     height: 30px;
     margin-top: 5px;
     padding: 3px;
     width: 258px;
 }
-.checkbox_input_holder_small, .checkbox_input_holder{
-	float:left;
-	width:auto;
+
+.checkbox_input_holder_small, .checkbox_input_holder {
+    float: left;
+    width: auto;
 }
-.checkbox_input_holder_small input, .checkbox_input_holder input{
-	float:left;
-	width:auto;
-	margin-right:10px;
-	margin-top:2px;
+
+.checkbox_input_holder_small input, .checkbox_input_holder input {
+    float: left;
+    width: auto;
+    margin-right: 10px;
+    margin-top: 2px;
 }
-.checkbox_input_holder_small label, .checkbox_input_holder label{
-	color: #9C9C9C;
+
+.checkbox_input_holder_small label, .checkbox_input_holder label {
+    color: #9C9C9C;
     float: left;
     font-size: 14px;
     width: auto;
-	margin-right:10px;
-}
-.checkbox_input_holder_small{
-	float:left;
-	width:100%!important;
-}
-.checkbox_input_holder_small label{
-	width: 92%!important;
-	font-size:12px!important;
+    margin-right: 10px;
 }
 
-.img_div{
-    float:left;
+.checkbox_input_holder_small {
+    float: left;
+    width: 100% !important;
+}
+
+.checkbox_input_holder_small label {
+    width: 92% !important;
+    font-size: 12px !important;
+}
+
+.img_div {
+    float: left;
     margin-left: 100px;
     width: 30%;
 }
 
-.description{
-    float:left;
-    width:58%;
-    height:200px;
+.description {
+    float: left;
+    width: 58%;
+    height: 200px;
     margin-top: 25px;
 }
-.details_div{
-    float:left;
+
+.details_div {
+    float: left;
     border: 2px;
     margin-left: 90px;
     margin-right: 40px;
 }
 
-.small_imgs{
+.small_imgs {
     border: 1px solid #D9D9D9;
     /*float: left;*/
     /*height: 157px;*/
@@ -534,4 +592,111 @@ border:1px solid #d8d8d8;
     /*position: relative;*/
     /*width: 208px;*/
     z-index: 2;
+}
+
+.minislider {
+    width: 720px;
+    height: 264px;
+}
+
+.monitor a {
+    float: left;
+    margin: 0 5px 0 0;
+    width: 5px;
+    height: 5px;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+.monitor {
+    margin: 10px 5px 0 0;
+    float: left;
+    padding-left: 365px;
+}
+
+.monitor a.selected {
+    background: #333;
+}
+
+.next.disabled, .prev.disabled {
+    color: #aaa;
+    cursor: default;
+}
+
+/************************************************
+JCAROUSEL LITE
+************************************************/
+#list {
+     height:130px;
+     width:880px;
+     margin:-7px auto;
+}
+
+.slider {
+     float:left;
+     left: -5000px;
+     margin:15px;
+     /*position:relative;*/
+     visibility:hidden;
+}
+
+.slider ul {
+     height:100px;
+     width:600px;
+}
+
+.slider ul li {
+     padding:0 20px;
+}
+
+.slider ul li img {
+     cursor:pointer;
+     height:60px;
+     padding-top:3px;
+     width:70px;
+}
+
+.prev {
+     cursor:pointer;
+     float:left;
+     /*padding-top:60px;*/
+}
+
+.next {
+     cursor:pointer;
+     float:right;
+     /*padding-top:60px;*/
+}
+
+And here is the style for jQuery Captify.
+
+/************************************************
+CAPTIFY CAPTION
+************************************************/
+.caption-top, .caption-bottom {
+     background: #000000;
+     color: #ffffff;
+     cursor:default;
+     padding:2px;
+     font-size:11px;
+     text-align:center;
+}
+
+.caption-top {
+     border-width:0px;
+}
+
+.caption-bottom {
+     border-width:0px;
+}
+
+.caption a, .caption a {
+     background:#000;
+     border:none;
+     text-decoration:none;
+     padding:2px;
+}
+
+.caption a:hover, .caption a:hover {
+     background:#202020;
 }

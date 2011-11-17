@@ -479,7 +479,7 @@ a {
 }
 .moreinfo a{
 	float:left;
-	/*width:100%;*/
+	width:auto;
 	font-size:16px;
 	color:#555555;
 	font-family:"myriad Pro";
@@ -489,7 +489,7 @@ a {
 	float:left;
 	/*width:100%;*/
 	font-size:16px;
-	background-color:#fcfcfc !important;
+	background:none !important;
 	font-family:"myriad Pro";
 	text-decoration:none;
 }
@@ -757,6 +757,19 @@ a {
 .gellary-main-img img{
 	float:left;
 }
+.slide-background{
+    background: url("../assets/gellery-rec-bg.png") no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 264px;
+    width: 745px;
+}
+.slide-background img{
+    float: left;
+    height: 236px;
+    margin-left: 14px;
+    margin-top: 14px;
+    width: 692px;
+}
 .icon-btn{
 	margin-top:-164px;
 }
@@ -771,6 +784,7 @@ a {
 }
 .gellary-bg{
 	background:url(../assets/gellary-bg.png) no-repeat;
+
 	width:243px;
 	height:238px;
 	margin-right:5px;
@@ -802,7 +816,7 @@ a {
 	color: #EEEEEE;
     font-family: "myriad Pro";
     font-size: 30px;
-    margin-left: 6px;
+    margin-left: 0px;
     margin-top: 22px;}
 .doller{
 	font-size:16px;
@@ -982,4 +996,7 @@ a {
 	width:100%;
 	margin-top:10px;
 	min-height:100px;
+}
+.cursor_div{
+    cursor:pointer;
 }

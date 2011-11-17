@@ -13,7 +13,7 @@
           <div class="nav-mid-holder">
             <ul class="left-nav">
               <% @store.products.each do |product| %>
-                  <li class="<%= 'active' if params[:id]== product.id.to_s%>"><%= link_to product.name, :controller => "products", :action => "show", :id => product.id %></li>
+                  <li class="<%= 'active' if params[:id]== product.id.to_s %>"><%= link_to product.name, :controller => "products", :action => "show", :id => product.id %></li>
               <% end %>
             </ul>
           </div>
@@ -45,25 +45,34 @@
         <div class="w100 mtop20">
           <div class="gellary-holder">
             <%= image_tag(@product.images.first.snap, :width => "300", :height => "400") %>
-            <div class="carousel default">
-              <button class="prev" style="visibility:hidden"><<</button>
-              <div class="jCarouselLite">
-                <ul>
-                  <li>
-                    <!--<img src="image/1.jpg" alt="" width="150" height="118">-->
-                    <% unless @product.product_details.empty? %>
-                        <% @product.product_details.each do |product_detail| %>
-                            <% unless product_detail.images.blank? %>
-                                <%= image_tag(product_detail.images.first.snap, :width => "100", :height => "100", :id => product_detail.price) %>
-                            <% end %>
-                        <% end %>
-                    <% end %>
-                  </li>
-                </ul>
+            <div id="list2">
+              <div class="w1">
+                <div class="heading-topa falt">
+                </div>
+                <div class="back-btn-holder frt">
+                  <span class="forward"><img src="/assets/next.jpg"></span>
+                  <span class="previous"><img src="/assets/prev.jpg"></span>
+                </div>
               </div>
-              <button class="next" style="visibility:hidden">>></button>
-              <div class="clear"></div>
+              <div class="w100">
+                <div class="slider">
+                  <ul>
+                    <!--<img src="image/1.jpg" alt="" width="150" height="118">-->
+                    <%- unless @product.product_details.empty? %>
+                        <%- @product.product_details.each do |product_detail| %>
+                            <%- unless product_detail.images.blank? %>
+                                <li>
+                                  <%= image_tag(product_detail.images.first.snap, :width => "100", :height => "100", :id => product_detail.price, :class => "captify") %>
+                                </li>
+                            <%- end %>
+                        <%- end %>
+                    <%- end %>
+                  </ul>
+                </div>
+              </div>
+
             </div>
+
           </div>
 
           <div class="gellary-details">
@@ -114,7 +123,38 @@
 
 
 <script>
+
+    $(function() {
+        $(".slider").jCarouselLite({
+            btnNext: ".forward",
+            btnPrev: ".previous",
+            visible: 2
+        });
+    });
     $(document).ready(function() {
+
+        $('img.captify').captify({
+            // all of these options are... optional
+            // speed of the mouseover effect
+            speedOver: 'fast',
+            // speed of the mouseout effect
+            speedOut: 'normal',
+            // how long to delay the hiding of the caption after mouseout (ms)
+            hideDelay: 500,
+            // 'fade', 'slide', 'always-on'
+            animation: 'slide',
+            // text/html to be placed at the beginning of every caption
+            prefix: '',
+            // opacity of the caption on mouse over
+            opacity: '0.7',
+            // the name of the CSS class to apply to the caption box
+            className: 'caption-bottom',
+            // position of the caption (top or bottom)
+            position: 'bottom',
+            // caption span % of the image
+            spanWidth: 'auto'
+        });
+
 //        $(".default .jCarouselLite").jCarouselLite({
 //            btnNext: ".default .next",
 //            btnPrev: ".default .prev"

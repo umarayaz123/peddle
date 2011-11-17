@@ -2,7 +2,7 @@
   <div class="w100 mtop60">
     <div class="logo"><img src="/assets/clogo.png" alt=""/></div>
     <div class="logo-text-holder">
-      <%= @store.description%>
+      <%= @store.description %>
     </div>
   </div>
   <div class="w100 mtop60 pbotton20">
@@ -11,9 +11,13 @@
         <div class="nav-top-holder">Our products</div>
         <div class="nav-mid-holder">
           <ul class="left-nav">
-            <li class="active latest_products"><a href="#">Latest products</a></li>
+            <li class="active latest_products">
+              <div class="cursor_div">Latest products</div>
+            </li>
             <% @store.products.each do |product| %>
-                <li class="products <%= 'active' if params[:id]== product.id.to_s %>"><%= link_to product.name, '#' %></li>
+                <li class="products <%= 'active' if params[:id]== product.id.to_s %>">
+                  <div class="cursor_div"><%= product.name %></div>
+                </li>
             <% end %>
           </ul>
         </div>
@@ -42,11 +46,30 @@
 
       <div class="w100 mtop20 bdr-bot">
 
-        <div class="gellary-main-img w100"><img src="/assets/gellary-main-img.png" alt=""/></div>
-        <div class="icon-btn w100">
-          <img src="/assets/gray-back-icon.png" alt=""/>
-          <img src="/assets/gray-next-icon.png" alt="" class="icon-btn-next"/>
+        <div class="gellary-main-img w100"></div>
+        <div class="gellary-main-img w100 minislider">
+          <% unless @products.blank? %>
+              <% @products.each do |product| %>
+                  <div class="slide-background">
+                    <% unless product.images.first.blank? %>
+                        <%= image_tag(product.images.first.snap) %>
+                    <% else %>
+                        <img src="/assets/no-img.png" alt="" width="740px"/>
+                    <% end %>
+                  </div>
+              <% end %>
+          <% else %>
+              <img src="/assets/no-img.png" alt="" width="740px"/>
+          <% end %>
         </div>
+        <div class="icon-btn w100">
+          <a class="prev" href="#"><img src="/assets/gray-back-icon.png" alt=""/></a>
+          <a class="next" href="#"><img src="/assets/gray-next-icon.png" alt="" class="icon-btn-next"/></a>
+        </div>
+
+
+      </div>
+      <div class="monitor">
 
       </div>
       <h1 class="mtop20">Latest products</h1>
@@ -56,7 +79,7 @@
       <div class="w100">
         <% unless @products.blank? %>
             <% @products.each do |product| %>
-                <div class="gellary-bg flt mtop20 <%= product.name%>">
+                <div class="gellary-bg flt mtop20 <%= product.name %>">
                   <div class="gellary-img flt">
                     <% unless product.images.first.blank? %>
                         <%= link_to image_tag(product.images.first.snap, :width => "120", :height => "150"), :controller => "products", :action => "show", :id => product.id %>
@@ -71,7 +94,8 @@
                   end %>
                   <% unless lowest_price == -1 %>
                       <div class="price-div flt">
-                        <span class="doller"> $</span> <%= lowest_price %><span class="doller">0</span>
+                        <span class="doller"> $</span> <%= lowest_price %>
+                        <span class="doller">0</span>
                       </div>
                   <% else %>
                       <div class="price-div flt">
@@ -91,17 +115,50 @@
 </div>
 
 <script>
-  $(document).ready(function(){
-      $('.products').children().click(function(){
-          $('.gellary-bg').hide();
-          $('.gellary-bg.'+this.innerHTML).show();
-          $('.active').removeClass('active');
-          $(this).parent().addClass('active');
-      });
-      $('.latest_products').children().click(function(){
-          $('.gellary-bg').show();
-          $('.active').removeClass('active');
-          $(this).parent().addClass('active');
-      });
-  });
+    $(function() {
+        $(".slider").jCarouselLite({
+            btnNext: ".next",
+            btnPrev: ".prev",
+            visible: 3
+        });
+    });
+
+    //Captify
+    $(document).ready(function() {
+        $('img.captify').captify({
+            // all of these options are... optional
+            // speed of the mouseover effect
+            speedOver: 'fast',
+            // speed of the mouseout effect
+            speedOut: 'normal',
+            // how long to delay the hiding of the caption after mouseout (ms)
+            hideDelay: 500,
+            // 'fade', 'slide', 'always-on'
+            animation: 'slide',
+            // text/html to be placed at the beginning of every caption
+            prefix: '',
+            // opacity of the caption on mouse over
+            opacity: '0.7',
+            // the name of the CSS class to apply to the caption box
+            className: 'caption-bottom',
+            // position of the caption (top or bottom)
+            position: 'bottom',
+            // caption span % of the image
+            spanWidth: '100%'
+        });
+        $(".minislider").minislider({
+            monitor: '.monitor'
+        });
+        $('.products').children().click(function() {
+            $('.gellary-bg').hide();
+            $('.gellary-bg.' + this.innerHTML).show();
+            $('.active').removeClass('active');
+            $(this).parent().addClass('active');
+        });
+        $('.latest_products').children().click(function() {
+            $('.gellary-bg').show();
+            $('.active').removeClass('active');
+            $(this).parent().addClass('active');
+        });
+    });
 </script>

@@ -229,3 +229,24 @@ a {
 	text-decoration:none;
 	color:#949494;
 }
+#list2 {
+    height: 130px;
+    margin: -7px auto;
+    width: 313px !important;
+}
+.slider ul li img {
+     cursor:pointer;
+     height:70px;
+     padding-top:0px;
+     width:80px;
+}
+.forward {
+    cursor: pointer;
+    float: right;
+    margin-right: 25px !important;
+}
+.previous {
+    cursor: pointer;
+    float: left;
+    margin-left: -250px !important;
+}
