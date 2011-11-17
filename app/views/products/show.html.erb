@@ -3,9 +3,9 @@
     <div class="w100 mtop80">
       <div class="logo">
       <% unless @store.image.blank? %>
-          <%= image_tag(@store.image.snap, :width => '100px', :height => '100px') %>
+          <%= link_to image_tag(@store.image.snap, :width => '100px', :height => '100px'),root_url %>
       <% else %>
-          <img src="/assets/clogo.png" alt=""/>
+          <%= link_to image_tag('/assets/clogo.png'), root_url %>
       <% end %>
     </div>
       <div class="logo-text-holder">This is your store description. Lorem ipsum dolor sit amet, consectetur adipiscing
