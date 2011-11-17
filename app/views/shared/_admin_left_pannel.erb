@@ -3,6 +3,7 @@
     <div class="leftHeading">
       <div class="inrHeading">Dashboard</div>
       <div class="inrHeading"><%=link_to "Manage Products", '/admin/products'%></div>
+      <div class="inrHeading"><%=link_to "Manage Your Store", '/admin/stores/'+current_user.store_id.to_s%></div>
       <%#*<div class="inrHeadingGray act"><a href="index.html">Manage Members</a></div>%>
     </div>
     <div class="leftHeading">

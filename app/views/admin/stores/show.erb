@@ -52,7 +52,8 @@
             <div class="mediaBtn2">
       <%#*<input type="submit" value="Edit" class="smallBtn" />%>
       <%#= link_to "Edit", edit_admin_user_path(user), :class => "smallBtn"%>
-              <%= link_to "Delete", '/admin/users/destroy/'+user.id.to_s, :confirm => 'Are you sure?', :method => :delete, :class => "smallBtn" %>
+              <%#= link_to "Delete", '/admin/users/destroy/'+user.id.to_s, :confirm => 'Are you sure?', :method => :delete, :class => "smallBtn" %>
+              <%= link_to "Edit", '/admin/stores/'+user.store_id.to_s+'/edit', :class => "smallBtn" %>
       <%#*<input type="submit" value="Delete" class="smallBtn" />%>
             </div>
           </div>
