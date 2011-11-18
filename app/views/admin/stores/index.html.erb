@@ -5,9 +5,9 @@
   </div>
   <div class="mngMain mtop20">
     <div class="label">SEARCH MEMBER :</div>
-    <div class="inputText"><input type="text" value="" /></div>
+    <div class="inputText"><input type="text" value=""/></div>
     <div class="mediaBtn1">
-      <input type="submit" value="Search" class="smallBtn" />
+      <input type="submit" value="Search" class="smallBtn"/>
     </div>
   </div>
 
@@ -21,25 +21,28 @@
 
   <div class="mngData">
     <% unless @stores.nil? %>
-      <% @stores.each_with_index do |store, index| %>
-        <div class="fMngHeading1"><%= link_to store.name, admin_store_path(store) %></div>
-        <%unless store.package.blank?%>
-          <div class="sMngHeading1"><%=store.package.name%></div>
-        <%else%>
-          <div class="sMngHeading1">none</div>
-        <%end%>
-        <%unless store.package.blank?%>
-          <div class="tMngHeading1"><%= store.package.price%> </div>
-        <%else%>
-          <div class="tMngHeading1">none</div>
-        <%end%>
-        <div class="foMngHeading1">
-          <div class="mediaBtn2">            
-            <%= link_to "Delete", '/admin/stores/destroy/'+store.id.to_s, :confirm => 'Are you sure?', :method => :delete, :class => "smallBtn" %>
-          </div>
-        </div>
-      <%end%>
-    <%end%>
+        <% @stores.each_with_index do |store, index| %>
+            <div class="fMngHeading1"><%= link_to store.name, admin_store_path(store) %></div>
+            <% unless store.package.blank? %>
+                <div class="sMngHeading1"><%= store.package.name %></div>
+            <% else %>
+                <div class="sMngHeading1">none</div>
+            <% end %>
+            <% unless store.package.blank? %>
+                <div class="tMngHeading1"><%= store.package.price %> </div>
+            <% else %>
+                <div class="tMngHeading1">none</div>
+            <% end %>
+            <div class="foMngHeading1">
+              <div class="mediaBtn2">
+                <%= link_to "Delete", '/admin/stores/destroy/'+store.id.to_s, :confirm => 'Are you sure?', :method => :delete, :class => "smallBtn" %>
+              </div>
+              <div class="mediaBtn2">
+                <%= link_to "Edit", '/admin/stores/'+store.id.to_s+'/edit', :class => "smallBtn" %>
+              </div>
+            </div>
+        <% end %>
+    <% end %>
 
   </div>
 </div>

@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
     #ActionMailer::Base.default_url_options[:host] = request.host_with_port
   end
 
-  def check_domain    
-    unless current_user.store.blank?      
+  def check_domain
+    unless current_user.store.blank?
       unless request.subdomain == current_user.store.name
         session["subdomain"] == request.subdomain
         redirect_to "/sign_out"
@@ -115,5 +115,15 @@ class ApplicationController < ActionController::Base
       sign_out_url
     end
   end
+
+  private
+  def current_cart
+    Cart.find(session[:cart_id])
+  rescue ActiveRecord::RecordNotFound
+    cart = Cart.create
+    session[:cart_id] = cart.id
+    cart
+  end
+
 
 end

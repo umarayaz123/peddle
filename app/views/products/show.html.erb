@@ -99,7 +99,7 @@
             </span>
             </div>
 
-            <div class="add-to-cart mtop20"><img src="/assets/add-to-cart.png" alt=""/></div>
+            <div class="add-to-cart mtop20"><%= link_to image_tag("/assets/add-to-cart.png"), line_items_path(:product_id => @product) %></div>
 
             <div class="w100 facebook-like mtop20">
               <img src="/assets/facebook-like.png" alt=""/>
