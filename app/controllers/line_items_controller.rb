@@ -6,7 +6,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @line_items }
+      format.json { render :json => @line_items }
     end
   end
 
@@ -17,7 +17,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @line_item }
+      format.json { render :json => @line_item }
     end
   end
 
@@ -28,7 +28,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @line_item }
+      format.json { render :json => @line_item }
     end
   end
 
@@ -40,18 +40,31 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-    @line_item = LineItem.new(params[:line_item])
-
+    @cart = current_cart
+    puts "*****************", params
+    puts "*****************", @cart.id
+    unless params[:line_item].nil?
+      product_detail = ProductDetail.find(params[:line_item][:product_detail_id])
+    else
+      puts "******************", params[:product_detail_id]
+      product_detail = ProductDetail.find(params[:product_detail_id])
+    end
+    @line_item = @cart.line_items.build(:product_detail => product_detail)
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item, notice: 'Line item was successfully created.' }
-        format.json { render json: @line_item, status: :created, location: @line_item }
+        format.html { redirect_to(@line_item.cart,
+                                  :notice => 'Line item was successfully created.') }
+        format.xml { render :xml => @line_item,
+                            :status => :created, :location => @line_item }
+
       else
-        format.html { render action: "new" }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.xml { render :xml => @line_item.errors,
+                            :status => :unprocessable_entity }
       end
     end
   end
+
 
   # PUT /line_items/1
   # PUT /line_items/1.json
@@ -60,11 +73,11 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.update_attributes(params[:line_item])
-        format.html { redirect_to @line_item, notice: 'Line item was successfully updated.' }
+        format.html { redirect_to @line_item, :notice => 'Line item was successfully updated.' }
         format.json { head :ok }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json { render :json => @line_item.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -76,7 +89,13 @@ class LineItemsController < ApplicationController
     @line_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to line_items_url }
+      format.html {
+        unless params[:cart_id].blank?
+          redirect_to '/carts/'+params[:cart_id]
+        else
+          redirect_to carts_url
+        end
+      }
       format.json { head :ok }
     end
   end

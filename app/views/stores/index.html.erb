@@ -1,16 +1,5 @@
 <div class="wrapper">
-  <div class="w100 mtop60">
-    <div class="logo">
-      <% unless @store.image.blank? %>
-          <%= image_tag(@store.image.snap, :width => '100px', :height => '100px') %>
-      <% else %>
-          <img src="/assets/clogo.png" alt=""/>
-      <% end %>
-    </div>
-    <div class="logo-text-holder">
-      <%= @store.description %>
-    </div>
-  </div>
+  <%= render :partial => "/shared/store_header"%>
   <div class="w100 mtop60 pbotton20">
     <div class="left-warrpper">
       <div class="w100">

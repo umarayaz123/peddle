@@ -6,4 +6,5 @@ class Image < ActiveRecord::Base
   belongs_to :product
   belongs_to :product_detail
   belongs_to :store
+  belongs_to :user
 end

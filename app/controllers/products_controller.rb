@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
   def show
     @store = Store.find_by_name(request.subdomain)
     @product = Product.find(params[:id])
+    @line_item = LineItem.new
 
     respond_to do |format|
       format.html # show.html.erb

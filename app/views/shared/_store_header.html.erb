@@ -1,0 +1,12 @@
+<div class="w100 mtop60">
+    <div class="logo">
+      <% unless @store.image.blank? %>
+            <%= link_to image_tag(@store.image.snap, :width => '100px', :height => '100px'), root_url %>
+        <% else %>
+            <%= link_to image_tag('/assets/clogo.png'), root_url %>
+        <% end %>
+    </div>
+    <div class="logo-text-holder">
+      <%= @store.description %>
+    </div>
+  </div>

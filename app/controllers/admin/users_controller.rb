@@ -40,10 +40,10 @@ class Admin::UsersController < ApplicationController
 #    end
 #  end
 #
-#  # GET /sys_admins/1/edit
-#  def edit
-#    @sys_admin = SysAdmin.find(params[:id])
-#  end
+  # GET /sys_admins/1/edit
+  def edit
+    @user = User.find(params[:id])
+  end
 #
 #  # POST /sys_admins
 #  # POST /sys_admins.json
@@ -61,22 +61,22 @@ class Admin::UsersController < ApplicationController
 #    end
 #  end
 #
-#  # PUT /sys_admins/1
-#  # PUT /sys_admins/1.json
-#  def update
-#    @sys_admin = SysAdmin.find(params[:id])
-#
-#    respond_to do |format|
-#      if @sys_admin.update_attributes(params[:sys_admin])
-#        format.html { redirect_to @sys_admin, notice: 'Sys admin was successfully updated.' }
-#        format.json { head :ok }
-#      else
-#        format.html { render action: "edit" }
-#        format.json { render json: @sys_admin.errors, status: :unprocessable_entity }
-#      end
-#    end
-#  end
-#
+  # PUT /sys_admins/1
+  # PUT /sys_admins/1.json
+  def update
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to '/admin/users' }
+        format.json { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.json { render :json => @user.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
   def destroy
     @user = User.find(params[:id])
     @user.destroy    

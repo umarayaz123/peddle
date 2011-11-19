@@ -627,45 +627,45 @@ a {
 JCAROUSEL LITE
 ************************************************/
 #list {
-     height:130px;
-     width:880px;
-     margin:-7px auto;
+    height: 130px;
+    width: 880px;
+    margin: -7px auto;
 }
 
 .slider {
-     float:left;
-     left: -5000px;
-     margin:15px;
-     /*position:relative;*/
-     visibility:hidden;
+    float: left;
+    left: -5000px;
+    margin: 15px;
+    /*position:relative;*/
+    visibility: hidden;
 }
 
 .slider ul {
-     height:100px;
-     width:600px;
+    height: 100px;
+    width: 600px;
 }
 
 .slider ul li {
-     padding:0 20px;
+    padding: 0 20px;
 }
 
 .slider ul li img {
-     cursor:pointer;
-     height:60px;
-     padding-top:3px;
-     width:70px;
+    cursor: pointer;
+    height: 60px;
+    padding-top: 3px;
+    width: 70px;
 }
 
 .prev {
-     cursor:pointer;
-     float:left;
-     /*padding-top:60px;*/
+    cursor: pointer;
+    float: left;
+    /*padding-top:60px;*/
 }
 
 .next {
-     cursor:pointer;
-     float:right;
-     /*padding-top:60px;*/
+    cursor: pointer;
+    float: right;
+    /*padding-top:60px;*/
 }
 
 And here is the style for jQuery Captify.
@@ -674,29 +674,34 @@ And here is the style for jQuery Captify.
 CAPTIFY CAPTION
 ************************************************/
 .caption-top, .caption-bottom {
-     background: #000000;
-     color: #ffffff;
-     cursor:default;
-     padding:2px;
-     font-size:11px;
-     text-align:center;
+    background: #000000;
+    color: #ffffff;
+    cursor: default;
+    padding: 2px;
+    font-size: 11px;
+    text-align: center;
 }
 
 .caption-top {
-     border-width:0px;
+    border-width: 0px;
 }
 
 .caption-bottom {
-     border-width:0px;
+    border-width: 0px;
 }
 
 .caption a, .caption a {
-     background:#000;
-     border:none;
-     text-decoration:none;
-     padding:2px;
+    background: #000;
+    border: none;
+    text-decoration: none;
+    padding: 2px;
 }
 
 .caption a:hover, .caption a:hover {
-     background:#202020;
+    background: #202020;
+}
+
+.cart_title {
+    font: 120% bold;
+    text-align: center;
 }

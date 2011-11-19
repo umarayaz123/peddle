@@ -1,5 +1,9 @@
 Peddle::Application.routes.draw do
 
+  resources :line_items
+
+  resources :carts
+
 #  get "home/index"
 
   match '/admin' => 'admin/store_admin#index', :constraints => { :subdomain => /.+/ }

@@ -209,6 +209,7 @@ a {
 .add-to-cart{
 	float:left;
 	width:100%;
+   	cursor: pointer;
 }
 .add-to-cart img{
 	float:left;
@@ -314,7 +315,7 @@ a {
 	float:left;
 	line-height: 43px;
 	text-decoration:none;
-	padding:0 18px;
+	padding:0 10px;
 }
 .bg-r-none{
 	background:none!important;
@@ -785,7 +786,7 @@ a {
 .gellary-bg{
 	background:url(../assets/gellary-bg.png) no-repeat;
 
-	width:243px;
+	width:240px;
 	height:238px;
 	margin-right:5px;
 }

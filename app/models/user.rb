@@ -11,4 +11,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   belongs_to :store
 
+  has_one :image
+  accepts_nested_attributes_for :image
+
 end

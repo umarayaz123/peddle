@@ -1,17 +1,6 @@
 <div class="body">
   <div class="wrapper">
-    <div class="w100 mtop80">
-      <div class="logo">
-      <% unless @store.image.blank? %>
-          <%= link_to image_tag(@store.image.snap, :width => '100px', :height => '100px'),root_url %>
-      <% else %>
-          <%= link_to image_tag('/assets/clogo.png'), root_url %>
-      <% end %>
-    </div>
-      <div class="logo-text-holder">This is your store description. Lorem ipsum dolor sit amet, consectetur adipiscing
-        elit. Donec ullamcorper sem in ipsum commodo accumsan.
-      </div>
-    </div>
+    <%= render :partial => "/shared/store_header"%>
     <div class="w100 mtop60">
       <div class="left-warrpper">
         <div class="w100">
@@ -68,7 +57,7 @@
                         <%- @product.product_details.each do |product_detail| %>
                             <%- unless product_detail.images.blank? %>
                                 <li>
-                                  <%= image_tag(product_detail.images.first.snap, :width => "100", :height => "100", :id => product_detail.price, :class => "captify") %>
+                                  <%= image_tag(product_detail.images.first.snap, :width => "100", :height => "100", :id => product_detail.price, :class => "captify", :details => product_detail.id) %>
                                 </li>
                             <%- end %>
                         <%- end %>
@@ -87,9 +76,14 @@
             <p>Available in <%= @product.product_details.length %> different colors.</p>
 
             <div class="price-holder"><span class="sml">$</span><span class="price">
-              <% lowest_price = -1 %>
+              <% lowest_price = -1
+                 details_id = 0
+              %>
               <% @product.product_details.each do |detail|
-                  lowest_price = detail.price if detail.price < lowest_price || lowest_price == -1
+                  if detail.price < lowest_price || lowest_price == -1
+                      lowest_price = detail.price
+                      details_id = detail.id
+                  end
               end %>
               <% unless lowest_price == -1 %>
                   <%= lowest_price %>
@@ -98,8 +92,30 @@
               <% end %>
             </span>
             </div>
+            <!--<div class="add-to-cart mtop20"><%#= link_to image_tag("/assets/add-to-cart.png"), line_items_path(:product_id => @product) %></div>-->
 
-            <div class="add-to-cart mtop20"><%= link_to image_tag("/assets/add-to-cart.png"), line_items_path(:product_id => @product) %></div>
+            <%= form_for(@line_item) do |f| %>
+                <% if @line_item.errors.any? %>
+                    <div id="error_explanation">
+                      <h2><%= pluralize(@line_item.errors.count, "error") %> prohibited this line_item from being
+                        saved:</h2>
+
+                      <ul>
+                        <% @line_item.errors.full_messages.each do |msg| %>
+                            <li><%= msg %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                <% end %>
+
+                <div class="field">
+                  <%= f.hidden_field :product_detail_id, :value => details_id %>
+                </div>
+                <div class="actions">
+                  <%#= f.submit %>
+                  <div class="add-to-cart mtop20" details="<%= details_id %>"><%= image_tag("/assets/add-to-cart.png") %></div>
+                </div>
+            <% end %>
 
             <div class="w100 facebook-like mtop20">
               <img src="/assets/facebook-like.png" alt=""/>
@@ -139,6 +155,16 @@
     });
     $(document).ready(function() {
 
+        $('.add-to-cart').click(function() {
+            if ($('#line_item_product_detail_id').val() != "0") {
+                product_detail_id = $(this).attr('details');
+                $.post("/line_items/create", $("#new_line_item").serialize()).success(function() {alert("Product has successfully been added to Cart ");});
+            }
+            else{
+                alert("no product to add");
+            }
+        });
+
         $('img.captify').captify({
             // all of these options are... optional
             // speed of the mouseover effect
@@ -165,9 +191,11 @@
 //            btnNext: ".default .next",
 //            btnPrev: ".default .prev"
 //        });
-        $('li img').click(function() {
+        $('li img.captify').click(function() {
             $('.gellary-holder img:first').attr('src', this.src);
             $('.price').html(this.id);
+            $('.add-to-cart').attr('details', $(this).attr('details'));
+            $('#line_item_product_detail_id').val($(this).attr('details'));
         });
     });
 
