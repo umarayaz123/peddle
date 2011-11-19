@@ -71,6 +71,7 @@ class Admin::UsersController < ApplicationController
         format.html { redirect_to '/admin/users' }
         format.json { head :ok }
       else
+        puts "erererereer"
         format.html { render :action => "edit" }
         format.json { render :json => @user.errors, :status => :unprocessable_entity }
       end
