@@ -19,7 +19,7 @@
               <td><%= item.product_detail.color %></td>
               <td><%= item.product_detail.size %></td>
               <td class="item_price"><%= number_to_currency(item.total_price) %></td>
-              <td><div class="submitInrBtn1"><%= link_to 'Remove from cart', '/line_items/destroy/'+item.id.to_s+'?cart_id='+@cart.id.to_s, :confirm => 'Are you sure?', :method => :delete %></div></td>
+              <td><div class="submitInrBtn2"><%= link_to 'Remove from cart', '/line_items/destroy/'+item.id.to_s+'?cart_id='+@cart.id.to_s, :confirm => 'Are you sure?', :method => :delete %></div></td>
             </tr>
         <% end %>
         <tr class="total_line">
@@ -29,10 +29,9 @@
       </table>
     </div>
     </div>
-    <%= link_to image_tag('/assets/empty-cart.png'), @cart, :method => :delete,
-                  :confirm => 'Are you sure?' %>
+    <%= link_to image_tag('/assets/empty-cart.png'), '/carts/destroy/'+@cart.id.to_s, :confirm => 'Are you sure?', :method => :delete %>
     <br/>
     <%= link_to image_tag('/assets/back.png'), root_url() %>
-    <div class="submitInrBtn1"><%= link_to "Checkout", new_order_path%></div>
+    <div class="blueInrBtn"><%= link_to "Checkout", new_order_path%></div>
   </div>
 </div>

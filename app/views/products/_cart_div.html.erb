@@ -1,0 +1,16 @@
+<div class="cart-holder frt">
+  <div class="cart-left flt">
+    <h1>Your cart</h1>
+
+    <h2><%= link_to "VIEW CART", "/carts/"+session[:cart_id].to_s%></h2>
+  </div>
+  <div class="cart-right flt">
+    <p>ITEMS</p>
+
+    <h1><%= @cart.total_items%></h1>
+
+    <p>TOTAL</p>
+
+    <h1><%= @cart.total_price%></h1>
+  </div>
+</div>

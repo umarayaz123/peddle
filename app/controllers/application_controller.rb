@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
     #ActionMailer::Base.default_url_options[:host] = request.host_with_port
   end
 
+  def current_cart_create
+    @cart = current_cart
+  end
+
   def check_domain
     unless current_user.store.blank?
       unless request.subdomain == current_user.store.name

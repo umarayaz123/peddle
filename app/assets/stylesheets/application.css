@@ -705,3 +705,497 @@ CAPTIFY CAPTION
     font: 120% bold;
     text-align: center;
 }
+.cart-holder{
+	background: url("../assets/cart-bg.png") no-repeat scroll 0 0 transparent;
+    height: 102px;
+    width: 202px;
+}
+.cart-left{
+	 border-right: 1px solid #E5E5E5;
+    margin-right: 5%;
+    margin-top: 5px;
+    min-height: 93px;
+    width: 51%;
+}
+.cart-left h1, .cart-left h2 {
+    color: #828282;
+    float: left;
+    font-size: 13px;
+    height: auto;
+    line-height: 20px;
+    margin-top: 27px;
+    text-align: center;
+    width: 100%;
+}
+.cart-left h2{
+	font-size:13px;
+	margin-top:0!important;
+}
+.cart-left h2 a{
+    text-decoration: none;
+	font-size: 13px;
+	margin-top:0!important;
+}
+.cart-right{
+	width:38%;
+}
+.cart-right p{
+	font-size:12px;
+	color:#555555;
+	text-transform:uppercase;
+	margin-top: 5px;
+	float:left;
+	width:100%;
+}
+.cart-right h1 {
+    color: #0078C9;
+    float: left;
+    font-size: 20px;
+    height: auto;
+    line-height: 20px;
+}
+.white-right-bg, .white-left-bg{
+	background:url(../assets/white-left-bg.png) no-repeat;
+	width:6px;
+	height:64px;
+}
+.white-mid-bg{
+	background:url(../assets/white-mid-bg.png) repeat-x;
+	width:728px;
+	height:64px;
+}
+.white-right-bg{
+	background:url(../assets/white-right-bg.png) no-repeat;
+}
+.here-links, .here-text{
+	float:left;
+	font-size:14px;
+	color:#555555;
+	line-height:64px;
+	text-transform:uppercase;
+	font-weight:bold;
+	margin-right:10px;
+}
+.here-links{
+	font-weight:normal;
+	text-transform:none;
+}
+.here-links a{
+	text-decoration:none;
+	color:#555555;
+}
+.bacck-top-products{
+	width:auto;
+	margin-top:16px;
+}
+.select-holder{
+	 background: url("../assets/select-bg.png") no-repeat scroll 0 0 transparent;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: bold;
+    height: 32px;
+    line-height: 30px;
+    padding-left: 10px;
+    width: 176px;
+}
+.foot-bg{
+	background:url(../assets/foot-bg.png) repeat-x;
+	height:50px;
+	font-size:14px;
+	color:#999999;
+	line-height:50px;
+}
+.downarrow{
+	margin-left:5px;
+	margin-top:3px;
+}
+.setting{
+	margin-right: -475px;
+    position: absolute;
+    right: 50%;
+    top: 44px;
+    width: 147px;
+}
+.setting-top-bg{
+	background:url(../assets/setting-top-bg.png) no-repeat;
+	width:147px;
+	height:5px;
+}
+.setting-mid-bg{
+	background:url(../assets/setting-mid-bg.png) repeat-y;
+	width:147px;
+	height:auto;
+}
+.setting-bot-bg{
+	background:url(../assets/setting-bot-bg.png) no-repeat;
+	width:147px;
+	height:8px;
+}
+.setting-links{
+	list-style:none;
+	width:100%;
+}
+.setting-links li{
+	border-bottom: 1px solid #D5D6D6;
+    float: left;
+    margin-left: 4px;
+    padding: 5px 0 5px 1px;
+    width: 94%;
+}
+.setting-links li a{
+	color: #555555;
+    float: left;
+    font-size: 14px;
+    padding: 8px 0 8px 10px;
+    text-decoration: none;
+}
+.act a, .setting-links li a:hover{
+	background: url("../assets/setting-act.png") no-repeat scroll 0 0 transparent !important;
+    color: #FFFFFF !important;
+    line-height: 32px;
+    padding-bottom: 0 !important;
+    padding-left: 10px;
+    padding-right: 0 !important;
+    padding-top: 0 !important;
+    width: 135px;
+}
+.black-top-bar{
+	background:url(../assets/black-top-bg.png) repeat-x;
+	height:172px;
+}
+.logoblack{
+	width:30%;
+}
+.logoblack img{
+	float:left;
+	margin-top:30px;
+}
+.black-links{
+	list-style:none;
+}
+.black-links li{
+	float:left;
+	width:auto;
+	margin-right:30px;
+}
+.black-links li a{
+	font-size:16px;
+	color:#999999;
+	text-decoration:none;
+}
+.activeblack a, .black-links li a:hover{
+	font-size:20px!important;
+	color:#fff!important;
+}
+.trial-heading h1{
+	font-size:44px;
+	color:#00bee6;
+	font-family:"myriad Pro";
+	float:left;
+	width:100%;
+	font-weight:normal;
+}
+.trial-heading h2{
+	font-size:18px;
+	float:left;
+	width:100%;
+	color:#777777;
+	font-family:"myriad Pro";
+}
+.price-details-top-holder, .price-details-mid-holder, .price-details-bot-holder{
+	width:962px;
+}
+.price-details-mid-holder{
+	background:url(../assets/price-details-mid-holder.png) repeat-y;
+	height:auto;
+	font-size:16px;
+	color:#5d5d5d;
+	text-align:center;
+}
+.price-details-bot-holder{
+	background:url(../assets/price-details-bot-holder.png) no-repeat;
+	height:4px;
+}
+.price-start-up-heading{
+	background:url(../assets/start-up-bg.png) no-repeat;
+	width:242px;
+	height:94px;
+}
+.price-time-heading{
+	background:url(../assets/time-bg.png) no-repeat;
+	width:240px;
+	height:94px;
+}
+.price-corporation-heading{
+	background:url(../assets/corporate-bg.png) no-repeat;
+	width:240px;
+	height:94px;
+}
+.price-enterprise-heading{
+	background:url(../assets/enterprise.png) no-repeat;
+	width:240px;
+	height:94px;
+}
+.price-start-up-heading h2, .price-start-up-heading h1, .price-time-heading h1, .price-corporation-heading h1, .price-enterprise-heading h1{
+	float:left;
+	text-align:center;
+	font-size:22px;
+	font-family:"myriad Pro";
+	color:#eeeeee;
+	width:100%;
+	margin-top:10px;
+	font-weight:normal;
+}
+.price-start-up-heading h2{
+	font-size:30px;
+	color:#fff;
+	margin:0;
+	text-transform:uppercase;
+}
+.doller-icon{
+	font-size:20px;
+	color:#999999;
+	margin-right:5px;
+	margin-left:70px;
+}
+.price-icon{
+	font-size:30px;
+	color:#fff;
+	margin-right:5px;
+}
+.month-icon{
+	font-size:20px;
+	color:#999999;
+	margin-right:5px;
+	margin-top:10px;
+}
+.price-start-up {
+	line-height: 40px;
+    margin-left: 1px;
+    margin-right: 2px;
+    width: 239px;
+}
+.price-time, .price-corporation, .price-enterprise {
+	line-height: 40px;
+    margin-right: 2px;
+    width: 238px;
+}
+.white-bg{
+	background:#fff;
+}
+.price-time img, .price-corporation img, .price-enterprise img, .price-start-up img{
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.pb40{
+	padding-bottom:40px!important;
+}
+.blue-top-bg{
+	background:url(../assets/blue-top-bg.png) no-repeat;
+	width:902px;
+	height:8px;
+}
+.blue-mid-bg{
+	background:url(../assets/blue-mid-bg.png) repeat-y;
+	width:902px;
+	height:auto;
+}
+.blue-bot-bg{
+	background:url(../assets/blue-bot-bg.png) no-repeat;
+	width:902px;
+	height:8px;
+}
+.blue-box{
+	width:902px;
+	margin-left:30px;
+}
+.blue-mid-bg h1{
+	float:left;
+	width:100%;
+	text-align:center;
+	font-size:24px;
+	color:#f6f6f6;
+	font-family:"myriad Pro";
+	font-weight:normal;
+}
+.questions-holder{
+	width:862px;
+	margin-left:20px;
+}
+.questions-top{
+	background:url(../assets/questions-top.png) no-repeat;
+	height:5px;
+	width:860px;
+}
+.questions-mid{
+	background:url(../assets/questions-mid.png) repeat-y;
+	height:auto;
+	width:860px;
+}
+.questions-bot{
+	background:url(../assets/questions-bot.png) no-repeat;
+	height:66px;
+	width:860px;
+}
+.cquestions-left{
+	width:429px;
+	border-right:1px solid #d3d3d4;
+	padding:5px 0;
+}
+.cquestions-right{
+	width:428px;
+}
+.q-heading{
+	margin-top:10px;
+	width:36px;
+	text-align:right;
+	font-size:24px;
+	color:#53c4c4;
+	margin-right:20px;
+}
+.a-text, .q-text{
+	margin-top:10px;
+	width:369px;
+	text-align:left;
+	font-size:24px;
+	color:#777777;
+}
+.a-text{
+	font-size:14px;
+	line-height:20px;
+}
+.questions-bot label{
+	color: #5D5D5D;
+    float: left;
+    font-size: 16px;
+    margin-top: 20px;
+    text-align: center;
+    width: 86%;
+}
+.questions-bot img{
+	float: right;
+    margin-right: 10px;
+    margin-top: 17px;
+}
+.work-logo{
+	width:25%;
+	margin-top:20px;
+}
+.work-logo img{
+	float:left;
+}
+.g-icon{
+	width:auto;
+
+}
+.g-icon img{
+	margin-left:5px;
+	float:right;
+	margin-top:30px;
+}
+.signin{
+	margin-left: 20px !important;
+    margin-top: 26px !important;
+}
+.work-header{
+	background:url(../assets/work-bg.png) repeat-x;
+	height:102px;
+}
+.work-header h1{
+	float:left;
+	width:80%;
+	font-family:"Gotham";
+	font-size:28px;
+	color:#eeeeee;
+	font-weight:normal;
+	margin-left:10%;
+	margin-top:20px;
+}
+.work-header h2{
+	float:left;
+	width:80%;
+	font-family:"myriad Pro";
+	font-size:16px;
+	color:#eeeeee;
+	font-weight:normal;
+	margin-left:10%;
+}
+.tabs-holder{
+	float:left;
+	width:auto;
+	margin-top: 58px;
+}
+.tabs-left{
+	background:url(../assets/work-tabs-left.png) no-repeat;
+	width:5px;
+	height:42px;
+}
+.tabs-mid{
+	background:url(../assets/work-tabs-mid.png) repeat-x;
+	width:auto;
+	height:42px;
+}
+.tabs-right{
+	background:url(../assets/work-tabs-right.png) no-repeat;
+	width:5px;
+	height:42px;
+}
+.minhieght{
+	min-height:100px;
+}
+.tabs{
+	list-style:none;
+	width:auto;
+}
+.tabs li{
+	background: url("../assets/work-li-bg.png") repeat-y scroll right top transparent;
+    float: left;
+    margin-top: 4px;
+    width: auto;
+}
+.tabs li a{
+	color: #CBCBCB;
+	text-decoration:none;
+}
+.w-tab-left{
+	width:5px;
+	height:42px;
+}
+.w-tab-mid{
+	color: #CBCBCB;
+    font-family: "myriad Pro";
+    font-size: 18px;
+    height: 42px;
+    line-height: 34px;
+    padding: 0 10px;
+    width: auto;;
+}
+.w-tab-right{
+	width:5px;
+	height:42px;
+}
+.tab-act{
+	background:none!important;
+	margin:0!important;
+}
+.tab-act .w-tab-left{
+	background:url(../assets/work-tabs-left-act.png) no-repeat;
+}
+.tab-act .w-tab-mid{
+	background:url(../assets/work-tabs-mid-act.png) repeat-x;
+	color:#fff;
+	line-height:42px;
+}
+.tab-act .w-tab-right{
+	background:url(../assets/work-tabs-right-act.png) no-repeat;
+}
+.tab-act a{
+	color:#fff!important;
+}
+
+
+/*============== add new ============*/
+.main-banner{
+	background:url(../assets/bannerblue.png) repeat-x scroll 0 0 transparent;
+	min-height:253px;
+}

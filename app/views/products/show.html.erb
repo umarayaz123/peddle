@@ -1,6 +1,6 @@
 <div class="body">
   <div class="wrapper">
-    <%= render :partial => "/shared/store_header"%>
+    <%= render :partial => "/shared/store_header" %>
     <div class="w100 mtop60">
       <div class="left-warrpper">
         <div class="w100">
@@ -158,9 +158,12 @@
         $('.add-to-cart').click(function() {
             if ($('#line_item_product_detail_id').val() != "0") {
                 product_detail_id = $(this).attr('details');
-                $.post("/line_items/create", $("#new_line_item").serialize()).success(function() {alert("Product has successfully been added to Cart ");});
+                $.post("/line_items/create", $("#new_line_item").serialize()).success(function() {
+                    $('.cart-holder').fadeOut('slow').load('/cart_div').fadeIn("slow");
+                    alert("Product has successfully been added to Cart ");
+                });
             }
-            else{
+            else {
                 alert("no product to add");
             }
         });

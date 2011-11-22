@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_filter :current_cart_create
   # GET /products
   # GET /products.json
   def index
@@ -82,4 +83,11 @@ class ProductsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def _cart_div
+    #render :file => "/u/apps/warehouse_app/current/app/views/products/show"
+    render :partial => "cart_div", :layout => false
+    #render :nothing => true
+  end
+
 end

@@ -2,7 +2,7 @@ class StoresController < ApplicationController
 #  before_filter :authenticate_user!
 # GET /stores
 # GET /stores.json
-  before_filter :check_role
+  before_filter :check_role, :current_cart_create
 
   def index
     @store = Store.find_by_name(request.subdomain)

@@ -28,11 +28,6 @@
       </div>
 
       <ul class="top-links frt">
-        <% unless request.subdomain.blank? %>
-            <% unless session[:cart_id].nil? %>
-                <li><a href="/carts/<%= session[:cart_id] %>"><img src="/assets/cart.png" alt="cart"/></a></li>
-            <% end %>
-        <% end %>
         <li class="active-link"><a href="<%= root_url %>">Sales floor</a></li>
         <li><a href="#">Sales view</a></li>
         <li>

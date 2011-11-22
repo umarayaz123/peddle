@@ -219,6 +219,32 @@ a{
     text-decoration: none;
     width: 147px;
 }
+.submitInrBtn2 a{
+	background: url("../assets/grey.png") no-repeat scroll 0 0 transparent;
+    color: #FFFFFF;
+    float: right;
+    font-size: 14px;
+    font-weight: lighter;
+    height: 32px;
+    margin-right: 20px;
+    padding-top: 12px;
+    text-align: center;
+    text-decoration: none;
+    width: 147px;
+}
+.blueInrBtn a{
+	background: url("../assets/blue-bg.png") no-repeat scroll 0 0 transparent;
+    color: #FFFFFF;
+    float: right;
+    font-size: 14px;
+    font-weight: lighter;
+    height: 32px;
+    margin-right: 20px;
+    padding-top: 12px;
+    text-align: center;
+    text-decoration: none;
+    width: 147px;
+}
 .submitInrBtn1 input{
 	background: url("../assets/loginBG.png") no-repeat scroll 0 0 transparent;
     color: #FFFFFF;
