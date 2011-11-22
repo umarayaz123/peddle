@@ -22,8 +22,8 @@ Peddle::Application.configure do
   # Only use best-standards-support built into browsers
   #config.action_dispatch.best_standards_support = :builtin
   #config.session_store = {:domain => '.lvh.me'} # for localhost
-    config.action_dispatch.best_standards_support = :builtin
-    config.session_store                          = {:domain => '.ilsainteractive.com'}
+  config.action_dispatch.best_standards_support = :builtin
+  config.session_store                          = {:domain => '.ilsainteractive.com'}
 
   # Do not compress assets
   config.assets.compress = false
@@ -40,7 +40,7 @@ Peddle::Application.configure do
   config.assets.initialize_on_precompile = false
 
   #config.action_mailer.default_url_options = {:host => 'lvh.me:3000'}
-  config.action_mailer.default_url_options = {:host => 'ilsainteractive.com:3003'}
+config.action_mailer.default_url_options = {:host => 'ilsainteractive.com:3003'}
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
@@ -52,4 +52,36 @@ Peddle::Application.configure do
       :user_name => "adnan.arshad@ilsainteractive.com",
       :password => "ad123456"
   }
+
+  #config.after_initialize do
+  #  ActiveMerchant::Billing::Base.mode = :test
+  #  ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
+  #      #:login => "seller_1229899173_biz_api1.railscasts.com",
+  #      #:password => "FXWU58S7KXFC6HBE",
+  #      #:signature => "AGjv6SW.mTiKxtkm6L9DcSUCUgePAUDQ3L-kTdszkPG8mRfjaRZDYtSu"
+  #      :login => "adnan._1321870730_biz_api1.ilsainteractive.com",
+  #      :password => "1321870755",
+  #      :signature => "ACpd97qaQ5oE.P.scwB6okRJRN5lAsYWPxa66NQ9IuHmbkVyDKfKIctv"
+  #  )
+  #end
+
+  #------------------------------------------------------------------------
+  config.after_initialize do
+    #SslRequirement.disable_ssl_check = false
+    ActiveMerchant::Billing::Base.mode = :test
+    ActiveMerchant::Billing::PaypalExpressGateway.default_currency = 'USD'
+  end
+
+  paypal_options = {
+      :login => "seller_1229899173_biz_api1.railscasts.com",
+      :password => "FXWU58S7KXFC6HBE",
+      :signature => "AGjv6SW.mTiKxtkm6L9DcSUCUgePAUDQ3L-kTdszkPG8mRfjaRZDYtSu"
+  }
+
+  ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
+  ::STANDARD_GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(paypal_options)
+
+#-------------------------------------------------------------------------
+
+
 end
