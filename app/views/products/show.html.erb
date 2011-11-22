@@ -33,9 +33,16 @@
 
       </div>
       <div class="right-warrpper">
-        <h1>You are here:</h1>
-
-        <p>Home > Products > <%= @product.name %></p>
+        <div class="w100">
+          <div class="white-left-bg flt"></div>
+          <div class="white-mid-bg flt">
+            <div class="here-text flt">YOU ARE HERE:</div>
+            <div class="here-links flt"><a href="<%= $url%>">Peddle.com</a> &gt; <a href="<%= root_url%>"><%= request.subdomain%></a> &gt;
+              <a href=""><%= @product.name %></a></div>
+            <div class="bacck-top-products frt"><a href="<%= root_url%>"><img src="/assets/bacck-top-products.png" alt=""></a></div>
+          </div>
+          <div class="white-right-bg flt"></div>
+        </div>
 
         <div class="w100 mtop20">
           <div class="gellary-holder">

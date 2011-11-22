@@ -8,16 +8,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% url = root_url(:subdomain => false)
+<% $url = root_url(:subdomain => false)
    if request.subdomain != ""
        new_url = request.subdomain+'.'
-       url = url.sub(new_url, '')
+       $url = $url.sub(new_url, '')
    end %>
 <div class="wrapper">
   <div class="w100">
     <div class="peddle-top-left-bar flt"></div>
     <div class="peddle-top-mid-bar flt">
-      <div class="lego-peddle-small flt"><%= link_to image_tag("/assets/peddle-logo-small.png"), url %></div>
+      <div class="lego-peddle-small flt"><%= link_to image_tag("/assets/peddle-logo-small.png"), $url %></div>
       <div class="profile-pic flt">
         <% if current_user %>
             <img src="/assets/profile-img.png" alt=""/>
@@ -101,7 +101,7 @@
 
       </div>
       <div class="linksholder-new flt">
-        <div class="footlogo flt"><%= link_to image_tag("/assets/footlogo.png"), url %></div>
+        <div class="footlogo flt"><%= link_to image_tag("/assets/footlogo.png"), $url %></div>
         <div class="footlogo flt"><img src="/assets/photo.png" alt=""/></div>
       </div>
 
