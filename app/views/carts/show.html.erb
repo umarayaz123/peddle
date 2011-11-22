@@ -19,7 +19,7 @@
               <td><%= item.product_detail.color %></td>
               <td><%= item.product_detail.size %></td>
               <td class="item_price"><%= number_to_currency(item.total_price) %></td>
-              <td><%= link_to 'Remove from cart', '/line_items/destroy/'+item.id.to_s+'?cart_id='+@cart.id.to_s, :confirm => 'Are you sure?', :method => :delete %></td>
+              <td><div class="submitInrBtn1"><%= link_to 'Remove from cart', '/line_items/destroy/'+item.id.to_s+'?cart_id='+@cart.id.to_s, :confirm => 'Are you sure?', :method => :delete %></div></td>
             </tr>
         <% end %>
         <tr class="total_line">
@@ -33,5 +33,6 @@
                   :confirm => 'Are you sure?' %>
     <br/>
     <%= link_to image_tag('/assets/back.png'), root_url() %>
+    <div class="submitInrBtn1"><%= link_to "Checkout", new_order_path%></div>
   </div>
 </div>

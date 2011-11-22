@@ -1,0 +1,52 @@
+<%# title "New Order" %>
+
+<%= form_for @order do |f| %>
+    <% if @order.errors.any? %>
+        <div style="width:100%;float:left;">
+          <div id="error_explanation">
+            <h2><%= pluralize(@order.errors.count, "error") %> prohibited this cart from being saved:</h2>
+
+            <ul>
+              <% @order.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+    <% end %>
+    <!--<p>-->
+    <%#= f.label :cart_id %><br/>
+    <!--<%#= f.number_field :cart_id %>-->
+    <!--</p>-->
+    <!--<p>-->
+    <%#= f.label :ip_address %><br/>
+    <!--<%#= f.text_field :ip_address %>-->
+    <!--</p>-->
+    <p>
+      <%= f.label :first_name %><br/>
+      <%= f.text_field :first_name %>
+    </p>
+    <p>
+      <%= f.label :last_name %><br/>
+      <%= f.text_field :last_name %>
+    </p>
+    <p>
+      <%= f.label :card_type %><br/>
+      <%= f.select :card_type, [["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]] %>
+    </p>
+    <p>
+      <%= f.label :card_number %><br/>
+      <%= f.text_field :card_number %>
+    </p>
+    <p>
+      <%= f.label :card_verification, "Card Verification Value (CVV)" %><br/>
+      <%= f.text_field :card_verification %>
+    </p>
+    <p>
+      <%= f.label :card_expires_on %><br/>
+      <%= f.date_select :card_expires_on, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true %>
+    </p>
+    <p><%= f.submit %></p>
+<% end %>
+
+

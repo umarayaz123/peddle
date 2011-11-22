@@ -46,5 +46,8 @@ module Peddle
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+    config.filter_parameters += [:card_number]
+    config.filter_parameters += [:card_verification]
+
   end
 end
