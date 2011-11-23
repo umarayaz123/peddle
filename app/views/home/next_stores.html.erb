@@ -1,0 +1,49 @@
+<% unless @stores.blank? %>
+    <% @stores.each do |store| %>
+        <div class="cont bdr-bot flt">
+          <div class="gellery-left flt">
+            <div class="gellary-logo flt">
+              <% unless store.image.blank? %>
+                  <%= image_tag(store.image.snap) %>
+              <% else %>
+                  <img src="/assets/gellarg.png" alt=""/>
+              <% end %>
+              <img src="/assets/larg-fram.png" alt="" class="gellary-frame"/>
+            </div>
+
+            <div class="moreinfo w100">
+              <a href="#">more information</a>
+
+              <div class="w100">
+                <img src="/assets/chat.png" alt=""/>
+                <%= link_to image_tag("/assets/visit.png"), root_url(:subdomain =>store.name) %>
+              </div>
+            </div>
+
+          </div>
+          <div class="gellery-right frt">
+            <h1 class="mtop20"><%= store.name %> store</h1>
+
+            <p><%= duration(Time.now - store.created_at) %> ago</p>
+
+            <p class="mtop20"><%= store.description %></p>
+
+            <div class="w100 g-img">
+              <label>more photos</label>
+              <% unless store.products.nil? %>
+                  <% store.products.each do |product| %>
+                      <% unless product.images.nil? %>
+                          <% product.images.each do |image| %>
+                              <div class="small-logo flt">
+                                <%= image_tag(image.snap, :width => "60", :height => "60", :class => "small_imgs") %>
+                                <img src="/assets/logo-small-frame.png" alt="" class="frame"/>
+                              </div>
+                          <% end %>
+                      <% end %>
+                  <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+    <% end %>
+<% end %>

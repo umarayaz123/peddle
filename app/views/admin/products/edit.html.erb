@@ -30,9 +30,9 @@
    <div id="photos" style="float: left;
     margin-top: 20px;
     width: 94%;">
-    <label class="w100">Images</label>
-    <%@product.images.each_with_index do |p_i, index|%>
-      <%unless index == @product.images.size - 1 %>
+    <label class="w100">Banners( Image must be 750*300)</label>
+    <%@product.banners.each_with_index do |p_i, index|%>
+      <%unless index == @product.banners.size - 1 %>
       <div class="w100">
         <%=image_tag(p_i.snap, :width => "200", :height => "150")%>
       <div class="frt" style="margin-top: 60px;">
@@ -41,8 +41,8 @@
       </div>
     <%end%>
     <%end%>
-    <%@product.images.each_with_index do |image, index|%>
-      <%if index == @product.images.size - 1 %>
+    <%@product.banners.each_with_index do |image, index|%>
+      <%if index == @product.banners.size - 1 %>
         <%= render :partial => 'admin/products/image', :locals => {:count => 0, :image => image} %>
       <%end%>
     <%end%>

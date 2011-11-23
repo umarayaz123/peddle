@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <%= render :partial => "/shared/store_header"%>
+  <%= render :partial => "/shared/store_header" %>
   <div class="w100 mtop60 pbotton20">
     <div class="left-warrpper">
       <div class="w100">
@@ -41,15 +41,18 @@
 
       <div class="w100 mtop20 bdr-bot">
 
+
         <div class="gellary-main-img w100"></div>
         <div class="gellary-main-img w100 minislider">
           <% unless @products.blank? %>
               <% @products.each do |product| %>
                   <div class="slide-background">
-                    <% unless product.images.first.blank? %>
-                        <%= image_tag(product.images.first.snap) %>
-                    <% else %>
-                        <img src="/assets/no-img.png" alt="" width="740px"/>
+                    <% unless product.banners.nil? %>
+                        <% unless product.banners.first.nil? %>
+                            <%= image_tag(product.banners.first.snap) %>
+                        <% else %>
+                            <img src="/assets/no-img.png" alt="" width="740px"/>
+                        <% end %>
                     <% end %>
                   </div>
               <% end %>
@@ -71,7 +74,7 @@
 
       <p>Just arrived fresh in our store.</p>
 
-      <div class="w100">
+      <div id="product_container" class="w100">
         <% unless @products.blank? %>
             <% @products.each do |product| %>
                 <div class="gellary-bg flt mtop20 <%= product.name %>">
@@ -154,6 +157,20 @@
             $('.gellary-bg').show();
             $('.active').removeClass('active');
             $(this).parent().addClass('active');
+        });
+
+        offset = 3;
+        $(".more-produts").click(function() {
+            $.ajax({
+                url: '/next/products?offset=' + offset,
+                success: function(response) {
+                    $('#product_container').append(response);
+                    if (response != "") {
+                        offset += 3;
+                    }
+
+                }
+            });
         });
     });
 </script>

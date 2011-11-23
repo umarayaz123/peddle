@@ -4,9 +4,9 @@
       <img src="/assets/adidas.png" alt=""/>
       <img src="/assets/logo-small-frame.png" alt="" class="frame"/>
     </div>
-    <div class="logo-text flt">This is your store description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Donec ullamcorper sem in ipsum commodo accumsan.
-    </div>
+    <!--<div class="logo-text flt">This is your store description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.-->
+      <!--Donec ullamcorper sem in ipsum commodo accumsan.-->
+    <!--</div>-->
 
   </div>
 
@@ -96,7 +96,7 @@
 
       </div>
       <div class="content-bot-bg flt">
-        <img src="/assets/more-stores.png" alt=""/>
+        <img id="more_stores" src="/assets/more-stores.png" alt=""/>
         <label>View more of our stores</label>
       </div>
     </div>
@@ -255,6 +255,19 @@
             position: 'bottom',
             // caption span % of the image
             spanWidth: '100%'
+        });
+        offset = 3;
+        $("#more_stores").click(function() {
+            $.ajax({
+                url: '/next/stores?offset=' + offset,
+                success: function(response) {
+                    $('.content-mid-bg').append(response);
+                    if (response != "") {
+                        offset += 3;
+                    }
+
+                }
+            });
         });
     });
 </script>

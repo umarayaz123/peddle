@@ -37,16 +37,23 @@
           <div class="white-left-bg flt"></div>
           <div class="white-mid-bg flt">
             <div class="here-text flt">YOU ARE HERE:</div>
-            <div class="here-links flt"><a href="<%= $url%>">Peddle.com</a> &gt; <a href="<%= root_url%>"><%= request.subdomain%></a> &gt;
+            <div class="here-links flt"><a href="<%= $url %>">Peddle.com</a> &gt;
+              <a href="<%= root_url %>"><%= request.subdomain %></a> &gt;
               <a href=""><%= @product.name %></a></div>
-            <div class="bacck-top-products frt"><a href="<%= root_url%>"><img src="/assets/bacck-top-products.png" alt=""></a></div>
+            <div class="bacck-top-products frt">
+              <a href="<%= root_url %>"><img src="/assets/bacck-top-products.png" alt=""></a></div>
           </div>
           <div class="white-right-bg flt"></div>
         </div>
 
         <div class="w100 mtop20">
           <div class="gellary-holder">
-            <%= image_tag(@product.images.first.snap, :width => "300", :height => "400") %>
+            <% unless @product.product_details.blank? %>
+                <%= image_tag(@product.product_details.first.images.first.snap, :width => "300", :height => "400") %>
+            <% else %>
+                <%= image_tag("/assets/skart.png", :width => "300", :height => "400") %>
+            <% end %>
+
             <div id="list2">
               <div class="w1">
                 <div class="heading-topa falt">

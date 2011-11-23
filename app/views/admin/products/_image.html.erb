@@ -1,5 +1,5 @@
 <div class="photo">
-  <%= fields_for "product[images_attributes][]", image  do |image| %>
+  <%= fields_for "product[banners_attributes][]", image  do |image| %>
     <%= image.file_field :snap %>  
     <%unless count.blank?%>
       <%unless count ==0%>

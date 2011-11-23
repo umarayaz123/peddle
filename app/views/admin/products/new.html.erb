@@ -1,92 +1,95 @@
 <%= javascript_include_tag "/javascripts/ckeditor/ckeditor.js" %>
 <%= form_for([:admin, @product], :html => {:multipart => true, :id => 'product_add_form'}) do |f| %>
-  <% if @product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this image from being saved:</h2>
+    <% if @product.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@product.errors.count, "error") %> prohibited this image from being saved:</h2>
 
-      <ul>
-        <% @product.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="rightContainer">
-    <div class="rightHeading1">
-      <div class="rgtHeading">ADD NEW Product</div>
-    </div>
-    <div class="adminInrLogin">
-      <div class="adminInrText mtop20">Product Name</div>
-      <div class="adminInrInput"><%=f.text_field :name%></div>
-    </div>
-    <div class="adminInrLogin">
-      <div class="adminInrText mtop20">DESCRIPTION</div>
-      <div style="width: 400px;clear: both;">
-        <%= f.cktext_area :description, :toolbar=>'Full', :width=>'400px', :height=>'200px' %>
+          <ul>
+            <% @product.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="rightContainer">
+      <div class="rightHeading1">
+        <div class="rgtHeading">ADD NEW Product</div>
       </div>
-    </div>
-    <%store = Store.find(:first, :conditions => ["name = ?",request.subdomain])%>
-    <%=f.hidden_field :store_id, :value => store.id%>
-        <div id="photos" style="float: left;
-         margin-top: 20px;
-         width: 94%;">
-         <%@product.images.each_with_index do |image, index|%>
-           <%= render :partial => 'admin/products/image', :locals => {:count => 0, :image => image} %>
-         <%end%>
-    </div>
-     <div id="test" style="color: blue;
-         float: left;
-         margin-bottom: 20px;
-         width: 94%; cursor: pointer;">Add Photo</div>
+      <div class="adminInrLogin">
+        <div class="adminInrText mtop20">Product Name</div>
+        <div class="adminInrInput"><%= f.text_field :name %></div>
+      </div>
+      <div class="adminInrLogin">
+        <div class="adminInrText mtop20">DESCRIPTION</div>
+        <div style="width: 400px;clear: both;">
+          <%= f.cktext_area :description, :toolbar=>'Full', :width=>'400px', :height=>'200px' %>
+        </div>
+      </div>
+      <% store = Store.find(:first, :conditions => ["name = ?", request.subdomain]) %>
+      <%= f.hidden_field :store_id, :value => store.id %>
+      <label class="w100">Banners( Image must be 750*300)</label>
 
-    <div class="submitInrBtn3" id="product_add_btn"><input type="submit" value="Save all Changes" /></div>
+      <div id="photos" style="float: left;
+              margin-top: 20px;
+              width: 94%;">
+        <% @product.banners.each_with_index do |image, index| %>
+            <%= render :partial => 'admin/products/image', :locals => {:count => 0, :image => image} %>
+        <% end %>
+      </div>
+      <div id="test" style="color: blue;
+              float: left;
+              margin-bottom: 20px;
+              width: 94%; cursor: pointer;">Add Photo
+      </div>
 
-  </div>
-<%end%>
+      <div class="submitInrBtn3" id="product_add_btn"><input type="submit" value="Save all Changes"/></div>
+
+    </div>
+<% end %>
 <script type="text/javascript">
 
-  $("#product_add_btn").click(function() {
-    $("#product_add_form").submit(function() {
-      if (!$("#product_add_form").valid()) {
-        return false;
-      } else {
-        // alert("ddd");
-        return true;
-      }
+    $("#product_add_btn").click(function() {
+        $("#product_add_form").submit(function() {
+            if (!$("#product_add_form").valid()) {
+                return false;
+            } else {
+                // alert("ddd");
+                return true;
+            }
+        });
     });
-  });
 
-  $(document).ready(function() {
+    $(document).ready(function() {
 
-    $("#product_add_form").validate({
-      rules:{
-        "product[name]":
-          {
-          required: true
-        },
-        "product[store_id]":
-          {
-          required: true
-        },
-        messages: {
-          "product[name]": "This field is required",
-          "product[store_id]": "This field is required"
-        }
-      }
+        $("#product_add_form").validate({
+            rules:{
+                "product[name]":
+                {
+                    required: true
+                },
+                "product[store_id]":
+                {
+                    required: true
+                },
+                messages: {
+                    "product[name]": "This field is required",
+                    "product[store_id]": "This field is required"
+                }
+            }
+        });
     });
-  });
 
 </script>
 
 
 <script type="text/javascript">
-  $("#test").click(function(e){    
-    e.preventDefault();
-    $("#photos").append('<%= escape_javascript(render(:partial => "admin/products/image", :object => Image.new,:locals => {:count => 1})) %>');
-  });
-  function remove_field(element, item) {
-    element.parent(".photo").remove();
-  }
+    $("#test").click(function(e) {
+        e.preventDefault();
+        $("#photos").append('<%= escape_javascript(render(:partial => "admin/products/image", :object => Image.new,:locals => {:count => 1})) %>');
+    });
+    function remove_field(element, item) {
+        element.parent(".photo").remove();
+    }
 </script>
 
 
