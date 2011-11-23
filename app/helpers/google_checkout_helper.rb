@@ -1,0 +1,2 @@
+module GoogleCheckoutHelper
+end

@@ -4,6 +4,7 @@ class CartsController < ApplicationController
   def index
     @carts = Cart.all
     @cart = current_cart
+    @store = Store.find_by_name(request.subdomain)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,6 +17,17 @@ class CartsController < ApplicationController
   def show
     @cart = Cart.find(params[:id])
     @store = Store.find_by_name(request.subdomain)
+
+    #google_merchant_ID = "157193595798525"
+    #google_merchant_key = "GEcRtJBOnpEJPFRaZfIsLA"
+    #google_cart = GoogleCheckout::Cart.new(google_merchant_ID, google_merchant_key)
+    #google_cart.add_item(:name => 'Chair', :description => 'A sturdy, wooden chair', :price => 44.99)
+    #google_cart.add_item(:name => "Pancakes",
+    #                     :description => "Flapjacks by mail.",
+    #                     :price => 0.50,
+    #                     :quantity => 10,
+    #                     "merchant-item-id" => '2938292839')
+    #@google_cart_button = google_cart.checkout_button.html_safe
 
     respond_to do |format|
       format.html # show.html.erb

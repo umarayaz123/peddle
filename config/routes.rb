@@ -20,6 +20,7 @@ Peddle::Application.routes.draw do
   match '/sysadmin' => 'admin/sys_admins#index'
   match '/next/stores' => 'home#next_stores'
   match '/next/products' => 'stores#next_products'
+  match '/google_checkout' => 'google_checkout#google_checkout'
 #  match "admin/product_details/:id" => "admin/product_details#index"
 
   devise_for :users, :controllers => {
