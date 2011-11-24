@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <div class="w100">
+    <div class="peddle-top-left-bar flt"></div>
+    <div class="peddle-top-mid-bar flt">
+      <div class="lego-peddle-small flt"><%= link_to image_tag("/assets/peddle-logo-small.png"), $url %></div>
+      <div class="profile-pic flt">
+        <% if current_user %>
+            <img src="/assets/profile-img.png" alt=""/>
+            <label>Rob Thomas</label>
+        <% end %>
+        <input type="text" value="Search"/>
+        <input type="submit" value=""/>
+      </div>
+
+      <ul class="top-links frt">
+        <li class="active-link"><a href="<%= root_url %>">Sales floor</a></li>
+        <li><a href="#">Sales view</a></li>
+        <li><%= link_to "Logout", "/sign_out" %></li>
+        <!--<li class="bg-r-none"><a href="#">Setting</a></li>-->
+      </ul>
+
+    </div>
+    <div class="peddle-top-right-bar flt"></div>
+  </div>
+</div>

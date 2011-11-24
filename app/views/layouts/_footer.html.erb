@@ -1,0 +1,58 @@
+
+<div class="footer w100 mtop50">
+  <div class="wrapper">
+    <div class="w100">
+      <div class="linksholder flt">
+        <ul class="foot-links bdr-bot flt">
+          <h1>Overview</h1>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Home</a></li>
+        </ul>
+        <ul class="foot-links flt mtop20">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Home</a></li>
+        </ul>
+      </div>
+
+      <div class="linksholder-new flt">
+        <h1>Recent stores</h1>
+        <% unless @recent_stores.nil? %>
+            <% @recent_stores.each do |store| %>
+                <div class="footer-bar-links flt">
+                  <% unless store.image.blank? %>
+                      <%= link_to image_tag(store.image.snap),root_url(:subdomain =>store.name) %>
+                  <% else %>
+                      <%= link_to image_tag("/assets/levis.png"), root_url(:subdomain =>store.name) %>
+                  <% end %>
+                  <h1><%= store.name %></h1>
+
+                  <h2>Retail</h2>
+                </div>
+            <% end %>
+        <% end %>
+
+      </div>
+      <div class="linksholder-new flt">
+        <div class="footlogo flt"><%= link_to image_tag("/assets/footlogo.png"), $url %></div>
+        <div class="footlogo flt"><img src="/assets/photo.png" alt=""/></div>
+      </div>
+
+      <div class="linksholder1 flt">
+        <h1>Fellow Us</h1>
+        <img src="/assets/facebookicon.png" alt=""/>
+        <img src="/assets/tweetericon.png" alt=""/>
+
+        <div class="copyright flt">Copyright &copy; 2011 Peddle Online.<br/>
+          All rights reserved.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

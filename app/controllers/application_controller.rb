@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :mailer_set_url_options
+  before_filter :mailer_set_url_options, :recent_stores
 
   def mailer_set_url_options
     #ActionMailer::Base.default_url_options[:host] = request.host_with_port
@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
 
   def current_cart_create
     @cart = current_cart
+  end
+
+  def recent_stores
+    @recent_stores = Store.order("created_at DESC").limit(3)
   end
 
   def check_domain

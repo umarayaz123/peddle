@@ -14,4 +14,8 @@ class HomeController < ApplicationController
     @blog = Store.find_by_subdomain!(request.subdomain)
   end
 
+  def plans
+
+  end
+
 end

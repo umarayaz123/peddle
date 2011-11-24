@@ -19,6 +19,7 @@ Peddle::Application.routes.draw do
   match 'store/:id' => 'stores#index'
   match '/sysadmin' => 'admin/sys_admins#index'
   match '/next/stores' => 'home#next_stores'
+  match '/plans' => 'home#plans'
   match '/next/products' => 'stores#next_products'
   match '/google_checkout' => 'google_checkout#google_checkout'
 #  match "admin/product_details/:id" => "admin/product_details#index"
