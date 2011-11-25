@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :current_cart_create
+  before_filter :current_cart_create, :authenticate_user!
   # GET /products
   # GET /products.json
   def index
