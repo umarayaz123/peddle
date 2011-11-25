@@ -46,6 +46,30 @@
       <%= f.label :card_expires_on %><br/>
       <%= f.date_select :card_expires_on, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true %>
     </p>
+     <p>
+      <label>Name</label><br/>
+      <%= f.text_field :billing_name %>
+    </p>
+    <p>
+      <%= f.label :billing_address %><br/>
+      <%= f.text_field :billing_address %>
+    </p>
+    <p>
+      <label>City</label><br/>
+      <%= f.text_field :billing_city %>
+    </p>
+    <p>
+      <label>State</label><br/>
+      <%= f.text_field :billing_state %>
+    </p>
+    <p>
+      <label>Country</label><br/>
+      <%= f.text_field :billing_country %>
+    </p>
+    <p>
+      <label>Zip</label><br/>
+      <%= f.number_field :billing_zip %>
+    </p>
     <p><%= f.submit %></p>
 <% end %>
 

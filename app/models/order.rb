@@ -2,7 +2,7 @@ class Order < ActiveRecord::Base
   belongs_to :cart
   has_many :transactions, :class_name => "OrderTransaction"
 
-  attr_accessor :card_number, :card_verification
+  attr_accessor :card_number, :card_verification, :billing_name, :billing_address, :billing_city, :billing_state, :billing_country, :billing_zip
   #attr_accessible :cart_id, :ip_address, :first_name, :last_name, :card_type, :card_expires_on
   validate :validate_card
 
@@ -25,9 +25,9 @@ class Order < ActiveRecord::Base
     {
         :ip => ip_address,
         :billing_address => {
-            :name => "Ryan Bates",
-            :address1 => "123 Main St.",
-            :city => "New York",
+            :name => billing_name,
+            :address1 => billing_address,
+            :city => billing_city,
             :state => "NY",
             :country => "US",
             :zip => "10001"
