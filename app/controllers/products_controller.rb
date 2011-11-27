@@ -85,9 +85,7 @@ class ProductsController < ApplicationController
   end
 
   def _cart_div
-    #render :file => "/u/apps/warehouse_app/current/app/views/products/show"
     render :partial => "cart_div", :layout => false
-    #render :nothing => true
   end
 
 end

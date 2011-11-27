@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
   belongs_to :cart
+  belongs_to :user
   has_many :transactions, :class_name => "OrderTransaction"
 
   attr_accessor :card_number, :card_verification, :billing_name, :billing_address, :billing_city, :billing_state, :billing_country, :billing_zip
@@ -10,6 +11,23 @@ class Order < ActiveRecord::Base
     #response = GATEWAY.purchase(price_in_cents, credit_card, purchase_options)
     response = STANDARD_GATEWAY.purchase(price_in_cents, credit_card, purchase_options)
     transactions.create!(:action => "purchase", :amount => price_in_cents, :response => response)
+    cart.update_attribute(:purchased_at, Time.now) if response.success?
+    response.success?
+  end
+
+  def authorise_store_package(price)
+    #response = GATEWAY.purchase(price_in_cents, credit_card, purchase_options)
+    response = STANDARD_GATEWAY.authorize(price, credit_card, purchase_options)
+    #transactions.create!(:action => "purchase_store_package", :amount => price, :response => response)
+    #cart.update_attribute(:purchased_at, Time.now) if response.success?
+    response
+  end
+
+  def capture_store_package(price)
+    #response = GATEWAY.purchase(price_in_cents, credit_card, purchase_options)
+    response = STANDARD_GATEWAY.capture(price, credit_card, purchase_options)
+    transactions.create!(:action => "capture_store_package", :amount => price, :response => response)
+    #cart.update_attribute(:purchased_at, Time.now) if response.success?
     cart.update_attribute(:purchased_at, Time.now) if response.success?
     response.success?
   end

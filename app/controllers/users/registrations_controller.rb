@@ -6,15 +6,41 @@ class Users::RegistrationsController < ApplicationController
   # GET /resource/sign_up
   def new
     resource = build_resource({})
+    @package = params[:package]
     respond_with_navigational(resource) { render_with_scope :new }
   end
 
   # POST /resource
   def create
+    if (params[:package] != "1")
+      package = package_selection(params[:package])
+      #@order = current_cart.build_order(params[:order])
+      @start_date = Date.civil(params[:card_expires_on][:"(1i)"].to_i, params[:card_expires_on][:"(2i)"].to_i, params[:card_expires_on][:"(3i)"].to_i)
+      @order = order_create(params)
+      @order.ip_address = request.remote_ip
+      if @order.save
+        response = @order.authorise_store_package(package.price.to_i)
+        if response.success?
+          puts "********************** Response Suceess"
+        else
+          puts "********************** Response failure"
+          flash[:notice] = "Couldn't authorise your card. Please check if your card has required amount'"
+          redirect_to '/users/sign_up'
+          return
+        end
+      else
+        puts "********************** order failure"
+        flash[:notice] = "Card Info is not correct"
+        redirect_to '/users/sign_up'
+        return
+      end
+    end
     stores = Store.find_by_name(params[:store_name])
     if stores.nil? && !params[:store_name].blank?
       surl = params[:store_name]+'.peddle.com'
-      store = Store.new(:package_id => 1, :name => params[:store_name], :url => surl)
+      puts "**************", params[:package]
+      package ||= package_selection(params[:package])
+      store = Store.new(:package_id => package.id.to_i, :name => params[:store_name], :url => surl)
       build_resource
       admin = Role.find_by_name('Admin')
       seller = Role.find_by_name('Seller')
@@ -32,6 +58,14 @@ class Users::RegistrationsController < ApplicationController
       if store.save
         resource.store_id = store.id
         if store.save && resource.save
+          response = @order.capture_store_package(package.price.to_i)
+          if response
+            begin
+              resource.update_attributes!(:user_id => @order.id)
+            rescue ActiveRecord::RecordInvalid => invalid
+              puts "-----------",invalid.record.errors
+            end
+          end
           if resource.active_for_authentication?
             set_flash_message :notice, :signed_up if is_navigational_format?
             sign_in(resource_name, resource)
@@ -74,9 +108,9 @@ class Users::RegistrationsController < ApplicationController
       end
     else
       flash[:notice] = "Store Name Already taken"
-      redirect_to '/users/sign_up'
+      redirect_to '/users/sign_up', params
+      return
     end
-
   end
 
   # GET /resource/edit
@@ -167,4 +201,38 @@ class Users::RegistrationsController < ApplicationController
     send(:"authenticate_#{resource_name}!", :force => true)
     self.resource = send(:"current_#{resource_name}")
   end
+
+  private
+
+  def package_selection(package)
+    case package
+      when "2" then
+        package = Package.find_by_name("Time to Grow")
+      when "3" then
+        package = Package.find_by_name("Corporation")
+      when "4" then
+        package = Package.find_by_name("Enterprise")
+      else
+        package = Package.find_by_name("Start-up")
+    end
+    package
+  end
+
+  def order_create(params)
+    @order = Order.new
+    @order.billing_address = params[:billing_address]
+    @order.billing_city = params[:billing_city]
+    @order.first_name = params[:first_name]
+    @order.last_name = params[:last_name]
+    @order.billing_name = params[:first_name]+" "+params[:last_name]
+    @order.billing_state = params[:billing_state]
+    @order.billing_country = params[:billing_country]
+    @order.billing_zip = params[:billing_zip]
+    @order.card_number = params[:card_number]
+    @order.card_verification = params[:card_verification]
+    @order.card_expires_on = @start_date
+    @order.card_type = params[:card_type]
+    @order
+  end
+
 end

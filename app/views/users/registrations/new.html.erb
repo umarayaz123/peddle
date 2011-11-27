@@ -10,7 +10,7 @@
             <div class="signin_text">Already have a peddle Online Account <a href="/sign_in">Sign-in</a></div>
             <div class="signin_input_holder">
               <label>Full Name</label>
-              <%= f.text_field :name%>
+              <%= f.text_field :name %>
             </div>
             <div class="checkbox_holder">
               <div class="checkbox_input_holder">
@@ -19,6 +19,7 @@
                 <label>Seller</label>
 
               </div>
+              <%#= hidden_field_tag "package", @package %>
               <div class="checkbox_input_holder">
                 <%= check_box_tag 'buyer' %>
                 <%#= radio_button_tag 'type', 'buyer' %>
@@ -29,10 +30,71 @@
               <!--<label>Both</label>-->
               <!--</div>-->
             </div>
-            <div id="store_name" class="signin_small_input_holder">
+            <div class="store_name signin_small_input_holder">
               <label>Store Name</label>
               <%= text_field_tag 'store_name' %>
               <p>.peddleonline.com</p>
+            </div>
+            <div class="store_name signin_small_input_holder">
+              <label>Package</label>
+              <%= select_tag 'package', options_for_select([["Start-up", 1], ["Time to Grow 70$/mo", 2], ["Corporation $20/mo", 3], ["Enterprise $175/mo", 4]], params[:package]) %>
+            </div>
+            <div id="billingForm" style=" display:none;">
+
+              <div class="store_name signin_small_input_holder">
+                <label>Card Type</label><br/>
+                <%= select_tag :card_type, options_for_select([["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]]) %>
+              </div>
+
+              <div class="store_name signin_small_input_holder">
+                <label>Card Number</label><br/>
+                <%= text_field_tag :card_number %>
+              </div>
+
+              <div class="store_name signin_small_input_holder">
+                <label>Card Verification Value (CVV)</label><br/>
+                <%= text_field_tag :card_verification %>
+              </div>
+
+              <div class="store_name signin_small_input_holder">
+                <label>Expiration Date</label><br/>
+                <%= date_select "card_expires_on","", :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true %>
+              </div>
+
+              <div class="store_name signin_small_input_holder">
+                <label>First Name</label><br/>
+                <%= text_field_tag :first_name %>
+              </div>
+
+              <div class="store_name signin_small_input_holder">
+                <label>Last Name</label><br/>
+                <%= text_field_tag :last_name %>
+              </div>
+
+              <div class="store_name signin_small_input_holder">
+                <label>Billing Address</label><br/>
+                <%= text_field_tag :billing_address %>
+              </div>
+
+              <div class="store_name signin_small_input_holder">
+                <label>City</label><br/>
+                <%= text_field_tag :billing_city %>
+              </div>
+
+              <div class="store_name signin_small_input_holder">
+                <label>State</label><br/>
+                <%= text_field_tag :billing_state %>
+              </div>
+
+              <div class="store_name signin_small_input_holder">
+                <label>Country</label><br/>
+                <%= text_field_tag :billing_country %>
+              </div>
+
+              <div class="store_name signin_small_input_holder">
+                <label>Zip</label><br/>
+                <%= number_field_tag :billing_zip %>
+              </div>
             </div>
             <div class="signin_input_holder">
               <label>Email</label>
@@ -80,10 +142,12 @@
 <script>
     $(document).ready(function() {
         $('#submit_button').attr('disabled', true);
+
         $('#buyer').click(function() {
             if ($('#buyer').is(':checked')) {
                 $('#seller').attr('checked', false);
-                $('#store_name').hide();
+                $('.store_name').hide();
+                $("#billingForm").hide();
             }
             else {
                 $('#store_name').show();
@@ -92,17 +156,31 @@
         $('#seller').click(function() {
             if ($('#seller').is(':checked')) {
                 $('#buyer').attr('checked', false);
-                $('#store_name').show();
+                $('.store_name').show();
+                if ($("#package").val() != "1") {
+                    $("#billingForm").show();
+                }
             }
         });
-        $('#terms').click(function(){
-            if($('#terms').is(":checked"))
-            {
+        $('#terms').click(function() {
+            if ($('#terms').is(":checked")) {
                 $('#submit_button').attr('disabled', false);
             }
-            else
-            {
+            else {
                 $('#submit_button').attr('disabled', true);
+            }
+        });
+
+        if ($("#package").val() != "1") {
+            $("#billingForm").show();
+        }
+
+        $("#package").change(function() {
+            if ($("#package").val() != "1") {
+                $("#billingForm").show();
+            }
+            else {
+                $("#billingForm").hide();
             }
         });
     });

@@ -41,12 +41,9 @@ class LineItemsController < ApplicationController
   # POST /line_items.json
   def create
     @cart = current_cart
-    puts "*****************", params
-    puts "*****************", @cart.id
     unless params[:line_item].nil?
       product_detail = ProductDetail.find(params[:line_item][:product_detail_id])
     else
-      puts "******************", params[:product_detail_id]
       product_detail = ProductDetail.find(params[:product_detail_id])
     end
     @line_item = @cart.line_items.build(:product_detail => product_detail)
