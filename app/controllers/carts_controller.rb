@@ -2,7 +2,6 @@ class CartsController < ApplicationController
   # GET /carts
   # GET /carts.json
   def index
-    @carts = Cart.all
     @cart = current_cart
     @store = Store.find_by_name(request.subdomain)
 

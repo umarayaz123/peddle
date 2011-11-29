@@ -106,16 +106,16 @@
               <% end %>
             </span>
             </div>
-            <!--<div class="add-to-cart mtop20"><%#= link_to image_tag("/assets/add-to-cart.png"), line_items_path(:product_id => @product) %></div>-->
+            <!--<div class="add-to-cart mtop20"><%#= link_to image_tag("/assets/add-to-cart.png"), order_details_path(:product_id => @product) %></div>-->
 
-            <%= form_for(@line_item) do |f| %>
-                <% if @line_item.errors.any? %>
+            <%= form_for(@order_details) do |f| %>
+                <% if @order_details.errors.any? %>
                     <div id="error_explanation">
-                      <h2><%= pluralize(@line_item.errors.count, "error") %> prohibited this line_item from being
+                      <h2><%= pluralize(@order_details.errors.count, "error") %> prohibited this order_detail from being
                         saved:</h2>
 
                       <ul>
-                        <% @line_item.errors.full_messages.each do |msg| %>
+                        <% @order_details.errors.full_messages.each do |msg| %>
                             <li><%= msg %></li>
                         <% end %>
                       </ul>
@@ -170,9 +170,9 @@
     $(document).ready(function() {
 
         $('.add-to-cart').click(function() {
-            if ($('#line_item_product_detail_id').val() != "0") {
+            if ($('#order_detail_product_detail_id').val() != "0") {
                 product_detail_id = $(this).attr('details');
-                $.post("/line_items/create", $("#new_line_item").serialize()).success(function() {
+                $.post("/order_details/create", $("#new_order_detail").serialize()).success(function() {
                     $('.cart-holder').fadeOut('slow').load('/cart_div').fadeIn("slow");
                     alert("Product has successfully been added to Cart ");
                 });
@@ -212,7 +212,7 @@
             $('.gellary-holder img:first').attr('src', this.src);
             $('.price').html(this.id);
             $('.add-to-cart').attr('details', $(this).attr('details'));
-            $('#line_item_product_detail_id').val($(this).attr('details'));
+            $('#order_detail_product_detail_id').val($(this).attr('details'));
         });
     });
 

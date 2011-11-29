@@ -9,12 +9,12 @@
     <th></th>
   </tr>
 
-<% @line_items.each do |line_item| %>
+<% @order_details.each do |line_item| %>
   <tr>
     <td><%= line_item.product_detail_id %></td>
-    <td><%= line_item.cart_id %></td>
+    <td><%= line_item.order_id %></td>
     <td><%= link_to 'Show', line_item %></td>
-    <td><%= link_to 'Edit', edit_line_item_path(line_item) %></td>
+    <td><%= link_to 'Edit', edit_order_detail_path(line_item) %></td>
     <td><%= link_to 'Destroy', line_item, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
@@ -22,4 +22,4 @@
 
 <br />
 
-<%= link_to 'New Line item', new_line_item_path %>
+<%= link_to 'New Line item', new_order_detail_path %>

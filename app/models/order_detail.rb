@@ -1,7 +1,7 @@
-class LineItem < ActiveRecord::Base
+class OrderDetail < ActiveRecord::Base
 
   belongs_to :product_detail
-  belongs_to :cart
+  belongs_to :order
 
   def total_price
     product_detail.price

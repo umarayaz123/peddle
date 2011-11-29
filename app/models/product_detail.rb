@@ -5,7 +5,7 @@ class ProductDetail < ActiveRecord::Base
   accepts_nested_attributes_for :images
 
   default_scope :order => 'size'
-  has_many :line_items
+  has_many :order_details
   before_destroy :ensure_not_referenced_by_any_line_item
 
   private

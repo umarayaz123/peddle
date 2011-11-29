@@ -43,10 +43,10 @@
       <%= f.text_field :card_verification %>
     </p>
     <p>
-      <%= f.label :card_expires_on %><br/>
-      <%= f.date_select :card_expires_on, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true %>
+      <label>Expiration Date</label><br/>
+      <%= date_select "card_expires_on", "", :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true %>
     </p>
-     <p>
+    <p>
       <label>Name</label><br/>
       <%= f.text_field :billing_name %>
     </p>

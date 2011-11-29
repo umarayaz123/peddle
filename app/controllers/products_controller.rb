@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :current_cart_create, :authenticate_user!
+  before_filter :current_cart_create#, :authenticate_user!
   # GET /products
   # GET /products.json
   def index
@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
   def show
     @store = Store.find_by_name(request.subdomain)
     @product = Product.find(params[:id])
-    @line_item = LineItem.new
+    @order_details = OrderDetail.new
 
     respond_to do |format|
       format.html # show.html.erb

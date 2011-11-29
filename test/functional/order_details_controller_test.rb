@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class LineItemsControllerTest < ActionController::TestCase
+class OrderDetailsControllerTest < ActionController::TestCase
   setup do
     @line_item = line_items(:one)
   end
@@ -8,7 +8,7 @@ class LineItemsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:line_items)
+    assert_not_nil assigns(:order_details)
   end
 
   test "should get new" do

@@ -16,14 +16,14 @@
           </tr>
           <form action="https://sandbox.google.com/checkout/api/checkout/v2/checkoutForm/Merchant/157193595798525" id="BB_BuyButtonForm" method="post" name="BB_BuyButtonForm" target="_top">
 
-            <% @cart.line_items.each_with_index do |item,i| %>
+            <% @cart.order_details.each_with_index do |item,i| %>
                 <tr>
                   <td><%= item.product_detail.product.name %></td>
                   <td><%= item.product_detail.color %></td>
                   <td><%= item.product_detail.size %></td>
                   <td class="item_price"><%= number_to_currency(item.total_price) %></td>
                   <td>
-                    <div class="submitInrBtn2"><%= link_to 'Remove from cart', '/line_items/destroy/'+item.id.to_s+'?cart_id='+@cart.id.to_s, :confirm => 'Are you sure?', :method => :delete %></div>
+                    <div class="submitInrBtn2"><%= link_to 'Remove from cart', '/order_details/destroy/'+item.id.to_s+'?cart_id='+@cart.id.to_s, :confirm => 'Are you sure?', :method => :delete %></div>
                   </td>
                 </tr>
                 <input name="item_name_<%= i%>" type="hidden" value="<%= item.product_detail.product.name %>"/>

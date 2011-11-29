@@ -19,17 +19,15 @@ class Users::RegistrationsController < ApplicationController
       @order = order_create(params)
       @order.ip_address = request.remote_ip
       if @order.save
+        puts "************", package.price
         response = @order.authorise_store_package(package.price.to_i)
         if response.success?
-          puts "********************** Response Suceess"
         else
-          puts "********************** Response failure"
           flash[:notice] = "Couldn't authorise your card. Please check if your card has required amount'"
           redirect_to '/users/sign_up'
           return
         end
       else
-        puts "********************** order failure"
         flash[:notice] = "Card Info is not correct"
         redirect_to '/users/sign_up'
         return
@@ -38,7 +36,6 @@ class Users::RegistrationsController < ApplicationController
     stores = Store.find_by_name(params[:store_name])
     if stores.nil? && !params[:store_name].blank?
       surl = params[:store_name]+'.peddle.com'
-      puts "**************", params[:package]
       package ||= package_selection(params[:package])
       store = Store.new(:package_id => package.id.to_i, :name => params[:store_name], :url => surl)
       build_resource
@@ -56,21 +53,26 @@ class Users::RegistrationsController < ApplicationController
         resource.roles << buyer
       end
       if store.save
+        puts "********** Store Ssaved"
         resource.store_id = store.id
-        if store.save && resource.save
-          response = @order.capture_store_package(package.price.to_i)
-          if response
-            begin
-              resource.update_attributes!(:user_id => @order.id)
-            rescue ActiveRecord::RecordInvalid => invalid
-              puts "-----------",invalid.record.errors
-            end
-          end
+        if resource.save
+          puts "********** User Ssaved"
           if resource.active_for_authentication?
             set_flash_message :notice, :signed_up if is_navigational_format?
             sign_in(resource_name, resource)
             respond_with resource, :location => redirect_location(resource_name, resource)
           else
+            response = @order.capture_store_package(package.price.to_i, resource.id)
+            if response.success?
+              puts "********** Response Ssaved",response.message
+              begin
+                resource.update_attributes!(:user_id => @order.id)
+              rescue ActiveRecord::RecordInvalid => invalid
+                puts "-----------", invalid.record.errors
+              end
+            else
+              puts "**********response fail",response.message
+            end
             set_flash_message :notice, :inactive_signed_up, :reason => inactive_reason(resource) if is_navigational_format?
             expire_session_data_after_sign_in!
             respond_with resource, :location => after_inactive_sign_up_path_for(resource)

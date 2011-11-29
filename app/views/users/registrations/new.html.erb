@@ -58,7 +58,7 @@
 
               <div class="store_name signin_small_input_holder">
                 <label>Expiration Date</label><br/>
-                <%= date_select "card_expires_on","", :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true %>
+                <%= date_select "card_expires_on", "", :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true %>
               </div>
 
               <div class="store_name signin_small_input_holder">
@@ -141,7 +141,12 @@
 
 <script>
     $(document).ready(function() {
-        $('#submit_button').attr('disabled', true);
+        if ($('#terms').is(":checked")) {
+            $('#submit_button').attr('disabled', false);
+        }
+        else {
+            $('#submit_button').attr('disabled', true);
+        }
 
         $('#buyer').click(function() {
             if ($('#buyer').is(':checked')) {
