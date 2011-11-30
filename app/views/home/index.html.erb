@@ -81,7 +81,7 @@
                               <% prod_count=0 %>
                               <% store.products.each do |product| %>
                                   <% unless product.images.nil? %>
-                                      <% product.banners.each do |image| %>
+                                      <% product.images.each do |image| %>
                                           <% if prod_count < 3 %>
                                               <div class="small-logo flt">
                                                 <%= image_tag(image.snap, :width => "60", :height => "60", :class => "small_imgs") %>

@@ -1,13 +1,17 @@
 <div class="rightContainer">
   <div class="rightHeading1">
-    <div class="rgtHeading1">MANAGE PRODUCTS</div>    
-    <div class="submitInrBtn1"><%= link_to 'New Product', new_admin_product_path %></div>
+    <div class="rgtHeading1">MANAGE PRODUCTS</div>
+    <% @allowed_products = @store.package.package_rules.select { |r| r.key=="allowed_products" } %>
+    <%= @store.products.count.to_s + @allowed_products[0][:value]%>
+    <% if @allowed_products[0][:value].to_i <= @store.products.count %>
+        <div class="submitInrBtn1"><%= link_to 'New Product', new_admin_product_path %></div>
+    <% end %>
   </div>
   <div class="mngMain mtop20">
     <div class="label">SEARCH MEMBER :</div>
-    <div class="inputText"><input type="text" value="" /></div>
+    <div class="inputText"><input type="text" value=""/></div>
     <div class="mediaBtn1">
-      <input type="submit" value="Search" class="searchlBtn" />
+      <input type="submit" value="Search" class="searchlBtn"/>
     </div>
   </div>
 
@@ -20,20 +24,20 @@
 
   <div class="mngData">
     <% unless @products.nil? %>
-      <% @products.each_with_index do |product, index| %>
-        <div class="fMngHeading1"><%= link_to product.name, admin_product_path(product) %></div>
-        <div class="sMngHeading1"><%= product.store.name %></div>
-        <div class="tMngHeading1"><%= link_to "Detail", :controller => "admin/product_details",  :id => product.id%></div>
-        <div class="foMngHeading1">
-          <div class="mediaBtn2">
-            <%#*<input type="submit" value="Edit" class="smallBtn" />%>
-            <%= link_to "Edit", edit_admin_product_path(product), :class => "smallBtn"%>
-            <%= link_to "Delete", '/admin/products/destroy/'+product.id.to_s, :confirm => 'Are you sure?', :method => :delete, :class => "smallBtn" %>
-            <%#*<input type="submit" value="Delete" class="smallBtn" />%>
-          </div>
-        </div>
-      <%end%>
-    <%end%>
+        <% @products.each_with_index do |product, index| %>
+            <div class="fMngHeading1"><%= link_to product.name, admin_product_path(product) %></div>
+            <div class="sMngHeading1"><%= product.store.name %></div>
+            <div class="tMngHeading1"><%= link_to "Detail", :controller => "admin/product_details", :id => product.id %></div>
+            <div class="foMngHeading1">
+              <div class="mediaBtn2">
+                <%#*<input type="submit" value="Edit" class="smallBtn" />%>
+                <%= link_to "Edit", edit_admin_product_path(product), :class => "smallBtn" %>
+                <%= link_to "Delete", '/admin/products/destroy/'+product.id.to_s, :confirm => 'Are you sure?', :method => :delete, :class => "smallBtn" %>
+                <%#*<input type="submit" value="Delete" class="smallBtn" />%>
+              </div>
+            </div>
+        <% end %>
+    <% end %>
 
   </div>
 

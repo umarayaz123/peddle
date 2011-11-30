@@ -19,9 +19,9 @@ class Users::RegistrationsController < ApplicationController
       @order = order_create(params)
       @order.ip_address = request.remote_ip
       if @order.save
-        puts "************", package.price
         response = @order.authorise_store_package(package.price.to_i)
         if response.success?
+          @authorise = response.authorization
         else
           flash[:notice] = "Couldn't authorise your card. Please check if your card has required amount'"
           redirect_to '/users/sign_up'
@@ -53,25 +53,16 @@ class Users::RegistrationsController < ApplicationController
         resource.roles << buyer
       end
       if store.save
-        puts "********** Store Ssaved"
         resource.store_id = store.id
         if resource.save
-          puts "********** User Ssaved"
           if resource.active_for_authentication?
             set_flash_message :notice, :signed_up if is_navigational_format?
             sign_in(resource_name, resource)
             respond_with resource, :location => redirect_location(resource_name, resource)
           else
-            response = @order.capture_store_package(package.price.to_i, resource.id)
+            response = @order.capture_store_package(package.price.to_i, resource.id, @authorise)
             if response.success?
-              puts "********** Response Ssaved",response.message
-              begin
-                resource.update_attributes!(:user_id => @order.id)
-              rescue ActiveRecord::RecordInvalid => invalid
-                puts "-----------", invalid.record.errors
-              end
-            else
-              puts "**********response fail",response.message
+              resource.update_attributes!(:user_id => @order.id)
             end
             set_flash_message :notice, :inactive_signed_up, :reason => inactive_reason(resource) if is_navigational_format?
             expire_session_data_after_sign_in!
@@ -124,12 +115,47 @@ class Users::RegistrationsController < ApplicationController
   # We need to use a copy of the resource because we don't want to change
   # the current user in place.
   def update
-    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
-
-    if resource.update_with_password(params[resource_name])
-      set_flash_message :notice, :updated if is_navigational_format?
-      sign_in resource_name, resource, :bypass => true
-      respond_with resource, :location => after_update_path_for(resource)
+    package = package_selection(params[:package])
+    @store = Store.find_by_name(request.subdomain)
+    if (params[:package] != "1")
+      @start_date = Date.civil(params[:card_expires_on][:"(1i)"].to_i, params[:card_expires_on][:"(2i)"].to_i, params[:card_expires_on][:"(3i)"].to_i)
+      @order = order_create(params)
+      @order.ip_address = request.remote_ip
+      @price = package.price.to_i - @store.package.price.to_i
+      if @order.save
+        response = @order.authorise_store_package(@price)
+        if response.success?
+          @authorise = response.authorization
+        else
+          flash[:notice] = response.message
+          redirect_to '/users/edit'
+          return
+        end
+      else
+        flash[:notice] = "Card Info is not correct"
+        redirect_to '/users/edit'
+        return
+      end
+    end
+    user = current_user
+    if user.valid_password?(params[:user][:current_password])
+      @store.update_attribute(:package_id,package.id)
+      self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+      if resource.update_with_password(params[resource_name])
+        unless @order.nil?
+          response = @order.capture_store_package(@price, current_user.id, @authorise)
+          if response.success?
+            @order.update_attributes!(:user_id => current_user.id)
+            @store.update_attribute(:package_id,package.id)
+          end
+        end
+        set_flash_message :notice, :updated if is_navigational_format?
+        sign_in resource_name, resource, :bypass => true
+        respond_with resource, :location => after_update_path_for(resource)
+      else
+        clean_up_passwords(resource)
+        respond_with_navigational(resource) { render_with_scope :edit }
+      end
     else
       clean_up_passwords(resource)
       respond_with_navigational(resource) { render_with_scope :edit }

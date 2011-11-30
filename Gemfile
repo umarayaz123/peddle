@@ -40,3 +40,4 @@ gem 'sprockets', '2.0.0'
 gem 'activemerchant', :require => 'active_merchant'
 gem "nifty-generators", :group => :development
 gem "mocha", :group => :test
+gem "carmen"

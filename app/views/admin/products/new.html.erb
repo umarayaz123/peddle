@@ -27,12 +27,12 @@
       </div>
       <% store = Store.find(:first, :conditions => ["name = ?", request.subdomain]) %>
       <%= f.hidden_field :store_id, :value => store.id %>
-      <label class="w100">Banners( Image must be 750*300)</label>
+      <label class="w100">images( Image must be 750*300)</label>
 
       <div id="photos" style="float: left;
               margin-top: 20px;
               width: 94%;">
-        <% @product.banners.each_with_index do |image, index| %>
+        <% @product.images.each_with_index do |image, index| %>
             <%= render :partial => 'admin/products/image', :locals => {:count => 0, :image => image} %>
         <% end %>
       </div>
@@ -42,7 +42,7 @@
               width: 94%; cursor: pointer;">Add Photo
       </div>
 
-      <div class="submitInrBtn3" id="product_add_btn"><input type="submit" value="Save all Changes"/></div>
+      <div class="submitInrBtn3" id="product_add_btn"><input id="sbt_btn" type="submit" value="Save all Changes"/></div>
 
     </div>
 <% end %>
@@ -77,6 +77,13 @@
                 }
             }
         });
+
+        $("#sbt_btn").click(function() {
+            if ($('.image_field').val() == "") {
+                $('.image_field').next().remove();
+            }
+        });
+
     });
 
 </script>

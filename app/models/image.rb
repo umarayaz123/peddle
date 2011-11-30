@@ -7,4 +7,18 @@ class Image < ActiveRecord::Base
   belongs_to :product_detail
   belongs_to :store
   belongs_to :user
+
+  validate :file_dimensions, :unless => "errors.any?"
+
+  def file_dimensions
+    if is_banner
+      unless snap.to_file(:original).blank?
+        dimensions = Paperclip::Geometry.from_file(snap.to_file(:original))
+        if dimensions.width != 750 && dimensions.height != 300
+          errors.add(:file, 'Please add banner with proper height and width')
+        end
+      end
+    end
+  end
+
 end

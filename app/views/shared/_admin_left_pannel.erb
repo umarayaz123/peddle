@@ -1,26 +1,18 @@
 
   <div class="leftContainer">
     <div class="leftHeading">
-      <div class="inrHeading">Dashboard</div>
-      <div class="inrHeading"><%=link_to "Manage Products", '/admin/products'%></div>
-      <div class="inrHeading"><%=link_to "Manage Your Store", '/admin/stores/'+current_user.store_id.to_s%></div>
+      <div class="inrHeading">Manage Products</div>
+      <div class="inrHeadingGray"><%=link_to "Manage Products", '/admin/products'%></div>
       <%#*<div class="inrHeadingGray act"><a href="index.html">Manage Members</a></div>%>
     </div>
     <div class="leftHeading">
-      <div class="inrHeading">Template Website</div>
-      <div class="inrHeadingGray"><a href="dashboardMessage.html">UPDATE DASHBOARD MESSAGE</a></div>
+      <div class="inrHeading">Manage Your Store</div>
+      <div class="inrHeadingGray"><%=link_to "Manage Your Store", '/admin/stores/'+current_user.store_id.to_s%></div>
     </div>
     <div class="leftHeading">
-      <div class="inrHeading">Membership website</div>
-      <div class="inrHeadingGray"><a href="uploadDocument.html">Upload documents</a></div>
-      <div class="inrHeadingGray"><a href="addnewmembershipwebsitecontent.html">Mange /add Content</a></div>
-      <div class="inrHeadingGray"><a href="updateDashboardMessage.html">Update  dashboard Message</a></div>
+      <div class="inrHeading">Manage Your Account</div>
+      <div class="inrHeadingGray"><%=link_to "Manage Your Account", '/users/edit'%></div>
 
     </div>
-    <div class="leftHeading">
-      <div class="inrHeading">Media Library</div>
-      <div class="inrHeadingGray"><a href="viewMedia.html">view Media</a></div>
-      <div class="inrHeadingGray"><a href="uploasdNewMedia.html">add new</a></div>
 
-    </div>
   </div>

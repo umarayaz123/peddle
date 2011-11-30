@@ -36,7 +36,7 @@ class Admin::ProductsController < ApplicationController
     @product = Product.new
     @stores = Store.all
     #1.upto(1) { @product.images.build }
-    1.upto(1) { @product.banners.build }
+    1.upto(1) { @product.images.build }
     respond_to do |format|
       format.html # new.html.erb
       format.json { render :json => @product }
@@ -47,7 +47,7 @@ class Admin::ProductsController < ApplicationController
   def edit
     @product = Product.find(params[:id])
     #1.upto(1) { @product.images.build }
-    1.upto(1) { @product.banners.build }
+    1.upto(1) { @product.images.build }
     @stores = Store.all
   end
 

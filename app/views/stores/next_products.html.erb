@@ -2,8 +2,8 @@
     <% @products.each do |product| %>
         <div class="gellary-bg flt mtop20 <%= product.name %>">
           <div class="gellary-img flt">
-            <% unless product.banners.first.blank? %>
-                <%= link_to image_tag(product.banners.first.snap, :width => "120", :height => "150"), :controller => "products", :action => "show", :id => product.id %>
+            <% unless product.images.first.blank? %>
+                <%= link_to image_tag(product.images.first.snap, :width => "120", :height => "150"), :controller => "products", :action => "show", :id => product.id %>
             <% else %>
                 <%= link_to image_tag("../assets/skart.png"), :controller => "products", :action => "show", :id => product.id %>
             <% end %>

@@ -36,14 +36,13 @@ class Order < ActiveRecord::Base
     response
   end
 
-  def capture_store_package(price,uid)
+  def capture_store_package(price,uid,authorize)
     #response = GATEWAY.purchase(price_in_cents, credit_card, purchase_options)
-    response = STANDARD_GATEWAY.capture(price, credit_card, purchase_options)
+    response = STANDARD_GATEWAY.capture(price, authorize)
     #transactions.create!(:action => "capture_store_package", :amount => price, :response => response)
     #cart.update_attribute(:purchased_at, Time.now) if response.success?
     #cart.update_attribute(:purchased_at, Time.now) if response.success?
     self.update_attributes(:purchased_at => Time.now, :message => response.message, :success => response.success?, :amount => price, :user_id => uid) if response.success?
-    puts "***********Message is",response.message
     response
   end
 
