@@ -150,8 +150,8 @@
         $('#buyer').click(function() {
             if ($('#buyer').is(':checked')) {
                 $('#seller').attr('checked', false);
-                $('.store_name').hide();
-                $("#billingForm").hide();
+                $('.store_name').slideUp();
+                $("#billingForm").slideUp();
             }
             else {
                 $('#store_name').show();
@@ -160,9 +160,9 @@
         $('#seller').click(function() {
             if ($('#seller').is(':checked')) {
                 $('#buyer').attr('checked', false);
-                $('.store_name').show();
+                $('.store_name').slideDown();
                 if ($("#package").val() != "1") {
-                    $("#billingForm").show();
+                    $("#billingForm").slideDown();
                 }
             }
         });
@@ -181,10 +181,10 @@
 
         $("#package").change(function() {
             if ($("#package").val() != "1") {
-                $("#billingForm").show();
+                $("#billingForm").slideDown();
             }
             else {
-                $("#billingForm").hide();
+                $("#billingForm").slideUp();
             }
         });
         $("#billing_country").change(function() {
