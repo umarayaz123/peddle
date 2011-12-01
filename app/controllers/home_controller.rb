@@ -29,7 +29,13 @@ class HomeController < ApplicationController
   end
 
   def plans
-
+    @package_rules =Package.all
+    @allowed_products = PackageRule.where(:key => "allowed_products")
+    @allowed_staff_members = PackageRule.where(:key => "allowed_staff_members")
+    @allowed_images = PackageRule.where(:key => "allowed_images")
+    @chat = PackageRule.where(:key => "chat")
+    @inventory_tracking = PackageRule.where(:key => "inventory_tracking")
+    @discount_count = PackageRule.where(:key => "discount_count")
   end
 
   def home
