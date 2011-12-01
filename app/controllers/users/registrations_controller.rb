@@ -60,9 +60,11 @@ class Users::RegistrationsController < ApplicationController
             sign_in(resource_name, resource)
             respond_with resource, :location => redirect_location(resource_name, resource)
           else
-            response = @order.capture_store_package(package.price.to_i, resource.id, @authorise)
-            if response.success?
-              resource.update_attributes!(:user_id => @order.id)
+            if (params[:package] != "1")
+              response = @order.capture_store_package(package.price.to_i, resource.id, @authorise)
+              if response.success?
+                resource.update_attributes!(:user_id => @order.id)
+              end
             end
             set_flash_message :notice, :inactive_signed_up, :reason => inactive_reason(resource) if is_navigational_format?
             expire_session_data_after_sign_in!
@@ -139,14 +141,14 @@ class Users::RegistrationsController < ApplicationController
     end
     user = current_user
     if user.valid_password?(params[:user][:current_password])
-      @store.update_attribute(:package_id,package.id)
+      @store.update_attribute(:package_id, package.id)
       self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
       if resource.update_with_password(params[resource_name])
         unless @order.nil?
           response = @order.capture_store_package(@price, current_user.id, @authorise)
           if response.success?
             @order.update_attributes!(:user_id => current_user.id)
-            @store.update_attribute(:package_id,package.id)
+            @store.update_attribute(:package_id, package.id)
           end
         end
         set_flash_message :notice, :updated if is_navigational_format?
