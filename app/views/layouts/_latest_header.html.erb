@@ -1,0 +1,74 @@
+<div class="wrapper">
+  <div class="w100 minhieght">
+    <div class="work-logo flt"><%= link_to image_tag("/assets/work-peddle-logo.png"), $url %></div>
+
+    <div class="tabs-holder flt">
+      <div class="tabs-left flt"></div>
+      <div class="tabs-mid flt">
+
+        <ul class="tabs flt">
+          <li <%= "class=tab-act" if params[:controller] == "home" && params[:action] == "index" %>>
+            <a href="<%= $url %>">
+              <div class="w-tab-left flt"></div>
+              <div class="w-tab-mid flt">Home</div>
+              <div class="w-tab-right flt"></div>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <div class="w-tab-left flt"></div>
+              <div class="w-tab-mid flt">Features</div>
+              <div class="w-tab-right flt"></div>
+            </a>
+          </li>
+          <li <%= "class=tab-act" if params[:controller] == "home" && params[:action] == "plans" %>>
+            <a href="/plans">
+              <div class="w-tab-left flt"></div>
+              <div class="w-tab-mid flt">Plans &amp; Pricing</div>
+              <div class="w-tab-right flt"></div>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <div class="w-tab-left flt"></div>
+              <div class="w-tab-mid flt">How To</div>
+              <div class="w-tab-right flt"></div>
+            </a>
+          </li>
+          <li class="bg-r-none">
+            <a href="#">
+              <div class="w-tab-left flt"></div>
+              <div class="w-tab-mid flt">Blog</div>
+              <div class="w-tab-right flt"></div>
+            </a>
+          </li>
+        </ul>
+
+
+      </div>
+      <div class="tabs-right flt"></div>
+    </div>
+
+
+    <div class="g-icon frt">
+      <a href="/users/sign_in"><img src="/assets/signin.png" alt="" class="signin"></a>
+      <!--<img src="/assets/like.png" alt="">-->
+      <iframe id="fLike" src="http://www.facebook.com/plugins/like.php?href=http://ilsainteractive.com:3003.com&amp;layout=standard&amp;width=167&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:50px; height:80px;" allowTransparency="true"></iframe>
+      <!-- Place this tag where you want the +1 button to render -->
+      <g:plusone size="standard" annotation="none" href="ilsainteractive.com"></g:plusone>
+    </div>
+  </div>
+</div>
+
+
+<!-- Place this render call where appropriate -->
+<script type="text/javascript">
+    (function() {
+        var po = document.createElement('script');
+        po.type = 'text/javascript';
+        po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(po, s);
+    })();
+</script>

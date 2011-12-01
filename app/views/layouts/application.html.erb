@@ -2,9 +2,9 @@
 <html>
 <head>
   <title>PEDDLE-online</title>
-  <%= stylesheet_link_tag "application", "stores.css.scss", "Aristo", "jquery.ad-gallery" %>
+  <%= stylesheet_link_tag "application", "stores.css.scss", "Aristo", "jquery.ad-gallery", "carousel" %>
   <%= javascript_include_tag "application", "jquery.ad-gallery", "jquery-ui.min" %>
-  <%= javascript_include_tag "jquery-1.6.3.min", "jquery.form", "jquery.validate", "jquery-minislider", "jcarousellite_1.0.1.pack", "captify.tiny" %>
+  <%= javascript_include_tag "jquery-1.6.3.min", "jquery.form", "jquery.validate", "jquery-minislider", "jcarousellite_1.0.1.pack", "captify.tiny", "jquery.carousel.min", "jquery.mousewheel.min" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -14,7 +14,11 @@
        $url = $url.sub(new_url, '')
    end %>
 <% unless current_user %>
+    <% if params[:controller] == "home" && params[:action] == "index" %>
+        <%= render :partial => "layouts/latest_header" %>
+    <% else %>
     <%= render :partial => "layouts/header" %>
+    <% end %>
 <% else %>
     <%= render :partial => "layouts/header_login" %>
 <% end %>
