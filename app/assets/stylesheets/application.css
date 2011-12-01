@@ -534,6 +534,19 @@ a {
     width: 258px;
 }
 
+.signin_small_input_holder select {
+    background: url("../assets/small_input.png") no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 30px;
+    margin-top: 5px;
+    padding: 3px;
+    width: 258px;
+}
+
+.error_highlight {
+    border: 2px solid red;
+}
+
 .checkbox_input_holder_small, .checkbox_input_holder {
     float: left;
     width: auto;

@@ -1,79 +1,81 @@
 <%# title "New Order" %>
+<div class="signin_holder">
+  <%= form_for @order do |f| %>
+      <div class="top_login_bg"></div>
+      <div class="mid_login_bg">
+        <% if @order.errors.any? %>
+            <div style="width:100%;float:left;">
+              <div id="error_explanation">
+                <h2><%= pluralize(@order.errors.count, "error") %> prohibited this cart from being saved:</h2>
 
-<%= form_for @order do |f| %>
-    <% if @order.errors.any? %>
-        <div style="width:100%;float:left;">
-          <div id="error_explanation">
-            <h2><%= pluralize(@order.errors.count, "error") %> prohibited this cart from being saved:</h2>
-
-            <ul>
-              <% @order.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-              <% end %>
-            </ul>
-          </div>
+                <ul>
+                  <% @order.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+        <% end %>
+        <div class="store_name signin_small_input_holder">
+          <%= f.label :first_name %>
+          <br/>
+          <%= f.text_field :first_name %>
         </div>
-    <% end %>
-    <!--<p>-->
-    <%#= f.label :cart_id %><br/>
-    <!--<%#= f.number_field :cart_id %>-->
-    <!--</p>-->
-    <!--<p>-->
-    <%#= f.label :ip_address %><br/>
-    <!--<%#= f.text_field :ip_address %>-->
-    <!--</p>-->
-    <p>
-      <%= f.label :first_name %><br/>
-      <%= f.text_field :first_name %>
-    </p>
-    <p>
-      <%= f.label :last_name %><br/>
-      <%= f.text_field :last_name %>
-    </p>
-    <p>
-      <%= f.label :card_type %><br/>
-      <%= f.select :card_type, [["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]] %>
-    </p>
-    <p>
-      <%= f.label :card_number %><br/>
-      <%= f.text_field :card_number %>
-    </p>
-    <p>
-      <%= f.label :card_verification, "Card Verification Value (CVV)" %><br/>
-      <%= f.text_field :card_verification %>
-    </p>
-    <p>
-      <label>Expiration Date</label><br/>
-      <%= date_select "card_expires_on", "", :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true %>
-    </p>
-    <p>
-      <label>Name</label><br/>
-      <%= f.text_field :billing_name %>
-    </p>
-    <p>
-      <%= f.label :billing_address %><br/>
-      <%= f.text_field :billing_address %>
-    </p>
-    <p>
-      <label>City</label><br/>
-      <%= f.text_field :billing_city %>
-    </p>
-    <p>
-      <label>Country</label><br/>
-      <%= select_tag :billing_country, options_for_select(Carmen.countries(:locale => 'en')) %>
-    </p>
-    <p>
-      <label>State</label><br/>
-      <%= select_tag :billing_state, options_for_select(Carmen::states('US')) %>
-    </p>
-    <p>
-      <label>Zip</label><br/>
-      <%= f.number_field :billing_zip %>
-    </p>
-    <p><%= f.submit %></p>
-<% end %>
+        <div class="store_name signin_small_input_holder">
+          <%= f.label :last_name %>
+          <br/>
+          <%= f.text_field :last_name %>
+        </div>
+        <div class="store_name signin_small_input_holder">
+          <%= f.label :card_type %>
+          <br/>
+          <%= f.select :card_type, [["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]] %>
+        </div>
+        <div class="store_name signin_small_input_holder">
+          <%= f.label :card_number %>
+          <br/>
+          <%= f.text_field :card_number %>
+        </div>
+        <div class="store_name signin_small_input_holder">
+          <%= f.label :card_verification, "Card Verification Value (CVV)" %>
+          <br/>
+          <%= f.text_field :card_verification %>
+        </div>
+        <div class="store_name signin_small_input_holder">
+          <label>Expiration Date</label><br/>
+          <%= date_select "card_expires_on", "", :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true %>
+        </div>
+        <div class="store_name signin_small_input_holder">
+          <label>Name</label><br/>
+          <%= f.text_field :billing_name %>
+        </div>
+        <div class="store_name signin_small_input_holder">
+          <%= f.label :billing_address %>
+          <br/>
+          <%= f.text_field :billing_address %>
+        </div>
+        <div class="store_name signin_small_input_holder">
+          <label>City</label><br/>
+          <%= f.text_field :billing_city %>
+        </div>
+        <div class="store_name signin_small_input_holder">
+          <label>Country</label><br/>
+          <%= select_tag :billing_country, options_for_select(Carmen.countries(:locale => 'en')) %>
+        </div>
+        <div class="store_name signin_small_input_holder">
+          <label>State</label><br/>
+          <%= select_tag :billing_state, options_for_select(Carmen::states('US')) %>
+        </div>
+        <div class="store_name signin_small_input_holder">
+          <label>Zip</label><br/>
+          <%= f.number_field :billing_zip %>
+        </div>
+        <div class="submit_holder"><%= f.submit :submit %></div>
+      </div>
+      <div class="bot_login_bg"></div>
+  <% end %>
 
-
+</div>
 
 <script type="text/javascript">
     $("#billing_country").change(function() {
