@@ -1,16 +1,16 @@
 class Admin::ProductsController < ApplicationController
   layout 'admin'
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :make_resources
   skip_before_filter :verify_authenticity_token, :only => [:create]
 #  before_filter do
 #    admin_role = Role.find(:first, :conditions => ["name = ?", "Admin"])
 #    redirect_to '/' unless current_user && current_user.roles.include?(admin_role)
 #  end
 
-  # GET /products
-  # GET /products.json
+# GET /products
+# GET /products.json
   def index
-    @store = current_user.store    
+    @store = current_user.store
     @products = current_user.store.products.all
 
     respond_to do |format|
@@ -33,9 +33,12 @@ class Admin::ProductsController < ApplicationController
   # GET /products/new
   # GET /products/new.json
   def new
+    unless @allowed_products[0][:value].to_i > @store.products.count
+      redirect_to :action => "index"
+      return
+    end
     @product = Product.new
     @stores = Store.all
-    #1.upto(1) { @product.images.build }
     1.upto(1) { @product.images.build }
     respond_to do |format|
       format.html # new.html.erb
@@ -46,7 +49,6 @@ class Admin::ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
-    #1.upto(1) { @product.images.build }
     1.upto(1) { @product.images.build }
     @stores = Store.all
   end
@@ -56,14 +58,15 @@ class Admin::ProductsController < ApplicationController
   def create
     @product = Product.new(params[:product])
 #    @product.save    
-      if @product.save
-        @store = current_user.store
-        @products = current_user.store.products.all
-        render "index"
-      else
-        render "new"
-      end    
+    if @product.save
+      @store = current_user.store
+      @products = current_user.store.products.all
+      render "index"
+    else
+      render "new"
+    end
   end
+
   #  def create
   #    @product = Product.new(params[:product])
   #    unless params[:image].blank?
@@ -101,15 +104,15 @@ class Admin::ProductsController < ApplicationController
   # PUT /products/1
   # PUT /products/1.json
   def update
-    @product = Product.find(params[:id])   
-      if @product.update_attributes(params[:product])
-        @store = current_user.store
-        @products = current_user.store.products.all
-        render "index"
-      else
-        render "edit"
-      end
-    
+    @product = Product.find(params[:id])
+    if @product.update_attributes(params[:product])
+      @store = current_user.store
+      @products = current_user.store.products.all
+      render "index"
+    else
+      render "edit"
+    end
+
   end
 
   # DELETE /products/1
@@ -128,5 +131,11 @@ class Admin::ProductsController < ApplicationController
     self.admin == true
   end
 
+  def make_resources
+    @store = current_user.store
+    @products = current_user.store.products.all
+    @allowed_products = @store.package.package_rules.select { |r| r.key=="allowed_products" }
+    @allowed_images = @store.package.package_rules.select { |r| r.key=="allowed_images" }
+  end
 
 end

@@ -2,8 +2,7 @@
   <div class="rightHeading1">
     <div class="rgtHeading1">MANAGE PRODUCTS</div>
     <% @allowed_products = @store.package.package_rules.select { |r| r.key=="allowed_products" } %>
-    <%= @store.products.count.to_s + @allowed_products[0][:value]%>
-    <% if @allowed_products[0][:value].to_i <= @store.products.count %>
+    <% if @allowed_products[0][:value] == "unlimited" || @allowed_products[0][:value].to_i > @store.products.count %>
         <div class="submitInrBtn1"><%= link_to 'New Product', new_admin_product_path %></div>
     <% end %>
   </div>

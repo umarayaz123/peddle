@@ -72,12 +72,12 @@
               </div>
 
               <div class="store_name signin_small_input_holder">
-                <label>State</label><br/>
-                <%= select_tag :billing_state, options_for_select(Carmen::states('US')) %>
+                <%= select_tag :billing_country, options_for_select(Carmen.countries(:locale => 'en')) %>
               </div>
 
               <div class="store_name signin_small_input_holder">
-                <%= select_tag :billing_country, options_for_select(Carmen.countries) %>
+                <label>State</label><br/>
+                <%= select_tag :billing_state, options_for_select(Carmen::states('US')) %>
               </div>
 
               <div class="store_name signin_small_input_holder">
@@ -113,8 +113,14 @@
                         $("#billingForm").hide();
                     }
                 });
-        $("#billing_country").change(function(){
-            alert('ss');
+        $("#billing_country").change(function() {
+            var country = $(this).val();
+            $.ajax({
+                url: "/get_states?country=" + country,
+                success: function(response) {
+                    $("#billing_state").replaceWith(response);
+                }
+            });
         });
     });
 </script>

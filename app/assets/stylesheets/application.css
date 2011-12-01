@@ -1102,14 +1102,15 @@ CAPTIFY CAPTION
 	height:102px;
 }
 .work-header h1{
-	float:left;
-	width:80%;
-	font-family:"Gotham";
-	font-size:28px;
-	color:#eeeeee;
-	font-weight:normal;
-	margin-left:10%;
-	margin-top:20px;
+	color: #EEEEEE;
+    float: left;
+    font-family: "Gotham";
+    font-size: 28px;
+    font-weight: normal;
+    line-height: 20px;
+    margin-left: 10%;
+    margin-top: 20px;
+    width: 100%;
 }
 .work-header h2{
 	float:left;
@@ -1198,4 +1199,351 @@ CAPTIFY CAPTION
 .main-banner{
 	background:url(../assets/bannerblue.png) repeat-x scroll 0 0 transparent;
 	min-height:253px;
+}
+
+.home-banner{
+	text-align:center;
+}
+.home-banner img{
+	float:none;
+	margin-top:2px;
+}
+.home-left-penal{
+	width:631px;
+	padding-right:24px;
+	border-right:1px dashed #aaaaaa;
+}
+.home-right-penal{
+	width:282px;
+}
+.home-left-penal h1{
+	font-family:"Gotham";
+	font-size:24px;
+	font-weight:normal;
+	color:#555;
+	float:left;
+	width:100%;
+	padding-bottom:10px;
+	border-bottom:1px solid #7cb8e1;
+}
+.products-panel{
+	width:295px;
+	margin-right:20px;
+}
+.products-panel h1{
+	background:url(/assets/products-icon.png) no-repeat;
+	padding-left:42px;
+	line-height:30px;
+	font-family:"Gotham";
+	font-size:14px;
+	color:#555;
+	font-weight:bold;
+	border:0;
+	padding-bottom:0;
+	text-transform:uppercase;
+	float:left;
+}
+.products-panel p{
+	line-height:30px;
+	font-size:16px;
+	color:#949494;
+	float:left;
+	width:100%;
+	margin-top:5px;
+}
+.gray-b-bdr{
+	border-bottom:1px dashed #aaa;
+	padding-bottom:20px;
+}
+.more-link-left{
+	width:481px;
+}
+.more-link-left h1{
+	font-family:"Gotham";
+	font-size:14px;
+	color:#555;
+	font-weight:bold;
+	border:0;
+	padding-bottom:0;
+	text-transform:uppercase;
+	float:left;
+}
+.more-link-left p{
+	font-size:14px;
+	color:#949494;
+	border:0;
+	margin-top:1px;
+	padding-bottom:0;
+	float:left;
+}
+
+.more-link-right{
+	width:150px;
+}
+.more-link-right img{
+	float:right;
+}
+.heading-what-say{
+	float:left;
+	width:100%;
+	font-size:20px;
+	font-family:"Gotham";
+	color:#555;
+	padding-bottom:15px;
+	border-bottom:1px solid #bebebe;
+}
+.stumning-text{
+	float:left;
+	width:100%;
+	font-size:22px;
+	font-family:"myriad Pro";
+	color:#949494;
+	text-align:center;
+	margin-top:20px;
+	font-style:italic;
+}
+.post-name-holder{
+	float:left;
+	width:100%;
+	font-size:12px;
+	font-family:"Gotham";
+	color:#555;
+	text-align:center;
+	margin-top:15px;
+}
+.screenshort-holder{
+	float:left;
+	width:282px;
+	margin-top:45px;
+}
+.screenshort-top{
+	background:url(/assets/screenshort-top-bg.png) no-repeat;
+	width:282px;
+	height:7px;
+	float:left;
+}
+.screenshort-mid-new{
+	background:url(/assets/screenshort-mid-new.png) repeat-x scroll left bottom transparent;
+	width:260px;
+	min-height:258px;
+	float:left;
+	padding:0 11px;
+}
+.screenshort-mid{
+	background:url(/assets/screenshort-mid-bg.png) repeat-y scroll 0 0 #01b2e1;
+	width:282px;
+	height:auto;
+	float:left;
+}
+.screenshort-mid-new h1{
+	float:left;
+	width:100%;
+	font-size:20px;
+	font-family:"Gotham";
+	color:#eeeeee;
+	text-align:center;
+	border-bottom:1px solid #029ac4;
+	padding-bottom:14px;
+	margin-top:10px;
+	font-weight:normal;
+}
+.screenshort-bot{
+	background:url(/assets/screenshort-bot-bg.png) no-repeat;
+	width:282px;
+	height:7px;
+	float:left;
+}
+.screen-short{
+	width:260px;
+	float:left;
+	margin-top: 3px;
+}
+.screen-short-bg{
+	background: url("/assets/screen-short-bg.png") no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 96px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: 5px;
+    width: 126px;
+}
+.screen-short-bg img{
+	float: left;
+    height: 81px;
+    margin-left: 7px;
+    margin-top: 7px;
+    width: 112px;
+}
+.store-holder{
+	float:left;
+	width:100%;
+	margin-top:70px;
+	border-top:1px solid #7cb8e1;
+}
+.store-holder h1{
+	background: url("/assets/body-bg.png") repeat scroll 0 0 transparent;
+    color: #555555;
+    float: left;
+    font-family: "Gotham";
+    font-size: 24px;
+    font-weight: normal;
+    margin-left: 319px;
+    margin-top: -17px;
+    padding: 0 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.store-div{
+    float: left;
+    margin-left: 30px;
+    padding-bottom: 40px;
+    width: 890px;
+}
+.adds-holder{
+	float:left;
+	width:100%;
+	margin-top:35px;
+}
+.adds-main-div{
+	float: left;
+    margin-right: 16px;
+    width: 286px;
+}
+.adds-top-holder{
+	float:left;
+	background: url("/assets/adds-top-bg.png") no-repeat scroll 0 0 transparent;
+	width:100%;
+	height:68px;
+	font-family:"Gotham";
+	font-size:14px;
+	color:#eeeeee;
+	text-align:center;
+	line-height:68px;
+}
+.adds-mid-holder{
+	background: url("/assets/adds-mid-bg.png") repeat-y scroll 0 0 transparent;
+    color: #777777;
+    float: left;
+    font-size: 14px;
+    line-height: 25px;
+    padding: 29px;
+    width: 79%;
+}
+.adds-bot-holder{
+	float:left;
+	background: url("/assets/adds-bot-bg.png") no-repeat scroll 0 0 transparent;
+	width:100%;
+	height:8px;
+}
+.shopping-mall-holder{
+	float:left;
+	width:100%;
+	border-top: 1px dotted #AAAAAA;
+	padding-top:40px;
+}
+.shopping-mall-top{
+	float:left;
+	background: url("/assets/shopping-mall-top.png") no-repeat scroll 0 0 transparent;
+	width:100%;
+	height:6px;
+}
+.shopping-mall-mid{
+	background: url("/assets/shopping-mall-mid.png") repeat-y scroll 0 0 transparent;
+    float: left;
+    height: auto;
+    padding: 0 10px;
+    width: 98%;
+}
+.shopping-mall-bot{
+	float:left;
+	background: url("/assets/shopping-mall-bot.png") no-repeat scroll 0 0 transparent;
+	width:100%;
+	height:6px;
+}
+.shopping-container{
+	float:left;
+	width:100%;
+	margin-top:15px;
+}
+.shopping-div{
+	float:left;
+	width:220px;
+	margin-right: 20px
+}
+.shopping-top-div{
+	float:left;
+	background: url("/assets/shopping-top-bg.png") no-repeat scroll 0 0 transparent;
+	width:100%;
+	height:173px;
+}
+.shopping-mid-div{
+	background: url("/assets/shopping-mid-bg.png") no-repeat scroll left bottom transparent;
+    float: left;
+    min-height: 111px;
+    padding: 0 6px;
+    width: 96%;
+}
+.shopping-bot-div{
+	float:left;
+	background: url("/assets/shopping-bot-bg.png") no-repeat scroll 0 0 transparent;
+	width:100%;
+	min-height:10px;
+}
+.shopping-top-div img{
+	float: left;
+    height: 158px;
+    margin-left: 7px;
+    margin-top: 8px;
+    width: 206px;
+}
+.shopping-mid-div h1{
+	float:left!important;
+	width:100%!important;
+	color:#0078c9!important;
+	font-family:"Gotham"!important;
+	font-size:16px!important;
+	border:0!important;
+	padding:0!important;
+	text-align:left!important;
+	margin-top:5px!important;
+    line-height :20px;
+}
+.shopping-mid-div p{
+	float:left;
+	width:100%;
+	color:#949494;
+	font-size:14px;
+}
+.bdr-shopping{
+	border-bottom:1px solid #d5d6d6;
+	min-height:70px;
+}
+.chat{
+	float: left;
+    margin-right: 5px;
+    margin-top: 6px;
+    width: auto;
+}
+.chat img{
+	float:left;
+}
+.tag-new{
+	float: right;
+    margin-right: 5px;
+    margin-top: 6px;
+    width: auto;
+}
+.tag-new img{
+	float:right;
+}
+.bot-border{
+	border-bottom:1px solid #029AC4;
+}
+.shopping-mall-mid h1 {
+    color: #EEEEEE;
+    float: left;
+    font-family: "Gotham";
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
 }

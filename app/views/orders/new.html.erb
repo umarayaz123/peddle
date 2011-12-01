@@ -59,12 +59,12 @@
       <%= f.text_field :billing_city %>
     </p>
     <p>
-      <label>State</label><br/>
-      <%= f.text_field :billing_state %>
+      <label>Country</label><br/>
+      <%= select_tag :billing_country, options_for_select(Carmen.countries(:locale => 'en')) %>
     </p>
     <p>
-      <label>Country</label><br/>
-      <%= f.text_field :billing_country %>
+      <label>State</label><br/>
+      <%= select_tag :billing_state, options_for_select(Carmen::states('US')) %>
     </p>
     <p>
       <label>Zip</label><br/>
@@ -74,3 +74,15 @@
 <% end %>
 
 
+
+<script type="text/javascript">
+    $("#billing_country").change(function() {
+        var country = $(this).val();
+        $.ajax({
+            url: "/get_states?country=" + country,
+            success: function(response) {
+                $("#billing_state").replaceWith(response);
+            }
+        });
+    });
+</script>

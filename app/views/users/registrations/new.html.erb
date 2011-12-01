@@ -82,13 +82,12 @@
               </div>
 
               <div class="store_name signin_small_input_holder">
-                <label>State</label><br/>
-                <%= text_field_tag :billing_state %>
+                <%= select_tag :billing_country, options_for_select(Carmen.countries(:locale => 'en')) %>
               </div>
 
               <div class="store_name signin_small_input_holder">
-                <label>Country</label><br/>
-                <%= text_field_tag :billing_country %>
+                <label>State</label><br/>
+                <%= select_tag :billing_state, options_for_select(Carmen::states('US')) %>
               </div>
 
               <div class="store_name signin_small_input_holder">
@@ -188,5 +187,40 @@
                 $("#billingForm").hide();
             }
         });
+        $("#billing_country").change(function() {
+            var country = $(this).val();
+            $.ajax({
+                url: "/get_states?country=" + country,
+                success: function(response) {
+                    $("#billing_state").replaceWith(response);
+                }
+            });
+        });
+        $("#store_name").live('blur',function(){
+            var store_name = $(this).val();
+//            alert(store_name);
+            $.ajax({
+                url: "/check_store?store_name="+store_name,
+                success: function(response) {
+                    if(response == "true"){
+                        alert("Store with this name already exist. Please choose another Store name");
+                    }
+                }
+            });
+        });
+
+        $("#user_email").live('blur',function(){
+            var email = $(this).val();
+//            alert(store_name);
+            $.ajax({
+                url: "/check_email?email="+email,
+                success: function(response) {
+                    if(response == "true"){
+                        alert("Email Address Already taken. please choose another email");
+                    }
+                }
+            });
+        });
+
     });
 </script>

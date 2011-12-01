@@ -1,0 +1,5 @@
+<% if @states == "states not supported" %>
+    <%= text_field_tag :billing_state %>
+<% else %>
+    <%= select_tag :billing_state, options_for_select(@states) %>
+<% end %>

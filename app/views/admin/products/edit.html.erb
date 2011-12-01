@@ -31,8 +31,10 @@
               margin-top: 20px;
               width: 94%;">
         <label class="w100">Banners( Image must be 750*300)</label>
+        <% image_count = 0 %>
         <% @product.images.each_with_index do |p_i, index| %>
             <% unless index == @product.images.size - 1 %>
+                <% image_count += 1 %>
                 <div class="w100">
                   <%= image_tag(p_i.snap, :width => "200", :height => "150") %>
                   <div class="frt" style="margin-top: 60px;">
@@ -41,8 +43,10 @@
                 </div>
             <% end %>
         <% end %>
+
         <% @product.images.each_with_index do |image, index| %>
-            <% if index == @product.images.size - 1 %>
+            <% if index == @product.images.size - 1 && image_count==0 %>
+                <% image_count = index %>
                 <%= render :partial => 'admin/products/image', :locals => {:count => 0, :image => image} %>
             <% end %>
         <% end %>
@@ -52,7 +56,8 @@
               margin-bottom: 20px;
               width: 94%; cursor: pointer;">Add Photo
       </div>
-
+      <%= hidden_field_tag :images, @allowed_images[0][:value] %>
+      <%= hidden_field_tag :images_count, image_count %>
       <div class="submitInrBtn3" id="product_edit_btn"><input id="sbt_btn" type="submit" value="Save all Changes"/>
       </div>
 
@@ -103,6 +108,11 @@
             }
         });
 
+        if ($(".image_field").length >= parseInt($("#images").val())) {
+            $("#test").hide();
+            alert(parseInt($("#images_count").val()));
+        }
+
     });
 
 </script>
@@ -112,9 +122,15 @@
     $("#test").click(function(e) {
         e.preventDefault();
         $("#photos").append('<%= escape_javascript(render(:partial => "admin/products/image", :object => Image.new,:locals => {:count => 1})) %>');
+        if ((parseInt($("#images_count").val()) + $(".image_field").length) >= parseInt($("#images").val())) {
+            $("#test").hide();
+        }
     });
     function remove_field(element, item) {
         element.parent(".photo").remove();
+        if ((parseInt($("#images_count").val()) + $(".image_field").length) <= parseInt($("#images").val()) ) {
+            $("#test").show();
+        }
     }
 </script>
 

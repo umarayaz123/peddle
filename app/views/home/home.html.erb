@@ -1,0 +1,164 @@
+<div class="work-header w100">
+  <div class="wrapper">
+    <h1>Peddle Online accelerates your online store.</h1>
+
+    <h2>Learn more about how Peddle Online can help you with your online store.</h2>
+  </div>
+</div>
+
+<div class="main-banner w100">
+  <div class="wrapper">
+    <div class="home-banner w100 mtop20"><img src="/assets/home-banner.png" alt=""></div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div class="w100 mtop20">
+    <div class="home-left-penal flt">
+      <h1>FEATURES</h1>
+
+      <div class="w100 mtop20 gray-b-bdr">
+        <div class="products-panel flt">
+          <h1>products-icon</h1>
+
+          <p>Offer your products through our powerful shopping cart platform and maintain them with an intuitive user
+            interface.</p>
+        </div>
+        <div class="products-panel flt mrNone">
+          <h1>PRODUCT PHOTOS</h1>
+
+          <p>Let your products shine in your new online store through up to 5 product photos you can select for each
+            product.</p>
+        </div>
+      </div>
+      <div class="w100 mtop20 gray-b-bdr">
+        <div class="products-panel flt">
+          <h1>THIRD PARTY PAYMENT</h1>
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper sem
+            in ipsum commodo accumsan.</p>
+        </div>
+        <div class="products-panel flt mrNone">
+          <h1>SOCIAL E-BUSINESS NETWORK</h1>
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper sem
+            in ipsum commodo accumsan.</p>
+
+        </div>
+      </div>
+
+      <div class="w100 mtop20">
+        <div class="more-link-left flt">
+          <h1>AND MANY MORE FEATURES LIKE...</h1>
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+        </div>
+        <div class="more-link-right flt"><img src="/assets/more-features.png" alt=""></div>
+      </div>
+
+
+    </div>
+    <div class="home-right-penal frt">
+      <div class="heading-what-say">WHAT THEY SAY</div>
+      <div class="stumning-text">"Absolutely stunning web app. Highly recommended!"</div>
+      <div class="post-name-holder">- Michael Jordan</div>
+
+      <div class="screenshort-holder">
+        <div class="screenshort-top"></div>
+        <div class="screenshort-mid">
+          <div class="screenshort-mid-new">
+            <h1>SCREENSHOTS</h1>
+
+            <div class="screen-short">
+              <div class="screen-short-bg"><img src="/assets/screen-1.png" alt=""></div>
+              <div class="screen-short-bg"><img src="/assets/screen-1.png" alt=""></div>
+              <div class="screen-short-bg"><img src="/assets/screen-1.png" alt=""></div>
+              <div class="screen-short-bg"><img src="/assets/screen-1.png" alt=""></div>
+
+            </div>
+
+
+          </div>
+        </div>
+        <div class="screenshort-bot"></div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="store-div">
+    <div class="store-holder">
+      <h1>How Dose Your Work</h1>
+    </div>
+    <div class="adds-holder">
+
+      <div class="adds-main-div">
+        <div class="adds-top-holder">SETUP YOUR STORE</div>
+        <div class="adds-mid-holder">Setup and maintain your online store. Lorem ipsum dolor sit, lectus urna adipiscing
+          elit pretium.
+        </div>
+        <div class="adds-bot-holder"></div>
+      </div>
+
+      <div class="adds-main-div">
+        <div class="adds-top-holder">MAINTAIN AND PROMOTE</div>
+        <div class="adds-mid-holder">Setup and maintain your online store. Lorem ipsum dolor sit, lectus urna adipiscing
+          elit pretium.
+        </div>
+        <div class="adds-bot-holder"></div>
+      </div>
+
+      <div class="adds-main-div mrNone">
+        <div class="adds-top-holder">START MAKING MONEY</div>
+        <div class="adds-mid-holder">Setup and maintain your online store. Lorem ipsum dolor sit, lectus urna adipiscing
+          elit pretium.
+        </div>
+        <div class="adds-bot-holder"></div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="shopping-mall-holder">
+    <div class="shopping-mall-top"></div>
+    <div class="shopping-mall-mid">
+      <h1>SHOPPING MALL</h1>
+
+      <div class="shopping-container">
+        <% unless @stores.nil? %>
+            <% @stores.each do |store| %>
+                <div class="shopping-div">
+                  <div class="shopping-top-div">
+                    <% unless store.image.blank? %>
+                        <%= image_tag(store.image.snap) %>
+                    <% else %>
+                        <img src="/assets/takers.png" alt=""/>
+                    <% end %>
+                  </div>
+                  <div class="shopping-mid-div">
+                    <div class="w100 bdr-shopping">
+                      <h1><%= store.name %></h1>
+
+                      <p><%= duration(Time.now - store.created_at) %></p>
+                    </div>
+                    <div class="w100">
+                      <div class="chat"><a href="#"><img src="/assets/chat-new.png" align=""></a></div>
+                      <div class="chat"><%= link_to image_tag("/assets/visit.png"), root_url(:subdomain =>store.name) %></div>
+                      <div class="tag-new"><a href="#"><img src="/assets/tag-new.png" align=""></a></div>
+                    </div>
+
+                  </div>
+                  <div class="shopping-bot-div"></div>
+                </div>
+            <% end %>
+        <% end %>
+
+      </div>
+    </div>
+    <div class="shopping-mall-bot"></div>
+  </div>
+
+
+</div>

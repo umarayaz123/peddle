@@ -41,7 +41,7 @@
               margin-bottom: 20px;
               width: 94%; cursor: pointer;">Add Photo
       </div>
-
+      <%= hidden_field_tag :images, @allowed_images[0][:value]%>
       <div class="submitInrBtn3" id="product_add_btn"><input id="sbt_btn" type="submit" value="Save all Changes"/></div>
 
     </div>
@@ -84,6 +84,10 @@
             }
         });
 
+        if($(".image_field").length >= parseInt($("#images").val())){
+            $("#test").hide();
+        }
+
     });
 
 </script>
@@ -93,9 +97,15 @@
     $("#test").click(function(e) {
         e.preventDefault();
         $("#photos").append('<%= escape_javascript(render(:partial => "admin/products/image", :object => Image.new,:locals => {:count => 1})) %>');
+        if($(".image_field").length >= parseInt($("#images").val())){
+            $("#test").hide();
+        }
     });
     function remove_field(element, item) {
         element.parent(".photo").remove();
+        if($(".image_field").length <= parseInt($("#images").val())){
+            $("#test").show();
+        }
     }
 </script>
 
