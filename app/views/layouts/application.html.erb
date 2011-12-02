@@ -6,6 +6,12 @@
   <%= stylesheet_link_tag "application", "stores.css.scss", "Aristo", "jquery.ad-gallery", "carousel" %>
   <%= javascript_include_tag "myriad_web_pro", "application", "jquery.ad-gallery", "jquery-ui.min" %>
   <%= javascript_include_tag "jquery-1.6.3.min", "jquery.form", "jquery.validate", "jquery-minislider", "jcarousellite_1.0.1.pack", "captify.tiny", "jquery.carousel.min", "jquery.mousewheel.min" %>
+  <script type="text/javascript">
+      setTimeout(function() {
+          $('.notice').fadeOut();
+          $('.alert').fadeOut();
+      } , 5000);
+  </script>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -18,7 +24,7 @@
     <% if params[:controller] == "home" && params[:action] == "index" %>
         <%= render :partial => "layouts/latest_header" %>
     <% else %>
-    <%= render :partial => "layouts/header" %>
+        <%= render :partial => "layouts/header" %>
     <% end %>
 <% else %>
     <%= render :partial => "layouts/header_login" %>
@@ -29,8 +35,10 @@
 <p class="alert"><%= alert %></p>
 
 <%= yield %>
-
-<%= render :partial => "/layouts/footer" %>
-
+<% if request.subdomain == "" %>
+    <%= render :partial => "/layouts/footer" %>
+<% else %>
+    <%= render :partial => "/layouts/store_footer" %>
+<% end %>
 </body>
 </html>
