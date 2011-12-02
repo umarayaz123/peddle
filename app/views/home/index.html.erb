@@ -53,16 +53,16 @@
                           <% unless store.image.blank? %>
                               <%= image_tag(store.image.snap) %>
                           <% else %>
-                              <img src="/assets/gellarg.png" alt=""/>
+                              <img src="/assets/no_img.jpg" alt=""/>
                           <% end %>
                           <img src="/assets/larg-fram.png" alt="" class="gellary-frame"/>
                         </div>
 
                         <div class="moreinfo w100">
-                          <a href="#">more information</a>
+                          <a href="#">For more information</a>
 
                           <div class="w100">
-                            <img src="/assets/chat.png" alt=""/>
+                            <!--<img src="/assets/chat.png" alt=""/>-->
                             <%= link_to image_tag("/assets/visit.png"), root_url(:subdomain =>store.name) %>
                           </div>
                         </div>
@@ -76,11 +76,12 @@
                         <p class="mtop20"><%= store.description %></p>
 
                         <div class="w100 g-img">
-                          <label>more photos</label>
+
                           <% unless store.products.nil? %>
                               <% prod_count=0 %>
                               <% store.products.each do |product| %>
                                   <% unless product.images.nil? %>
+                                      <label>more photos</label>
                                       <% product.images.each do |image| %>
                                           <% if prod_count < 3 %>
                                               <div class="small-logo flt">
@@ -144,23 +145,23 @@
       <div class="links-bot-bg flt"></div>
     </div>
 
-    <div class="w100 mtop20">
-      <div class="links-top-bg flt">Live chat</div>
-      <div class="links-mid-bg flt">
-        <div class="online flt">15 contacts online</div>
+    <!--<div class="w100 mtop20">-->
+    <!--<div class="links-top-bg flt">Live chat</div>-->
+    <!--<div class="links-mid-bg flt">-->
+    <!--<div class="online flt">15 contacts online</div>-->
 
-        <ul class="online-content flt">
-          <li><a href="#">Michael Jordan</a></li>
-          <li><a href="#">Michael Jordan</a></li>
-          <li><a href="#">Michael Jordan</a></li>
-          <li><a href="#">Michael Jordan</a></li>
-          <li class="bdr-bot-none"><a href="#">Michael Jordan</a></li>
+    <!--<ul class="online-content flt">-->
+    <!--<li><a href="#">Michael Jordan</a></li>-->
+    <!--<li><a href="#">Michael Jordan</a></li>-->
+    <!--<li><a href="#">Michael Jordan</a></li>-->
+    <!--<li><a href="#">Michael Jordan</a></li>-->
+    <!--<li class="bdr-bot-none"><a href="#">Michael Jordan</a></li>-->
 
-        </ul>
+    <!--</ul>-->
 
-      </div>
-      <div class="links-bot-bg flt"></div>
-    </div>
+    <!--</div>-->
+    <!--<div class="links-bot-bg flt"></div>-->
+    <!--</div>-->
 
   </div>
 </div>

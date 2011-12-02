@@ -22,6 +22,7 @@ Peddle::Application.routes.draw do
   match '/get_states' => 'home#get_states'
   match '/check_store' => 'home#check_store'
   match '/check_email' => 'home#check_email'
+  match '/sales_floor' => 'home#sales_floor'
   match '/plans' => 'home#plans'
   match '/next/products' => 'stores#next_products'
   match '/google_checkout' => 'google_checkout#google_checkout'

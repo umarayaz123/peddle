@@ -1,11 +1,20 @@
-<p>Welcome <%= @resource.email %>!</p>
+<div style="background-color:#52697E;color: #999999;font-size: 14px;height: 50px; line-height: 50px;width:100%">
+  <p>Welcome <%= @resource.name %>!</p>
+</div>
+
+<p><b>Your Account at peddle.com has been created:</b></p>
 
 <p>You can confirm your account through the link below:</p>
-<% unless @resource.store_id.blank?%>
-    <% @store = Store.find(@resource.store_id)%>
-    <p><b>Store Name:</b><%= @store.name%></p>
+<% unless @resource.store_id.blank? %>
+    <p><b>Account Type:</b>Seller</p>
+    <% @store = Store.find(@resource.store_id) %>
+    <p><b>Store Name:</b><%= @store.name %></p>
     <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token, :store_name => @store.name) %></p>
-<%else%>
-    asasasas
+<% else %>
+    <p><b>Account Type:</b>Buyer</p>
     <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
-<%end%>
+<% end %>
+
+<div style="background-color:#52697E;color: #999999;font-size: 14px;height: 50px; line-height: 50px;width:100%">
+  Copyright &copy; 2011 Peddle Online. All reights reserved.
+</div>

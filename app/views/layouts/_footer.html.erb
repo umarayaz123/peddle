@@ -12,11 +12,11 @@
           <li><a href="#">Blog</a></li>
         </ul>
         <ul class="foot-links flt mtop20">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Home</a></li>
+          <!--<li><a href="#">Home</a></li>-->
+          <!--<li><a href="#">Home</a></li>-->
+          <!--<li><a href="#">Home</a></li>-->
+          <!--<li><a href="#">Home</a></li>-->
+          <!--<li><a href="#">Home</a></li>-->
         </ul>
       </div>
 
@@ -26,9 +26,9 @@
             <% @recent_stores.each do |store| %>
                 <div class="footer-bar-links flt">
                   <% unless store.image.blank? %>
-                      <%= link_to image_tag(store.image.snap),root_url(:subdomain =>store.name) %>
+                      <%= link_to image_tag(store.image.snap, :height => "50", :width => "50"),root_url(:subdomain =>store.name) %>
                   <% else %>
-                      <%= link_to image_tag("/assets/levis.png"), root_url(:subdomain =>store.name) %>
+                      <%= link_to image_tag("/assets/no.png", :height => "50", :width => "50"), root_url(:subdomain =>store.name) %>
                   <% end %>
                   <h1><%= store.name %></h1>
 

@@ -475,7 +475,7 @@ a {
 
 .signin_holder {
     float: left;
-    margin-left: 25%;
+    margin-left: 25% !important;
     width: 50%;
     padding-bottom: 20px;
 }
@@ -937,7 +937,7 @@ CAPTIFY CAPTION
 .trial-heading h1 {
     font-size: 44px;
     color: #00bee6;
-    font-family: "myriad Pro";
+    font-family: 'Myriad Web Pro';
     float: left;
     width: 100%;
     font-weight: normal;
@@ -948,7 +948,7 @@ CAPTIFY CAPTION
     float: left;
     width: 100%;
     color: #777777;
-    font-family: "myriad Pro";
+    font-family: 'Myriad Web Pro';
 }
 
 .price-details-top-holder, .price-details-mid-holder, .price-details-bot-holder {
@@ -996,7 +996,7 @@ CAPTIFY CAPTION
     float: left;
     text-align: center;
     font-size: 22px;
-    font-family: "myriad Pro";
+    font-family: 'Myriad Web Pro';
     color: #eeeeee;
     width: 100%;
     margin-top: 10px;
@@ -1085,7 +1085,7 @@ CAPTIFY CAPTION
     text-align: center;
     font-size: 24px;
     color: #f6f6f6;
-    font-family: "myriad Pro";
+    font-family: 'Myriad Web Pro';
     font-weight: normal;
 }
 
@@ -1197,18 +1197,21 @@ CAPTIFY CAPTION
     font-weight: normal;
     line-height: 20px;
     margin-left: 10%;
-    margin-top: 20px;
+    margin-top: 25px;
     width: 100%;
+    text-transform: none !important;
 }
 
 .work-header h2 {
     float: left;
     width: 80%;
-    font-family: "myriad Pro";
+    /*font-family: 'Myriad Web Pro';*/
+    font-family: 'Myriad Web Pro';
     font-size: 16px;
     color: #eeeeee;
     font-weight: normal;
     margin-left: 10%;
+    margin-top: -15px;
 }
 
 .tabs-holder {
@@ -1263,7 +1266,7 @@ CAPTIFY CAPTION
 
 .w-tab-mid {
     color: #CBCBCB;
-    font-family: "myriad Pro";
+    font-family: 'Myriad Web Pro';
     font-size: 18px;
     height: 42px;
     line-height: 34px;
@@ -1414,7 +1417,7 @@ CAPTIFY CAPTION
     float: left;
     width: 100%;
     font-size: 22px;
-    font-family: "myriad Pro";
+    font-family: 'Myriad Web Pro';
     color: #949494;
     text-align: center;
     margin-top: 20px;

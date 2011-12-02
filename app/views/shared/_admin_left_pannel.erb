@@ -1,18 +1,23 @@
-
-  <div class="leftContainer">
-    <div class="leftHeading">
-      <div class="inrHeading">Manage Products</div>
-      <div class="inrHeadingGray"><%=link_to "Manage Products", '/admin/products'%></div>
-      <%#*<div class="inrHeadingGray act"><a href="index.html">Manage Members</a></div>%>
-    </div>
-    <div class="leftHeading">
-      <div class="inrHeading">Manage Your Store</div>
-      <div class="inrHeadingGray"><%=link_to "Manage Your Store", '/admin/stores/'+current_user.store_id.to_s%></div>
-    </div>
-    <div class="leftHeading">
-      <div class="inrHeading">Manage Your Account</div>
-      <div class="inrHeadingGray"><%=link_to "Manage Your Account", '/users/edit'%></div>
-
-    </div>
-
+<div class="leftContainer">
+  <div class="leftHeading">
+    <div class="inrHeading">Manage Products</div>
+    <div class="inrHeadingGray"><%= link_to "Manage Products", '/admin/products' %></div>
   </div>
+  <div class="leftHeading">
+    <div class="inrHeading">Manage Your Store</div>
+    <div class="inrHeadingGray"><%= link_to "Manage Your Store", '/admin/stores/'+current_user.store_id.to_s %></div>
+  </div>
+  <div class="leftHeading">
+    <div class="inrHeading">Manage Your Account</div>
+    <div class="inrHeadingGray"><%= link_to "Manage Your Account", '/users/edit' %></div>
+  </div>
+  <% @allowed_staff_members= current_user.store.package.package_rules.select { |r| r.key=="allowed_staff_members" } %>
+  <%#= @allowed_staff_members[0][:value] %>
+  <%#= current_user.store.users.count %>
+  <% if @allowed_staff_members[0][:value].to_i > current_user.store.users.count %>
+      <div class="leftHeading">
+        <div class="inrHeading">Manage Your Staff</div>
+        <div class="inrHeadingGray"><%= link_to "Manage Your Staff", '/users/edit' %></div>
+      </div>
+  <% end %>
+</div>
