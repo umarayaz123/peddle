@@ -6,7 +6,7 @@ class ProductDetail < ActiveRecord::Base
 
   default_scope :order => 'size'
   has_many :order_details
-  before_destroy :ensure_not_referenced_by_any_line_item
+  #before_destroy :ensure_not_referenced_by_any_line_item
 
   private
   # ensure that there are no line items referencing this product
