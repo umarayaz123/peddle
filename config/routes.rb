@@ -24,6 +24,8 @@ Peddle::Application.routes.draw do
   match '/check_email' => 'home#check_email'
   match '/sales_floor' => 'home#sales_floor'
   match '/plans' => 'home#plans'
+  match '/pages' => 'pages#index'
+  match '/purchase_history' => 'pages#purchase_history'
   match '/next/products' => 'stores#next_products'
   match '/google_checkout' => 'google_checkout#google_checkout'
 #  match "admin/product_details/:id" => "admin/product_details#index"
@@ -53,6 +55,7 @@ Peddle::Application.routes.draw do
     resources :products
     resources :packages
     resources :product_details
+    resources :pages
 #    do
 #    end
 #      resources :product_details do

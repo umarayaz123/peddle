@@ -1,0 +1,47 @@
+<%= javascript_include_tag "/javascripts/ckeditor/ckeditor.js" %>
+<div class="rightContainer">
+  <%= form_for([:admin, @page]) do |f| %>
+      <% if @page.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
+
+            <ul>
+              <% @page.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+
+      <div class="field adminInrInput">
+        <%= f.label :name %>
+        <br/>
+        <%= f.text_field :name %>
+      </div>
+      <div class="field adminInrInput">
+        <%= f.hidden_field :store_id, :value => current_user.store.id.to_s %>
+      </div>
+      <div class="field">
+        <%= f.label :html %>
+        <br/>
+
+        <div style="width: 400px;clear: both;">
+          <%= f.cktext_area :html, :toolbar=>'Full', :width=>'600px', :height=>'400px' %>
+        </div>
+      </div>
+
+      <!--<div class="field">-->
+      <%#= f.label :css %>
+      <br/>
+      <!--<%#= f.text_area :css %>-->
+      <!--</div>-->
+      <!--<div class="field">-->
+      <%#= f.label :script %>
+      <br/>
+      <!--<%#= f.text_area :script %>-->
+      <!--</div>-->
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+  <% end %>
+</div>

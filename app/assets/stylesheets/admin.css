@@ -489,6 +489,7 @@ a{
     padding-top: 7px;
     text-decoration: none;
     width: 71px;
+    text-align:center;
 }
 .searchlBtn {
     background: url("../assets/smallBtn.png") no-repeat scroll left bottom transparent;

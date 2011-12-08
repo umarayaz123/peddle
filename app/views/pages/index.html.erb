@@ -1,0 +1,43 @@
+<div class="wrapper">
+  <%= render :partial => "/shared/store_header" %>
+  <div class="w100 mtop60 pbotton20">
+    <div class="left-warrpper">
+      <div class="w100">
+        <div class="nav-top-holder">Our products</div>
+        <div class="nav-mid-holder">
+          <ul class="left-nav">
+            <% @store.products.each do |product| %>
+                <li class="<%= 'active' if params[:id]== product.id.to_s %>"><%= link_to product.name, :controller => "products", :action => "show", :id => product.id %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="nav-bot-holder"></div>
+      </div>
+
+
+      <div class="w100 mtop40">
+        <div class="nav-top-holder">Company</div>
+        <div class="nav-mid-holder">
+          <ul class="left-nav">
+            <% @store.pages.each do |page| %>
+                <li class=<%= "active latest_products" if params[:name] == page.name %>>
+                  <a href="/pages?name=<%= page.name %>"><%= page.name.capitalize %></a></li>
+            <% end %>
+          </ul>
+
+        </div>
+        <div class="nav-bot-holder"></div>
+      </div>
+
+
+    </div>
+    <div class="right-warrpper">
+      <div class="featured-heading w100"><%= @page.name.capitalize %></div>
+      <div class="w100 mtop40">
+        <%= raw @page.html %>
+      </div>
+    </div>
+  </div>
+
+</div>
+

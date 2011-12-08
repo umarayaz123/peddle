@@ -1,0 +1,29 @@
+<h1>Listing pages</h1>
+
+<table>
+  <tr>
+    <th>No</th>
+    <th>Name</th>
+    <!--<th>Html</th>-->
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pages.each_with_index do |page,index| %>
+  <tr>
+    <td><%= index+1 %></td>
+    <td><%= page.name %></td>
+    <!--<td><%#= page.html %></td>-->
+    <!--<td><%#= page.css %></td>-->
+    <!--<td><%#= page.script %></td>-->
+    <td><%= link_to 'Show', '/admin/pages/'+page.id.to_s, :class => "smallBtn" %></td>
+    <td><%= link_to 'Edit', edit_admin_page_path(page), :class => "smallBtn" %></td>
+    <td><%= link_to 'Destroy','/admin/pages/destroy/'+page.id.to_s, :class => "smallBtn", :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Page', new_admin_page_path %>

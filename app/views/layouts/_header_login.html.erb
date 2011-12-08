@@ -6,14 +6,19 @@
       <div class="profile-pic flt">
         <% if current_user %>
             <img src="/assets/profile-img.png" alt=""/>
-            <label>Rob Thomas</label>
+            <% unless current_user.name.nil? %>
+                <label><%= current_user.name %></label>
+            <% else %>
+                <label>User</label>
+            <% end %>
         <% end %>
         <input type="text" value="Search"/>
         <input type="submit" value=""/>
       </div>
 
       <ul class="top-links frt">
-        <li class=<%= "active-link" if params[:action] == "sales_floor" %>><a href="<%= root_url+"sales_floor" %>">Sales floor</a></li>
+        <li class=<%= "active-link" if params[:action] == "sales_floor" %>>
+          <a href="<%= root_url+"sales_floor" %>">Sales floor</a></li>
         <li><a href="#">Sales view</a></li>
         <li><%= link_to "Logout", "/sign_out" %></li>
       </ul>

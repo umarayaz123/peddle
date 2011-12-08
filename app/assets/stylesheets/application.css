@@ -1732,3 +1732,10 @@ CAPTIFY CAPTION
     vertical-align: baseline;
     width: 24px;
 }
+
+tr.odd{
+    background-color:#CCCCCC;
+}
+tr.purchase{
+    background-color:#CCCCCC;
+}

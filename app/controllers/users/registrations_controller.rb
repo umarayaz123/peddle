@@ -119,29 +119,32 @@ class Users::RegistrationsController < ApplicationController
   def update
     package = package_selection(params[:package])
     @store = Store.find_by_name(request.subdomain)
-    if (params[:package] != "1")
-      @start_date = Date.civil(params[:card_expires_on][:"(1i)"].to_i, params[:card_expires_on][:"(2i)"].to_i, params[:card_expires_on][:"(3i)"].to_i)
-      @order = order_create(params)
-      @order.ip_address = request.remote_ip
-      @price = package.price.to_i - @store.package.price.to_i
-      if @order.save
-        response = @order.authorise_store_package(@price)
-        if response.success?
-          @authorise = response.authorization
+    buyer_role = Role.find(:first, :conditions => ["name = ?", "Buyer"])
+    unless current_user.roles.include?(buyer_role)
+      if (params[:package] != "1")
+        @start_date = Date.civil(params[:card_expires_on][:"(1i)"].to_i, params[:card_expires_on][:"(2i)"].to_i, params[:card_expires_on][:"(3i)"].to_i)
+        @order = order_create(params)
+        @order.ip_address = request.remote_ip
+        @price = package.price.to_i - @store.package.price.to_i
+        if @order.save
+          response = @order.authorise_store_package(@price)
+          if response.success?
+            @authorise = response.authorization
+          else
+            flash[:notice] = response.message
+            redirect_to '/users/edit'
+            return
+          end
         else
-          flash[:notice] = response.message
+          flash[:notice] = "Card Info is not correct"
           redirect_to '/users/edit'
           return
         end
-      else
-        flash[:notice] = "Card Info is not correct"
-        redirect_to '/users/edit'
-        return
       end
     end
     user = current_user
     if user.valid_password?(params[:user][:current_password])
-      @store.update_attribute(:package_id, package.id)
+      @store.update_attribute(:package_id, package.id) unless current_user.roles.include?(buyer_role)
       self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
       if resource.update_with_password(params[resource_name])
         unless @order.nil?
@@ -266,11 +269,16 @@ class Users::RegistrationsController < ApplicationController
   end
 
   def resolve_layout
+    buyer_role = Role.find(:first, :conditions => ["name = ?", "Buyer"])
     case action_name
-    when "new", "create" then
-      "application"
-    when "edit" then
-      "admin"
+      when "new", "create" then
+        "application"
+      when "edit" then
+        if current_user.roles.include?(buyer_role)
+          "application"
+        else
+          "admin"
+        end
     end
   end
 
