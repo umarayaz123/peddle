@@ -24,10 +24,10 @@
         <div class="nav-top-holder">Company</div>
         <div class="nav-mid-holder">
           <ul class="left-nav">
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Faq</a></li>
-            <li><a href="#">Shipping</a></li>
-            <li class="bdr-bot-none"><a href="#">Contact Us</a></li>
+            <% @store.pages.each do |page| %>
+                <li class=<%= "active latest_products" if params[:name] == page.name %>>
+                  <a href="/pages?name=<%= page.name %>"><%= page.name.capitalize %></a></li>
+            <% end %>
           </ul>
 
         </div>
