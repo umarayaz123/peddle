@@ -1,0 +1,33 @@
+<div class="w100">
+  <div class="links-top-bg flt">Your Peddle</div>
+  <div class="links-mid-bg flt">
+    <ul class="menu flt">
+      <li>
+        <p><a href="/messages" style="text-decoration:none;">Messages</a></p>
+        <label>0</label>
+      </li>
+      <li>
+        <p>Window shopping</p>
+        <label>0</label>
+      </li>
+      <li>
+        <p><a href="/purchase_history" style="text-decoration:none;">Purchase history</a></p>
+      </li>
+      <li>
+        <p><a href="users/edit" style="text-decoration:none;">Account settings</a></p>
+      </li>
+      <li class="bdr-bot-none">
+        <p>
+          <% if current_user %>
+              <% root_url(:subdomain => false) %>
+              <%= link_to "Log out", "/sign_out", :style => "text-decoration:none;" %>
+          <% else %>
+              <%= link_to "Log in", "/sign_in", :style => "text-decoration:none;" %>
+          <% end %>
+        </p>
+      </li>
+    </ul>
+
+  </div>
+  <div class="links-bot-bg flt"></div>
+</div>

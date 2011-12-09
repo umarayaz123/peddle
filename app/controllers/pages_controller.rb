@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_filter :check_role, :current_cart_create
+  #before_filter :check_role, :current_cart_create
   def index
     @store = Store.find_by_name(request.subdomain)
     page_name = params[:name]
@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   end
 
   def purchase_history
-    @orders = Order.find_all_by_user_id(current_user.id)
+    @orders = Order.where("user_id = ?",current_user.id).page(params[:page])
   end
 
 end

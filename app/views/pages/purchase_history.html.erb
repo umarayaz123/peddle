@@ -1,32 +1,37 @@
 <div class="wrapper">
   <div class="w100 mtop60 pbotton20">
-    <div style="min-height:450px;">
-      <div class="pbotton20" style="text-align:center;"><b>Purchase History</b></div>
-      <table border="1" width="100%" cellpadding="0" cellspacing="0">
-        <tr class="purchase">
-          <th>No</th>
-          <th>Amount</th>
-          <th>Purchased Date</th>
-          <th>Purchased Time</th>
-          <th>Message</th>
-          <th>Created at</th>
-          <th>Updated at</th>
-        </tr>
-        <% @orders.each_with_index do |order, index| %>
-            <% if order.success %>
-                <tr class="<%= index%2==0? "even":"odd"%>">
-                  <td><%= index+1 %></td>
-                  <td><%= order.amount %>$</td>
-                  <td><%= order.purchased_at.strftime("%Y-%m-%d") %></td>
-                  <td><%= order.purchased_at.strftime("%H:%M-%S") %></td>
-                  <td><%= order.message %></td>
-                  <td><%= order.created_at.strftime("%Y-%m-%d") %></td>
-                  <td><%= order.updated_at.strftime("%Y-%m-%d") %></td>
-                </tr>
-            <% end %>
-        <% end %>
-      </table>
-
+    <div class="left-content flt">
+      <div style="min-height:450px;">
+        <div class="pbotton20" style="text-align:center;"><b>Purchase History</b></div>
+        <table border="1" width="100%" cellpadding="0" cellspacing="0">
+          <tr class="purchase">
+            <th>No</th>
+            <th>Amount</th>
+            <th>Purchased Date</th>
+            <th>Purchased Time</th>
+            <th>Message</th>
+            <th>Created at</th>
+            <th>Updated at</th>
+          </tr>
+          <% @orders.each_with_index do |order, index| %>
+              <% if order.success %>
+                  <tr class="<%= index%2==0 ? "even" :"odd" %>">
+                    <td><%= index+1 %></td>
+                    <td><%= order.amount %>$</td>
+                    <td><%= order.purchased_at.strftime("%Y-%m-%d") %></td>
+                    <td><%= order.purchased_at.strftime("%H:%M-%S") %></td>
+                    <td><%= order.message %></td>
+                    <td><%= order.created_at.strftime("%Y-%m-%d") %></td>
+                    <td><%= order.updated_at.strftime("%Y-%m-%d") %></td>
+                  </tr>
+              <% end %>
+          <% end %>
+        </table>
+        <%= paginate @orders %>
+      </div>
+    </div>
+    <div class="right-content frt">
+      <%= render :partial => "/shared/right_login_menu"%>
     </div>
   </div>
 

@@ -40,7 +40,7 @@ class Users::SessionsController < ApplicationController
     respond_to do |format|
       format.any(*navigational_formats) {
         if request.subdomain.blank?
-          redirect_to "/sign_in"
+          redirect_to "/"
         else
           url = root_url(:subdomain => false)
           if request.subdomain != ""

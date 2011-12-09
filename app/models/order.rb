@@ -6,6 +6,9 @@ class Order < ActiveRecord::Base
   #attr_accessible :cart_id, :ip_address, :first_name, :last_name, :card_type, :card_expires_on
   #validate :validate_card
 
+  default_scope order('created_at')
+  paginates_per 15
+
   #-------------------------
   def total_price
     order_details.to_a.sum { |item| item.total_price }
