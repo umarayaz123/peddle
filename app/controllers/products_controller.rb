@@ -88,4 +88,15 @@ class ProductsController < ApplicationController
     render :partial => "cart_div", :layout => false
   end
 
+  def search_products
+    @store = Store.find_by_name(request.subdomain)
+    @pname = params[:pname]
+    if @pname != ""
+      @products = Product.find(:all,:conditions => ["name = ? AND store_id=?",@pname,@store.id])
+    else
+      @products = Product.all
+    end
+    render :layout => false
+  end
+
 end

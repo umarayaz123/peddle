@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PEDDLE-online</title>
+  <%= stylesheet_link_tag "application", "stores.css.scss", "Aristo", "jquery.ad-gallery" %>
+  <%= javascript_include_tag "application", "jquery.ad-gallery", "jquery-ui.min" %>
+  <%= javascript_include_tag "jquery-1.6.3.min", "jquery.form", "jquery.validate" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<% url = root_url(:subdomain => false)
+   if request.subdomain != ""
+       new_url = request.subdomain+'.'
+       url = url.sub(new_url, '')
+   end %>
+<div class="wrapper">
+  <div class="w100">
+    <div class="peddle-top-left-bar flt"></div>
+    <div class="peddle-top-mid-bar flt">
+      <div class="lego-peddle-small flt"><%= link_to image_tag("/assets/peddle-logo-small.png"), url %></div>
+      <div class="profile-pic flt">
+        <% if current_user %>
+            <img src="/assets/profile-img.png" alt=""/>
+            <label>Rob Thomas</label>
+        <% end %>
+        <input type="text" value="Search"/>
+        <input type="submit" value=""/>
+      </div>
+
+      <ul class="top-links frt">
+        <li class="active-link"><a href="<%= root_url%>">Sales floor</a></li>
+        <li><a href="#">Sales view</a></li>
+        <li>
+          <% if current_user %>
+              <%= current_user.email %>
+              <% root_url(:subdomain => false) %>
+              <%= link_to "Logout", "/sign_out" %>
+          <% else %>
+              <%= link_to "Login", "/sign_in" %>
+          <% end %>
+        </li>
+        <!--<li class="bg-r-none"><a href="#">Setting</a></li>-->
+      </ul>
+
+    </div>
+    <div class="peddle-top-right-bar flt"></div>
+  </div>
+</div>
+
+
+<div class="header">
+
+  <div class="container">
+    <div class="logo">
+      <% url = root_url(:subdomain => false)
+         if request.subdomain != ""
+             new_url = request.subdomain+'.'
+             url = url.sub(new_url, '')
+         end %>
+      <%= link_to image_tag("/assets/logo.png"), url %>
+    </div>
+
+    <div class="topNav">
+      <ul>
+        <!--<li>          -->
+        <!--<%#=link_to "Sales Floor", "/home/index"%>-->
+        <!--</li>-->
+
+        <!--<li>-->
+        <!--<a href="#">Shopping Mall </a>-->
+        <!--</li>-->
+
+        <!--<li>-->
+        <!--<a href="#">Inbox </a>-->
+        <!--</li>-->
+        <!--<li>-->
+        <!--<#% if current_user %>-->
+        <!--<%#= link_to "My Account", "/admin/store_admin" %>-->
+        <!--<#%end%>-->
+        <!--</li>-->
+        <li>
+          <% if current_user %>
+              <%= current_user.email %>
+              <% root_url(:subdomain => false) %>
+              <%= link_to "Logout", "/sign_out" %>
+          <% else %>
+              <%= link_to "Login", "/sign_in" %>
+          <% end %>
+        </li>
+
+      </ul>
+    </div>
+
+    <div class="searchfield">
+      <input type="text"></input>
+      <input type="button"></input>
+    </div>
+
+
+  </div>
+
+
+</div>
+<p class="notice"><%= notice %></p>
+
+<p class="alert"><%= alert %></p>
+
+<%= yield %>
+
+
+<div class="footer w100 mtop50">
+  <div class="wrapper">
+    <div class="w100">
+      <div class="linksholder flt">
+        <ul class="foot-links bdr-bot flt">
+          <h1>Overview</h1>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Home</a></li>
+        </ul>
+        <ul class="foot-links flt mtop20">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Home</a></li>
+        </ul>
+      </div>
+
+      <div class="linksholder-new flt">
+        <h1>Recent stores</h1>
+
+        <div class="footer-bar-links flt">
+          <img src="/assets/levis.png" alt=""/>
+
+          <h1>Levi's</h1>
+
+          <h2>Retail</h2>
+        </div>
+        <div class="footer-bar-links flt">
+          <img src="/assets/levis.png" alt=""/>
+
+          <h1>Levi's</h1>
+
+          <h2>Retail</h2>
+        </div>
+        <div class="footer-bar-links flt">
+          <img src="/assets/levis.png" alt=""/>
+
+          <h1>Levi's</h1>
+
+          <h2>Retail</h2>
+        </div>
+
+      </div>
+      <div class="linksholder-new flt">
+        <div class="footlogo flt"><img src="/assets/footlogo.png" alt=""/></div>
+        <div class="footlogo flt"><img src="/assets/photo.png" alt=""/></div>
+      </div>
+
+      <div class="linksholder1 flt">
+        <h1>Fellow Us</h1>
+        <img src="/assets/facebookicon.png" alt=""/>
+        <img src="/assets/tweetericon.png" alt=""/>
+
+        <div class="copyright flt">Copyright &copy; 2011 Peddle Online.<br/>
+          All rights reserved.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

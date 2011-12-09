@@ -184,40 +184,22 @@
       <div class="w100">
         <div class="slider">
           <ul>
-            <li>
-              <div class="thumb-img flt ml18">
-                <img src="/assets/levis.png"/>
+            <% @featured_stores.each do |fstore| %>
+                <li>
+                  <div class="thumb-img flt ml18">
+                    <a href="<%=root_url(:subdomain =>fstore.name)%>">
+                      <% unless fstore.image.blank? %>
+                          <%= image_tag(fstore.image.snap) %>
+                      <% else %>
+                          <img src="/assets/no_img.jpg" alt=""/>
+                      <% end %>
+                    </a>
 
-                <p>levis</p>
+                    <p><%= fstore.name %></p>
 
-              </div>
-            </li>
-            <li>
-              <div class="thumb-img flt">
-                <img src="/assets/ikea.png"/>
-
-                <p>levis</p>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="thumb-img flt">
-                <img src="/assets/apple.png"/>
-
-                <p>levis</p>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="thumb-img flt">
-                <img title="levis" src="/assets/mocy.png"/>
-
-                <p>levis</p>
-
-              </div>
-            </li>
+                  </div>
+                </li>
+            <% end %>
           </ul>
         </div>
       </div>

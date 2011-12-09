@@ -14,8 +14,8 @@
               <div class="w-tab-right flt"></div>
             </a>
           </li>
-          <li>
-            <a href="#">
+          <li <%= "class=tab-act" if params[:controller] == "home" && params[:action] == "features" %> >
+            <a href="/features">
               <div class="w-tab-left flt"></div>
               <div class="w-tab-mid flt">Features</div>
               <div class="w-tab-right flt"></div>

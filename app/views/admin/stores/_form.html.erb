@@ -31,6 +31,13 @@
       <br/>
       <%= f.select("package_id", @packages.collect { |p| [p.name, p.id] }) %>
     </div>
+    <div class="checkbox_holder">
+      <div class="checkbox_input_holder">
+        <%= f.check_box :is_featured %>
+        <label>Featured</label>
+
+      </div>
+    </div>
     <div id="photos" style="float: left;
             margin-top: 20px;
             width: 94%;">

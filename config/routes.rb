@@ -23,6 +23,7 @@ Peddle::Application.routes.draw do
   match '/check_store' => 'home#check_store'
   match '/check_email' => 'home#check_email'
   match '/sales_floor' => 'home#sales_floor'
+  match '/features' => 'home#features'
   match '/plans' => 'home#plans'
   match '/pages' => 'pages#index'
   match '/purchase_history' => 'pages#purchase_history'
@@ -67,10 +68,13 @@ Peddle::Application.routes.draw do
   end
   
   resources :stores do
+    get 'search_store', :on => :collection
   	resources :products
   end
   
-  resources :products
+  resources :products do
+    get 'search_products', :on => :collection
+  end
   
   resources :packages
 

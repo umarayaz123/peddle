@@ -21,7 +21,7 @@
        $url = $url.sub(new_url, '')
    end %>
 <% unless current_user %>
-    <% if params[:controller] == "home" && params[:action] == "index" %>
+    <% if params[:controller] == "home" && params[:action] != "plans" %>
         <%= render :partial => "layouts/latest_header" %>
     <% else %>
         <%= render :partial => "layouts/header" %>

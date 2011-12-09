@@ -97,4 +97,15 @@ class StoresController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def search_store
+    @sname = params[:sname]
+    if @sname != ""
+      @stores = Store.find(:all, :conditions => ["name = ?", @sname])
+    #else
+    #  @stores = Store.all
+    end
+    render :layout => false
+  end
+
 end

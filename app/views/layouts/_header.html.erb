@@ -3,7 +3,7 @@
     <div class="logoblack flt"><%= link_to image_tag("/assets/logo-black.png"), $url %></div>
     <ul class="black-links frt mtop50">
       <li <%= "class=activeblack" if params[:controller] == "home" && params[:action] == "index" %>><a href="<%= $url%>">Home</a></li>
-      <li><a href="#">Features</a></li>
+      <li <%= "class=activeblack" if params[:controller] == "home" && params[:action] == "features" %> ><a href="/features">Features</a></li>
       <li><a href="#">Demo</a></li>
       <li <%= "class=activeblack" if params[:controller] == "home" && params[:action] == "plans" %> ><a href="/plans">Plans &amp; Pricing</a></li>
       <li><a href="#">Blog</a></li>

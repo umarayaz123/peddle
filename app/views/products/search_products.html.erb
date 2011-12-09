@@ -1,0 +1,30 @@
+<div id="product_container" class="w100">
+  <% unless @products.blank? %>
+      <% @products.each do |product| %>
+          <div class="gellary-bg flt mtop20 <%= product.name %>">
+            <div class="gellary-img flt">
+              <% unless product.images.first.blank? %>
+                  <%= link_to image_tag(product.images.first.snap, :width => "120", :height => "150"), :controller => "products", :action => "show", :id => product.id %>
+              <% else %>
+                  <%= link_to image_tag("../assets/skart.png"), :controller => "products", :action => "show", :id => product.id %>
+              <% end %>
+            </div>
+            <div class="gellary-left-holder flt"> <%= product.name %> </div>
+            <% lowest_price = -1 %>
+            <% product.product_details.each do |detail|
+                lowest_price = detail.price if detail.price < lowest_price || lowest_price == -1
+            end %>
+            <% unless lowest_price == -1 %>
+                <div class="price-div flt">
+                  <span class="doller"> $</span> <%= lowest_price %>
+                  <span class="doller">0</span>
+                </div>
+            <% else %>
+                <div class="price-div flt">
+                  <span class="doller"> $</span> 0.<span class="doller">00</span>
+                </div>
+            <% end %>
+          </div>
+      <% end %>
+  <% end %>
+</div>

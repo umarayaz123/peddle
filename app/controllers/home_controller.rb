@@ -3,8 +3,10 @@ class HomeController < ApplicationController
 
   def index
     @stores = Store.limit(3).offset(0)
+    @featured_stores = Store.where("is_featured = 1")
     unless current_user
-      @stores = Store.limit(4).offset(0)
+      @featured_stores = Store.where("is_featured = 1")
+      @stores = @featured_stores.limit(4).offset(0)
       render :action => "home"
     end
   end
@@ -12,7 +14,6 @@ class HomeController < ApplicationController
   def next_stores
     offset = params[:offset]
     @stores = Store.limit(3).offset(offset.to_i)
-    puts '&*&*&*&*&*&*&*&*&*',@stores
     render :layout => false
   end
 
@@ -43,10 +44,16 @@ class HomeController < ApplicationController
 
   end
 
+  def features
+
+  end
+
   def sales_floor
-    @stores = Store.limit(3).offset(0)
+    @featured_stores = Store.where("is_featured = 1")
+    @stores = @featured_stores.limit(4).offset(0)
     unless current_user
-      @stores = Store.limit(4).offset(0)
+      @featured_stores = Store.where("is_featured = 1")
+      @stores = @featured_stores.limit(4).offset(0)
       render :action => "home"
     end
     render :action => "index"
