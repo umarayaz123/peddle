@@ -21,7 +21,7 @@
   <% if @allowed_staff_members[0][:value].to_i > current_user.store.users.count %>
       <div class="leftHeading">
         <div class="inrHeading">Manage Your Staff</div>
-        <div class="inrHeadingGray"><%= link_to "Manage Your Staff", '/users/edit' %></div>
+        <div class="inrHeadingGray"><%= link_to "Manage Your Staff", '/admin/users/' %></div>
       </div>
   <% end %>
 </div>
