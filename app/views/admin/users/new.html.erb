@@ -1,0 +1,35 @@
+<div class="rightContainer mtop20">
+  <div class="bodyholder">
+    <div class="container">
+      <div class="signin_holder">
+        <div class="top_login_bg"></div>
+        <div class="mid_login_bg_sl">
+          <div class="signin_heading">Create New Member</div>
+          <%= form_for([:admin, @user], :html => {:method => :post}) do |f| %>
+
+              <div class="store_name signin_small_input_holder"><label>Full Name</label><br/>
+                <%= f.text_field :name %></div>
+
+              <div class="store_name signin_small_input_holder"><%= f.label :email %>
+                <br/>
+                <%= f.email_field :email %></div>
+
+              <div class="store_name signin_small_input_holder"><%= f.label :password %>
+                <br/>
+                <%= f.password_field :password %></div>
+
+              <div class="store_name signin_small_input_holder"><%= f.label :password_confirmation %>
+                <br/>
+                <%= f.password_field :password_confirmation %></div>
+
+              <div class="submit_holder"><%= f.submit "Create" %></div>
+          <% end %>
+
+
+          <%= link_to "Back", :back %>
+        </div>
+        <div class="bot_login_bg"></div>
+      </div>
+    </div>
+  </div>
+</div>

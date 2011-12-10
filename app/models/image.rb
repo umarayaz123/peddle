@@ -14,9 +14,11 @@ class Image < ActiveRecord::Base
     if is_banner
       unless snap.to_file(:original).blank?
         dimensions = Paperclip::Geometry.from_file(snap.to_file(:original))
-        if dimensions.width != 750 && dimensions.height != 300
-          errors.add(:file, 'Please add banner with proper height and width')
-        end
+        #if dimensions.width != 750 && dimensions.height != 300
+        # another check removing temporarily for client
+        #if dimensions.width > 100 && dimensions.height > 100
+        #  errors.add(:file, 'Please add banner with proper height and width')
+        #end
       end
     end
   end

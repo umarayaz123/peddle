@@ -1,14 +1,18 @@
+<% admin_role = Role.find(:first, :conditions => ["name = ?", "Admin"]) %>
 <div class="rightContainer">
   <div class="rightHeading1">
     <div class="rgtHeading1">MANAGE Users</div>
     <%#*<div class="submitInrBtn1"><%= link_to 'New Product', new_admin_product_path %>
   </div>
   <div class="mngMain mtop20">
-    <div class="label">SEARCH MEMBER :</div>
-    <div class="inputText"><input type="text" value=""/></div>
-    <div class="mediaBtn1">
-      <input type="submit" value="Search" class="smallBtn"/>
-    </div>
+    <!--<div class="label">SEARCH MEMBER :</div>-->
+    <!--&lt;!&ndash;<div class="inputText"><input type="text" value=""/></div>&ndash;&gt;-->
+    <!--<div class="mediaBtn1">-->
+      <!--<input type="submit" value="Search" class="smallBtn"/>-->
+    <!--</div>-->
+    <% if @allowed_staff_members[0][:value].to_i > @current_store_users %>
+        <div class="submitInrBtn1"><%= link_to "New Member", '/admin/users/new/' %></div>
+    <% end %>
   </div>
 
   <div class="mngData mtop20">
@@ -31,18 +35,21 @@
                 <% end %>
                 <div class="foMngHeading1">
                   <div class="mediaBtn2">
-                    <% unless index == 0 %>
-                        <%= link_to "Delete", '/admin/users/destroy/'+user.id.to_s, :confirm => 'Are you sure?', :method => :delete, :class => "smallBtn" %>
-                        <%= link_to "Edit", '/admin/users/edit/'+user.id.to_s, :class => "smallBtn" %>
+                    <% unless user.roles.include?(admin_role) %>
+                        <% unless index == 0 %>
+                            <%= link_to "Delete", '/admin/users/destroy/'+user.id.to_s, :confirm => 'Are you sure?', :method => :delete, :class => "smallBtn" %>
+                            <%#= link_to "Edit", '/admin/users/edit/'+user.id.to_s, :class => "smallBtn" %>
+                        <% else %>
+                            <input type="submit" value="Delete" class="smallBtn"/>
+                        <% end %>
                     <% else %>
-                        <input type="submit" value="Delete" class="smallBtn"/>
+                        <input type="button" value="--" class="smallBtn"/>
                     <% end %>
                   </div>
                 </div>
             <% end %>
         <% end %>
     <% end %>
-
   </div>
 </div>
 

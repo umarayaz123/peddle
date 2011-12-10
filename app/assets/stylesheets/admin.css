@@ -295,10 +295,10 @@ a{
 	font-size:14px;
 	font-weight:bold;
 }
-.topLinks a:link {text-decoration:underline; color:#3b62bc;}
-.topLinks a:visited {text-decoration:underline; color:#3b62bc;}
-.topLinks a:active {text-decoration:underline; color:#3b62bc;}
-.topLinks a:hover {text-decoration:none; color:#3b62bc;}
+.topLinks a:link {text-decoration:underline; color:#3EACC8;}
+.topLinks a:visited {text-decoration:underline; color:#3EACC8;}
+.topLinks a:active {text-decoration:underline; color:#3EACC8;}
+.topLinks a:hover {text-decoration:none; color:#3EACC8;}
 .gray{
 	color:#999999;
 }
@@ -343,7 +343,7 @@ a{
 }
 .inrHeading{
 	float:left;
-	color: #2C6DCE;
+	color: #3EACC8;
     font-size: 19px;
 	width:100%;
 	font-weight:bold;
@@ -480,19 +480,19 @@ a{
 
 }
 .smallBtn{
-	background: url("../assets/smallBtn.png") no-repeat scroll 0 0 transparent;
+	background: url("/assets/input_btn.png") no-repeat scroll 0 0 transparent;
     color: #FFFFFF;
     float: left;
     font-size: 14px;
     font-weight: bold;
-    height: 26px;
+    height: 37px;
     padding-top: 7px;
     text-decoration: none;
     width: 71px;
     text-align:center;
 }
 .searchlBtn {
-    background: url("../assets/smallBtn.png") no-repeat scroll left bottom transparent;
+    background: url("/assets/input_btn.png") no-repeat scroll left bottom transparent;
     color: #FFFFFF;
     float: left;
     font-size: 14px;
@@ -894,6 +894,14 @@ a{
     height: auto;
     padding: 0 4%;
     width: 477px;
+}
+
+.mid_login_bg_sl {
+    background: url("../assets/mid_login_bg.png") repeat-y scroll 0 0 transparent;
+    float: left;
+    height: auto;
+    padding: 0 4%;
+    width: 487px;
 }
 
 .bot_login_bg {
