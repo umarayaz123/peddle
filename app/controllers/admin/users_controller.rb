@@ -35,6 +35,10 @@ class Admin::UsersController < ApplicationController
   # GET /admins/new
   # GET /admins/new.json
   def new
+    if @allowed_staff_members[0][:value].to_i >= @current_store_users
+      redirect_to :action => :index
+      return
+    end
     @user = User.new
 
     respond_to do |format|

@@ -1039,8 +1039,9 @@ CAPTIFY CAPTION
 
 .price-time, .price-corporation, .price-enterprise {
     line-height: 40px;
-    margin-right: 2px;
+    margin-right: 1px;
     width: 238px;
+    margin-left: 1px;;
 }
 
 .white-bg {
@@ -1169,7 +1170,7 @@ CAPTIFY CAPTION
 }
 
 .g-icon {
-    width: auto;
+    width: 225px;
     padding-top: 10px;
 }
 
@@ -1712,7 +1713,7 @@ CAPTIFY CAPTION
     position: relative;
     /*margin-left: 10px;*/
     /*margin-right: 10px;*/
-    margin:0 auto;
+    margin: 0 auto;
 }
 
 #fLike {
@@ -1734,13 +1735,14 @@ CAPTIFY CAPTION
     width: 24px;
 }
 
-tr.odd{
-    background-color:#CCCCCC;
-}
-tr.purchase{
-    background-color:#CCCCCC;
+tr.odd {
+    background-color: #CCCCCC;
 }
 
-.mtop45{
-	margin-top:45px;
+tr.purchase {
+    background-color: #CCCCCC;
+}
+
+.mtop45 {
+    margin-top: 45px;
 }
