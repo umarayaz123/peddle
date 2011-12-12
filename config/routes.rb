@@ -56,17 +56,9 @@ Peddle::Application.routes.draw do
     resources :stores
     resources :users
     resources :products
-    resources :packages
+    #resources :packages
     resources :product_details
     resources :pages
-#    do
-#    end
-#      resources :product_details do
-#        member do
-#          get 'delete'
-#        end
-#      end
-#    end
   end
   
   resources :stores do
@@ -77,8 +69,6 @@ Peddle::Application.routes.draw do
   resources :products do
     get 'search_products', :on => :collection
   end
-  
-  resources :packages
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
