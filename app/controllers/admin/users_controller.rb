@@ -117,8 +117,9 @@ class Admin::UsersController < ApplicationController
 
   def user_image_update
     @user = current_user
-    @user.build_image(params[:user][:image])
-    #@user.image = params[:user][:image]
+    unless params[:user][:image]
+      @user.build_image(params[:user][:image])
+    end
     if @user.update_attributes(params[:user])
       redirect_to '/admin', :notice => 'Image was successfully updated.'
     else
