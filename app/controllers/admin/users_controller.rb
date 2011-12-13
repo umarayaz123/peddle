@@ -117,7 +117,7 @@ class Admin::UsersController < ApplicationController
 
   def user_image_update
     @user = current_user
-    unless params[:user][:image]
+    unless params[:user].nil?
       @user.build_image(params[:user][:image])
     end
     if @user.update_attributes(params[:user])
