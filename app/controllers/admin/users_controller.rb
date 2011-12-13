@@ -73,8 +73,11 @@ class Admin::UsersController < ApplicationController
   # PUT /sys_admins/1
   # PUT /sys_admins/1.json
   def update
-    @user = User.find(params[:id])
-
+    unless params[:id].nil?
+      @user = User.find(params[:id])
+    else
+      @user = current_user
+    end
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to '/admin/users' }
@@ -103,16 +106,19 @@ class Admin::UsersController < ApplicationController
   end
 
   def user_image
-    @user = current_user
+    @user = User.find_by_id(current_user.id)
     unless @user.image.nil?
       @image = @user.image
     else
       @user.build_image
+      puts "***Params user.image ***#{@user.image.inspect}"
     end
   end
 
   def user_image_update
     @user = current_user
+    @user.build_image(params[:user][:image])
+    #@user.image = params[:user][:image]
     if @user.update_attributes(params[:user])
       redirect_to '/admin', :notice => 'Image was successfully updated.'
     else

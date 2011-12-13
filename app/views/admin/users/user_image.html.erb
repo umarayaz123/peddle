@@ -1,19 +1,24 @@
-<% if @image %>
-    <%= image_tag(@image.snap, :width => "200", :height => "150") %>
-<% else %>
-    <%= form_for(:user,:url => '/admin/users/user_image_update', :html => {:multipart => true}) do |f| %>
-        <div id="photos" style="float: left;
-                margin-top: 20px;
-                width: 94%;">
-          <%= f.label :snap, 'Attachment' %>
-          <br/>
-          <%= f.fields_for :image do |builder| %>
-              <%= render "image", :image => builder %>
-          <% end %>
+<div class="bodyholder">
+  <div class="rightContainer">
+    <div class="container mtop60">
+      <% if @image %>
+          <%= image_tag(@image.snap, :width => "200", :height => "150") %>
+          <%= form_for(:user, :url => '/admin/users/user_image_update', :method => 'PUT', :html => {:multipart => true}) do |f| %>
+              <div id="photos" style="float: left;
+                      margin-top: 20px;
+                      width: 94%;">
+                <%= f.label :snap, 'Attachment' %>
+                <br/>
+                <%= f.fields_for :image do |builder| %>
+                    <%= render "image", :image => builder %>
+                <% end %>
 
-        </div>
-        <div class="actions">
-          <%= submit_tag 'Upload' %>
-        </div>
-    <% end %>
-<% end %>
+              </div>
+              <div class="actions">
+                <%= f.submit 'Upload' %>
+              </div>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -65,7 +65,7 @@ class Admin::StoresController < ApplicationController
 
     respond_to do |format|
       if @store.update_attributes(params[:store])
-        format.html { redirect_to @store, :notice => 'Store was successfully updated.' }
+        format.html { redirect_to [:admin,@store], :notice => 'Store was successfully updated.' }
         format.json { head :ok }
       else
         #        format.html { render action: "edit" }
