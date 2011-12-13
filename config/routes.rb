@@ -54,7 +54,10 @@ Peddle::Application.routes.draw do
     resources :store_admin
     resources :sys_admins
     resources :stores
-    resources :users
+    resources :users do
+      get 'user_image', :on => :collection
+      post 'user_image_update', :on => :collection
+    end
     resources :products
     #resources :packages
     resources :product_details

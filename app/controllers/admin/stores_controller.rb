@@ -4,8 +4,8 @@ class Admin::StoresController < ApplicationController
   # GET /stores
   # GET /stores.json
   before_filter :check_role
-  
-  def index    
+
+  def index
     @stores = Store.all
 #    @products = @store.products
 #    respond_to do |format|
@@ -13,8 +13,8 @@ class Admin::StoresController < ApplicationController
 #      format.json { render :json => @stores }
 #    end
   end
-  
-  def show  	
+
+  def show
     @store = Store.find(params[:id])
   end
 
@@ -65,7 +65,7 @@ class Admin::StoresController < ApplicationController
 
     respond_to do |format|
       if @store.update_attributes(params[:store])
-        #        format.html { redirect_to @store, notice: 'Store was successfully updated.' }
+        format.html { redirect_to @store, :notice => 'Store was successfully updated.' }
         format.json { head :ok }
       else
         #        format.html { render action: "edit" }

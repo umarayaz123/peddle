@@ -102,6 +102,25 @@ class Admin::UsersController < ApplicationController
 #    end
   end
 
+  def user_image
+    @user = current_user
+    unless @user.image.nil?
+      @image = @user.image
+    else
+      @user.build_image
+    end
+  end
+
+  def user_image_update
+    @user = current_user
+    if @user.update_attributes(params[:user])
+      redirect_to '/admin', :notice => 'Image was successfully updated.'
+    else
+      redirect_to '/admin/users/user_image', :notice => 'Image Could not saved.'
+    end
+    #end
+  end
+
   def make_resources
     @allowed_staff_members = current_user.store.package.package_rules.select { |r| r.key=="allowed_staff_members" }
     @current_store_users = current_user.store.users.count
