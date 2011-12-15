@@ -269,8 +269,11 @@ a {
     text-align: center;
     text-decoration: none;
     width: 147px;
+    margin-left: -60px;
 }
-
+.blueInrBtn{
+    float: right;
+}
 .blueInrBtn a {
     background: url("../assets/blue-bg.png") no-repeat scroll 0 0 transparent;
     color: #FFFFFF;
@@ -1192,4 +1195,7 @@ a {
 
 .mtop60 {
     margin-top: 60px;
+}
+tr.tr-header{
+    background-color: #04A9DB;
 }

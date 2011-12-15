@@ -5,7 +5,11 @@
       <div class="lego-peddle-small flt"><%= link_to image_tag("/assets/peddle-logo-small.png"), $url %></div>
       <div class="profile-pic flt">
         <% if current_user %>
-            <img src="/assets/profile-img.png" alt=""/>
+            <% unless current_user.image.nil? %>
+                <%= image_tag(current_user.image.snap, :width => "50", :height => "50") %>
+            <% else %>
+                <img src="/assets/profile-img.png" alt=""/>
+            <% end %>
             <% unless current_user.name.nil? %>
                 <label><%= current_user.name %></label>
             <% else %>

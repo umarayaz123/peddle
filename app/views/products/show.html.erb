@@ -7,6 +7,7 @@
           <div class="nav-top-holder">Our products</div>
           <div class="nav-mid-holder">
             <ul class="left-nav">
+              <li><a href="/">Recent Products</a></li>
               <% @store.products.each do |product| %>
                   <li class="<%= 'active' if params[:id]== product.id.to_s %>"><%= link_to product.name, :controller => "products", :action => "show", :id => product.id %></li>
               <% end %>
@@ -36,6 +37,7 @@
 
       </div>
       <div class="right-warrpper">
+        <div class="loader_div"><img style="float: none; margin-top:233px;"  src="/assets/ajax-loader.gif"></div>
         <div class="w100">
           <div class="white-left-bg flt"></div>
           <div class="white-mid-bg flt">
@@ -48,7 +50,6 @@
           </div>
           <div class="white-right-bg flt"></div>
         </div>
-
         <div class="w100 mtop20">
           <div class="gellary-holder">
             <% unless @product.product_details.blank? %>
@@ -174,9 +175,11 @@
 
         $('.add-to-cart').click(function() {
             if ($('#order_detail_product_detail_id').val() != "0") {
+                $(".loader_div").show();
                 product_detail_id = $(this).attr('details');
                 $.post("/order_details/create", $("#new_order_detail").serialize()).success(function() {
                     $('.cart-holder').fadeOut('slow').load('/cart_div').fadeIn("slow");
+                    $(".loader_div").hide();
                     alert("Product has successfully been added to Cart ");
                 });
             }

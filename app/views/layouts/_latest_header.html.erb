@@ -1,42 +1,43 @@
-<div class="wrapper">
+<div class="main-page">
+<div class="wrapper header-div">
   <div class="w100 minhieght">
-    <div class="work-logo flt"><%= link_to image_tag("/assets/work-peddle-logo.png"), $url %></div>
+    <div class="work-logo flt"><%=link_to image_tag("/assets/work-peddle-logo.png",:class => 'header_links', :url => "/home"), "#"%></div>
 
     <div class="tabs-holder flt">
       <div class="tabs-left flt"></div>
       <div class="tabs-mid flt">
 
         <ul class="tabs flt">
-          <li <%= "class=tab-act" if params[:controller] == "home" && params[:action] == "index" %>>
-            <a href="<%= $url %>">
+          <li class="home <%= "tab-act" if params[:controller] == "home" && params[:action] == "index" %>">
+            <a class="header_links" href="#" url="/home">
               <div class="w-tab-left flt"></div>
               <div class="w-tab-mid flt">Home</div>
               <div class="w-tab-right flt"></div>
             </a>
           </li>
           <li <%= "class=tab-act" if params[:controller] == "home" && params[:action] == "features" %> >
-            <a href="/features">
+            <a class="header_links" href="#" url="/features">
               <div class="w-tab-left flt"></div>
               <div class="w-tab-mid flt">Features</div>
               <div class="w-tab-right flt"></div>
             </a>
           </li>
-          <li <%= "class=tab-act" if params[:controller] == "home" && params[:action] == "plans" %>>
-            <a href="/plans">
+          <li class="plans <%= "tab-act" if params[:controller] == "home" && params[:action] == "plans" %>">
+            <a class="header_links" href="#" url="/plans">
               <div class="w-tab-left flt"></div>
               <div class="w-tab-mid flt">Plans &amp; Pricing</div>
               <div class="w-tab-right flt"></div>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a class="" href="#">
               <div class="w-tab-left flt"></div>
               <div class="w-tab-mid flt">How To</div>
               <div class="w-tab-right flt"></div>
             </a>
           </li>
           <li class="bg-r-none">
-            <a href="#">
+            <a class="" href="#">
               <div class="w-tab-left flt"></div>
               <div class="w-tab-mid flt">Blog</div>
               <div class="w-tab-right flt"></div>
@@ -58,6 +59,7 @@
       <g:plusone size="standard" annotation="none" href="ilsainteractive.com"></g:plusone>
     </div>
   </div>
+</div>
 </div>
 
 

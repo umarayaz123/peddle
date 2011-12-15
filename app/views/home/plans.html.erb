@@ -1,4 +1,11 @@
-<div class="wrapper">
+<div class="work-header w100 body-div">
+  <div class="wrapper">
+    <h1>Peddle Online accelerates your online store.</h1>
+
+    <h2>Learn more about how Peddle Online can help you with your online store.</h2>
+  </div>
+</div>
+<div class="wrapper body-div">
 <div class="w100 mtop40 trial-heading bdr-bot">
   <h1>Start your FREE trial today!</h1>
 
@@ -72,15 +79,17 @@
 
     <div class="w100">
       <% @discount_count.each do |p| %>
-          <div class="price-enterprise flt white-bg"><%= p.value=='yes'? 'Discount Count' : '--' %></div>
+          <div class="price-enterprise flt white-bg"><%= p.value=='yes' ? 'Discount Count' : '--' %></div>
       <% end %>
     </div>
 
     <div class="w100">
-      <div class="price-start-up flt "><a href="/users/sign_up?package=1"><img src="/assets/join-now.png" alt=""></a>
+      <div class="price-start-up flt "><a href="/users/sign_up?packageno=1"><img src="/assets/join-now.png" alt=""></a>
       </div>
-      <div class="price-time flt "><a href="/users/sign_up?package=2"><img src="/assets/join-now.png" alt=""></a></div>
-      <div class="price-corporation flt"><a href="/users/sign_up?package=3"><img src="/assets/join-now.png" alt=""></a>
+      <div class="price-time flt "><a href="/users/sign_up?packageno=2"><img src="/assets/join-now.png" alt=""></a>
+      </div>
+      <div class="price-corporation flt">
+        <a href="/users/sign_up?packageno=3"><img src="/assets/join-now.png" alt=""></a>
       </div>
       <div class="price-enterprise flt"><a href="/users/sign_up?package=4"><img src="/assets/join-now.png" alt=""></a>
       </div>

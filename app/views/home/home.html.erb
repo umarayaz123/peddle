@@ -1,4 +1,4 @@
-<div class="work-header w100">
+<div class="work-header w100 body-div">
   <div class="wrapper">
     <h1>Peddle Online accelerates your online store.</h1>
 
@@ -6,7 +6,7 @@
   </div>
 </div>
 
-<div class="main-banner w100">
+<div class="main-banner w100 body-div">
   <div class="wrapper">
     <!--<div class="wrapper">-->
     <!--<div class="home-banner w100 mtop20"><img src="/assets/home-banner.png" alt=""></div>-->
@@ -69,7 +69,7 @@
   </div>
 </div>
 
-<div class="wrapper">
+<div class="wrapper body-div">
   <div class="w100 mtop20">
     <div class="home-left-penal flt">
       <h1>FEATURES</h1>
@@ -120,24 +120,24 @@
       <div class="stumning-text">"Absolutely stunning web app. Highly recommended!"</div>
       <div class="post-name-holder">- Michael Jordan</div>
 
-      <div class="screenshort-holder">
-        <div class="screenshort-top"></div>
-        <div class="screenshort-mid">
-          <div class="screenshort-mid-new">
-            <h1>SCREENSHOTS</h1>
+      <!--<div class="screenshort-holder">-->
+      <!--<div class="screenshort-top"></div>-->
+      <!--<div class="screenshort-mid">-->
+      <!--<div class="screenshort-mid-new">-->
+      <!--<h1>SCREENSHOTS</h1>-->
 
-            <div class="screen-short">
-              <div class="screen-short-bg"><img src="/assets/screen-1.png" alt=""></div>
-              <div class="screen-short-bg"><img src="/assets/screen-1.png" alt=""></div>
-              <div class="screen-short-bg"><img src="/assets/screen-1.png" alt=""></div>
-              <div class="screen-short-bg"><img src="/assets/screen-1.png" alt=""></div>
+      <!--<div class="screen-short">-->
+      <!--<div class="screen-short-bg"><img src="/assets/screen-1.png" alt=""></div>-->
+      <!--<div class="screen-short-bg"><img src="/assets/screen-1.png" alt=""></div>-->
+      <!--<div class="screen-short-bg"><img src="/assets/screen-1.png" alt=""></div>-->
+      <!--<div class="screen-short-bg"><img src="/assets/screen-1.png" alt=""></div>-->
 
-            </div>
+      <!--</div>-->
 
-          </div>
-        </div>
-        <div class="screenshort-bot"></div>
-      </div>
+      <!--</div>-->
+      <!--</div>-->
+      <!--<div class="screenshort-bot"></div>-->
+      <!--</div>-->
 
 
     </div>
@@ -150,7 +150,7 @@
     <div class="adds-holder">
 
       <div class="adds-main-div">
-        <a style="text-decoration:none;" href="/plans">
+        <a style="text-decoration:none;" class="header_links" href="#" url="/plans">
           <div class="adds-top-holder">SETUP YOUR STORE</div>
         </a>
 
@@ -232,6 +232,28 @@
     $(document).ready(function() {
 
         $('.carousel').carousel({carouselWidth:930, carouselHeight:330, directionNav:true, shadow:true});
+
+        $(".header_links").click(function() {
+            var parent = $(this).parent();
+            var reference = this;
+            $.ajax({
+                url: $(this).attr("url"),
+                success: function(response) {
+                    $(this).addClass("done");
+                    $('.body-div').remove();
+                    $('.main-page').append(response);
+                    $('.tab-act').removeClass('tab-act');
+                    parent.addClass('tab-act');
+//                    if ($(reference).attr('url','/plans')) {
+//                        alert('yes');
+//                        alert(reference);
+//                        $('.plans').addClass('tab-act');
+//                    }
+
+                    console.log(parent);
+                }
+            });
+        });
 
     });
 </script>

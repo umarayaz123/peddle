@@ -38,14 +38,15 @@ class HomeController < ApplicationController
     @chat = PackageRule.where(:key => "chat")
     @inventory_tracking = PackageRule.where(:key => "inventory_tracking")
     @discount_count = PackageRule.where(:key => "discount_count")
+    render :layout => false
   end
 
   def home
-
+    render :layout => false
   end
 
   def features
-
+    render :layout => false
   end
 
   def sales_floor

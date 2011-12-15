@@ -1743,3 +1743,24 @@ tr.purchase {
 .mtop45 {
     margin-top: 45px;
 }
+
+.loader_div {
+    opacity: 0.6;
+    filter: alpha(opacity:80);
+    -moz-opacity: 0.8;
+    -khtml-opacity: 0.8;
+    background: none repeat scroll 0 0 #fff;
+    height: 100%;
+    /*opacity: 0.3;*/
+    position: absolute;
+    text-align: center;
+    width: 75%;
+    display:none;
+}
+
+td.txt-center{
+    text-align: center;
+}
+th.txt-center{
+    text-align: center;
+}

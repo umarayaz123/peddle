@@ -6,48 +6,47 @@
     <div class="w100 mtop60">
       <div class="cart_title">Your Cart</div>
       <div style="margin: 0 auto;width: 800px;">
-        <table border="1" width="100%" cellpadding="0" cellspacing="0">
-          <tr>
-            <th>Product Name</th>
-            <th>Product Color</th>
-            <th>Product Size</th>
-            <th>Product Price</th>
-            <th>Action</th>
+        <table width="100%" cellpadding="0" cellspacing="0">
+          <tr class="tr-header">
+            <th class="txt-center">Product Name</th>
+            <th class="txt-center">Product Color</th>
+            <th class="txt-center">Product Size</th>
+            <th class="txt-center">Product Price</th>
+            <th class="txt-center">Action</th>
           </tr>
           <form action="https://sandbox.google.com/checkout/api/checkout/v2/checkoutForm/Merchant/157193595798525" id="BB_BuyButtonForm" method="post" name="BB_BuyButtonForm" target="_top">
 
-            <% @cart.order_details.each_with_index do |item,i| %>
-                <tr>
-                  <td><%= item.product_detail.product.name %></td>
-                  <td><%= item.product_detail.color %></td>
-                  <td><%= item.product_detail.size %></td>
-                  <td class="item_price"><%= number_to_currency(item.total_price) %></td>
+            <% @cart.order_details.each_with_index do |item, i| %>
+                <tr class="<%= i%2==0 ? "even" :"odd" %>">
+                  <td class="txt-center"><%= item.product_detail.product.name %></td>
+                  <td class="txt-center"><%= item.product_detail.color %></td>
+                  <td class="txt-center"><%= item.product_detail.size %></td>
+                  <td class="item_price txt-center"><%= number_to_currency(item.total_price) %></td>
                   <td>
                     <div class="submitInrBtn2"><%= link_to 'Remove from cart', '/order_details/destroy/'+item.id.to_s+'?cart_id='+@cart.id.to_s, :confirm => 'Are you sure?', :method => :delete %></div>
                   </td>
                 </tr>
-                <input name="item_name_<%= i%>" type="hidden" value="<%= item.product_detail.product.name %>"/>
-                <input name="item_description_<%= i%>" type="hidden" value="<%= item.product_detail.product.description %>"/>
-                <input name="item_quantity_<%= i%>" type="hidden" value="1"/>
-                <input name="item_price_<%= i%>" type="hidden" value="<%= item.total_price %>"/>
-                <input name="item_currency_<%= i%>" type="hidden" value="USD"/>
+                <input name="item_name_<%= i %>" type="hidden" value="<%= item.product_detail.product.name %>"/>
+                <input name="item_description_<%= i %>" type="hidden" value="<%= item.product_detail.product.description %>"/>
+                <input name="item_quantity_<%= i %>" type="hidden" value="1"/>
+                <input name="item_price_<%= i %>" type="hidden" value="<%= item.total_price %>"/>
+                <input name="item_currency_<%= i %>" type="hidden" value="USD"/>
                 <input name="_charset_" type="hidden" value="utf-8"/>
             <% end %>
             <tr class="total_line">
-              <td colspan="3"><b>Total</b></td>
-              <td class="total_cell"><b><%= number_to_currency(@cart.total_price) %></b></td>
+              <td class="txt-center" colspan="3"><b>Total</b></td>
+              <td class="txt-center" class="total_cell"><b><%= number_to_currency(@cart.total_price) %></b></td>
             </tr>
         </table>
       </div>
+      <br/>
     </div>
-    <%= link_to image_tag('/assets/empty-cart.png'), '/carts/destroy/'+@cart.id.to_s, :confirm => 'Are you sure?', :method => :delete %>
-    <br/>
-    <%= link_to image_tag('/assets/back.png'), root_url() %>
+    <span><%= link_to image_tag('/assets/back.png'), root_url() %></span>
+    <span style=""><%= link_to image_tag('/assets/empty-cart.png'), '/carts/destroy/'+@cart.id.to_s, :confirm => 'Are you sure?', :method => :delete %></span>
+
     <div class="blueInrBtn">
       <%= link_to "Paypal Checkout", new_order_path %>
-
       <input alt="" src="https://sandbox.google.com/checkout/buttons/buy.gif?merchant_id=408417464585810&amp;w=117&amp;h=48&amp;style=white&amp;variant=text&amp;loc=en_US" type="image"/>
-
     </div>
     </form>
   </div>

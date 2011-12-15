@@ -149,7 +149,9 @@
         });
         $('.products').children().click(function() {
             $('.gellary-bg').hide();
-            $('.gellary-bg.' + this.innerHTML).show();
+            console.log(this.innerHTML.split(" ")[0]);
+            console.log(  $('.gellary-bg.' + this.innerHTML));
+            $('.gellary-bg.' + this.innerHTML.split(" ")[0]).show();
             $('.active').removeClass('active');
             $(this).parent().addClass('active');
         });
