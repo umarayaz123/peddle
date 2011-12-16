@@ -174,7 +174,13 @@
                 $.post("/order_details/create", $("#new_order_detail").serialize()).success(function() {
                     $('.cart-holder').fadeOut('slow').load('/cart_div').fadeIn("slow");
                     $(".loader_div").hide();
-                    alert("Product has successfully been added to Cart ");
+                    $.gritter.add({
+                  		// (string | mandatory) the heading of the notification
+                  		title: 'Notice!',
+		                  // (string | mandatory) the text inside the notification
+    		              text: 'Product has been added to cart',
+    		              time: 5000
+    			          });
                 });
             }
             else {
