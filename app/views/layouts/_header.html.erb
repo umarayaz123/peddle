@@ -2,13 +2,33 @@
   <div class="wrapper">
     <div class="logoblack flt"><%= link_to image_tag("/assets/logo-black.png"), $url %></div>
     <ul class="black-links frt mtop50">
-      <li <%= "class=activeblack" if params[:controller] == "home" && params[:action] == "index" %>><a href="<%= $url%>">Home</a></li>
-      <li <%= "class=activeblack" if params[:controller] == "home" && params[:action] == "features" %> ><a href="/features">Features</a></li>
+      <li <%= "class=activeblack" if params[:controller] == "home" && params[:action] == "index" %>>
+        <a href="<%= $url%>">Home</a></li>
+      <li <%= "class=activeblack" if params[:controller] == "home" && params[:action] == "features" %> >
+        <a href="<%= $url+"/features"%>" url="features">Features</a></li>
       <li><a href="#">Demo</a></li>
-      <li <%= "class=activeblack" if params[:controller] == "home" && params[:action] == "plans" %> ><a href="/plans">Plans &amp; Pricing</a></li>
+      <li <%= "class=activeblack" if params[:controller] == "home" && params[:action] == "plans" %> >
+        <a href="<%= $url+"/plans"%>" url="plans">Plans &amp; Pricing</a></li>
       <li><a href="#">Blog</a></li>
       <li <%= "class=activeblack" if params[:controller] == "users/sessions" %> ><%= link_to "Login", "/sign_in" %></li>
     </ul>
 
   </div>
 </div>
+
+<script type="text/javascript">
+//    $(".header_links").click(function() {
+//        var parent = $(this).parent();
+//        var reference = this;
+//        $.ajax({
+//            url: $(this).attr("url"),
+//            success: function(response) {
+//                $(this).addClass("done");
+//                $('.body-div').remove();
+//                $('.main-page').append(response);
+//                $('.activeblack').removeClass('activeblack');
+//                parent.addClass('activeblack');
+//            }
+//        });
+//    });
+</script>

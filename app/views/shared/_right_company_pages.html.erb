@@ -1,0 +1,6 @@
+<ul class="left-nav">
+  <% @store.pages.each do |page| %>
+      <li class="prod-img "<%= "active latest_products" if params[:name] == page.name %>>
+        <a href="#" url="/pages?name=<%= page.name %>"><%= page.name.capitalize %></a></li>
+  <% end %>
+</ul>

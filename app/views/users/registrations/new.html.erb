@@ -157,6 +157,30 @@
         return emailPattern.test(elementValue);
     }
 
+    function show_notice() {
+        if ($('.notice').html() != "") {
+            $.gritter.add({
+                // (string | mandatory) the heading of the notification
+                title: 'Notice!',
+                // (string | mandatory) the text inside the notification
+                text: $('.notice').html(),
+                time: 6000
+            });
+        }
+    }
+
+    function show_alert() {
+        if ($('.alert').html() != "") {
+            $.gritter.add({
+                // (string | mandatory) the heading of the notification
+                title: 'Notice!',
+                // (string | mandatory) the text inside the notification
+                text: $('.alert').html(),
+                time: 6000
+            });
+        }
+    }
+
 
     $(document).ready(function() {
         /*------- Page onload checks start----------*/
@@ -174,17 +198,39 @@
         }
         else {
             $('#store_name').show();
-            if($("#store_name").val() == ""){
-                store_field=0;
+            if ($("#store_name").val() == "") {
+                store_field = 0;
             }
-            else{
-                store_field=1;
+            else {
+                var store_name = $('#store_name').val();
+                var reference = $('#store_name');
+                $.ajax({
+                    url: "/check_store?store_name=" + store_name,
+                    success: function(response) {
+                        if (response == "true") {
+                            $(reference).addClass("error_highlight");
+                            $('.alert').html("Store with this name already exist. Please choose another Store name");
+                            show_alert();
+                            store_field = 0;
+                            check_form_submit();
+                        }
+                        else {
+                            $(reference).removeClass("error_highlight");
+                            $('.alert').html("");
+                            store_field = 1;
+                            check_form_submit();
+                        }
+                    }
+                });
             }
         }
-        if(validateEmail($("#user_email").val())){
+        if (!validateEmail($("#user_email").val())) {
             email_field = 1;
-        } else{
+            $('.notice').html("Email Address is not correct");
+            show_notice();
+        } else {
             email_field = 0;
+            $('.notice').html("");
         }
         check_form_submit();
         /*------- Page onload checks end----------*/
@@ -258,13 +304,14 @@
                     success: function(response) {
                         if (response == "true") {
                             $(reference).addClass("error_highlight");
-                            $('.alert').text("Store with this name already exist. Please choose another Store name");
+                            $('.alert').html("Store with this name already exist. Please choose another Store name");
+                            show_alert();
                             store_field = 0;
                             check_form_submit();
                         }
                         else {
                             $(reference).removeClass("error_highlight");
-                            $('.alert').text("");
+                            $('.alert').html("");
                             store_field = 1;
                             check_form_submit();
                         }
@@ -282,12 +329,13 @@
                 success: function(response) {
                     if (response == "true") {
                         $(reference).addClass("error_highlight");
-                        $('.notice').text("Email Address Already taken. please choose another email");
+                        $('.notice').html("Email Address Already taken. please choose another email");
+                        show_notice();
                         email_field = 0;
                         check_form_submit();
                     }
                     else {
-                        $('.notice').text("");
+                        $('.notice').html("");
                         $(reference).removeClass("error_highlight");
                         email_field = 1;
                         if (validateEmail(email)) {
@@ -299,6 +347,13 @@
                     }
                 }
             });
+            console.log(validateEmail(email));
+            if (validateEmail(email)) {
+                $('.notice').html("");
+            } else {
+                $('.notice').html("Email Address is not correct");
+                show_notice();
+            }
         });
 
     });

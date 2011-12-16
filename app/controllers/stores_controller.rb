@@ -17,6 +17,16 @@ class StoresController < ApplicationController
     end
   end
 
+  def store
+    @store = Store.find_by_name(request.subdomain)
+    @store_name = request.subdomain
+    @stores = Store.all
+    unless @store.blank?
+      @products = @store.products.limit(3).offset(0)
+    end
+    render :layout => false
+  end
+
   def next_products
     @store = Store.find_by_name(request.subdomain)
     offset = params[:offset]
@@ -52,8 +62,8 @@ class StoresController < ApplicationController
     @sname = params[:sname]
     if @sname != ""
       @stores = Store.find(:all, :conditions => ["name = ?", @sname])
-    #else
-    #  @stores = Store.all
+      #else
+      #  @stores = Store.all
     end
     render :layout => false
   end

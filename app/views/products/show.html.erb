@@ -1,4 +1,4 @@
-<div class="body">
+<div class="body-div">
   <div class="wrapper">
     <%= render :partial => "/shared/store_header" %>
     <div class="w100 mtop60">
@@ -7,9 +7,9 @@
           <div class="nav-top-holder">Our products</div>
           <div class="nav-mid-holder">
             <ul class="left-nav">
-              <li><a href="/">Recent Products</a></li>
+              <li class="prod-img"><a href="#" url="<%= "store" %>">Recent Products</a></li>
               <% @store.products.each do |product| %>
-                  <li class="<%= 'active' if params[:id]== product.id.to_s %>"><%= link_to product.name, :controller => "products", :action => "show", :id => product.id %></li>
+                  <li class="prod-img <%= 'active' if params[:id]== product.id.to_s %>"><%= link_to product.name, "#", :url => "/products/"+product.id.to_s %></li>
               <% end %>
             </ul>
           </div>
@@ -21,13 +21,7 @@
           <div class="nav-top-holder">Company</div>
           <div class="nav-mid-holder">
             <ul class="left-nav">
-              <% @store.pages.each do |page| %>
-                <li><a href="/pages?name=<%=page.name%>"><%= page.name.capitalize%></a></li>
-              <%end%>
-              <!--<li><a href="#">About Us</a></li>-->
-              <!--<li><a href="#">Faq</a></li>-->
-              <!--<li><a href="#">Shipping</a></li>-->
-              <!--<li class="bdr-bot-none"><a href="#">Contact Us</a></li>-->
+              <%= render :partial => 'shared/right_company_pages' %>
             </ul>
 
           </div>
@@ -37,7 +31,7 @@
 
       </div>
       <div class="right-warrpper">
-        <div class="loader_div"><img style="float: none; margin-top:233px;"  src="/assets/ajax-loader.gif"></div>
+        <div class="loader_div"><img style="float: none; margin-top:233px;" src="/assets/ajax-loader.gif"></div>
         <div class="w100">
           <div class="white-left-bg flt"></div>
           <div class="white-mid-bg flt">
@@ -45,8 +39,8 @@
             <div class="here-links flt"><a href="<%= $url %>">Peddle.com</a> &gt;
               <a href="<%= root_url %>"><%= request.subdomain %></a> &gt;
               <a href=""><%= @product.name %></a></div>
-            <div class="bacck-top-products frt">
-              <a href="<%= root_url %>"><img src="/assets/bacck-top-products.png" alt=""></a></div>
+            <div class="prod-img bacck-top-products frt">
+              <a href="#" url="store"><img src="/assets/bacck-top-products.png" alt=""></a></div>
           </div>
           <div class="white-right-bg flt"></div>
         </div>
@@ -220,6 +214,7 @@
             $('.add-to-cart').attr('details', $(this).attr('details'));
             $('#order_detail_product_detail_id').val($(this).attr('details'));
         });
+
 
     });
 

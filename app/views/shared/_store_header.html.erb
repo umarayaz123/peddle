@@ -1,10 +1,10 @@
 <% unless @store.nil? %>
     <div class="w100 mtop60">
-      <div class="logo">
+      <div class="logo prod-img ">
         <% unless @store.image.blank? %>
-            <%= link_to image_tag(@store.image.snap, :width => '100px', :height => '100px'), root_url %>
+            <%= link_to image_tag(@store.image.snap, :width => '100px', :height => '100px'), "#", :url => "store" %>
         <% else %>
-            <%= link_to image_tag('/assets/no_img.jpg', :width => '100px', :height => '100px'), root_url %>
+            <%= link_to image_tag('/assets/no_img.jpg', :width => '100px', :height => '100px'), "#", :url => "store" %>
         <% end %>
       </div>
       <div class="logo-text-holder">

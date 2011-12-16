@@ -18,11 +18,8 @@ class ProductsController < ApplicationController
     @store = Store.find_by_name(request.subdomain)
     @product = Product.find(params[:id])
     @order_details = OrderDetail.new
+    render :layout => false
 
-    respond_to do |format|
-      format.html # show.html.erb
-#      format.json { render json: @product }
-    end
   end
 
 

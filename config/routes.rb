@@ -18,6 +18,7 @@ Peddle::Application.routes.draw do
   match '/' => 'home#index'
   match 'cart' => 'stores#cart'
   match 'store/:id' => 'stores#index'
+  match '/store' => 'stores#store'
   match 'store/:id' => 'stores#index'
   match '/sysadmin' => 'admin/sys_admins#index'
   match '/next/stores' => 'home#next_stores'
