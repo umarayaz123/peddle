@@ -1,4 +1,4 @@
-<div class="body">
+<div class="body body-div">
   <div class="wrapper">
     <%= render :partial => "/shared/store_header" %>
     <p id="notice"><%= notice %></p>
@@ -41,7 +41,7 @@
       </div>
       <br/>
     </div>
-    <span><%= link_to image_tag('/assets/back.png'), root_url() %></span>
+    <span class="prod-img"><%= link_to image_tag('/assets/back.png'), "#", :url => "/store" %></span>
     <span style=""><%= link_to image_tag('/assets/empty-cart.png'), '/carts/destroy/'+@cart.id.to_s, :confirm => 'Are you sure?', :method => :delete %></span>
 
     <div class="blueInrBtn">

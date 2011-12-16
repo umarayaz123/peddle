@@ -5,10 +5,7 @@ class CartsController < ApplicationController
     @cart = current_cart
     @store = Store.find_by_name(request.subdomain)
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @carts }
-    end
+    render :layout => false
   end
 
   # GET /carts/1

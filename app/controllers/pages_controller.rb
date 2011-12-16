@@ -6,6 +6,7 @@ class PagesController < ApplicationController
     @page = Page.find_by_name(page_name)
     #@product = Product.find(params[:id])
     @order_details = OrderDetail.new
+    render :layout => false
   end
 
   def purchase_history

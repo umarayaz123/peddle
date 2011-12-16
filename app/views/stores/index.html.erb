@@ -25,10 +25,7 @@
           <div class="nav-top-holder">Company</div>
           <div class="nav-mid-holder">
             <ul class="left-nav">
-              <% @store.pages.each do |page| %>
-                  <li class=<%= "active latest_products" if params[:name] == page.name %>>
-                    <a href="/pages?name=<%= page.name %>"><%= page.name.capitalize %></a></li>
-              <% end %>
+              <%= render :partial => 'shared/right_company_pages' %>
             </ul>
 
           </div>
@@ -176,7 +173,7 @@
                 }
             });
         });
-        $(".gellary-img,.prod-img").live("click",function() {
+        $(".gellary-img,.prod-img").live("click", function() {
             var url = $(this).children().attr('url');
             $.ajax({
                 url: url,
