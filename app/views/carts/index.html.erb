@@ -23,7 +23,7 @@
                   <td class="txt-center"><%= item.product_detail.size %></td>
                   <td class="item_price txt-center"><%= number_to_currency(item.total_price) %></td>
                   <td>
-                    <div class="submitInrBtn2"><%= link_to 'Remove from cart', '/order_details/destroy/'+item.id.to_s+'?cart_id='+@cart.id.to_s, :confirm => 'Are you sure?', :method => :delete %></div>
+                    <div class="prod-img submitInrBtn2"><%= link_to 'Remove from cart', '#', :url => '/order_details/destroy/'+item.id.to_s+'?cart_id='+@cart.id.to_s, :confirm => 'Are you sure?', :method => :delete %></div>
                   </td>
                 </tr>
                 <input name="item_name_<%= i %>" type="hidden" value="<%= item.product_detail.product.name %>"/>
@@ -42,7 +42,7 @@
       <br/>
     </div>
     <span class="prod-img"><%= link_to image_tag('/assets/back.png'), "#", :url => "/store" %></span>
-    <span style=""><%= link_to image_tag('/assets/empty-cart.png'), '/carts/destroy/'+@cart.id.to_s, :confirm => 'Are you sure?', :method => :delete %></span>
+    <span style="" class="prod-img"><%= link_to image_tag('/assets/empty-cart.png'), '#', :url => '/carts/destroy/'+@cart.id.to_s, :confirm => 'Are you sure?', :method => :delete %></span>
 
     <div class="blueInrBtn">
       <%= link_to "Paypal Checkout", new_order_path %>
