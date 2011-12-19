@@ -3,126 +3,126 @@
 
     <div class="signin_holder">
       <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-          <%= devise_error_messages! %>
-          <div class="top_login_bg"></div>
-          <div class="mid_login_bg">
-            <div class="signin_heading">Creat Your Account</div>
-            <div class="signin_text">Already have a peddle Online Account <a href="/sign_in">Sign-in</a></div>
-            <div class="signin_input_holder">
-              <label>Full Name</label>
-              <%= f.text_field :name %>
+        <%= devise_error_messages! %>
+        <div class="top_login_bg"></div>
+        <div class="mid_login_bg">
+          <div class="signin_heading">Creat Your Account</div>
+          <div class="signin_text">Already have a peddle Online Account <a href="/sign_in">Sign-in</a></div>
+          <div class="signin_input_holder">
+            <label>Full Name</label>
+            <%= f.text_field :name %>
+          </div>
+          <div class="checkbox_holder" style="<%= 'display:none;' if params[:packageno] %>">
+            <div class="checkbox_input_holder">
+              <%= check_box_tag 'seller' %>
+              <label>Seller</label>
             </div>
-            <div class="checkbox_holder" style="<%= 'display:none;' if params[:packageno] %>">
-              <div class="checkbox_input_holder">
-                <%= check_box_tag 'seller' %>
-                <label>Seller</label>
-              </div>
-              <div class="checkbox_input_holder">
-                <%= check_box_tag 'buyer' %>
-                <label>Buyer</label>
-              </div>
-            </div>
-            <div class="store_name signin_small_input_holder">
-              <label>Store Name</label>
-              <%= text_field_tag 'store_name' %>
-              <p>.peddleonline.com</p>
-            </div>
-            <div class="store_name signin_small_input_holder">
-              <label>Package</label>
-              <%= select_tag 'package', options_for_select([["Start-up", 1], ["Time to Grow 70$/mo", 2], ["Corporation $20/mo", 3], ["Enterprise $175/mo", 4]], params[:packageno]) %>
-            </div>
-            <div id="billingForm" style=" display:none;">
-
-              <div class="store_name signin_small_input_holder">
-                <label>Card Type</label><br/>
-                <%= select_tag :card_type, options_for_select([["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]]) %>
-              </div>
-
-              <div class="store_name signin_small_input_holder">
-                <label>Card Number</label><br/>
-                <%= text_field_tag :card_number %>
-              </div>
-
-              <div class="store_name signin_small_input_holder">
-                <label>Card Verification Value (CVV)</label><br/>
-                <%= text_field_tag :card_verification %>
-              </div>
-
-              <div class="store_name signin_small_input_holder">
-                <label>Expiration Date</label><br/>
-                <%= date_select "card_expires_on", "", :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true %>
-              </div>
-
-              <div class="store_name signin_small_input_holder">
-                <label>First Name</label><br/>
-                <%= text_field_tag :first_name %>
-              </div>
-
-              <div class="store_name signin_small_input_holder">
-                <label>Last Name</label><br/>
-                <%= text_field_tag :last_name %>
-              </div>
-
-              <div class="store_name signin_small_input_holder">
-                <label>Billing Address</label><br/>
-                <%= text_field_tag :billing_address %>
-              </div>
-
-              <div class="store_name signin_small_input_holder">
-                <label>City</label><br/>
-                <%= text_field_tag :billing_city %>
-              </div>
-
-              <div class="store_name signin_small_input_holder">
-                <%= select_tag :billing_country, options_for_select(Carmen.countries(:locale => 'en')) %>
-              </div>
-
-              <div class="store_name signin_small_input_holder">
-                <label>State</label><br/>
-                <%= select_tag :billing_state, options_for_select(Carmen::states('US')) %>
-              </div>
-
-              <div class="store_name signin_small_input_holder">
-                <label>Zip</label><br/>
-                <%= number_field_tag :billing_zip %>
-              </div>
-            </div>
-            <div class="signin_input_holder">
-              <label>Email</label>
-              <%= f.email_field :email %>
-            </div>
-            <!--<div class="signin_input_holder">-->
-            <!--<label>Re-type Your Email</label>-->
-            <!--<input type="text" value="">-->
-            <!--</div>-->
-
-            <div class="signin_small_input_holder">
-              <label>Password</label>
-              <%= f.password_field :password %>
-
-              <p>must be at least 6 characters in length</p>
-            </div>
-            <div class="signin_small_input_holder">
-              <%= f.password_field :password_confirmation %>
-
-              <p>Please enter your password again.</p>
-            </div>
-
-            <div class="signin_text">By clicking Sign Up you agree to the <a href="#">Terms of Service</a> and
-              <a href="#">Privacy Policy</a>and confirm that you are at least 18 years old.
-            </div>
-            <div class="checkbox_holder">
-              <div class="checkbox_input_holder_small">
-                <input id="terms" type="checkbox" value="">
-                <label>I HAVE READ AND AGREED TO THE FOLLOWING TERMS AND CONDITIONS</label>
-              </div>
-            </div>
-
-            <div class="submit_holder">
-              <input id="submit_button" type="submit" value="Sign Up">
+            <div class="checkbox_input_holder">
+              <%= check_box_tag 'buyer' %>
+              <label>Buyer</label>
             </div>
           </div>
-          <div class="bot_login_bg"></div>
+          <div class="store_name signin_small_input_holder">
+            <label>Store Name</label>
+            <%= text_field_tag 'store_name' %>
+            <p>.peddleonline.com</p>
+          </div>
+          <div class="store_name signin_small_input_holder">
+            <label>Package</label>
+            <%= select_tag 'package', options_for_select([["Start-up", 1], ["Time to Grow 70$/mo", 2], ["Corporation $20/mo", 3], ["Enterprise $175/mo", 4]], params[:packageno]) %>
+          </div>
+          <div id="billingForm" style=" display:none;">
+
+            <div class="store_name signin_small_input_holder">
+              <label>Card Type</label><br/>
+              <%= select_tag :card_type, options_for_select([["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]]) %>
+            </div>
+
+            <div class="store_name signin_small_input_holder">
+              <label>Card Number</label><br/>
+              <%= text_field_tag :card_number %>
+            </div>
+
+            <div class="store_name signin_small_input_holder">
+              <label>Card Verification Value (CVV)</label><br/>
+              <%= text_field_tag :card_verification %>
+            </div>
+
+            <div class="store_name signin_small_input_holder">
+              <label>Expiration Date</label><br/>
+              <%= date_select "card_expires_on", "", :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true %>
+            </div>
+
+            <div class="store_name signin_small_input_holder">
+              <label>First Name</label><br/>
+              <%= text_field_tag :first_name %>
+            </div>
+
+            <div class="store_name signin_small_input_holder">
+              <label>Last Name</label><br/>
+              <%= text_field_tag :last_name %>
+            </div>
+
+            <div class="store_name signin_small_input_holder">
+              <label>Billing Address</label><br/>
+              <%= text_field_tag :billing_address %>
+            </div>
+
+            <div class="store_name signin_small_input_holder">
+              <label>City</label><br/>
+              <%= text_field_tag :billing_city %>
+            </div>
+
+            <div class="store_name signin_small_input_holder">
+              <%= select_tag :billing_country, options_for_select(Carmen.countries(:locale => 'en')) %>
+            </div>
+
+            <div class="store_name signin_small_input_holder">
+              <label>State</label><br/>
+              <%= select_tag :billing_state, options_for_select(Carmen::states('US')) %>
+            </div>
+
+            <div class="store_name signin_small_input_holder">
+              <label>Zip</label><br/>
+              <%= number_field_tag :billing_zip %>
+            </div>
+          </div>
+          <div class="signin_input_holder">
+            <label>Email</label>
+            <%= f.email_field :email %>
+          </div>
+          <!--<div class="signin_input_holder">-->
+          <!--<label>Re-type Your Email</label>-->
+          <!--<input type="text" value="">-->
+          <!--</div>-->
+
+          <div class="signin_small_input_holder">
+            <label>Password</label>
+            <%= f.password_field :password %>
+
+            <p>must be at least 6 characters in length</p>
+          </div>
+          <div class="signin_small_input_holder">
+            <%= f.password_field :password_confirmation %>
+
+            <p>Please enter your password again.</p>
+          </div>
+
+          <div class="signin_text">By clicking Sign Up you agree to the <a href="#">Terms of Service</a> and
+            <a href="#">Privacy Policy</a>and confirm that you are at least 18 years old.
+          </div>
+          <div class="checkbox_holder">
+            <div class="checkbox_input_holder_small">
+              <input id="terms" type="checkbox" value="">
+              <label>I HAVE READ AND AGREED TO THE FOLLOWING TERMS AND CONDITIONS</label>
+            </div>
+          </div>
+
+          <div class="submit_holder">
+            <input id="submit_button" type="submit" value="Sign Up">
+          </div>
+        </div>
+        <div class="bot_login_bg"></div>
       <% end %>
     </div>
 
@@ -131,231 +131,278 @@
 </div>
 
 <script>
-    var email_field = 0;
-    var store_field = 0;
-    var terms_field = 0;
-    function check_form_submit() {
-        if (email_field == 1 && store_field == 1 && terms_field == 1) {
-            $('#submit_button').attr('disabled', false);
-            $('#submit_button').show();
-            console.log("email" + email_field);
-            console.log("terms" + terms_field);
-            console.log("store" + store_field);
-//            alert('enabled');
-        } else {
-            $('#submit_button').attr('disabled', true);
-            $('#submit_button').hide();
-//            alert('disabled');
-            console.log("email" + email_field);
-            console.log("terms" + terms_field);
-            console.log("store" + store_field);
-        }
+  var email_field = 0;
+  var store_field = 0;
+  var terms_field = 0;
+  var pass1_field = 0;
+  var pass2_field = 0;
+  function check_form_submit() {
+    if (email_field == 1 && store_field == 1 && terms_field == 1 && pass1_field == 1 && pass2_field ==1) {
+      $('#submit_button').attr('disabled', false);
+      $('#submit_button').show();
+      console.log("email" + email_field);
+      console.log("terms" + terms_field);
+      console.log("store" + store_field);
+      console.log("pass1" + pass1_field);
+      console.log("pass2" + pass2_field);
+      //            alert('enabled');
+    } else {
+      $('#submit_button').attr('disabled', true);
+      $('#submit_button').hide();
+      //            alert('disabled');
+      console.log("email" + email_field);
+      console.log("terms" + terms_field);
+      console.log("store" + store_field);
+      console.log("pass1" + pass1_field);
+      console.log("pass2" + pass2_field);
     }
+  }
 
-    function validateEmail(elementValue) {
-        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-        return emailPattern.test(elementValue);
+  function validateEmail(elementValue) {
+    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailPattern.test(elementValue);
+  }
+
+  function show_notice() {
+    if ($('.notice').html() != "") {
+      $.gritter.add({
+        // (string | mandatory) the heading of the notification
+        title: 'Notice!',
+        // (string | mandatory) the text inside the notification
+        text: $('.notice').html(),
+        time: 6000
+      });
     }
+  }
 
-    function show_notice() {
-        if ($('.notice').html() != "") {
-            $.gritter.add({
-                // (string | mandatory) the heading of the notification
-                title: 'Notice!',
-                // (string | mandatory) the text inside the notification
-                text: $('.notice').html(),
-                time: 6000
-            });
-        }
+  function show_alert() {
+    if ($('.alert').html() != "") {
+      $.gritter.add({
+        // (string | mandatory) the heading of the notification
+        title: 'Notice!',
+        // (string | mandatory) the text inside the notification
+        text: $('.alert').html(),
+        time: 6000
+      });
     }
+  }
 
-    function show_alert() {
-        if ($('.alert').html() != "") {
-            $.gritter.add({
-                // (string | mandatory) the heading of the notification
-                title: 'Notice!',
-                // (string | mandatory) the text inside the notification
-                text: $('.alert').html(),
-                time: 6000
-            });
-        }
+
+  $(document).ready(function() {
+    /*------- Page onload checks start----------*/
+    if ($('#terms').is(":checked")) {
+      terms_field = 1;
     }
-
-
-    $(document).ready(function() {
-        /*------- Page onload checks start----------*/
-        if ($('#terms').is(":checked")) {
-            terms_field = 1;
-        }
-        else {
-            terms_field = 0;
-        }
-        if ($('#buyer').is(':checked')) {
-            store_field = 1;
-            $('#seller').attr('checked', false);
-            $('.store_name').slideUp();
-            $("#billingForm").slideUp();
-        }
-        else {
-            $('#store_name').show();
-            if ($("#store_name").val() == "") {
-                store_field = 0;
+    else {
+      terms_field = 0;
+    }
+    if ($('#buyer').is(':checked')) {
+      store_field = 1;
+      $('#seller').attr('checked', false);
+      $('.store_name').slideUp();
+      $("#billingForm").slideUp();
+    }
+    else {
+      $('#store_name').show();
+      if ($("#store_name").val() == "") {
+        store_field = 0;
+      }
+      else {
+        var store_name = $('#store_name').val();
+        var reference = $('#store_name');
+        $.ajax({
+          url: "/check_store?store_name=" + store_name,
+          success: function(response) {
+            if (response == "true") {
+              $(reference).addClass("error_highlight");
+              $('.alert').html("Store with this name already exist. Please choose another Store name");
+              show_alert();
+              store_field = 0;
+              check_form_submit();
             }
             else {
-                var store_name = $('#store_name').val();
-                var reference = $('#store_name');
-                $.ajax({
-                    url: "/check_store?store_name=" + store_name,
-                    success: function(response) {
-                        if (response == "true") {
-                            $(reference).addClass("error_highlight");
-                            $('.alert').html("Store with this name already exist. Please choose another Store name");
-                            show_alert();
-                            store_field = 0;
-                            check_form_submit();
-                        }
-                        else {
-                            $(reference).removeClass("error_highlight");
-                            $('.alert').html("");
-                            store_field = 1;
-                            check_form_submit();
-                        }
-                    }
-                });
+              $(reference).removeClass("error_highlight");
+              $('.alert').html("");
+              store_field = 1;
+              check_form_submit();
             }
-        }
-        if (!validateEmail($("#user_email").val())) {
-            email_field = 1;
-            $('.notice').html("Email Address is not correct");
-            show_notice();
-        } else {
-            email_field = 0;
-            $('.notice').html("");
-        }
+          }
+        });
+      }
+    }
+    if (!validateEmail($("#user_email").val())) {
+      if($("#user_email").val().length != 0){
+        email_field = 0;
+        $('.notice').html("Email Address is not correct");
+        show_notice();
+      }
+    } else {
+      email_field = 1;
+      $('.notice').html("");
+    }
+    check_form_submit();
+    /*------- Page onload checks end----------*/
+
+    $('#buyer').click(function() {
+      if ($('#buyer').is(':checked')) {
+        store_field = 1;
         check_form_submit();
-        /*------- Page onload checks end----------*/
-
-        $('#buyer').click(function() {
-            if ($('#buyer').is(':checked')) {
-                store_field = 1;
-                check_form_submit();
-                $('#seller').attr('checked', false);
-                $('.store_name').slideUp();
-                $("#billingForm").slideUp();
-            }
-            else {
-                $('#store_name').show();
-            }
-        });
-        $('#seller').click(function() {
-
-            if ($('#seller').is(':checked')) {
-                store_field = 0;
-                check_form_submit();
-                $('#buyer').attr('checked', false);
-                $('.store_name').slideDown();
-                if ($("#package").val() != "1") {
-                    $("#billingForm").slideDown();
-                }
-            }
-        });
-        $('#terms').click(function() {
-            if ($('#terms').is(":checked")) {
-                terms_field = 1;
-                check_form_submit();
-            }
-            else {
-
-                terms_field = 0;
-                check_form_submit();
-            }
-        });
-
-        if ($("#package").val() != "1") {
-            $("#billingForm").show();
-        }
-
-        $("#package").change(function() {
-            if ($("#package").val() != "1") {
-                $("#billingForm").slideDown();
-            }
-            else {
-                $("#billingForm").slideUp();
-            }
-        });
-        $("#billing_country").change(function() {
-            var country = $(this).val();
-            $.ajax({
-                url: "/get_states?country=" + country,
-                success: function(response) {
-                    $("#billing_state").replaceWith(response);
-                }
-            });
-        });
-        $("#store_name").live('blur', function() {
-            var store_name = $(this).val();
-            var reference = this;
-            if (store_name == "") {
-                store_field = 0;
-                check_form_submit();
-            } else {
-                $.ajax({
-                    url: "/check_store?store_name=" + store_name,
-                    success: function(response) {
-                        if (response == "true") {
-                            $(reference).addClass("error_highlight");
-                            $('.alert').html("Store with this name already exist. Please choose another Store name");
-                            show_alert();
-                            store_field = 0;
-                            check_form_submit();
-                        }
-                        else {
-                            $(reference).removeClass("error_highlight");
-                            $('.alert').html("");
-                            store_field = 1;
-                            check_form_submit();
-                        }
-                    }
-                });
-            }
-        });
-
-        $("#user_email").live('blur', function() {
-            var email = $(this).val();
-            var reference = this;
-
-            $.ajax({
-                url: "/check_email?email=" + email,
-                success: function(response) {
-                    if (response == "true") {
-                        $(reference).addClass("error_highlight");
-                        $('.notice').html("Email Address Already taken. please choose another email");
-                        show_notice();
-                        email_field = 0;
-                        check_form_submit();
-                    }
-                    else {
-                        $('.notice').html("");
-                        $(reference).removeClass("error_highlight");
-                        email_field = 1;
-                        if (validateEmail(email)) {
-                            email_field = 1;
-                        } else {
-                            email_field = 0;
-                        }
-                        check_form_submit();
-                    }
-                }
-            });
-            console.log(validateEmail(email));
-            if (validateEmail(email)) {
-                $('.notice').html("");
-            } else {
-                $('.notice').html("Email Address is not correct");
-                show_notice();
-            }
-        });
-
+        $('#seller').attr('checked', false);
+        $('.store_name').slideUp();
+        $("#billingForm").slideUp();
+      }
+      else {
+        $('#store_name').show();
+      }
     });
+    $('#seller').click(function() {
+
+      if ($('#seller').is(':checked')) {
+        store_field = 0;
+        check_form_submit();
+        $('#buyer').attr('checked', false);
+        $('.store_name').slideDown();
+        if ($("#package").val() != "1") {
+          $("#billingForm").slideDown();
+        }
+      }
+    });
+    $('#terms').click(function() {
+      if ($('#terms').is(":checked")) {
+        terms_field = 1;
+        check_form_submit();
+      }
+      else {
+
+        terms_field = 0;
+        check_form_submit();
+      }
+    });
+
+    if ($("#package").val() != "1") {
+      $("#billingForm").show();
+    }
+
+    $("#package").change(function() {
+      if ($("#package").val() != "1") {
+        $("#billingForm").slideDown();
+      }
+      else {
+        $("#billingForm").slideUp();
+      }
+    });
+    $("#billing_country").change(function() {
+      var country = $(this).val();
+      $.ajax({
+        url: "/get_states?country=" + country,
+        success: function(response) {
+          $("#billing_state").replaceWith(response);
+        }
+      });
+    });
+    $("#store_name").live('blur', function() {
+      var store_name = $(this).val();
+      var reference = this;
+      if (store_name == "") {
+        store_field = 0;
+        check_form_submit();
+      } else {
+        $.ajax({
+          url: "/check_store?store_name=" + store_name,
+          success: function(response) {
+            if (response == "true") {
+              $(reference).addClass("error_highlight");
+              $('.alert').html("Store with this name already exist. Please choose another Store name");
+              show_alert();
+              store_field = 0;
+              check_form_submit();
+            }
+            else {
+              $(reference).removeClass("error_highlight");
+              $('.alert').html("");
+              store_field = 1;
+              check_form_submit();
+            }
+          }
+        });
+      }
+    });
+
+    $("#user_email").live('blur', function() {
+      var email = $(this).val();
+      var reference = this;
+
+      $.ajax({
+        url: "/check_email?email=" + email,
+        success: function(response) {
+          if (response == "true") {
+            $(reference).addClass("error_highlight");
+            $('.notice').html("Email Address Already taken. please choose another email");
+            show_notice();
+            email_field = 0;
+            check_form_submit();
+          }
+          else {
+            $('.notice').html("");
+            $(reference).removeClass("error_highlight");
+            email_field = 1;
+            if (validateEmail(email)) {
+              email_field = 1;
+            } else {
+              email_field = 0;
+            }
+            check_form_submit();
+          }
+        }
+      });
+      console.log(validateEmail(email));
+      if (validateEmail(email)) {
+        $('.notice').html("");
+      } else {
+        $('.notice').html("Email Address is not correct");
+        show_notice();
+      }
+    });
+        
+    $("#user_password").live('blur',function(){
+      reference = this;
+      if($(this).val().length > 5){
+        pass1_field = 1;
+        $(reference).removeClass("error_highlight");
+        $('.notice').html("");
+        check_form_submit();
+      } else{
+        pass1_field = 0;
+        $(reference).addClass("error_highlight");
+        check_form_submit();
+        $('.notice').html("password must be  atleast 6 Characters Long");
+        show_notice();
+      }
+    });
+    
+    $("#user_password_confirmation").live('focus',function(){
+      if($("#user_password").val().length == 0){
+        $("#user_password").focus();
+      }
+    });
+    
+    $("#user_password_confirmation").live('blur',function(){
+      reference = this;
+      
+      if($(reference).val() == $("#user_password").val()){
+        pass2_field = 1;
+        $(reference).removeClass("error_highlight");
+        $('.notice').html("");
+        check_form_submit();
+      } else{
+        pass2_field = 0;
+        $(reference).addClass("error_highlight");
+        check_form_submit();
+        $('.notice').html("passwords do not match");
+        show_notice();
+      }
+    });
+
+  });
 
 </script>
