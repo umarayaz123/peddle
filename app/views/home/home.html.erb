@@ -115,7 +115,7 @@
 
 
     </div>
-    <div class="home-right-penal frt">
+    <div  id="1" class="home-right-penal frt">
       <div class="heading-what-say">WHAT THEY SAY</div>
       <div class="stumning-text">"Absolutely stunning web app. Highly recommended!"</div>
       <div class="post-name-holder">- Michael Jordan</div>
@@ -140,6 +140,16 @@
       <!--</div>-->
 
 
+    </div>
+    <div id="2" class="home-right-penal frt">
+    	<div class="heading-what-say">WHAT THEY SAY</div>
+      <div class="stumning-text">"Great App. Nice place for shopaholics. Highly recommended!"</div>
+      <div class="post-name-holder">- Nicole Kidman</div>
+    </div>
+    <div id="3" class="home-right-penal frt">
+    	<div class="heading-what-say">WHAT THEY SAY</div>
+      <div class="stumning-text">"I enjoy shopping from these store. Highly recommended!"</div>
+      <div class="post-name-holder">- Kirsten Stewart</div>
     </div>
   </div>
 
@@ -229,8 +239,23 @@
 </div>
 
 <script type="text/javascript">
+		function show1(){
+			$(".home-right-penal").hide();
+			$("#1").fadeIn();
+			setTimeout( show2 , 4000);
+		}
+		function show2(){
+			$(".home-right-penal").hide();
+			$("#2").fadeIn();
+			setTimeout( show3 , 4000);
+		}
+		function show3(){
+			$(".home-right-penal").hide();
+			$("#3").fadeIn();
+			setTimeout( show1 , 4000);
+		}
     $(document).ready(function() {
-
+				show1();
         $('.carousel').carousel({carouselWidth:930, carouselHeight:330, directionNav:true, shadow:true});
 
         $(".header_links").click(function() {
