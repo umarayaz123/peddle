@@ -13,7 +13,7 @@
         <div class="feature-products-mid">
           <div class="feature-mid-cont-bg">
             <ul class="feature-links">
-              <li class="features feature-act-bg">
+              <li class="features feature-act-bg" text="products">
                 <div class="feature-p-icon"><img src="/assets/feture-p-icon.png" alt=""></div>
                 <div class="feature-text">
                   <h1 class="mtop15">Product</h1>
@@ -21,7 +21,7 @@
                   <p>Click for more information.</p>
                 </div>
               </li>
-              <li class="features">
+              <li class="features" text="product-photos">
                 <div class="feature-p-icon"><img src="/assets/feture-p-icon.png" alt=""></div>
                 <div class="feature-text">
                   <h1>Product photos</h1>
@@ -29,7 +29,7 @@
                   <p>Click for more information.</p>
                 </div>
               </li>
-              <li class="features">
+              <li class="features" text="product-icon">
                 <div class="feature-p-icon"><img src="/assets/feture-p-icon.png" alt=""></div>
                 <div class="feature-text">
                   <h1>Product-Icon</h1>
@@ -37,7 +37,7 @@
                   <p>Click for more information.</p>
                 </div>
               </li>
-              <li class="features">
+              <li class="features" text="third-party-payment">
                 <div class="feature-p-icon"><img src="/assets/feture-p-icon.png" alt=""></div>
                 <div class="feature-text">
                   <h1>Third Party Payment</h1>
@@ -45,7 +45,7 @@
                   <p>Click for more information.</p>
                 </div>
               </li>
-              <li class="features">
+              <li class="features" text="social-e-business-network">
                 <div class="feature-p-icon"><img src="/assets/feture-p-icon.png" alt=""></div>
                 <div class="feature-text">
                   <h1>Social E-Business Network</h1>
@@ -62,9 +62,17 @@
     <div class="feature-right-holder">
       <div class="adds-bg"><img src="/assets/add-1.png" alt=""></div>
       <div class="products-heading">PRODUCTS</div>
-      <div class="products-text">In order to be successful you must select the best products for your online store. It
+      <div class="products-text" id="products">In order to be successful you must select the best products for your online store. It
         doesn't matter whether you are a startup or a major corporation. This is the best place for your online
         business.
+      </div>
+      <div class="products-text" id="product-photos" style="display:none;">Let your products shine in your new online store through up to 5 product photos you can select for each product.
+      </div>
+      <div class="products-text" id="product-icon" style="display:none;">ILorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper sem in ipsum commodo accumsan.
+      </div>
+      <div class="products-text" id="third-party-payment" style="display:none;">Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper sem in ipsum commodo accumsan.
+      </div>
+      <div class="products-text" id="social-e-business-network" style="display:none;">Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,.
       </div>
       <div class="feature-add-holder">
         <div class="feature-add-left-hold"><img src="/assets/g-img.png" alt=""></div>
@@ -101,10 +109,12 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-      $('.features').click(function(){
-          $('.features').removeClass('feature-act-bg');
-          $(this).addClass('feature-act-bg');
-          $('.products-heading').html($(this).children().last().children().first().html());
-      });
+    $('.features').click(function(){
+      $(".products-text").hide();
+      $("#"+$(this).attr("text")).show();
+      $('.features').removeClass('feature-act-bg');
+      $(this).addClass('feature-act-bg');
+      $('.products-heading').html($(this).children().last().children().first().html());
+    });
   });
 </script>
