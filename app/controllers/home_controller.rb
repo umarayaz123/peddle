@@ -56,6 +56,7 @@ class HomeController < ApplicationController
       @featured_stores = Store.where("is_featured = 1")
       @stores = @featured_stores.limit(4).offset(0)
       render :action => "home"
+      return
     end
     render :action => "index"
   end

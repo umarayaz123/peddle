@@ -107,14 +107,14 @@ puts " Destroying All Stores"
 stores = Store.all
 stores.each{|store| store.destroy} unless stores.blank?
 
-puts "Creating Admin Store"
-admin_store = Store.create!(:package_id => 1, :name => "adminstore", :description => 'This is admin Store for testing purposes', :url => 'adminstore.peddle.com')
-admin_store.save!
-
-puts "Creating Buyer Store"
-buyer_store = Store.create!(:package_id => 1, :name => "buyerstore", :description => 'This is buyer Store for testing purposes', :url => 'buyerstore.peddle.com')
-buyer_store.save!
-
+#puts "Creating Admin Store"
+#admin_store = Store.create!(:package_id => 1, :name => "adminstore", :description => 'This is admin Store for testing purposes', :url => 'adminstore.peddle.com')
+#admin_store.save!
+#
+#puts "Creating Buyer Store"
+#buyer_store = Store.create!(:package_id => 1, :name => "buyerstore", :description => 'This is buyer Store for testing purposes', :url => 'buyerstore.peddle.com')
+#buyer_store.save!
+#
 
 puts "Destroying All Default Users..."
 users = User.all
@@ -127,19 +127,19 @@ sadmin.roles << super_admin
 sadmin.confirmed_at =Time.now
 sadmin.save!
 
-puts "Creating Admin of Site"
-admin = User.create!(:email=>'admin@peddle.com',:password=>'123456',:password_confirmation => '123456')
-admin.store_id = admin_store.id
-admin.roles << admin_role
-admin.confirmed_at =Time.now
-admin.save!
-
-puts "Creating default Buyer of Site"
-buyer_user = User.create!(:email=>'buyer@peddle.com',:password=>'123456',:password_confirmation => '123456')
-buyer_user.store_id = buyer_store.id
-buyer_user.roles << buyer
-buyer_user.confirmed_at =Time.now
-buyer_user.save!
+#puts "Creating Admin of Site"
+#admin = User.create!(:email=>'admin@peddle.com',:password=>'123456',:password_confirmation => '123456')
+#admin.store_id = admin_store.id
+#admin.roles << admin_role
+#admin.confirmed_at =Time.now
+#admin.save!
+#
+#puts "Creating default Buyer of Site"
+#buyer_user = User.create!(:email=>'buyer@peddle.com',:password=>'123456',:password_confirmation => '123456')
+#buyer_user.store_id = buyer_store.id
+#buyer_user.roles << buyer
+#buyer_user.confirmed_at =Time.now
+#buyer_user.save!
 
 puts " Destroying All Products"
 products = Product.all
