@@ -1,3 +1,4 @@
+
 <div class="work-header w100 body-div">
   <div class="wrapper">
     <h1>Peddle Online accelerates your online store.</h1>
@@ -239,6 +240,17 @@
 </div>
 
 <script type="text/javascript">
+    function show_notice() {
+      if ($('.notice').html() != "") {
+        $.gritter.add({
+          // (string | mandatory) the heading of the notification
+          title: 'Notice!',
+          // (string | mandatory) the text inside the notification
+          text: $('.notice').html(),
+          time: 6000
+        });
+      }
+    }
 		function show1(){
 			$(".home-right-penal").hide();
 			$("#1").fadeIn();
@@ -256,6 +268,8 @@
 		}
     $(document).ready(function() {
 				show1();
+				$('.notice').hide();
+				//show_notice();
         $('.carousel').carousel({carouselWidth:930, carouselHeight:330, directionNav:true, shadow:true});
 
         $(".header_links").click(function() {

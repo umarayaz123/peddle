@@ -1423,6 +1423,7 @@ CAPTIFY CAPTION
     text-align: center;
     margin-top: 20px;
     font-style: italic;
+    line-height:25px;
 }
 
 .post-name-holder {
