@@ -2,22 +2,34 @@
   <%= render :partial => "/shared/store_header" %>
   <div class="w100 mtop60 pbotton20">
     <div class="left-warrpper">
-      <div class="w100">
-        <div class="nav-top-holder">Our products</div>
-        <div class="nav-mid-holder">
-          <ul class="left-nav">
-            <li class="active latest_products">
-              <div class="cursor_div">Latest products</div>
-            </li>
-            <% @store.products.each do |product| %>
-                <li class="products <%= 'active' if params[:id]== product.id.to_s %>">
-                  <div class="cursor_div"><%= product.name %></div>
-                </li>
-            <% end %>
-          </ul>
+      <!--<div class="w100">-->
+          <!--<div class="nav-top-holder">Our products</div>-->
+          <!--<div class="nav-mid-holder">-->
+            <!--<ul class="left-nav">-->
+              <!--<li class="active latest_products">-->
+                <!--<div class="cursor_div">Latest products</div>-->
+              <!--</li>-->
+              <!--<%# @store.products.each do |product| %>-->
+                  <!--<li class="products <%#= 'active' if params[:id]== product.id.to_s %>">-->
+                    <!--<div class="cursor_div"><%#= product.name %></div>-->
+                  <!--</li>-->
+              <!--<%# end %>-->
+            <!--</ul>-->
+          <!--</div>-->
+          <!--<div class="nav-bot-holder"></div>-->
+        <!--</div>-->
+        <div class="w100">
+          <div class="nav-top-holder">Our products</div>
+          <div class="nav-mid-holder">
+            <ul class="left-nav">
+              <li class="prod-img"><a href="#" url="<%= "store" %>">Recent Products</a></li>
+              <% @store.products.each do |product| %>
+                  <li class="prod-img <%= 'active' if params[:id]== product.id.to_s %>"><%= link_to product.name, "#", :url => "/products/"+product.id.to_s %></li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="nav-bot-holder"></div>
         </div>
-        <div class="nav-bot-holder"></div>
-      </div>
 
 
       <div class="w100 mtop40">

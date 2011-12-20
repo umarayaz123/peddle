@@ -81,7 +81,7 @@ class Admin::StoresController < ApplicationController
     @store.destroy
 
     respond_to do |format|
-      format.html { redirect_to stores_url }
+      format.html { redirect_to "/admin/stores" }
       format.json { head :ok }
     end
   end
