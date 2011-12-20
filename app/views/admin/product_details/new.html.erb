@@ -36,17 +36,13 @@
         <div class="adminInrText mtop20">Size</div>
         <div class="adminInrInput"><%= f.select(:size, [['S', 'S'], ['M', 'M'], ['L', 'L'], ['XL', 'XL'], ['XXL', 'XXL']], {:include_blank => true}) %></div>
       </div>
-      <div class="adminInrLogin">
+      <div class="adminInrInput">
         <div class="adminInrText mtop20">Color</div>
-        <div style="width: 400px;clear: both;">
-          <%= f.text_field :color, :id => "colorpickerField1" %>
-        </div>
+        <%= f.text_field :color, :id => "colorpickerField1" %>
       </div>
-      <div class="adminInrLogin">
+      <div class="adminInrInput">
         <div class="adminInrText mtop20">Price</div>
-        <div style="width: 400px;clear: both;">
-          <%= f.text_field :price %>
-        </div>
+        <%= f.text_field :price %>
       </div>
 
       <%= f.hidden_field :product_id, :value => @product_id, :readonly => true %>
