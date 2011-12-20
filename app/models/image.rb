@@ -1,3 +1,4 @@
+require 'iconv'
 class Image < ActiveRecord::Base
 
   has_attached_file :snap
@@ -10,7 +11,7 @@ class Image < ActiveRecord::Base
 
   validate :file_dimensions, :unless => "errors.any?"
 
-  #before_post_process :transliterate_file_name
+  before_post_process :transliterate_file_name
 
   def file_dimensions
     if is_banner
