@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def recent_stores
-    @recent_stores = Store.order("created_at DESC").limit(3)
+    @recent_stores = Store.order("created_at DESC")
   end
 
   def check_domain

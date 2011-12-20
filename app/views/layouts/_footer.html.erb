@@ -1,11 +1,10 @@
-
 <div class="footer w100 mtop50">
   <div class="wrapper">
     <div class="w100">
       <div class="linksholder flt">
         <ul class="foot-links bdr-bot flt">
           <h1>Overview</h1>
-          <li><a href="<%= $url%>">Home</a></li>
+          <li><a href="<%= $url %>">Home</a></li>
           <li><a href="/features">Features</a></li>
           <li><a href="#">Demo</a></li>
           <li><a href="/plans">Plans & Pricing</a></li>
@@ -22,18 +21,24 @@
 
       <div class="linksholder-new flt">
         <h1>Recent stores</h1>
+        <% count=0 %>
         <% unless @recent_stores.nil? %>
             <% @recent_stores.each do |store| %>
-                <div class="footer-bar-links flt">
-                  <% unless store.image.blank? %>
-                      <%= link_to image_tag(store.image.snap, :height => "50", :width => "50"),root_url(:subdomain =>store.name) %>
-                  <% else %>
-                      <%= link_to image_tag("/assets/no.png", :height => "50", :width => "50"), root_url(:subdomain =>store.name) %>
-                  <% end %>
-                  <h1><%= store.name %></h1>
+                <% if count < 3 %>
+                    <% unless store.users.first.confirmed_at.blank? %>
+                        <div class="footer-bar-links flt">
+                          <% unless store.image.blank? %>
+                              <%= link_to image_tag(store.image.snap, :height => "50", :width => "50"), root_url(:subdomain =>store.name) %>
+                          <% else %>
+                              <%= link_to image_tag("/assets/no.png", :height => "50", :width => "50"), root_url(:subdomain =>store.name) %>
+                          <% end %>
+                          <h1><%= store.name %></h1>
 
-                  <h2>Retail</h2>
-                </div>
+                          <h2>Retail</h2>
+                          <% count+=1 %>
+                        </div>
+                    <% end %>
+                <% end %>
             <% end %>
         <% end %>
 

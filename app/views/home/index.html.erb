@@ -79,9 +79,9 @@
 
                           <% unless store.products.nil? %>
                               <% prod_count=0 %>
+                              <label>more photos</label>
                               <% store.products.each do |product| %>
                                   <% unless product.images.nil? %>
-                                      <label>more photos</label>
                                       <% product.images.each do |image| %>
                                           <% if prod_count < 3 %>
                                               <div class="small-logo flt">
