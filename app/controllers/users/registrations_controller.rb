@@ -110,6 +110,12 @@ class Users::RegistrationsController < ApplicationController
 
   # GET /resource/edit
   def edit
+    @request_type = "plain"
+    if request.xhr?
+      @request_type = "ajax"
+      render :layout => false
+      return
+    end
     render_with_scope :edit
   end
 
@@ -122,7 +128,7 @@ class Users::RegistrationsController < ApplicationController
   # the current user in place.
   def update
     package    = package_selection(params[:package])
-    @store     = Store.find_by_name(request.subdomain)
+    @store     = Store.find_by_name(request.subdomain) || current_user.store
     buyer_role = Role.find(:first, :conditions => ["name = ?", "Buyer"])
     unless current_user.roles.include?(buyer_role)
       if (params[:package] != "1")

@@ -18,6 +18,8 @@
                   time: 5000
               });
           }
+          $(".notice").hide();
+          $(".alert").hide();
           if ($('.alert').html() != "") {
               $.gritter.add({
                   // (string | mandatory) the heading of the notification
@@ -47,9 +49,9 @@
     <%= render :partial => "layouts/header_login" %>
 <% end %>
 
-<p class="notice"><%= notice %></p>
+<p class="notice" style="display:none;"><%= notice %></p>
 
-<p class="alert"><%= alert %></p>
+<p class="alert" style="display:none;"><%= alert %></p>
 
 <%= yield %>
 <% if request.subdomain == "" %>
