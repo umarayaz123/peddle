@@ -1,39 +1,74 @@
-<div class="wrapper">
+<div class="wrapper body-div">
   <div class="w100 mtop60 pbotton20">
     <div class="left-content flt">
-      <div style="min-height:450px;">
-        <div class="pbotton20" style="text-align:center;"><b>Purchase History</b></div>
-        <table border="1" width="100%" cellpadding="0" cellspacing="0">
-          <tr class="purchase">
-            <th>No</th>
-            <th>Amount</th>
-            <th>Purchased Date</th>
-            <th>Purchased Time</th>
-            <th>Message</th>
-            <th>Created at</th>
-            <th>Updated at</th>
-          </tr>
-          <% @orders.each_with_index do |order, index| %>
-              <% if order.success %>
-                  <tr class="<%= index%2==0 ? "even" :"odd" %>">
-                    <td><%= index+1 %></td>
-                    <td><%= order.amount %>$</td>
-                    <td><%= order.purchased_at.strftime("%Y-%m-%d") %></td>
-                    <td><%= order.purchased_at.strftime("%H:%M-%S") %></td>
-                    <td><%= order.message %></td>
-                    <td><%= order.created_at.strftime("%Y-%m-%d") %></td>
-                    <td><%= order.updated_at.strftime("%Y-%m-%d") %></td>
-                  </tr>
-              <% end %>
-          <% end %>
-        </table>
-        <%= paginate @orders %>
+      <!--------------------------------------------------------->
+      <div class="w100">
+        <div class="content-top-bg flt">
+          <div class="heading-top flt">
+            <p>Purchase History</p>
+          </div>
+
+        </div>
+        <div class="content-mid-bg flt">
+          <div class="cont flt">
+            <div class="purchase-new-hld">
+              <div class="no-hold">No</div>
+              <div class="amount-hold">Amount</div>
+              <div class="p-date-hold">Purchased Date</div>
+              <div class="p-time-hold">Purchased Time</div>
+              <div class="msg-hold">Message</div>
+              <div class="creat-hold">Created at</div>
+              <div class="up-hold">Updated at</div>
+            </div>
+            <% @orders.each_with_index do |order, index| %>
+                <div class="purchase-cont-new-hld">
+                  <div class="no-hold"><%= index+1 %></div>
+                  <div class="amount-hold"><%= order.amount %>$</div>
+                  <div class="p-date-hold"><%= order.purchased_at.strftime("%Y-%m-%d") %></div>
+                  <div class="p-time-hold"><%= order.purchased_at.strftime("%H:%M-%S") %></div>
+                  <div class="msg-hold"><%= order.message %></div>
+                  <div class="creat-hold"><%= order.created_at.strftime("%Y-%m-%d") %></div>
+                  <div class="up-hold"><%= order.updated_at.strftime("%Y-%m-%d") %></div>
+                </div>
+            <% end %>
+            <%= paginate @orders %>
+          </div>
+
+
+        </div>
+        <div class="p-bot-img flt">
+
+        </div>
       </div>
+      <!--------------------------------------------------------->
+
     </div>
     <div class="right-content frt">
-      <%= render :partial => "/shared/right_login_menu"%>
+      <%= render :partial => "/shared/right_login_menu" %>
     </div>
   </div>
 
 </div>
+
+<script type="text/javascript">
+    $(".header_links").click(function() {
+        var parent = $(this).parent();
+        var reference = this;
+        $.ajax({
+            url: $(this).attr("url"),
+            success: function(response) {
+                $(this).addClass("done");
+                $('.body-div').remove();
+                $('.main-page').append(response);
+                $('.tab-act').removeClass('tab-act');
+                parent.addClass('tab-act');
+//                    if ($(reference).attr('url','/plans')) {
+//                        alert('yes');
+//                        alert(reference);
+//                        $('.plans').addClass('tab-act');
+//                    }
+            }
+        });
+    });
+</script>
 

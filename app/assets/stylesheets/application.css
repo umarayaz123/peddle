@@ -1768,3 +1768,268 @@ th.txt-center{
 .alert, .notice{
     display: category/people-of-pakistan/karachi-girls/none !important;
 }
+
+/************************** add new 20 / 12 / 2011 *************************/
+.cart-top-hold{
+	float:left;
+	background:url(../assets/cart-top-bg.png) no-repeat;
+	width:932px;
+	height:11px;
+}
+.cart-mid-hold{
+	background: url("../assets/cart-mid-bg.png") repeat-y scroll 0 0 transparent;
+    float: left;
+    height: auto;
+    padding: 0 20px;
+    width: 891px;
+}
+.cart-bot-hold{
+	float:left;
+	background:url(../assets/cart-bot-bg.png) no-repeat;
+	width:932px;
+	height:13px;
+}
+.cart-hold {
+    border-bottom: 1px solid #79B5DE;
+    border-top: 1px solid #79B5DE;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    height: 27px;
+    line-height: 27px;
+    margin-top: 15px;
+    text-transform: uppercase;
+    width: 100%;
+}
+.item-heading-hold {
+    float: left;
+    margin-left: 16px;
+    width: 306px;
+}
+.quantity-heading-hold {
+    float: left;
+    width: 358px;
+}
+.price-heading-hold {
+    float: left;
+    width: 210px;
+}
+.cart-cont-hold {
+    border-bottom: 1px solid #79B5DE;
+    float: left;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+.item-text-hold {
+    float: left;
+    width: 322px;
+}
+.cart-img-hold {
+    float: left;
+    height: 73px;
+    width: 67px;
+}
+.cart-img-hold img {
+    border: 1px solid #77B3DC;
+    float: left;
+    height: 71px;
+    width: 67px;
+}
+.cart-item-heading-hold {
+    float: left;
+    margin-left: 15px;
+    width: 200px;
+}
+.cart-item-heading-hold h1 {
+    color: #0078C9;
+    float: left;
+    font-size: 15px;
+    font-weight: bold;
+    width: 100%;
+}
+.color-hold {
+    float: left;
+    margin-top: 12px;
+    width: 100%;
+}
+.color-hold label {
+    color: #000000;
+    float: left;
+    font-size: 14px;
+    width: 30%;
+	font-weight:bold;
+}
+.color-hold img {
+    float: left;
+}
+.color-hold p {
+    color: #000000;
+    float: left;
+    font-size: 14px;
+    width: 60%;
+}
+.size-hold {
+    float: left;
+    margin-top: 2px;
+    width: 100%;
+}
+.size-hold label {
+    color: #000000;
+    float: left;
+    font-size: 14px;
+    width: 30%;
+	font-weight:bold;
+}
+.size-hold p {
+    color: #000000;
+    float: left;
+    font-size: 12px;
+    width: 60%;
+}
+.size-hold img {
+    float: left;
+}
+.quantity-heading-hold input {
+    border: 1px solid #BDBCBD;
+    float: left;
+    height: 16px;
+    width: 37px;
+}
+.update {
+    float: left;
+    width: auto;
+}
+.update img {
+    float: left;
+    margin-left: 95px;
+}
+.p-hold {
+    color: #000000;
+    float: left;
+    font-size: 18px;
+}
+.usd {
+    color: #0078C9;
+    font-size: 16px;
+    font-weight: bold;
+}
+.r-hold {
+    color: #0078c9;
+    float: left;
+    font-size: 12px;
+    font-style: italic;
+    margin-left: 55px;
+    margin-top: 6px;
+    width: auto;
+}
+.r-hold a {
+    color: #0078c9;
+    text-decoration: underline;
+}
+.r-hold a:hover {
+    text-decoration: none;
+}
+.about-us-heading-hold {
+    color: #555555;
+    float: left;
+    font-size: 24px;
+    width: 100%;
+}
+
+.total-main-hold {
+    border-bottom: 1px solid #79B5DE;
+    float: left;
+    padding: 5px 0;
+    width: 100%;
+}
+.purchase-hold {
+    color: #999999;
+    float: left;
+    font-size: 12px;
+    margin-top: 5px;
+    width: 450px;
+}
+.merchandise-hold {
+    color: #000000;
+    float: left;
+    font-size: 14px;
+    margin-top: 5px;
+    width: 217px;
+}
+.price-heading-hold {
+    float: left;
+    width: 210px;
+}
+.p-hold {
+    color: #000000;
+    float: left;
+    font-size: 18px;
+}
+.right-cont-hold {
+    float: right;
+    width: 440px;
+}
+
+/******************* purchase history 20 / 12 / 2011 ****************/
+.p-bot-img{
+	background:url(../assets/p-bot-img.png) no-repeat;
+	width:685px;
+	height:5px;
+	margin-left:1px;
+}
+.purchase-new-hld{
+	float:left;
+	width:100%;
+	background:none scroll 0 0 #e5e5e5;
+	border-bottom:5px solid #53c4c4;
+	padding:5px 0;
+	font-size:14px;
+	color:#323a39;
+}
+
+/*plz replace cont*/
+.cont {
+    margin-left: 5px;
+    width: 98.7%;
+}
+
+.no-hold{
+	float:left;
+	width:50px;
+	margin-left:20px;
+}
+.amount-hold{
+	float:left;
+	width:84px;
+}
+.p-date-hold{
+	float:left;
+	width:132px;
+}
+.p-time-hold{
+	float:left;
+	width:132px;
+}
+.msg-hold{
+	float:left;
+	width:80px;
+}
+.creat-hold{
+	float:left;
+	width:87px;
+}
+.up-hold{
+	float:left;
+	width:80px;
+}
+
+.purchase-cont-new-hld{
+	float:left;
+	width:100%;
+	border-bottom:1px solid #e1e1e1;
+	padding:5px 0;
+	font-size:14px;
+	color:#323a39;
+}

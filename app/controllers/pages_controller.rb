@@ -11,6 +11,11 @@ class PagesController < ApplicationController
 
   def purchase_history
     @orders = Order.where("user_id = ?",current_user.id).page(params[:page])
+    render :layout => false
+  end
+
+  def edit
+    render :controller => "registrations", :action => "edit", :layout => false
   end
 
 end

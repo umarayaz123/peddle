@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
     #@products = Product.order("name").page(params[:page]).per(5)
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html {render :layout => false}
       format.json { render :json => @messages }
     end
   end

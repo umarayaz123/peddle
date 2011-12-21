@@ -3,44 +3,68 @@
     <%= render :partial => "/shared/store_header" %>
     <p id="notice"><%= notice %></p>
 
-    <div class="w100 mtop60">
-      <div class="cart_title">Your Cart</div>
-      <div style="margin: 0 auto;width: 800px;">
-        <table width="100%" cellpadding="0" cellspacing="0">
-          <tr class="tr-header">
-            <th class="txt-center">Product Name</th>
-            <th class="txt-center">Product Color</th>
-            <th class="txt-center">Product Size</th>
-            <th class="txt-center">Product Price</th>
-            <th class="txt-center">Action</th>
-          </tr>
-          <form action="https://sandbox.google.com/checkout/api/checkout/v2/checkoutForm/Merchant/157193595798525" id="BB_BuyButtonForm" method="post" name="BB_BuyButtonForm" target="_top">
+    <%########################################################%>
 
-            <% @cart.order_details.each_with_index do |item, i| %>
-                <tr class="<%= i%2==0 ? "even" :"odd" %>">
-                  <td class="txt-center"><%= item.product_detail.product.name %></td>
-                  <td class="txt-center"><%= item.product_detail.color %></td>
-                  <td class="txt-center"><%= item.product_detail.size %></td>
-                  <td class="item_price txt-center"><%= number_to_currency(item.total_price) %></td>
-                  <td>
-                    <div class="prod-img submitInrBtn2"><%= link_to 'Remove from cart', '#', :url => '/order_details/destroy/'+item.id.to_s+'?cart_id='+@cart.id.to_s, :confirm => 'Are you sure?', :method => :delete %></div>
-                  </td>
-                </tr>
-                <input name="item_name_<%= i %>" type="hidden" value="<%= item.product_detail.product.name %>"/>
-                <input name="item_description_<%= i %>" type="hidden" value="<%= item.product_detail.product.description %>"/>
-                <input name="item_quantity_<%= i %>" type="hidden" value="1"/>
-                <input name="item_price_<%= i %>" type="hidden" value="<%= item.total_price %>"/>
-                <input name="item_currency_<%= i %>" type="hidden" value="USD"/>
-                <input name="_charset_" type="hidden" value="utf-8"/>
-            <% end %>
-            <tr class="total_line">
-              <td class="txt-center" colspan="3"><b>Total</b></td>
-              <td class="txt-center" class="total_cell"><b><%= number_to_currency(@cart.total_price) %></b></td>
-            </tr>
-        </table>
+    <div class="w100 mtop60">
+      <div class="cart-top-hold"></div>
+      <div class="cart-mid-hold">
+        <div class="about-us-heading-hold">My shoping Cart</div>
+        <div class="cart-hold">
+          <div class="item-heading-hold">Item</div>
+          <div class="quantity-heading-hold">Size</div>
+          <div class="price-heading-hold">Price</div>
+        </div>
+        <form action="https://sandbox.google.com/checkout/api/checkout/v2/checkoutForm/Merchant/157193595798525" id="BB_BuyButtonForm" method="post" name="BB_BuyButtonForm" target="_top">
+          <% @cart.order_details.each_with_index do |item, i| %>
+              <div class="cart-cont-hold">
+                <div class="item-text-hold">
+                  <div class="cart-img-hold"><%=image_tag(item.product_detail.images.first.snap)%></div>
+                  <div class="cart-item-heading-hold">
+                    <h1><%= item.product_detail.product.name %></h1>
+
+                    <div class="color-hold">
+                      <label>Color</label>
+
+                      <p><%= item.product_detail.color %></p>
+                    </div>
+
+                  </div>
+
+                </div>
+                <div class="quantity-heading-hold">
+                  <input type="text" value="<%= item.product_detail.size %>" readonly="readonly">
+                  <input name="item_name_<%= i %>" type="hidden" value="<%= item.product_detail.product.name %>"/>
+                  <input name="item_description_<%= i %>" type="hidden" value="<%= item.product_detail.product.description %>"/>
+                  <input name="item_quantity_<%= i %>" type="hidden" value="1"/>
+                  <input name="item_price_<%= i %>" type="hidden" value="<%= item.total_price %>"/>
+                  <input name="item_currency_<%= i %>" type="hidden" value="USD"/>
+                  <input name="_charset_" type="hidden" value="utf-8"/>
+
+                </div>
+                <div class="price-heading-hold">
+                  <div class="p-hold"><%= number_to_currency(item.total_price) %>
+                    <span class="usd">USD</span></div>
+                  <div class="r-hold prod-img"><%= link_to 'remove', '#', :url => '/order_details/destroy/'+item.id.to_s+'?cart_id='+@cart.id.to_s, :confirm => 'Are you sure?', :method => :delete %></div>
+                </div>
+
+              </div>
+          <% end %>
+
+
+          <div class="total-main-hold">
+            <div class="purchase-hold">Enjoy purchasing with paypal or google checkout</div>
+            <div class="merchandise-hold">Merchandise Subtotal</div>
+            <div class="price-heading-hold">
+              <div class="p-hold"><%= number_to_currency(@cart.total_price) %> <span class="usd">USD</span></div>
+            </div>
+          </div>
+
       </div>
-      <br/>
+      <div class="cart-bot-hold"></div>
+
+
     </div>
+    <%########################################################%>
     <span class="prod-img"><%= link_to image_tag('/assets/back.png'), "#", :url => "/store" %></span>
     <span style="" class="prod-img"><%= link_to image_tag('/assets/empty-cart.png'), '#', :url => '/carts/destroy/'+@cart.id.to_s, :confirm => 'Are you sure?', :method => :delete %></span>
 

@@ -33,6 +33,8 @@ Peddle::Application.routes.draw do
   match '/purchase_history' => 'pages#purchase_history'
   match '/next/products' => 'stores#next_products'
   match '/google_checkout' => 'google_checkout#google_checkout'
+  match '/edit2' => 'pages#edit'
+
 #  match "admin/product_details/:id" => "admin/product_details#index"
 
   devise_for :users, :controllers => {

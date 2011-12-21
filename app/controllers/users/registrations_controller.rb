@@ -5,7 +5,7 @@ class Users::RegistrationsController < ApplicationController
   layout :resolve_layout
   # GET /resource/sign_up
   def new
-    resource = build_resource({})
+    resource = build_resource({ })
     @package = params[:package]
     respond_with_navigational(resource) { render_with_scope :new }
   end
@@ -13,10 +13,10 @@ class Users::RegistrationsController < ApplicationController
   # POST /resource
   def create
     if (params[:package] != "1")
-      package = package_selection(params[:package])
+      package           = package_selection(params[:package])
       #@order = current_cart.build_order(params[:order])
-      @start_date = Date.civil(params[:card_expires_on][:"(1i)"].to_i, params[:card_expires_on][:"(2i)"].to_i, params[:card_expires_on][:"(3i)"].to_i)
-      @order = order_create(params)
+      @start_date       = Date.civil(params[:card_expires_on][:"(1i)"].to_i, params[:card_expires_on][:"(2i)"].to_i, params[:card_expires_on][:"(3i)"].to_i)
+      @order            = order_create(params)
       @order.ip_address = request.remote_ip
       if @order.save
         response = @order.authorise_store_package(package.price.to_i)
@@ -35,13 +35,13 @@ class Users::RegistrationsController < ApplicationController
     end
     stores = Store.find_by_name(params[:store_name])
     if stores.nil? && !params[:store_name].blank?
-      surl = params[:store_name]+'.peddle.com'
+      surl    = params[:store_name]+'.peddle.com'
       package ||= package_selection(params[:package])
-      store = Store.new(:package_id => package.id.to_i, :name => params[:store_name], :url => surl)
+      store   = Store.new(:package_id => package.id.to_i, :name => params[:store_name], :url => surl)
       build_resource
-      admin = Role.find_by_name('Admin')
+      admin  = Role.find_by_name('Admin')
       seller = Role.find_by_name('Seller')
-      buyer = Role.find_by_name('Buyer')
+      buyer  = Role.find_by_name('Buyer')
 
       if params[:seller].nil? && params[:buyer].nil?
         resource.roles << admin
@@ -113,19 +113,23 @@ class Users::RegistrationsController < ApplicationController
     render_with_scope :edit
   end
 
+  def edit2
+    render :action => :edit, :layout => false
+  end
+
   # PUT /resource
   # We need to use a copy of the resource because we don't want to change
   # the current user in place.
   def update
-    package = package_selection(params[:package])
-    @store = Store.find_by_name(request.subdomain)
+    package    = package_selection(params[:package])
+    @store     = Store.find_by_name(request.subdomain)
     buyer_role = Role.find(:first, :conditions => ["name = ?", "Buyer"])
     unless current_user.roles.include?(buyer_role)
       if (params[:package] != "1")
-        @start_date = Date.civil(params[:card_expires_on][:"(1i)"].to_i, params[:card_expires_on][:"(2i)"].to_i, params[:card_expires_on][:"(3i)"].to_i)
-        @order = order_create(params)
+        @start_date       = Date.civil(params[:card_expires_on][:"(1i)"].to_i, params[:card_expires_on][:"(2i)"].to_i, params[:card_expires_on][:"(3i)"].to_i)
+        @order            = order_create(params)
         @order.ip_address = request.remote_ip
-        @price = package.price.to_i - @store.package.price.to_i
+        @price            = package.price.to_i - @store.package.price.to_i
         if @order.save
           response = @order.authorise_store_package(@price)
           if response.success?
@@ -190,7 +194,7 @@ class Users::RegistrationsController < ApplicationController
   # Build a devise resource passing in the session. Useful to move
   # temporary session data to the newly created user.
   def build_resource(hash=nil)
-    hash ||= params[resource_name] || {}
+    hash          ||= params[resource_name] || { }
     self.resource = resource_class.new_with_session(hash, session)
   end
 
@@ -252,19 +256,19 @@ class Users::RegistrationsController < ApplicationController
   end
 
   def order_create(params)
-    @order = Order.new
-    @order.billing_address = params[:billing_address]
-    @order.billing_city = params[:billing_city]
-    @order.first_name = params[:first_name]
-    @order.last_name = params[:last_name]
-    @order.billing_name = params[:first_name]+" "+params[:last_name]
-    @order.billing_state = params[:billing_state]
-    @order.billing_country = params[:billing_country]
-    @order.billing_zip = params[:billing_zip]
-    @order.card_number = params[:card_number]
+    @order                   = Order.new
+    @order.billing_address   = params[:billing_address]
+    @order.billing_city      = params[:billing_city]
+    @order.first_name        = params[:first_name]
+    @order.last_name         = params[:last_name]
+    @order.billing_name      = params[:first_name]+" "+params[:last_name]
+    @order.billing_state     = params[:billing_state]
+    @order.billing_country   = params[:billing_country]
+    @order.billing_zip       = params[:billing_zip]
+    @order.card_number       = params[:card_number]
     @order.card_verification = params[:card_verification]
-    @order.card_expires_on = @start_date
-    @order.card_type = params[:card_type]
+    @order.card_expires_on   = @start_date
+    @order.card_type         = params[:card_type]
     @order
   end
 
