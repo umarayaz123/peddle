@@ -24,8 +24,23 @@
         <li class=<%= "active-link" if params[:action] == "sales_floor" %>>
           <a href="<%= $url+"sales_floor" %>">Sales floor</a></li>
         <li><a href="#">Sales view</a></li>
-        <li><%= link_to "Logout", "/sign_out" %></li>
+        <!--<li><%#= link_to "Logout", "/sign_out" %></li>-->
+        <li class="bg-r-none"><a href="#">Setting <img class="downarrow" alt="" src="assets/down-arrow.png"></a></li>
       </ul>
+      <div class="setting">
+        <div class="setting-top-bg flt"></div>
+        <div class="setting-mid-bg flt">
+
+          <ul class="setting-links flt">
+            <li><a class="header_links" href="#" url="users/edit">Account settings</a></li>
+            <!--<li class="act"><a href="#">Privacy settings</a></li>-->
+            <li><a href="sign_out">Log out</a></li>
+            <!--<li><a href="#">Help</a></li>-->
+          </ul>
+
+        </div>
+        <div class="setting-bot-bg flt"></div>
+      </div>
 
     </div>
     <div class="peddle-top-right-bar flt"></div>
@@ -67,4 +82,13 @@
         });
     });
     <%end%>
+        $(document).ready(function(){
+             $(".setting").hide();
+            $(".bg-r-none,.setting").live("mouseover",function(){
+                $(".setting").show();
+            });
+            $(".bg-r-none,.setting").live("mouseleave",function(){
+                $(".setting").hide();
+            });
+        });
 </script>

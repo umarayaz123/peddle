@@ -1,3 +1,4 @@
+<%= javascript_include_tag "jquery.form" %>
 <div class="bodyholder body-div">
   <% buyer_role = Role.find(:first, :conditions => ["name = ?", "Buyer"]) %>
   <div class="container">
@@ -8,7 +9,7 @@
           <!--<h2>Edit <%#= resource_name.to_s.humanize %></h2>-->
           <div class="signin_heading">Edit Your Profile</div>
 
-          <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :onsubmit => @request_type=="ajax" ? "return false" : "return true" }) do |f| %>
+          <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :onsubmit => @request_type=="ajax" ? "return false" : "return true", :id => "user_edit_form" }) do |f| %>
               <%= devise_error_messages! %>
               <div class="store_name signin_small_input_holder"><%= f.label :email %>
                 <br/>
@@ -124,15 +125,38 @@
                 });
         <%end%>
         $(".submit_holder").click(function() {
-            $.ajax({
-                type: "POST",
-                url: "/users",
-                data: $("#user_edit").serialize(),
-                success: function(response) {
-                    $('.body-div').hide();
-                    $(".main-page").append(response);
-                }
+            console.log($("#user_edit").serialize());
+            console.log($("#user_current_password"));
+//            $.ajax({
+//                type: "POST",
+//                url: "/users",
+//                data: $("#user_edit").serialize(),
+//                success: function(response) {
+//                    $('.body-div').hide();
+//                    $(".main-page").append(response);
+//                }
+//            });
+
+
+        });
+        $(".submit_holder").click(function() {
+
+            $('#user_edit_form').submit(function() {
+                $(this).unbind('submit').ajaxSubmit({
+                    success: function(data) {
+                        if (data == "update_failed") {
+                            $("#user_current_password").css({border: "1px solid red"});
+                        }
+                        else {
+                            window.location.href = "/";
+                            $('.body-div').hide();
+                            $(".main-page").append(data);
+                        }
+                    }
+                })
+                return false
             });
+
         });
 
         $("#billing_country").change(function() {
