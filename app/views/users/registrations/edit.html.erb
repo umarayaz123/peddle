@@ -129,9 +129,8 @@
                 url: "/users",
                 data: $("#user_edit").serialize(),
                 success: function(response) {
-                    console.log(response);
                     $('.body-div').hide();
-                    $('.main-page').append(response);
+                    $(".main-page").append(response);
                 }
             });
         });
@@ -145,5 +144,26 @@
                 }
             });
         });
+
+        $(".header_links").click(function() {
+            var parent = $(this).parent();
+            var reference = this;
+            $.ajax({
+                url: $(this).attr("url"),
+                success: function(response) {
+                    $(this).addClass("done");
+                    $('.body-div').remove();
+                    $('.main-page').append(response);
+                    $('.tab-act').removeClass('tab-act');
+                    parent.addClass('tab-act');
+//                    if ($(reference).attr('url','/plans')) {
+//                        alert('yes');
+//                        alert(reference);
+//                        $('.plans').addClass('tab-act');
+//                    }
+                }
+            });
+        });
+
     });
 </script>
