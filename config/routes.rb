@@ -34,6 +34,7 @@ Peddle::Application.routes.draw do
   match '/next/products' => 'stores#next_products'
   match '/google_checkout' => 'google_checkout#google_checkout'
   match '/edit2' => 'pages#edit'
+  match '/index_layout' => 'home#index_layout'
 
 #  match "admin/product_details/:id" => "admin/product_details#index"
 

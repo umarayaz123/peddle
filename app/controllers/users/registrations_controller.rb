@@ -2,7 +2,8 @@ class Users::RegistrationsController < ApplicationController
   prepend_before_filter :require_no_authentication, :only => [:new, :create, :cancel]
   prepend_before_filter :authenticate_scope!, :only => [:edit, :update, :destroy]
   include Devise::Controllers::InternalHelpers
-  layout :resolve_layout
+  #layout :resolve_layout
+  layout "admin"
   # GET /resource/sign_up
   def new
     resource = build_resource({ })
@@ -110,17 +111,15 @@ class Users::RegistrationsController < ApplicationController
 
   # GET /resource/edit
   def edit
-    @request_type = "plain"
-    if request.xhr?
-      @request_type = "ajax"
-      render :layout => false
-      return
-    end
+    #@request_type = "plain"
+    #if request.xhr?
+    #  @request_type = "ajax"
+    #  render :layout => false
+    #  puts "************ request.xhr true", request.xhr?
+    #  return
+    #end
+    #puts "************ request.xhr FALSE", request.xhr?
     render_with_scope :edit
-  end
-
-  def edit2
-    render :action => :edit, :layout => false
   end
 
   # PUT /resource
@@ -166,12 +165,26 @@ class Users::RegistrationsController < ApplicationController
         end
         set_flash_message :notice, :updated if is_navigational_format?
         sign_in resource_name, resource, :bypass => true
+        #@request_type = "plain"
+        #if request.xhr?
+        #  @request_type = "ajax"
+        #  puts "************ request.xhr true updated value", request.xhr?
+        #  render :template =>"/index_layout", :layout => false
+        #  return
+        #end
         respond_with resource, :location => after_update_path_for(resource)
       else
         clean_up_passwords(resource)
         respond_with_navigational(resource) { render_with_scope :edit }
       end
     else
+      #@request_type = "plain"
+      #if request.xhr?
+      #  @request_type = "ajax"
+      #  puts "************ request.xhr true update", request.xhr?
+      #  render :action => "edit", :layout => false
+      #  return
+      #end
       clean_up_passwords(resource)
       respond_with_navigational(resource) { render_with_scope :edit }
     end

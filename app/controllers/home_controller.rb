@@ -11,6 +11,12 @@ class HomeController < ApplicationController
     end
   end
 
+  def index_layout
+    @stores          = Store.limit(3).offset(0)
+    @featured_stores = Store.where("is_featured = 1")
+    render :layout => false
+  end
+
   def next_stores
     offset  = params[:offset]
     @stores = Store.limit(3).offset(offset.to_i)
