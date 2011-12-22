@@ -1,0 +1,253 @@
+<!--<div class="main-page">-->
+<div class="wrapper body-div">
+  <!--<div class="w100 mtop50">-->
+  <!--<div class="small-logo flt">-->
+  <!--<img src="/assets/adidas.png" alt=""/>-->
+  <!--<img src="/assets/logo-small-frame.png" alt="" class="frame"/>-->
+  <!--</div>-->
+  <!--&lt;!&ndash;<div class="logo-text flt">This is your store description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.&ndash;&gt;-->
+  <!--&lt;!&ndash;Donec ullamcorper sem in ipsum commodo accumsan.&ndash;&gt;-->
+  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+  <!--</div>-->
+
+</div>
+
+<div class="wrapper body-div">
+  <div class="w100 mtop40 bdr-bot">
+    <div class="left-content flt">
+      <div class="w100 bdr-bot">
+        <div class="data-holder-left flt">
+          <h1>Peddle your product</h1>
+
+          <p>It can be anything from a photo, video or website.</p>
+        </div>
+        <div class="data-holder-right flt">
+          <textarea></textarea>
+
+          <div class="w100 btn-holder mtop10">
+            <img src="/assets/pic.png" alt=""/>
+            <input type="submit" value=""/>
+          </div>
+        </div>
+      </div>
+
+      <div class="w100 mtop20">
+        <div class="content-top-bg flt">
+          <div class="heading-top flt">
+            <h1>Sales floor</h1>
+
+            <p>Our featured stores</p>
+          </div>
+          <div class="back-btn-holder frt">
+            <img src="images/next-btn.png"/>
+            <img src="/assetss/back-btn.png"/>
+          </div>
+        </div>
+        <div class="content-mid-bg flt">
+          <% unless @stores.blank? %>
+              <% @stores.each do |store| %>
+                  <% unless store.users.first.confirmed_at.blank? %>
+                      <div class="cont bdr-bot flt">
+                        <div class="gellery-left flt">
+                          <div class="gellary-logo flt">
+                            <% unless store.image.blank? %>
+                                <%= image_tag(store.image.snap) %>
+                            <% else %>
+                                <img src="/assets/no_img.jpg" alt=""/>
+                            <% end %>
+                            <img src="/assets/larg-fram.png" alt="" class="gellary-frame"/>
+                          </div>
+
+                          <div class="moreinfo w100">
+                            <a href="#">For more information</a>
+
+                            <div class="w100">
+                              <!--<img src="/assets/chat.png" alt=""/>-->
+                              <%= link_to image_tag("/assets/visit.png"), root_url(:subdomain =>store.name) %>
+                            </div>
+                          </div>
+
+                        </div>
+                        <div class="gellery-right frt">
+                          <h1 class="mtop20"><%= store.name %> store</h1>
+
+                          <p><%= duration(Time.now - store.created_at) %> ago</p>
+
+                          <p class="mtop20"><%= store.description %></p>
+
+                          <div class="w100 g-img">
+
+                            <% unless store.products.nil? %>
+                                <% prod_count=0 %>
+                                <label>more photos</label>
+                                <% store.products.each do |product| %>
+                                    <% unless product.images.nil? %>
+                                        <% product.images.each do |image| %>
+                                            <% if prod_count < 3 %>
+                                                <div class="small-logo flt">
+                                                  <%= image_tag(image.snap, :width => "60", :height => "60", :class => "small_imgs") %>
+                                                  <img src="/assets/logo-small-frame.png" alt="" class="frame"/>
+                                                  <% prod_count+=1 %>
+                                                </div>
+                                            <% end %>
+                                        <% end %>
+                                    <% end %>
+                                <% end %>
+                            <% end %>
+                          </div>
+                        </div>
+                      </div>
+                  <% end %>
+              <% end %>
+          <% end %>
+
+        </div>
+        <div class="content-bot-bg flt">
+          <img id="more_stores" src="/assets/more-stores.png" alt=""/>
+          <label>View more of our stores</label>
+        </div>
+      </div>
+
+    </div>
+    <div class="right-content frt">
+
+      <%= render :partial => "/shared/right_login_menu" %>
+      <!--<div class="w100 mtop20">-->
+      <!--<div class="links-top-bg flt">Live chat</div>-->
+      <!--<div class="links-mid-bg flt">-->
+      <!--<div class="online flt">15 contacts online</div>-->
+
+      <!--<ul class="online-content flt">-->
+      <!--<li><a href="#">Michael Jordan</a></li>-->
+      <!--<li><a href="#">Michael Jordan</a></li>-->
+      <!--<li><a href="#">Michael Jordan</a></li>-->
+      <!--<li><a href="#">Michael Jordan</a></li>-->
+      <!--<li class="bdr-bot-none"><a href="#">Michael Jordan</a></li>-->
+
+      <!--</ul>-->
+
+      <!--</div>-->
+      <!--<div class="links-bot-bg flt"></div>-->
+      <!--</div>-->
+
+    </div>
+  </div>
+
+  <div class="w100 mtop40">
+    <div class="blue-left flt"></div>
+    <div class="blue-mid flt">
+      <div id="list">
+        <div class="w100">
+          <div class="heading-top flt">
+            <h1>Shopping mall</h1>
+
+            <p>Our featured stores</p>
+          </div>
+          <div class="back-btn-holder frt">
+            <span class="next"><img src="/assets/next-btn.png"></span>
+            <span class="prev"><img src="/assets/back-btn.png"></span>
+          </div>
+        </div>
+        <div class="w100">
+          <div class="slider">
+            <ul>
+              <% @featured_stores.each do |fstore| %>
+                  <li>
+                    <div class="thumb-img flt ml18">
+                      <a href="<%= root_url(:subdomain =>fstore.name) %>">
+                        <% unless fstore.image.blank? %>
+                            <%= image_tag(fstore.image.snap) %>
+                        <% else %>
+                            <img src="/assets/no_img.jpg" alt=""/>
+                        <% end %>
+                      </a>
+
+                      <p><%= fstore.name %></p>
+
+                    </div>
+                  </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="blue-right flt"></div>
+  </div>
+
+</div>
+<!--</div>-->
+
+
+<script type="text/javascript">
+    //jCarouselLite
+    $(function() {
+        $(".slider").jCarouselLite({
+            btnNext: ".next",
+            btnPrev: ".prev",
+            visible: 3
+        });
+    });
+
+    //Captify
+    $(document).ready(function() {
+        $('img.captify').captify({
+            // all of these options are... optional
+            // speed of the mouseover effect
+            speedOver: 'fast',
+            // speed of the mouseout effect
+            speedOut: 'normal',
+            // how long to delay the hiding of the caption after mouseout (ms)
+            hideDelay: 500,
+            // 'fade', 'slide', 'always-on'
+            animation: 'slide',
+            // text/html to be placed at the beginning of every caption
+            prefix: '',
+            // opacity of the caption on mouse over
+            opacity: '0.7',
+            // the name of the CSS class to apply to the caption box
+            className: 'caption-bottom',
+            // position of the caption (top or bottom)
+            position: 'bottom',
+            // caption span % of the image
+            spanWidth: '100%'
+        });
+        offset = 3;
+        $("#more_stores").click(function() {
+            $.ajax({
+                url: '/next/stores?offset=' + offset,
+                success: function(response) {
+                    $('.content-mid-bg').append(response);
+                    if (response != "") {
+                        offset += 3;
+                    }
+
+                }
+            });
+        });
+
+        $(".header_links").click(function() {
+            var parent = $(this).parent();
+            var reference = this;
+            $.ajax({
+                url: $(this).attr("url"),
+                success: function(response) {
+                    $(this).addClass("done");
+                    $('.body-div').remove();
+                    $('.main-page').append(response);
+                    $('.tab-act').removeClass('tab-act');
+                    parent.addClass('tab-act');
+//                    if ($(reference).attr('url','/plans')) {
+//                        alert('yes');
+//                        alert(reference);
+//                        $('.plans').addClass('tab-act');
+//                    }
+                }
+            });
+        });
+
+    });
+</script>
+
