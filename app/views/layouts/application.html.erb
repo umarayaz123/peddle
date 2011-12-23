@@ -1,43 +1,46 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <title>PEDDLE-online</title>
-  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Cantarell:r,i,b,bi|Cardo|Crimson+Text|Droid+Sans:r,b|Droid+Sans+Mono|Droid+Serif:r,i,b,bi|IM+Fell+DW+Pica:r,i|IM+Fell+DW+Pica+SC|IM+Fell+Double+Pica:r,i|IM+Fell+Double+Pica+SC|IM+Fell+English:r,i|IM+Fell+English+SC|IM+Fell+French+Canon:r,i|IM+Fell+French+Canon+SC|IM+Fell+Great+Primer:r,i|IM+Fell+Great+Primer+SC|Inconsolata|Josefin+Sans+Std+Light|Lobster|Molengo|Neuton|Nobile:r,i,b,bi|OFL+Sorts+Mill+Goudy+TT:r,i|Old+Standard+TT:r,i,b|Reenie+Beanie|Tangerine:r,b|Vollkorn:r,i,b,bi|Yanone+Kaffeesatz:200,300,400,700"/>
-  <%= stylesheet_link_tag "application", "stores.css.scss", "Aristo", "jquery.ad-gallery", "carousel", "jquery.gritter" %>
-  <%= javascript_include_tag "jquery-1.6.3","myriad_web_pro", "application", "jquery.ad-gallery", "jquery-ui.min" %>
-  <%= javascript_include_tag "jquery-1.6.3", "jquery.form", "jquery.validate", "jquery-minislider", "jcarousellite_1.0.1.pack", "captify.tiny", "jquery.carousel.min", "jquery.mousewheel.min", "jquery.gritter" %>
-  <script type="text/javascript">
+  <meta charset="utf-8">
 
-      $(document).ready(function() {
-          if ($('.notice').html() != "") {
-              $.gritter.add({
-                  // (string | mandatory) the heading of the notification
-                  title: 'Notice!',
-                  // (string | mandatory) the text inside the notification
-                  text: $('.notice').html(),
-                  time: 5000
-              });
-          }
-          $(".notice").hide();
-          $(".alert").hide();
-          if ($('.alert').html() != "") {
-              $.gritter.add({
-                  // (string | mandatory) the heading of the notification
-                  title: 'Notice!',
-                  // (string | mandatory) the text inside the notification
-                  text: $('.alert').html(),
-                  time: 5000
-              });
-          }
-      });
-  </script>
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Peddle</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+  <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>
+
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <!-- All JavaScript at the bottom, except this Modernizr build incl. Respond.js
+       Respond is a polyfill for min/max-width media queries. Modernizr enables HTML5 elements & feature detects;
+       for optimal performance, create your own custom Modernizr build: www.modernizr.com/download/ -->
+  <%= javascript_include_tag "jquery-1.6.3", "modernizr" %>
 </head>
+
 <body>
 <% $url = root_url(:subdomain => false)
    if request.subdomain != ""
        new_url = request.subdomain+'.'
-       $url = $url.sub(new_url, '')
+       $url    = $url.sub(new_url, '')
    end %>
 <% unless current_user %>
     <% if params[:controller] == "home" && params[:action] != "plans" %>
@@ -52,12 +55,66 @@
 <p class="notice" style="display:none;"><%= notice %></p>
 
 <p class="alert" style="display:none;"><%= alert %></p>
-
 <%= yield %>
 <% if request.subdomain == "" %>
     <%= render :partial => "/layouts/footer" %>
 <% else %>
     <%= render :partial => "/layouts/store_footer" %>
 <% end %>
+
+<!-- JavaScript at the bottom for fast page loading -->
+<%#= javascript_include_tag "application" %>
+<%= javascript_include_tag "myriad_web_pro", "application", "jquery.ad-gallery", "jquery-ui.min" %>
+<%= javascript_include_tag "jquery-1.6.3", "jquery.form", "jquery.validate", "jquery-minislider", "jcarousellite_1.0.1.pack", "captify.tiny", "jquery.carousel.min", "jquery.mousewheel.min", "jquery.gritter" %>
+<!-- end scripts -->
+
+
+<!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
+mathiasbynens.be/notes/async-analytics-snippet -->
+<script>
+    var _gaq = [
+        ['_setAccount','UA-XXXXX-X'],
+        ['_trackPageview']
+    ];
+    (function(d, t) {
+        var g = d.createElement(t),s = d.getElementsByTagName(t)[0];
+        g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g, s)
+    }(document, 'script'));
+</script>
+
+<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+chromium.org/developers/how-tos/chrome-frame-getting-started -->
+<!--[if lt IE 7 ]>
+<script defer src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+<script defer>window.attachEvent('onload', function() {
+    CFInstall.check({mode:'overlay'})
+})</script>
+<![endif]-->
+<script type="text/javascript">
+    $(document).ready(function() {
+        if ($('.notice').html() != "") {
+            $.gritter.add({
+                // (string | mandatory) the heading of the notification
+                title: 'Notice!',
+                // (string | mandatory) the text inside the notification
+                text: $('.notice').html(),
+                time: 5000
+            });
+        }
+        $(".notice").hide();
+        $(".alert").hide();
+        if ($('.alert').html() != "") {
+            $.gritter.add({
+                // (string | mandatory) the heading of the notification
+                title: 'Notice!',
+                // (string | mandatory) the text inside the notification
+                text: $('.alert').html(),
+                time: 5000
+            });
+        }
+    });
+</script>
+
 </body>
 </html>
