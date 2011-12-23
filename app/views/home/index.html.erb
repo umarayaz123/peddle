@@ -75,6 +75,7 @@
                             <p><%= duration(Time.now - store.created_at) %> ago</p>
 
                             <p class="mtop20"><%= store.description %></p>
+
                             <p class="mtop20"><%= "http://"+store.url %></p>
 
                             <div class="w100 g-img">
@@ -184,71 +185,75 @@
 
 <script type="text/javascript">
     //jCarouselLite
-    $(function() {
-        $(".slider").jCarouselLite({
-            btnNext: ".next",
-            btnPrev: ".prev",
-            visible: 3
-        });
-    });
+//    $(function() {
+//        $(".slider").jCarouselLite({
+//            btnNext: ".next",
+//            btnPrev: ".prev",
+//            visible: 3
+//        });
+//    });
 
     //Captify
     $(document).ready(function() {
-        $('img.captify').captify({
-            // all of these options are... optional
-            // speed of the mouseover effect
-            speedOver: 'fast',
-            // speed of the mouseout effect
-            speedOut: 'normal',
-            // how long to delay the hiding of the caption after mouseout (ms)
-            hideDelay: 500,
-            // 'fade', 'slide', 'always-on'
-            animation: 'slide',
-            // text/html to be placed at the beginning of every caption
-            prefix: '',
-            // opacity of the caption on mouse over
-            opacity: '0.7',
-            // the name of the CSS class to apply to the caption box
-            className: 'caption-bottom',
-            // position of the caption (top or bottom)
-            position: 'bottom',
-            // caption span % of the image
-            spanWidth: '100%'
-        });
-        offset = 3;
-        $("#more_stores").click(function() {
-            $.ajax({
-                url: '/next/stores?offset=' + offset,
-                success: function(response) {
-                    $('.content-mid-bg').append(response);
-                    if (response != "") {
-                        offset += 3;
+        try {
+//        $('img.captify').captify({
+//            // all of these options are... optional
+//            // speed of the mouseover effect
+//            speedOver: 'fast',
+//            // speed of the mouseout effect
+//            speedOut: 'normal',
+//            // how long to delay the hiding of the caption after mouseout (ms)
+//            hideDelay: 500,
+//            // 'fade', 'slide', 'always-on'
+//            animation: 'slide',
+//            // text/html to be placed at the beginning of every caption
+//            prefix: '',
+//            // opacity of the caption on mouse over
+//            opacity: '0.7',
+//            // the name of the CSS class to apply to the caption box
+//            className: 'caption-bottom',
+//            // position of the caption (top or bottom)
+//            position: 'bottom',
+//            // caption span % of the image
+//            spanWidth: '100%'
+//        });
+            offset = 3;
+            $("#more_stores").click(function() {
+                $.ajax({
+                    url: '/next/stores?offset=' + offset,
+                    success: function(response) {
+                        $('.content-mid-bg').append(response);
+                        if (response != "") {
+                            offset += 3;
+                        }
+
                     }
-
-                }
+                });
             });
-        });
 
-        $(".header_links").click(function() {
-            var parent = $(this).parent();
-            var reference = this;
-            $.ajax({
-                url: $(this).attr("url"),
-                success: function(response) {
-                    $(this).addClass("done");
-                    $('.body-div').remove();
-                    $('.main-page').append(response);
-                    $('.tab-act').removeClass('tab-act');
-                    parent.addClass('tab-act');
+            $(".header_links").click(function() {
+                var parent = $(this).parent();
+                var reference = this;
+                $.ajax({
+                    url: $(this).attr("url"),
+                    success: function(response) {
+                        $(this).addClass("done");
+                        $('.body-div').remove();
+                        $('.main-page').append(response);
+                        $('.tab-act').removeClass('tab-act');
+                        parent.addClass('tab-act');
 //                    if ($(reference).attr('url','/plans')) {
 //                        alert('yes');
 //                        alert(reference);
 //                        $('.plans').addClass('tab-act');
 //                    }
-                }
+                    }
+                });
             });
-        });
-
+        }
+        catch(e){
+            alert(e.message);
+        }
     });
 </script>
 

@@ -50,6 +50,7 @@
 <script type="text/javascript">
 
     $(document).ready(function() {
+        try{
         $(".setting").hide();
         $(".bg-r-none,.setting").live("mouseover", function() {
             $(".setting").show();
@@ -92,7 +93,10 @@
             });
         });
         <%end%>
-
+        }
+        catch(e){
+            alert('in header '+e.message);
+        }
 
     });
 </script>
