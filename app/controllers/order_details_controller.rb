@@ -46,18 +46,22 @@ class OrderDetailsController < ApplicationController
     else
       product_detail = ProductDetail.find(params[:product_detail_id])
     end
-    @order_detail = @cart.order_details.build(:product_detail => product_detail)
-    respond_to do |format|
-      if @order_detail.save
-        format.html { redirect_to(@order_detail,
-                                  :notice => 'Product was successfully created.') }
-        format.xml { render :xml => @order_detail,
-                            :status => :created, :location => @order_detail }
+    if (product_detail.product_quantity.nil? && product_detail.product_quantity < 0)
+      render :text => "fail", :layout => false
+    else
+      @order_detail = @cart.order_details.build(:product_detail => product_detail)
+      respond_to do |format|
+        if @order_detail.save
+          format.html { redirect_to(@order_detail,
+                                    :notice => 'Product was successfully created.') }
+          format.xml { render :xml    => @order_detail,
+                              :status => :created, :location => @order_detail }
 
-      else
-        format.html { render :action => "new" }
-        format.xml { render :xml => @order_detail.errors,
-                            :status => :unprocessable_entity }
+        else
+          format.html { render :action => "new" }
+          format.xml { render :xml    => @order_detail.errors,
+                              :status => :unprocessable_entity }
+        end
       end
     end
   end

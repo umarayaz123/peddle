@@ -36,7 +36,7 @@
   <%= javascript_include_tag "jquery-1.6.3", "modernizr" %>
 </head>
 
-<body>
+<body style="<%= show_user_bg %>">
 <% $url = root_url(:subdomain => false)
    if request.subdomain != ""
        new_url = request.subdomain+'.'
@@ -52,7 +52,7 @@
     <%= render :partial => "layouts/header_login" %>
 <% end %>
 
-<p class="notice" style="display:none;"><%= notice %></p>
+<p class="notice" style="display:none;"></body> <%= notice %> </p>
 
 <p class="alert" style="display:none;"><%= alert %></p>
 <%= yield %>

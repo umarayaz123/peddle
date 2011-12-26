@@ -61,7 +61,9 @@ Peddle::Application.routes.draw do
     resources :stores
     resources :users do
       get 'user_image', :on => :collection
+      get 'bg_image', :on => :collection
       put 'user_image_update', :on => :collection
+      put 'bg_image_update', :on => :collection
     end
     resources :products
     #resources :packages

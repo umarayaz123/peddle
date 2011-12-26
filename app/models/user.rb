@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   has_many :orders
-  has_one :image
-  accepts_nested_attributes_for :image
+  has_one :profile_image, :class_name => "Image", :foreign_key => :profile_image_id
+  accepts_nested_attributes_for :profile_image
+  has_one :bg_image, :class_name => "Image", :foreign_key => :bg_image_id
+  accepts_nested_attributes_for :bg_image
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
 

@@ -44,6 +44,10 @@
         <div class="adminInrText mtop20">Price</div>
         <%= f.text_field :price %>
       </div>
+      <div class="adminInrInput">
+        <div class="adminInrText mtop20">Product Quantity</div>
+        <%= f.text_field :product_quantity %>
+      </div>
 
       <%= f.hidden_field :product_id, :value => @product_id, :readonly => true %>
       <div id="photos" style="float: left;

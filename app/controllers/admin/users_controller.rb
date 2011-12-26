@@ -10,7 +10,7 @@ class Admin::UsersController < ApplicationController
   # GET /sys_admins
   # GET /sys_admins.json
   def index
-    @users = User.all
+    @users     = User.all
     admin_role = Role.find(:first, :conditions => ["name = ?", "Admin"])
     if current_user.roles.include?(admin_role)
       @users = current_user.store.users
@@ -56,7 +56,7 @@ class Admin::UsersController < ApplicationController
   # POST /admins
   # POST /admins.json
   def create
-    @user = User.new(params[:user])
+    @user       = User.new(params[:user])
     @user.store = current_user.store
     respond_to do |format|
       if @user.save
@@ -91,9 +91,9 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
+    @user       = User.find(params[:id])
     seller_role = Role.find(:first, :conditions => ["name = ?", "Seller"])
-    admin_role = Role.find(:first, :conditions => ["name = ?", "Admin"])
+    admin_role  = Role.find(:first, :conditions => ["name = ?", "Admin"])
     if current_user.roles.include?(seller_role) || @user.roles.include?(admin_role)
       redirect_to :controller => "admin/users"
     end
@@ -107,18 +107,39 @@ class Admin::UsersController < ApplicationController
 
   def user_image
     @user = User.find_by_id(current_user.id)
-    unless @user.image.nil?
-      @image = @user.image
+    unless @user.profile_image.nil?
+      @image = @user.profile_image
     else
-      @user.build_image
-      puts "***Params user.image ***#{@user.image.inspect}"
+      @user.build_profile_image
+    end
+  end
+
+  def bg_image
+    @user = User.find_by_id(current_user.id)
+    unless @user.bg_image.nil?
+      @image = @user.bg_image
+    else
+      @user.build_bg_image
     end
   end
 
   def user_image_update
     @user = current_user
     unless params[:user].nil?
-      @user.build_image(params[:user][:image])
+      @user.build_profile_image(params[:user][:profile_image])
+    end
+    if @user.update_attributes(params[:user])
+      redirect_to '/admin', :notice => 'Image was successfully updated.'
+    else
+      redirect_to '/admin/users/user_image', :notice => 'Image Could not saved.'
+    end
+    #end
+  end
+
+  def bg_image_update
+    @user = current_user
+    unless params[:user].nil?
+      @user.build_bg_image(params[:user][:bg_image])
     end
     if @user.update_attributes(params[:user])
       redirect_to '/admin', :notice => 'Image was successfully updated.'
@@ -130,7 +151,7 @@ class Admin::UsersController < ApplicationController
 
   def make_resources
     @allowed_staff_members = current_user.store.package.package_rules.select { |r| r.key=="allowed_staff_members" }
-    @current_store_users = current_user.store.users.count
+    @current_store_users   = current_user.store.users.count
   end
 
 end

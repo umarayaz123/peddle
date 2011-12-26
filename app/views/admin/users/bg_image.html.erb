@@ -1,18 +1,19 @@
 <div class="bodyholder">
   <div class="rightContainer">
     <div class="container mtop60">
-      <% unless @image.nil? %>
+      <% if @image %>
           <%= image_tag(@image.snap, :width => "200", :height => "150") %>
       <% else %>
 
       <% end %>
-      <%= form_for(:user, :url => '/admin/users/user_image_update', :method => 'PUT', :html => { :multipart => true }) do |f| %>
+      <%= form_for(:user, :url => '/admin/users/bg_image_update', :method => 'PUT', :html => { :multipart => true }) do |f| %>
           <div id="photos" style="float: left;
                   margin-top: 20px;
                   width: 94%;">
             <%= f.label :snap, 'Attachment' %>
             <br/>
-            <%= f.fields_for :profile_image do |builder| %>
+            <%= f.fields_for :bg_image do |builder| %>
+                <%#= render "image", :image => builder %>
                 <%= builder.file_field :snap %>
             <% end %>
 

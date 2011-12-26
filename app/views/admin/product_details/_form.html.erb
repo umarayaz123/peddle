@@ -1,35 +1,44 @@
-<% form_for(:product_detail, :url => {:controller => "admin/product_details", :action => "create"}) do |f| %>
+<% form_for(:product_detail, :url => { :controller => "admin/product_details", :action => "create" }) do |f| %>
 <%#= form_for([:admin, @product_detail], :html => {:id => 'product_add_form'}) do |f| %>
-  <% if @product_detail.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@product_detail.errors.count, "error") %> prohibited this product from being saved:</h2>
+    <% if @product_detail.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@product_detail.errors.count, "error") %> prohibited this product from being saved:</h2>
 
-      <ul>
-      <% @product_detail.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+            <% @product_detail.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
 
-  <div class="signin_small_input_holder">
-    <%= f.label :size %><br />
-    <%= f.text_field :size %>
-  </div>
     <div class="signin_small_input_holder">
-    <%= f.label :color %><br />
-    <%= f.text_field :color %>
-  </div>
-  <div class="signin_small_input_holder">
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
-  </div>
-  <div class="signin_small_input_holder">
-    <%= f.label :product_id %><br />
-    <%= f.text_field :product_id, :value => @product_id, :readonly => true%>
-  </div>
+      <%= f.label :size %>
+      <br/>
+      <%= f.text_field :size %>
+    </div>
+    <div class="signin_small_input_holder">
+      <%= f.label :color %>
+      <br/>
+      <%= f.text_field :color %>
+    </div>
+    <div class="signin_small_input_holder">
+      <%= f.label :price %>
+      <br/>
+      <%= f.text_field :price %>
+    </div>
+    <div class="signin_small_input_holder">
+      <%= f.label :product_quantity %>
+      <br/>
+      <%= f.text_field :product_quantity %>
+    </div>
+    <div class="signin_small_input_holder">
+      <%= f.label :product_id %>
+      <br/>
+      <%= f.text_field :product_id, :value => @product_id, :readonly => true %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>
