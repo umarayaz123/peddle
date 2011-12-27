@@ -2,6 +2,10 @@
 <div class="bodyholder body-div">
   <% buyer_role = Role.find(:first, :conditions => ["name = ?", "Buyer"]) %>
   <div class="container">
+    <% if @request_type == "ajax" %>
+        <div class="wrapper">
+          <div class="white-bg">
+    <% end %>
     <div class="left-content flt">
       <div class="signin_holder">
         <div class="top_login_bg"></div>
@@ -107,8 +111,11 @@
         <div class="right-content frt">
           <%= render :partial => "/shared/right_login_menu" %>
         </div>
+        </div>
+        </div>
     <% end %>
-  </div>
+
+    </div>
 </div>
 
 <script type="text/javascript">

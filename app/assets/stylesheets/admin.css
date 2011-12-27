@@ -1199,3 +1199,10 @@ a {
 tr.tr-header{
     background-color: #04A9DB;
 }
+.white-bg{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    float: left;
+    width: 958px;
+}

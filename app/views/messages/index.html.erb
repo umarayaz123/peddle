@@ -1,53 +1,55 @@
 <div class="wrapper body-div">
-  <div class="w100 mtop40 bdr-bot">
-    <div class="left-content flt">
+  <div class="white-bg">
+    <div class="w100 mtop40 bdr-bot">
+      <div class="left-content flt">
 
-      <!--------------------------------------------------------->
-      <div class="w100">
-        <div class="content-top-bg flt">
-          <div class="heading-top flt">
-            <p>Messages</p>
-          </div>
-
-        </div>
-        <div class="content-mid-bg flt">
-          <div class="cont flt">
-            <div class="purchase-new-hld">
-              <div class="amount-hold">Subject</div>
-              <div class="p-date-hold">Body</div>
-              <div class="p-time-hold">From user</div>
-              <div class="msg-hold">To user</div>
-              <div class="creat-hold">Read</div>
-              <div class="up-hold"></div>
-              <div class="up-hold"></div>
-              <div class="up-hold"></div>
+        <!--------------------------------------------------------->
+        <div class="w100">
+          <div class="content-top-bg flt">
+            <div class="heading-top flt">
+              <p>Messages</p>
             </div>
-            <% @messages.each_with_index do |message, index| %>
-                <div class="purchase-cont-new-hld">
-                  <div class="amount-hold"><%= message.subject %></div>
-                  <div class="p-date-hold"><%= message.body %></div>
-                  <div class="p-time-hold"><%= message.from_user %></div>
-                  <div class="msg-hold"><%= message.to_user %></div>
-                  <div class="creat-hold"><%= message.read %></div>
-                  <div class="up-hold"></div>
-                  <div class="up-hold"></div>
-                  <div class="up-hold"></div>
-                </div>
-            <% end %>
-            <%= paginate @messages %>
+
           </div>
+          <div class="content-mid-bg flt">
+            <div class="cont flt">
+              <div class="purchase-new-hld">
+                <div class="amount-hold">Subject</div>
+                <div class="p-date-hold">Body</div>
+                <div class="p-time-hold">From user</div>
+                <div class="msg-hold">To user</div>
+                <div class="creat-hold">Read</div>
+                <div class="up-hold"></div>
+                <div class="up-hold"></div>
+                <div class="up-hold"></div>
+              </div>
+              <% @messages.each_with_index do |message, index| %>
+                  <div class="purchase-cont-new-hld">
+                    <div class="amount-hold"><%= message.subject %></div>
+                    <div class="p-date-hold"><%= message.body %></div>
+                    <div class="p-time-hold"><%= message.from_user %></div>
+                    <div class="msg-hold"><%= message.to_user %></div>
+                    <div class="creat-hold"><%= message.read %></div>
+                    <div class="up-hold"></div>
+                    <div class="up-hold"></div>
+                    <div class="up-hold"></div>
+                  </div>
+              <% end %>
+              <%= paginate @messages %>
+            </div>
 
 
+          </div>
+          <div class="p-bot-img flt">
+
+          </div>
         </div>
-        <div class="p-bot-img flt">
+        <!--------------------------------------------------------->
 
-        </div>
       </div>
-      <!--------------------------------------------------------->
-
-    </div>
-    <div class="right-content frt">
-      <%= render :partial => "/shared/right_login_menu" %>
+      <div class="right-content frt">
+        <%= render :partial => "/shared/right_login_menu" %>
+      </div>
     </div>
   </div>
 </div>

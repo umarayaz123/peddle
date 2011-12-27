@@ -86,8 +86,9 @@ color: #949494;
 	margin-top:10px;
 }
 .left-warrpper{
-	width:218px;
-	float:left;
+	float: left;
+    padding-left: 10px;
+    width: 205px;
 }
 .right-warrpper{
 	width:740px;
@@ -364,9 +365,11 @@ color: #949494;
 }
 .right-content{
 	width:250px;
+    margin-right: 5px;
 }
 .data-holder-left{
-	width:200px;
+	margin-left: 10px;
+    width: 192px;
 }
 .data-holder-left h1{
 	float:left;
@@ -770,6 +773,7 @@ color: #949494;
     float: left;
     height: 264px;
     width: 741px;
+    margin-right: -1px;
 }
 .slide-background img{
     float: left;

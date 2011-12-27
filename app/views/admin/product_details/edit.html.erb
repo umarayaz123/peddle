@@ -33,17 +33,17 @@
       <div class="rightHeading1">
         <div class="rgtHeading">Edit Product Detail</div>
       </div>
-      <div class="adminInrLogin">
+      <div class="adminInrInput">
         <div class="adminInrText mtop20">Size</div>
         <div class="adminInrInput"><%= f.select(:size, [['S', 'S'], ['M', 'M'], ['L', 'L'], ['XL', 'XL'], ['XXL', 'XXL']], { :include_blank => true }) %></div>
       </div>
-      <div class="adminInrLogin">
+      <div class="adminInrInput">
         <div class="adminInrText mtop20">Color</div>
         <div style="width: 400px;clear: both;">
           <%= f.text_field :color, :id => "colorpickerField" %>
         </div>
       </div>
-      <div class="adminInrLogin">
+      <div class="adminInrInput">
         <div class="adminInrText mtop20">Price</div>
         <div style="width: 400px;clear: both;">
           <%= f.text_field :price %>

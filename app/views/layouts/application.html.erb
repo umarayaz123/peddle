@@ -93,7 +93,8 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 <![endif]-->
 <script type="text/javascript">
     $(document).ready(function() {
-        if ($('.notice').html() != "") {
+        if ($.trim($('.notice').html()) != "") {
+            console.log("++"+$('.notice').html()+"++");
             $.gritter.add({
                 // (string | mandatory) the heading of the notification
                 title: 'Notice!',
@@ -104,7 +105,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
         }
         $(".notice").hide();
         $(".alert").hide();
-        if ($('.alert').html() != "") {
+        if ($.trim($('.alert').html()) != "") {
             $.gritter.add({
                 // (string | mandatory) the heading of the notification
                 title: 'Notice!',

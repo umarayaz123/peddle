@@ -1,156 +1,159 @@
 <div class="body-div">
   <div class="wrapper">
-    <%= render :partial => "/shared/store_header" %>
-    <div class="w100 mtop60">
-      <div class="left-warrpper">
-        <div class="w100">
-          <div class="nav-top-holder">Our products</div>
-          <div class="nav-mid-holder">
-            <ul class="left-nav">
-              <li class="prod-img"><a href="#" url="<%= "store" %>">Recent Products</a></li>
-              <% @store.products.each do |product| %>
-                  <li class="prod-img <%= 'active' if params[:id]== product.id.to_s %>"><%= link_to product.name, "#", :url => "/products/"+product.id.to_s %></li>
+    <div class="white-bg">
+      <%= render :partial => "/shared/store_header" %>
+      <div class="w100 mtop60">
+        <div class="left-warrpper">
+          <div class="w100">
+            <div class="nav-top-holder">Our products</div>
+            <div class="nav-mid-holder">
+              <ul class="left-nav">
+                <li class="prod-img"><a href="#" url="<%= "store" %>">Recent Products</a></li>
+                <% @store.products.each do |product| %>
+                    <li class="prod-img <%= 'active' if params[:id]== product.id.to_s %>"><%= link_to product.name, "#", :url => "/products/"+product.id.to_s %></li>
+                <% end %>
+              </ul>
+            </div>
+            <div class="nav-bot-holder"></div>
+          </div>
+
+
+          <div class="w100 mtop40">
+            <div class="nav-top-holder">Company</div>
+            <div class="nav-mid-holder">
+              <ul class="left-nav">
+                <%= render :partial => 'shared/right_company_pages' %>
+              </ul>
+
+            </div>
+            <div class="nav-bot-holder"></div>
+          </div>
+
+
+        </div>
+        <div class="right-warrpper">
+          <div class="loader_div"><img style="float: none; margin-top:233px;" src="/assets/ajax-loader.gif"></div>
+          <div class="w100">
+            <div class="white-left-bg flt"></div>
+            <div class="white-mid-bg flt">
+              <div class="here-text flt">YOU ARE HERE:</div>
+              <div class="here-links flt"><a href="<%= $url %>">Peddle.com</a> &gt;
+                <a href="<%= root_url %>"><%= request.subdomain %></a> &gt;
+                <a href=""><%= @product.name %></a></div>
+              <div class="prod-img bacck-top-products frt">
+                <a href="#" url="store"><img src="/assets/bacck-top-products.png" alt=""></a></div>
+            </div>
+            <div class="white-right-bg flt"></div>
+          </div>
+          <div class="w100 mtop20">
+            <div class="gellary-holder">
+              <% unless @product.product_details.blank? %>
+                  <%= image_tag(@product.product_details.first.images.first.snap, :width => "300", :height => "400") %>
+              <% else %>
+                  <%= image_tag("/assets/skart.png", :width => "300", :height => "400") %>
               <% end %>
-            </ul>
-          </div>
-          <div class="nav-bot-holder"></div>
-        </div>
 
-
-        <div class="w100 mtop40">
-          <div class="nav-top-holder">Company</div>
-          <div class="nav-mid-holder">
-            <ul class="left-nav">
-              <%= render :partial => 'shared/right_company_pages' %>
-            </ul>
-
-          </div>
-          <div class="nav-bot-holder"></div>
-        </div>
-
-
-      </div>
-      <div class="right-warrpper">
-        <div class="loader_div"><img style="float: none; margin-top:233px;" src="/assets/ajax-loader.gif"></div>
-        <div class="w100">
-          <div class="white-left-bg flt"></div>
-          <div class="white-mid-bg flt">
-            <div class="here-text flt">YOU ARE HERE:</div>
-            <div class="here-links flt"><a href="<%= $url %>">Peddle.com</a> &gt;
-              <a href="<%= root_url %>"><%= request.subdomain %></a> &gt;
-              <a href=""><%= @product.name %></a></div>
-            <div class="prod-img bacck-top-products frt">
-              <a href="#" url="store"><img src="/assets/bacck-top-products.png" alt=""></a></div>
-          </div>
-          <div class="white-right-bg flt"></div>
-        </div>
-        <div class="w100 mtop20">
-          <div class="gellary-holder">
-            <% unless @product.product_details.blank? %>
-                <%= image_tag(@product.product_details.first.images.first.snap, :width => "300", :height => "400") %>
-            <% else %>
-                <%= image_tag("/assets/skart.png", :width => "300", :height => "400") %>
-            <% end %>
-
-            <div id="list2">
-              <div class="w1">
-                <div class="heading-topa falt">
+              <div id="list2">
+                <div class="w1">
+                  <div class="heading-topa falt">
+                  </div>
+                  <div class="back-btn-holder frt">
+                    <span class="forward"><img src="/assets/next.jpg"></span>
+                    <span class="previous"><img src="/assets/prev.jpg"></span>
+                  </div>
                 </div>
-                <div class="back-btn-holder frt">
-                  <span class="forward"><img src="/assets/next.jpg"></span>
-                  <span class="previous"><img src="/assets/prev.jpg"></span>
+                <div class="w100">
+                  <div class="slider">
+                    <ul>
+                      <!--<img src="image/1.jpg" alt="" width="150" height="118">-->
+                      <%- unless @product.product_details.empty? %>
+                          <%- @product.product_details.each do |product_detail| %>
+                              <%- unless product_detail.images.blank? %>
+                                  <li>
+                                    <%= image_tag(product_detail.images.first.snap, :width => "100", :height => "100", :id => product_detail.price, :class => "captify", :details => product_detail.id) %>
+                                  </li>
+                              <%- end %>
+                          <%- end %>
+                      <%- end %>
+                    </ul>
+                  </div>
                 </div>
-              </div>
-              <div class="w100">
-                <div class="slider">
-                  <ul>
-                    <!--<img src="image/1.jpg" alt="" width="150" height="118">-->
-                    <%- unless @product.product_details.empty? %>
-                        <%- @product.product_details.each do |product_detail| %>
-                            <%- unless product_detail.images.blank? %>
-                                <li>
-                                  <%= image_tag(product_detail.images.first.snap, :width => "100", :height => "100", :id => product_detail.price, :class => "captify", :details => product_detail.id) %>
-                                </li>
-                            <%- end %>
-                        <%- end %>
-                    <%- end %>
-                  </ul>
-                </div>
+
               </div>
 
             </div>
 
-          </div>
+            <div class="gellary-details">
+              <h1><%= @product.name %></h1>
 
-          <div class="gellary-details">
-            <h1><%= @product.name %></h1>
+              <p>Available in <%= @product.product_details.length %> different colors.</p>
 
-            <p>Available in <%= @product.product_details.length %> different colors.</p>
-
-            <div class="price-holder"><span class="sml">$</span><span class="price">
+              <div class="price-holder"><span class="sml">$</span><span class="price">
               <% lowest_price = -1
                  details_id = 0
               %>
-              <% @product.product_details.each do |detail|
-                  if detail.price < lowest_price || lowest_price == -1
-                      lowest_price = detail.price
-                      details_id   = detail.id
-                  end
-              end %>
-              <% unless lowest_price == -1 %>
+                <% @product.product_details.each do |detail|
+                    if detail.price < lowest_price || lowest_price == -1
+                        lowest_price = detail.price
+                        details_id   = detail.id
+                    end
+                end %>
+                <% unless lowest_price == -1 %>
                   <%= lowest_price %>
               <% else %>
                   0
               <% end %>
             </span>
+              </div>
+              <!--<div class="add-to-cart mtop20"><%#= link_to image_tag("/assets/add-to-cart.png"), order_details_path(:product_id => @product) %></div>-->
+
+              <%= form_for(@order_details) do |f| %>
+                  <% if @order_details.errors.any? %>
+                      <div id="error_explanation">
+                        <h2><%= pluralize(@order_details.errors.count, "error") %> prohibited this order_detail from
+                          being
+                          saved:</h2>
+
+                        <ul>
+                          <% @order_details.errors.full_messages.each do |msg| %>
+                              <li><%= msg %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                  <% end %>
+
+                  <div class="field">
+                    <%= f.hidden_field :product_detail_id, :value => details_id %>
+                  </div>
+                  <div class="actions">
+                    <%#= f.submit %>
+                    <div class="add-to-cart mtop20" details="<%= details_id %>"><%= image_tag("/assets/add-to-cart.png") %></div>
+                  </div>
+              <% end %>
+
+              <div class="w100 facebook-like mtop20">
+                <iframe id="fLike" src="http://www.facebook.com/plugins/like.php?href=<%= root_url %>&amp;layout=standard&amp;width=167&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=180" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:280px; height:180px;" allowTransparency="true"></iframe>
+              </div>
+
+              <h2 class="mtop60">Product information</h2>
+
+              <p><%= raw(@product.description) %></p>
+
+              <!--<h2 class="mtop40">Details</h2>-->
+
+              <!--<ul class="details">-->
+              <!--<li><a href="#">BVentilated CLIMACOOL &copy; keeps you dry and comfortable</a></li>-->
+              <!--</ul>-->
+
+
             </div>
-            <!--<div class="add-to-cart mtop20"><%#= link_to image_tag("/assets/add-to-cart.png"), order_details_path(:product_id => @product) %></div>-->
-
-            <%= form_for(@order_details) do |f| %>
-                <% if @order_details.errors.any? %>
-                    <div id="error_explanation">
-                      <h2><%= pluralize(@order_details.errors.count, "error") %> prohibited this order_detail from being
-                        saved:</h2>
-
-                      <ul>
-                        <% @order_details.errors.full_messages.each do |msg| %>
-                            <li><%= msg %></li>
-                        <% end %>
-                      </ul>
-                    </div>
-                <% end %>
-
-                <div class="field">
-                  <%= f.hidden_field :product_detail_id, :value => details_id %>
-                </div>
-                <div class="actions">
-                  <%#= f.submit %>
-                  <div class="add-to-cart mtop20" details="<%= details_id %>"><%= image_tag("/assets/add-to-cart.png") %></div>
-                </div>
-            <% end %>
-
-            <div class="w100 facebook-like mtop20">
-              <iframe id="fLike" src="http://www.facebook.com/plugins/like.php?href=<%= root_url %>&amp;layout=standard&amp;width=167&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=180" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:280px; height:180px;" allowTransparency="true"></iframe>
-            </div>
-
-            <h2 class="mtop60">Product information</h2>
-
-            <p><%= raw(@product.description) %></p>
-
-            <!--<h2 class="mtop40">Details</h2>-->
-
-            <!--<ul class="details">-->
-            <!--<li><a href="#">BVentilated CLIMACOOL &copy; keeps you dry and comfortable</a></li>-->
-            <!--</ul>-->
-
 
           </div>
 
         </div>
-
       </div>
-    </div>
 
+    </div>
   </div>
 </div>
 

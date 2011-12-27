@@ -1,134 +1,136 @@
 <div class="wrapper body-div">
-  <%= render :partial => "/shared/store_header" %>
-  <div class="w100 mtop60 pbotton20">
-    <div class="left-warrpper">
-      <!--<div class="w100">-->
-      <!--<div class="nav-top-holder">Our products</div>-->
-      <!--<div class="nav-mid-holder">-->
-      <!--<ul class="left-nav">-->
-      <!--<li class="active latest_products">-->
-      <!--<div class="cursor_div">Latest products</div>-->
-      <!--</li>-->
-      <!--<%# @store.products.each do |product| %>-->
-      <!--<li class="products <%#= 'active' if params[:id]== product.id.to_s %>">-->
-      <!--<div class="cursor_div"><%#= product.name %></div>-->
-      <!--</li>-->
-      <!--<%# end %>-->
-      <!--</ul>-->
-      <!--</div>-->
-      <!--<div class="nav-bot-holder"></div>-->
-      <!--</div>-->
-      <div class="w100">
-        <div class="nav-top-holder">Our products</div>
-        <div class="nav-mid-holder">
-          <ul class="left-nav">
-            <li class="prod-img"><a href="#" url="<%= "store" %>">Recent Products</a></li>
-            <% @store.products.each do |product| %>
-                <li class="prod-img <%= 'active' if params[:id]== product.id.to_s %>"><%= link_to product.name, "#", :url => "/products/"+product.id.to_s %></li>
+  <div class="white-bg">
+    <%= render :partial => "/shared/store_header" %>
+    <div class="w100 mtop60 pbotton20">
+      <div class="left-warrpper">
+        <!--<div class="w100">-->
+        <!--<div class="nav-top-holder">Our products</div>-->
+        <!--<div class="nav-mid-holder">-->
+        <!--<ul class="left-nav">-->
+        <!--<li class="active latest_products">-->
+        <!--<div class="cursor_div">Latest products</div>-->
+        <!--</li>-->
+        <!--<%# @store.products.each do |product| %>-->
+        <!--<li class="products <%#= 'active' if params[:id]== product.id.to_s %>">-->
+        <!--<div class="cursor_div"><%#= product.name %></div>-->
+        <!--</li>-->
+        <!--<%# end %>-->
+        <!--</ul>-->
+        <!--</div>-->
+        <!--<div class="nav-bot-holder"></div>-->
+        <!--</div>-->
+        <div class="w100">
+          <div class="nav-top-holder">Our products</div>
+          <div class="nav-mid-holder">
+            <ul class="left-nav">
+              <li class="prod-img"><a href="#" url="<%= "store" %>">Recent Products</a></li>
+              <% @store.products.each do |product| %>
+                  <li class="prod-img <%= 'active' if params[:id]== product.id.to_s %>"><%= link_to product.name, "#", :url => "/products/"+product.id.to_s %></li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="nav-bot-holder"></div>
+        </div>
+
+
+        <div class="w100 mtop40">
+          <div class="nav-top-holder">Company</div>
+          <div class="nav-mid-holder">
+            <%= render :partial => 'shared/right_company_pages' %>
+
+          </div>
+          <div class="nav-bot-holder"></div>
+        </div>
+
+
+      </div>
+      <div class="right-warrpper">
+        <div class="featured-heading w100">Featured products</div>
+
+        <div class="w100 mtop20 bdr-bot">
+
+
+          <div class="gellary-main-img w100"></div>
+          <div class="gellary-main-img w100 minislider">
+            <% unless @products.blank? %>
+                <% @products.each do |product| %>
+                    <div class="slide-background">
+                      <% unless product.images.nil? %>
+                          <% unless product.images.first.nil? %>
+                              <%= image_tag(product.images.first.snap) %>
+                          <% else %>
+                              <img src="/assets/no-img.png" alt="" width="740px"/>
+                          <% end %>
+                      <% end %>
+                    </div>
+                <% end %>
+            <% else %>
+                <img src="/assets/no-img.png" alt="" width="740px"/>
             <% end %>
-          </ul>
-        </div>
-        <div class="nav-bot-holder"></div>
-      </div>
+          </div>
+          <div class="icon-btn w100">
+            <a class="prev" href="#"><img src="/assets/gray-back-icon.png" alt=""/></a>
+            <a class="next" href="#"><img src="/assets/gray-next-icon.png" alt="" class="icon-btn-next"/></a>
+          </div>
 
-
-      <div class="w100 mtop40">
-        <div class="nav-top-holder">Company</div>
-        <div class="nav-mid-holder">
-          <%= render :partial => 'shared/right_company_pages' %>
 
         </div>
-        <div class="nav-bot-holder"></div>
-      </div>
+        <div class="monitor">
 
+        </div>
+        <h1 class="headingProd mtop20">Latest products</h1>
 
-    </div>
-    <div class="right-warrpper">
-      <div class="featured-heading w100">Featured products</div>
+        <p>Just arrived fresh in our store.</p>
 
-      <div class="w100 mtop20 bdr-bot">
-
-
-        <div class="gellary-main-img w100"></div>
-        <div class="gellary-main-img w100 minislider">
+        <div id="product_container" class="w100">
           <% unless @products.blank? %>
               <% @products.each do |product| %>
-                  <div class="slide-background">
-                    <% unless product.images.nil? %>
-                        <% unless product.images.first.nil? %>
-                            <%= image_tag(product.images.first.snap) %>
-                        <% else %>
-                            <img src="/assets/no-img.png" alt="" width="740px"/>
-                        <% end %>
+                  <div class="gellary-bg flt mtop20 <%= product.name %>">
+                    <div class="gellary-img flt">
+                      <% unless product.product_details.blank? %>
+                          <% unless product.product_details.first.blank? %>
+                              <% unless product.product_details.first.images.blank? %>
+                                  <% unless product.product_details.first.images.first.blank? %>
+                                      <%= link_to image_tag(product.product_details.first.images.first.snap, :width => "120", :height => "150"), '#', :url => "/products/"+product.id.to_s %>
+                                  <% else %>
+                                      <%= link_to image_tag("../assets/skart.png"), '#', :url => "/products/"+product.id.to_s %>
+                                  <% end %>
+                              <% else %>
+                                  <%= link_to image_tag("../assets/skart.png"), '#', :url => "/products/"+product.id.to_s %>
+                              <% end %>
+                          <% else %>
+                              <%= link_to image_tag("../assets/skart.png"), '#', :url => "/products/"+product.id.to_s %>
+                          <% end %>
+                      <% else %>
+                          <%= link_to image_tag("../assets/skart.png"), '#', :url => "/products/"+product.id.to_s %>
+                      <% end %>
+                    </div>
+                    <div class="gellary-left-holder flt"> <%= product.name %> </div>
+                    <% lowest_price = -1 %>
+                    <% product.product_details.each do |detail|
+                        lowest_price = detail.price if detail.price < lowest_price || lowest_price == -1
+                    end %>
+                    <% unless lowest_price == -1 %>
+                        <div class="price-div flt">
+                          <span class="doller"> $</span> <%= lowest_price %>
+                          <span class="doller">0</span>
+                        </div>
+                    <% else %>
+                        <div class="price-div flt">
+                          <span class="doller"> $</span> 0.<span class="doller">00</span>
+                        </div>
                     <% end %>
                   </div>
               <% end %>
-          <% else %>
-              <img src="/assets/no-img.png" alt="" width="740px"/>
           <% end %>
         </div>
-        <div class="icon-btn w100">
-          <a class="prev" href="#"><img src="/assets/gray-back-icon.png" alt=""/></a>
-          <a class="next" href="#"><img src="/assets/gray-next-icon.png" alt="" class="icon-btn-next"/></a>
-        </div>
+        <div class="more-produts w100 mtop20"><img src="/assets/more-produts.png" alt=""/></div>
 
 
       </div>
-      <div class="monitor">
-
-      </div>
-      <h1 class="headingProd mtop20">Latest products</h1>
-
-      <p>Just arrived fresh in our store.</p>
-
-      <div id="product_container" class="w100">
-        <% unless @products.blank? %>
-            <% @products.each do |product| %>
-                <div class="gellary-bg flt mtop20 <%= product.name %>">
-                  <div class="gellary-img flt">
-                    <% unless product.product_details.blank? %>
-                        <% unless product.product_details.first.blank? %>
-                            <% unless product.product_details.first.images.blank? %>
-                                <% unless product.product_details.first.images.first.blank? %>
-                                    <%= link_to image_tag(product.product_details.first.images.first.snap, :width => "120", :height => "150"), '#', :url => "/products/"+product.id.to_s %>
-                                <% else %>
-                                    <%= link_to image_tag("../assets/skart.png"), '#', :url => "/products/"+product.id.to_s %>
-                                <% end %>
-                            <% else %>
-                                <%= link_to image_tag("../assets/skart.png"), '#', :url => "/products/"+product.id.to_s %>
-                            <% end %>
-                        <% else %>
-                            <%= link_to image_tag("../assets/skart.png"), '#', :url => "/products/"+product.id.to_s %>
-                        <% end %>
-                    <% else %>
-                        <%= link_to image_tag("../assets/skart.png"), '#', :url => "/products/"+product.id.to_s %>
-                    <% end %>
-                  </div>
-                  <div class="gellary-left-holder flt"> <%= product.name %> </div>
-                  <% lowest_price = -1 %>
-                  <% product.product_details.each do |detail|
-                      lowest_price = detail.price if detail.price < lowest_price || lowest_price == -1
-                  end %>
-                  <% unless lowest_price == -1 %>
-                      <div class="price-div flt">
-                        <span class="doller"> $</span> <%= lowest_price %>
-                        <span class="doller">0</span>
-                      </div>
-                  <% else %>
-                      <div class="price-div flt">
-                        <span class="doller"> $</span> 0.<span class="doller">00</span>
-                      </div>
-                  <% end %>
-                </div>
-            <% end %>
-        <% end %>
-      </div>
-      <div class="more-produts w100 mtop20"><img src="/assets/more-produts.png" alt=""/></div>
-
-
     </div>
-  </div>
 
+  </div>
 </div>
 
 <script>
