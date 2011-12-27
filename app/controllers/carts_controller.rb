@@ -2,7 +2,7 @@ class CartsController < ApplicationController
   # GET /carts
   # GET /carts.json
   def index
-    @cart = current_cart
+    @cart  = current_cart
     @store = Store.find_by_name(request.subdomain)
 
     render :layout => false
@@ -11,7 +11,7 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.json
   def show
-    @cart = Cart.find(params[:id])
+    @cart  = Cart.find(params[:id])
     @store = Store.find_by_name(request.subdomain)
 
     #google_merchant_ID = "157193595798525"
@@ -83,6 +83,15 @@ class CartsController < ApplicationController
   # DELETE /carts/1.json
   def destroy
     @cart = current_cart
+    @cart.order_details.each do |order_detail|
+      if order_detail.product_detail.product_quantity.nil?
+        details = 0
+      else
+        details = order_detail.product_detail.product_quantity
+      end
+      details +=1
+      order_detail.product_detail.update_attributes(:product_quantity => details)
+    end
     @cart.destroy
     session[:cart_id] = nil
 

@@ -94,7 +94,7 @@
               <% @product.product_details.each do |detail|
                   if detail.price < lowest_price || lowest_price == -1
                       lowest_price = detail.price
-                      details_id = detail.id
+                      details_id   = detail.id
                   end
               end %>
               <% unless lowest_price == -1 %>
@@ -130,7 +130,7 @@
             <% end %>
 
             <div class="w100 facebook-like mtop20">
-              <iframe id="fLike" src="http://www.facebook.com/plugins/like.php?href=<%= root_url%>&amp;layout=standard&amp;width=167&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=180" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:280px; height:180px;" allowTransparency="true"></iframe>
+              <iframe id="fLike" src="http://www.facebook.com/plugins/like.php?href=<%= root_url %>&amp;layout=standard&amp;width=167&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=180" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:280px; height:180px;" allowTransparency="true"></iframe>
             </div>
 
             <h2 class="mtop60">Product information</h2>
@@ -140,7 +140,7 @@
             <!--<h2 class="mtop40">Details</h2>-->
 
             <!--<ul class="details">-->
-              <!--<li><a href="#">BVentilated CLIMACOOL &copy; keeps you dry and comfortable</a></li>-->
+            <!--<li><a href="#">BVentilated CLIMACOOL &copy; keeps you dry and comfortable</a></li>-->
             <!--</ul>-->
 
 
@@ -171,16 +171,27 @@
             if ($('#order_detail_product_detail_id').val() != "0") {
                 $(".loader_div").show();
                 product_detail_id = $(this).attr('details');
-                $.post("/order_details/create", $("#new_order_detail").serialize()).success(function() {
-                    $('.cart-holder').fadeOut('slow').load('/cart_div').fadeIn("slow");
-                    $(".loader_div").hide();
-                    $.gritter.add({
-                  		// (string | mandatory) the heading of the notification
-                  		title: 'Notice!',
-		                  // (string | mandatory) the text inside the notification
-    		              text: 'Product has been added to cart',
-    		              time: 5000
-    			          });
+                $.post("/order_details/create", $("#new_order_detail").serialize()).success(function(response) {
+                    if (response == "fail") {
+                        $(".loader_div").hide();
+                        $.gritter.add({
+                            // (string | mandatory) the heading of the notification
+                            title: 'Notice!',
+                            // (string | mandatory) the text inside the notification
+                            text: 'Product you have selected could not be added to cart. Please choose another product',
+                            time: 5000
+                        });
+                    } else {
+                        $('.cart-holder').fadeOut('slow').load('/cart_div').fadeIn("slow");
+                        $(".loader_div").hide();
+                        $.gritter.add({
+                            // (string | mandatory) the heading of the notification
+                            title: 'Notice!',
+                            // (string | mandatory) the text inside the notification
+                            text: 'Product has been added to cart',
+                            time: 5000
+                        });
+                    }
                 });
             }
             else {

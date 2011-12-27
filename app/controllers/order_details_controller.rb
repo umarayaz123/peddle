@@ -46,12 +46,19 @@ class OrderDetailsController < ApplicationController
     else
       product_detail = ProductDetail.find(params[:product_detail_id])
     end
-    if (product_detail.product_quantity.nil? && product_detail.product_quantity < 0)
+    if ((product_detail.product_quantity.nil?) || (product_detail.product_quantity < 1))
       render :text => "fail", :layout => false
+      return
     else
       @order_detail = @cart.order_details.build(:product_detail => product_detail)
       respond_to do |format|
         if @order_detail.save
+          if product_detail.product_quantity.nil?
+            details = 0
+          else
+            details = product_detail.product_quantity-1
+          end
+          product_detail.update_attributes(:product_quantity => details)
           format.html { redirect_to(@order_detail,
                                     :notice => 'Product was successfully created.') }
           format.xml { render :xml    => @order_detail,
@@ -87,8 +94,15 @@ class OrderDetailsController < ApplicationController
   # DELETE /order_details/1.json
   def destroy
     @order_detail = OrderDetail.find(params[:id])
+    product_detail = ProductDetail.find_by_id(@order_detail.product_detail_id)
+    if product_detail.product_quantity.nil?
+      details = 0
+    else
+      details = product_detail.product_quantity
+    end
     @order_detail.destroy
-
+    details +=1
+    product_detail.update_attributes(:product_quantity => details)
     respond_to do |format|
       format.html {
         unless params[:cart_id].blank?
