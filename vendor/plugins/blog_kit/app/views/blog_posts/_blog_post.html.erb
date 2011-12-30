@@ -1,0 +1,70 @@
+<div class="blogPost">
+  <div class="blogUserImage">
+    <%= blog_post.user_image_tag %>
+  </div>
+
+  <h1 class="blogPostTitle">
+    <% unless current_user and current_user.admin? %>
+        <%= link_to(h(blog_post.title), "#", :url => "/blog_posts/"+ blog_post.id.to_s+"-"+blog_post.title, :class => "header_links") %>
+    <% else %>
+        <%= link_to(h(blog_post.title), blog_post) %>
+    <% end %>
+    <%#= link_to(h(blog_post.title),"blog_posts/show/"+blog_post.id.to_s ) %>
+    <% if !blog_post.published? %>
+        [Draft]
+    <% end %>
+  </h1>
+
+  <p class="blogPostPostedAt">
+    Posted
+    <% if blog_post.show_user? %>
+        By <span class="blogPoster"><%= blog_post.user_name %></span>
+    <% end %>
+    on
+    <span class="blogPostDate"><%= blog_post.formatted_updated_at %></span>
+  </p>
+
+  <div class="blogPostBody">
+    <%= image_tag(blog_post.blog_images.first.image.url(:medium)) unless blog_post.blog_images.blank? %>
+  </div>
+
+  <hr class="blogPostBreak"/>
+  <% unless blog_post.tags.blank? %>
+      <p class="blogPostTags">
+        <b>Tags: </b>
+        <%= blog_post.tags_with_links %>
+      </p>
+  <% end %>
+
+  <p class="blogFooter">
+  <ul class="blogList">
+    <li class="blogListFirst">
+      <% unless current_user and current_user.admin? %>
+          <%= link_to(pluralize(blog_post.blog_comments.count, 'comment'), "#", :url => blog_post_path(blog_post), :class => 'blogCommentCount header_links') %>
+      <% else %>
+          <%= link_to(pluralize(blog_post.blog_comments.count, 'comment'), blog_post_path(blog_post), :class => 'blogCommentCount') %>
+      <% end %>
+    </li>
+    <% if params[:action] == 'show' %>
+        <% unless current_user and current_user.admin? %>
+            <li><%= link_to('Back', "#", :url => blog_posts_path, :class => "header_links") %></li>
+        <% else %>
+            <li><%= link_to('Back', blog_posts_path) %></li>
+        <% end %>
+    <% end %>
+
+
+    <% if current_user && current_user.admin? %>
+        <li><%= link_to('Edit Post', edit_blog_post_path(blog_post)) %></li>
+        <li><%= link_to('Delete', blog_post_path(blog_post), :method => :delete, :confirm => "Are you sure you want to destroy the post: #{blog_post.title}") %></li>
+    <% end %>
+  </ul>
+  </p>
+
+  <% if defined?(show_comments) %>
+      <%= render :partial => 'blog_comments/new_blog_comment', :locals => { :blog_comment => @blog_comment } %>
+      <%= render :partial => 'blog_posts/comments' %>
+  <% end %>
+
+  <br style="clear: both;"/>
+</div>

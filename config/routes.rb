@@ -8,12 +8,24 @@ Peddle::Application.routes.draw do
 
   resources :carts
 
+  resources :blog_posts do
+    resources :blog_comments
+    resources :blog_images
+    collection do
+      get :drafts
+    end
+
+    member do
+      get :tag
+    end
+  end
+
 #  get "home/index"
 
   match "cart_div" => "products#_cart_div"
   match '/admin' => 'admin/store_admin#index', :constraints => { :subdomain => /.+/ }
   match '/admin' => 'admin/store_admin#index'
-  match '/' => 'stores#index', :constraints => {:subdomain => 'www'}
+  match '/' => 'stores#index', :constraints => { :subdomain => 'www' }
   match '/' => 'stores#index', :constraints => { :subdomain => /.+/ }
   match '/' => 'home#index'
   match 'cart' => 'stores#cart'
@@ -39,10 +51,10 @@ Peddle::Application.routes.draw do
 #  match "admin/product_details/:id" => "admin/product_details#index"
 
   devise_for :users, :controllers => {
-    :sessions => "users/sessions",
-    :confirmations => "users/confirmations",
-    :passwords => "users/passwords",
-    :registrations => "users/registrations",
+      :sessions      => "users/sessions",
+      :confirmations => "users/confirmations",
+      :passwords     => "users/passwords",
+      :registrations => "users/registrations",
   }
 
   devise_scope :user do
@@ -50,11 +62,11 @@ Peddle::Application.routes.draw do
     get "login" => "users/sessions#new"
     get "sign_in", :to => "users/sessions#new"
     get "sign_out", :to => "users/sessions#destroy"
-    match 'sign_out',  :to => "users/sessions#destroy"
+    match 'sign_out', :to => "users/sessions#destroy"
     get "log_out", :to => "users/careers#destroy"
-    get "sign_up", :to => "users/registrations#new"    
+    get "sign_up", :to => "users/registrations#new"
   end
-  
+
   namespace :admin do
     resources :store_admin
     resources :sys_admins
@@ -70,12 +82,12 @@ Peddle::Application.routes.draw do
     resources :product_details
     resources :pages
   end
-  
+
   resources :stores do
     get 'search_store', :on => :collection
-  	resources :products
+    resources :products
   end
-  
+
   resources :products do
     get 'search_products', :on => :collection
   end
@@ -129,7 +141,7 @@ Peddle::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.  
-#  root :to => 'home#index'
+  #  root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"
 

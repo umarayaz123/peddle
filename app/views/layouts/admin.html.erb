@@ -13,7 +13,7 @@
         <%= render :partial => "/shared/header" %>
       </div>
       <div class="center">
-        <%admin_role = Role.find(:first, :conditions => ["name = ?", "Admin"])%>
+        <% admin_role = Role.find(:first, :conditions => ["name = ?", "Admin"])%>
         <%if current_user.roles.include?(admin_role)%>
             <%= render :partial => "/shared/admin_left_pannel" %>
         <%else%>

@@ -20,7 +20,7 @@ module ApplicationHelper
   def show_user_bg
     # Show user background
     if user_signed_in?
-      "background:transparent url(#{current_user.bg_image.snap}) no-repeat fixed left top !important;"
+      "background:transparent url(#{current_user.bg_image.snap}) no-repeat fixed left top !important;" unless current_user.bg_image.nil?
       # Otherwise, show a default background image
     else
       #"background:transparent url('/images/default_bg.png') no-repeat fixed left top;"

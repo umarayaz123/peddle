@@ -16,4 +16,14 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   belongs_to :store
 
+  def admin?
+    super_admin_role = Role.find(:first, :conditions => ["name = ?", "SuperAdmin"])
+    if self.roles.include?(super_admin_role)
+      return true
+    else
+      return false
+    end
+  end
+
+
 end

@@ -1,0 +1,33 @@
+<%= form_for([@blog_post, blog_comment], :onsubmit => "return true ") do |f| %>
+    <% if blog_comment.errors.size > 0 %>
+        <div id="errorExplanation">
+          <h2>The comment could not be saved:</h2>
+          <ul>
+            <% blog_comment.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <% unless current_user %>
+        <p>
+          <%= f.label :name %><br/>
+          <%= f.text_field :name %>
+        </p>
+        <p>
+          <%= f.label :site_url, 'Web Site' %><br/>
+          <%= f.text_field :site_url %>
+        </p>
+        <p>
+          <%= f.label :email, 'Email (optional)' %><br/>
+          <%= f.text_field :email %>
+        </p>
+    <% end %>
+    <p>
+      <%= f.label :body, 'Comment' %><br/>
+      <%= f.text_area :body, :class => 'blogNewCommentField' %>
+    </p>
+    <p>
+      <%= f.submit 'Post' %>
+    </p>
+<% end %>

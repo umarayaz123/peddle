@@ -150,8 +150,10 @@ class Admin::UsersController < ApplicationController
   end
 
   def make_resources
-    @allowed_staff_members = current_user.store.package.package_rules.select { |r| r.key=="allowed_staff_members" }
-    @current_store_users   = current_user.store.users.count
+    unless current_user && current_user.admin?
+      @allowed_staff_members = current_user.store.package.package_rules.select { |r| r.key=="allowed_staff_members" }
+      @current_store_users   = current_user.store.users.count
+    end
   end
 
 end

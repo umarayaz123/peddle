@@ -8,10 +8,12 @@
     <!--<div class="label">SEARCH MEMBER :</div>-->
     <!--&lt;!&ndash;<div class="inputText"><input type="text" value=""/></div>&ndash;&gt;-->
     <!--<div class="mediaBtn1">-->
-      <!--<input type="submit" value="Search" class="smallBtn"/>-->
+    <!--<input type="submit" value="Search" class="smallBtn"/>-->
     <!--</div>-->
-    <% if @allowed_staff_members[0][:value].to_i > @current_store_users %>
-        <div class="submitInrBtn1"><%= link_to "New Member", '/admin/users/new/' %></div>
+    <% unless current_user && current_user.admin? %>
+        <% if @allowed_staff_members[0][:value].to_i > @current_store_users %>
+            <div class="submitInrBtn1"><%= link_to "New Member", '/admin/users/new/' %></div>
+        <% end %>
     <% end %>
   </div>
 

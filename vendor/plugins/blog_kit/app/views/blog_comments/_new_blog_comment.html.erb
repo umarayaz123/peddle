@@ -1,0 +1,117 @@
+<div class="blogNewComment">
+  <h2>Post a Comment</h2>
+  <% if !current_user && (!BlogKit.instance.settings['anonymous_comments'] || BlogKit.instance.settings['anonymous_comments'] == false) %>
+      <p>You must be logged in to post a comment.</p>
+  <% else %>
+      <% if current_user %>
+          <p>Posting as <span class="blogPoster"><%= current_user.email %></span></p>
+      <% end %>
+      <% if current_user && current_user.admin? %>
+          <%= form_for([@blog_post, blog_comment], :html => { :onsubmit => "return true;" }) do |f| %>
+              <% if blog_comment.errors.size > 0 %>
+                  <div id="errorExplanation">
+                    <h2>The comment could not be saved:</h2>
+                    <ul>
+                      <% blog_comment.errors.full_messages.each do |msg| %>
+                          <li><%= msg %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+              <% end %>
+              <% unless current_user %>
+                  <p>
+                    <%= f.label :name %><br/>
+                    <%= f.text_field :name %>
+                  </p>
+
+                  <p>
+                    <%= f.label :site_url, 'Web Site' %><br/>
+                    <%= f.text_field :site_url %>
+                  </p>
+
+                  <p>
+                    <%= f.label :email, 'Email (optional)' %><br/>
+                    <%= f.text_field :email %>
+                  </p>
+              <% end %>
+              <p>
+                <%= f.label :body, 'Comment' %><br/>
+                <%= f.text_area :body, :class => 'blogNewCommentField' %>
+              </p>
+
+              <p>
+                <%= f.submit 'Post' %>
+              </p>
+          <% end %>
+      <% else %>
+          <%= form_for([@blog_post, blog_comment], :html => { :onsubmit => "return false;" }) do |f| %>
+              <% if blog_comment.errors.size > 0 %>
+                  <div id="errorExplanation">
+                    <h2>The comment could not be saved:</h2>
+                    <ul>
+                      <% blog_comment.errors.full_messages.each do |msg| %>
+                          <li><%= msg %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+              <% end %>
+              <% unless current_user %>
+                  <p>
+                    <%= f.label :name %><br/>
+                    <%= f.text_field :name %>
+                  </p>
+
+                  <p>
+                    <%= f.label :site_url, 'Web Site' %><br/>
+                    <%= f.text_field :site_url %>
+                  </p>
+
+                  <p>
+                    <%= f.label :email, 'Email (optional)' %><br/>
+                    <%= f.text_field :email %>
+                  </p>
+              <% end %>
+              <p>
+                <%= f.label :body, 'Comment' %><br/>
+                <%= f.text_area :body, :class => 'blogNewCommentField' %>
+              </p>
+
+              <p>
+                <%= f.submit 'Post', :id => "submit_post" %>
+              </p>
+          <% end %>
+      <% end %>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#submit_post').click(function() {
+            alert($("#new_blog_comment").attr("action"));
+            $.post($("#new_blog_comment").attr("action"), $("#new_blog_comment").serialize()).success(function(response) {
+                if (response == "fail") {
+                    $.gritter.add({
+                        // (string | mandatory) the heading of the notification
+                        title: 'Notice!',
+                        // (string | mandatory) the text inside the notification
+                        text: 'Could not post your comment!',
+                        time: 5000
+                    });
+                } else {
+                    $.gritter.add({
+                        // (string | mandatory) the heading of the notification
+                        title: 'Notice!',
+                        // (string | mandatory) the text inside the notification
+                        text: 'Your comment has been posted successfully',
+                        time: 5000
+                    });
+                    $('.body-div').remove();
+                    $('.main-page').append(response);
+                    $('.tab-act').removeClass('tab-act');
+                    parent.addClass('tab-act');
+                }
+            });
+
+        });
+    });
+</script>

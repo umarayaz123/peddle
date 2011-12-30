@@ -43,7 +43,7 @@
        $url    = $url.sub(new_url, '')
    end %>
 <% unless current_user %>
-    <% if params[:controller] == "home" && params[:action] != "plans" %>
+    <% if params[:controller] == "home" && params[:action] != "plans" || params[:controller] == "blog_posts" %>
         <%= render :partial => "layouts/latest_header" %>
     <% else %>
         <%= render :partial => "layouts/header" %>

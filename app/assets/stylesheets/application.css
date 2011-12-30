@@ -1041,10 +1041,11 @@ CAPTIFY CAPTION
 }
 
 .price-time, .price-corporation, .price-enterprise {
+    border: medium none !important;
     line-height: 40px;
+    margin-left: 1px;
     margin-right: 1px;
-    width: 238px;
-    margin-left: 1px;;
+    width: 238px !important;
 }
 
 .white-bg {

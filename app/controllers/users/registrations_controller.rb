@@ -174,7 +174,6 @@ class Users::RegistrationsController < ApplicationController
     else
       @request_type = "plain"
       if request.xhr?
-        puts '**********in here'
         @request_type = "ajax"
         #render :action => "edit", :layout => false
         #
