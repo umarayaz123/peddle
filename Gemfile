@@ -43,3 +43,5 @@ gem "mocha", :group => :test
 gem "carmen"
 gem "kaminari"
 gem "rails-boilerplate"
+gem 'will_paginate'
+gem 'bluecloth'
