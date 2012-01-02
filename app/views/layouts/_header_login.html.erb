@@ -24,6 +24,9 @@
         <li class=<%= "active-link" if params[:action] == "sales_floor" %>>
           <a href="<%= $url+"sales_floor" %>">Sales floor</a></li>
         <li><a href="#">Sales view</a></li>
+        <li>
+          <a class="header_links <%= "active-link" if params[:controller] == "blog_posts" %>" href="#" url="/blog_posts">Blogs</a>
+        </li>
         <!--<li><%#= link_to "Logout", "/sign_out" %></li>-->
         <li class="bg-r-none"><a href="#">Setting <img class="downarrow" alt="" src="assets/down-arrow.png"></a></li>
       </ul>
@@ -50,52 +53,67 @@
 <script type="text/javascript">
 
     $(document).ready(function() {
-        try{
-        $(".setting").hide();
-        $(".bg-r-none,.setting").live("mouseover", function() {
-            $(".setting").show();
-        });
-        $(".bg-r-none,.setting").live("mouseleave", function() {
+        try {
             $(".setting").hide();
-        });
+            $(".bg-r-none,.setting").live("mouseover", function() {
+                $(".setting").show();
+            });
+            $(".bg-r-none,.setting").live("mouseleave", function() {
+                $(".setting").hide();
+            });
+
+            $(".header_links").click(function() {
+                var parent = $(this).parent();
+                var reference = this;
+                $.ajax({
+                    url: $(this).attr("url"),
+                    success: function(response) {
+                        $(this).addClass("done");
+                        $('.body-div').remove();
+                        $('.main-page').append(response);
+                        $('.tab-act').removeClass('tab-act');
+                        parent.addClass('tab-act');
+                    }
+                });
+            });
 
         <%if params[:controller]=='stores'%>
-        $("#searchBtn").click(function() {
-            var pname = $("#search").val();
-            $.ajax({
-                url: '/products/search_products?pname=' + pname,
-                success: function(response) {
+            $("#searchBtn").click(function() {
+                var pname = $("#search").val();
+                $.ajax({
+                    url: '/products/search_products?pname=' + pname,
+                    success: function(response) {
 
-                    if (response != "") {
-                        $('#product_container').replaceWith(response);
-                        $('.headingProd').html('Search products');
-                        $('.more-produts').hide();
+                        if (response != "") {
+                            $('#product_container').replaceWith(response);
+                            $('.headingProd').html('Search products');
+                            $('.more-produts').hide();
+                        }
+
                     }
-
-                }
+                });
             });
-        });
         <%end%>
         <%if params[:controller]=='home'%>
-        $("#searchBtn").click(function() {
-            var sname = $("#search").val();
-            $.ajax({
-                url: '/stores/search_store?sname=' + sname,
-                success: function(response) {
+            $("#searchBtn").click(function() {
+                var sname = $("#search").val();
+                $.ajax({
+                    url: '/stores/search_store?sname=' + sname,
+                    success: function(response) {
 
-                    if (response != "") {
-                        $('.content-mid-bg').replaceWith(response);
-                        $('.heading-top p').html('Search Stores');
-                        $('.content-bot-bg').children().hide();
+                        if (response != "") {
+                            $('.content-mid-bg').replaceWith(response);
+                            $('.heading-top p').html('Search Stores');
+                            $('.content-bot-bg').children().hide();
+                        }
+
                     }
-
-                }
+                });
             });
-        });
         <%end%>
         }
-        catch(e){
-           console.log('in header '+e.message);
+        catch(e) {
+            console.log('in header ' + e.message);
         }
 
     });
