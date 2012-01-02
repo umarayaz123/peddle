@@ -1,4 +1,13 @@
-<div class="body-div rightContainer">
+<% unless current_user && current_user.admin? %>
+    <div class="work-header w100 body-div">
+      <div class="wrapper">
+        <h1>Peddle Online accelerates your online store.</h1>
+
+        <h2>Learn more about how Peddle Online can help you with your online store.</h2>
+      </div>
+    </div>
+<% end %>
+<div class="body-div rightContainer mtop50 <%= "w100" unless current_user && current_user.admin? %>">
   <% self.respond_to?(:title) && title(@index_title) -%>
   <% @show_title = false -%>
   <%= stylesheet_link_tag 'blog_kit' %>
@@ -28,7 +37,7 @@
 </div>
 
 <script type="text/javascript">
-  $(document).ready(function() {
+    $(document).ready(function() {
         $(".header_links").click(function() {
             var parent = $(this).parent();
             var reference = this;

@@ -165,6 +165,14 @@ a {
     padding: 2px;
     width: 54%;
 }
+.adminInrInput textarea {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #999999;
+    height: 340px;
+    margin-top: 20px;
+    padding: 2px;
+    width: 54%;
+}
 
 .adminImg {
     float: left;

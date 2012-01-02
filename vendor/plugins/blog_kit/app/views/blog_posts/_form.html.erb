@@ -86,7 +86,7 @@ function insertImage(image_id) {
 						<td>ID</td>
 						<td>File</td>
 						<td></td>
-					</td>
+					</tr>
 					<%= f.fields_for(:blog_images) do |g| %>
 						<%= render :partial => 'image', :locals => {:g => g} %>
 					<% end %>
