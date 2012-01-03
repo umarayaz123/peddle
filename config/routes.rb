@@ -25,7 +25,7 @@ Peddle::Application.routes.draw do
   match "cart_div" => "products#_cart_div"
   match '/admin' => 'admin/store_admin#index', :constraints => { :subdomain => /.+/ }
   match '/admin' => 'admin/store_admin#index'
-  match '/' => 'stores#index', :constraints => { :subdomain => 'www' }
+  match '/' => 'home#index', :constraints => { :subdomain => 'www' }
   match '/' => 'stores#index', :constraints => { :subdomain => /.+/ }
   match '/' => 'home#index'
   match 'cart' => 'stores#cart'

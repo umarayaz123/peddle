@@ -68,7 +68,7 @@ class ApplicationController < ActionController::Base
       end
     else
       #      admin_role = Role.find(:first, :conditions => ["name = ?", "Admin"])
-      unless request.subdomain.blank?
+      unless(request.subdomain.blank? or request.subdomain == "www")
         sign_out_url
       else
         if current_user.roles.include?(super_admin_role)

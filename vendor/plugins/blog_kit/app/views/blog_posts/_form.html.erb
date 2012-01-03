@@ -50,34 +50,34 @@ function insertImage(image_id) {
 			<% end %>
 			<div class="adminInrInput4">
 				<%= f.label :title, :class => "" %><br />
-				<%= f.text_field :title %>
+				<div class="adminInrInput"><%= f.text_field :title %></div>
 			</div>
-			<p>
+			<div class="adminInrLogin">
 				<%= f.label :body %><br />
-				<%= f.text_area :body %>
-			</p>
-			<p>
+				<div class="adminInrInput"><%= f.text_area :body %></div>
+			</div>
+			<div class="adminInrLogin">
 				<%= f.label :tags, 'Tags (comma seperated)' %><br />
-				<%= f.text_field :tags %>
-			</p>
-			<p>
+				<div class="adminInrInput"><%= f.text_field :tags %></div>
+			</div>
+			<div class="adminInrLogin">
 				<%= f.label :published, 'Status' %><br />
 				<%= f.radio_button :published, false %><%= f.label :published_false, 'Draft' %>
 				<%= f.radio_button :published, true %><%= f.label :published_true, 'Publish' %>
-			</p>
-			<p>
+			</div>
+			<div class="adminInrLogin">
 				<%= f.submit 'Save' %> or <%= link_to 'Back', blog_posts_path %>
-			</p>
+			</div>
 		</div>
 		<div class="blogEditRightPanel">
 			<% if BlogKit.instance.paperclip_support? %>
 				<h2>Images</h2>
 			
-				<p>
+				<div class="adminInrLogin">
 					You can upload images for the blog post below and insert them using the [insert] 
 					link.  Once inserted, you can change the size to thumb, small, medium, or large.
 					Small is the default.
-				</p>
+				</div>
 
 				<table id="blogImages">
 					<tr class="blogImageHeader">
@@ -96,13 +96,13 @@ function insertImage(image_id) {
 			<% else %>
 				<h2>Image Support</h2>
 				
-				<p>
+				<div class="adminInrLogin">
 					Images can be inserted using the following tag:<br />
 					![alt text](image url)
-				</p>
-				<p>
+				</div>
+				<div class="adminInrLogin">
 					You can also install the paperclip plugin to enable uploading images.
-				</p>
+				</div>
 			<% end %>
 
 			<% if BlogKit.instance.settings['use_markdown'] != false %>
