@@ -24,11 +24,25 @@
               <p>It can be anything from a photo, video or website.</p>
             </div>
             <div class="data-holder-right flt">
-              <textarea></textarea>
+              <textarea id="feed-message"></textarea>
 
               <div class="w100 btn-holder mtop10">
                 <img src="/assets/pic.png" alt=""/>
-                <input type="submit" value=""/>
+                <input id="peddle" type="submit" value=""/>
+              </div>
+            </div>
+          </div>
+          <div class="stream-container">
+            <div id="first-stream"></div>
+            <div class="streaming-div w100 bdr-bot">
+              <div class="w100 mtop20" style="padding-left:10px;">
+                <div class="post-left-hold"></div>
+                <div class="post-cont-hold">
+                  <h1><%= current_user.name ? current_user.name : "User" %></h1>
+                  <p></p>
+                  <div class="like-hold"><a href="#">Like</a> - <a href="#">Share</a> - 17 minutes ago</div>
+                </div>
+
               </div>
             </div>
           </div>
@@ -232,6 +246,15 @@
                 });
             });
 
+            $("#peddle").live("click", function() {
+                if ($("#feed-message").val() != "") {
+                    $('.streaming-div').first().replaceWith("<div class='streaming-div w100 bdr-bot'><div class='w100 mtop20' style='padding-left:10px;'><div class='post-left-hold'></div><div class='post-cont-hold'><h1d></h1><p>" + $("#feed-message").val() + "</p><div class='like-hold'></div></div></div></div>" );
+                    $('.streaming-div').first().slideDown(500);
+                    $('.streaming-div').first().before("<div class='streaming-div w100 bdr-bot'></div>");
+                    $('.streaming-div').first().slideUp(500);
+                }
+            });
+
             $(".header_links").click(function() {
                 var parent = $(this).parent();
                 var reference = this;
@@ -257,4 +280,3 @@
         }
     });
 </script>
-

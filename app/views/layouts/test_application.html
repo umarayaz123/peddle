@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PEDDLE-online</title>
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Cantarell:r,i,b,bi|Cardo|Crimson+Text|Droid+Sans:r,b|Droid+Sans+Mono|Droid+Serif:r,i,b,bi|IM+Fell+DW+Pica:r,i|IM+Fell+DW+Pica+SC|IM+Fell+Double+Pica:r,i|IM+Fell+Double+Pica+SC|IM+Fell+English:r,i|IM+Fell+English+SC|IM+Fell+French+Canon:r,i|IM+Fell+French+Canon+SC|IM+Fell+Great+Primer:r,i|IM+Fell+Great+Primer+SC|Inconsolata|Josefin+Sans+Std+Light|Lobster|Molengo|Neuton|Nobile:r,i,b,bi|OFL+Sorts+Mill+Goudy+TT:r,i|Old+Standard+TT:r,i,b|Reenie+Beanie|Tangerine:r,b|Vollkorn:r,i,b,bi|Yanone+Kaffeesatz:200,300,400,700"/>
+  <%= stylesheet_link_tag "application", "stores.css.scss", "Aristo", "jquery.ad-gallery", "carousel", "jquery.gritter" %>
+  <%= javascript_include_tag "jquery-1.6.3","myriad_web_pro", "application", "jquery.ad-gallery", "jquery-ui.min" %>
+  <%= javascript_include_tag "jquery-1.6.3", "jquery.form", "jquery.validate", "jquery-minislider", "jcarousellite_1.0.1.pack", "captify.tiny", "jquery.carousel.min", "jquery.mousewheel.min", "jquery.gritter" %>
+  <script type="text/javascript">
+
+      $(document).ready(function() {
+          if ($('.notice').html() != "") {
+              $.gritter.add({
+                  // (string | mandatory) the heading of the notification
+                  title: 'Notice!',
+                  // (string | mandatory) the text inside the notification
+                  text: $('.notice').html(),
+                  time: 5000
+              });
+          }
+          $(".notice").hide();
+          $(".alert").hide();
+          if ($('.alert').html() != "") {
+              $.gritter.add({
+                  // (string | mandatory) the heading of the notification
+                  title: 'Notice!',
+                  // (string | mandatory) the text inside the notification
+                  text: $('.alert').html(),
+                  time: 5000
+              });
+          }
+      });
+  </script>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<% $url = root_url(:subdomain => false)
+   if request.subdomain != ""
+       new_url = request.subdomain+'.'
+       $url = $url.sub(new_url, '')
+   end %>
+<% unless current_user %>
+    <% if params[:controller] == "home" && params[:action] != "plans" %>
+        <%= render :partial => "layouts/latest_header" %>
+    <% else %>
+        <%= render :partial => "layouts/header" %>
+    <% end %>
+<% else %>
+    <%= render :partial => "layouts/header_login" %>
+<% end %>
+
+<p class="notice" style="display:none;"><%= notice %></p>
+
+<p class="alert" style="display:none;"><%= alert %></p>
+
+<%= yield %>
+<% if request.subdomain == "" %>
+    <%= render :partial => "/layouts/footer" %>
+<% else %>
+    <%= render :partial => "/layouts/store_footer" %>
+<% end %>
+</body>
+</html>

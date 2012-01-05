@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
 
 one:
-  name: MyString
-  description: MyText
+  message: MyText
+  user_id: 1
   store_id: 1
+  feed_for: 1
 
 two:
-  name: MyString
-  description: MyText
+  message: MyText
+  user_id: 1
   store_id: 1
+  feed_for: 1

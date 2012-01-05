@@ -1,0 +1,29 @@
+<h1>Listing feeds</h1>
+
+<table>
+  <tr>
+    <th>Message</th>
+    <th>User</th>
+    <th>Store</th>
+    <th>Feed for</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @feeds.each do |feed| %>
+  <tr>
+    <td><%= feed.message %></td>
+    <td><%= feed.user_id %></td>
+    <td><%= feed.store_id %></td>
+    <td><%= feed.feed_for %></td>
+    <td><%= link_to 'Show', feed %></td>
+    <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
+    <td><%= link_to 'Destroy', feed, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Feed', new_feed_path %>

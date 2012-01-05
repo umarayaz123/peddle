@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
-
-one:
-  package_id: 1
-  store_id: 1
-
-two:
-  package_id: 1
-  store_id: 1
