@@ -1,17 +1,4 @@
 <div class="main-page">
-  <!--<div class="wrapper body-div">-->
-  <!--&lt;!&ndash;<div class="w100 mtop50">&ndash;&gt;-->
-  <!--&lt;!&ndash;<div class="small-logo flt">&ndash;&gt;-->
-  <!--&lt;!&ndash;<img src="/assets/adidas.png" alt=""/>&ndash;&gt;-->
-  <!--&lt;!&ndash;<img src="/assets/logo-small-frame.png" alt="" class="frame"/>&ndash;&gt;-->
-  <!--&lt;!&ndash;</div>&ndash;&gt;-->
-  <!--&lt;!&ndash;&lt;!&ndash;<div class="logo-text flt">This is your store description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.&ndash;&gt;&ndash;&gt;-->
-  <!--&lt;!&ndash;&lt;!&ndash;Donec ullamcorper sem in ipsum commodo accumsan.&ndash;&gt;&ndash;&gt;-->
-  <!--&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;-->
-
-  <!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-  <!--</div>-->
 
   <div class="wrapper body-div">
     <div class="white-bg">
@@ -35,16 +22,28 @@
           <div class="stream-container">
             <div id="first-stream"></div>
             <div class="streaming-div w100 bdr-bot">
-              <div class="w100 mtop20" style="padding-left:10px;">
-                <div class="post-left-hold"></div>
-                <div class="post-cont-hold">
-                  <h1><%= current_user.name ? current_user.name : "User" %></h1>
-                  <p></p>
-                  <div class="like-hold"><a href="#">Like</a> - <a href="#">Share</a> - 17 minutes ago</div>
-                </div>
-
-              </div>
             </div>
+            <% @feeds.each do |feed| %>
+                <div class='streaming-div w100 bdr-bot'>
+                  <div class='w100 mtop20' style='padding-left:10px;'>
+                    <div class='post-left-hold'>
+                      <% unless current_user.profile_image.nil? %>
+                          <%= image_tag(current_user.profile_image.snap, :height => "103px", :width => "103px") %>
+                      <% else %>
+                          <img src="/assets/no-image.jpg" height="103px" width="103px" alt=""/>
+                      <% end %>
+                    </div>
+                    <div class='post-cont-hold'><h1><%= current_user.name ? current_user.name : "User" %></h1>
+
+                      <p><%= feed.message %></p>
+
+                      <div class='like-hold'></div>
+                      <div class="like-hold"><a class="removeClass" href="#" feed_id="<%=feed.id%>" >Remove</a> - 17 minutes ago</div>
+                    </div>
+                  </div>
+                </div>
+            <% end %>
+
           </div>
 
           <div class="w100 mtop20">
@@ -55,8 +54,8 @@
                 <p>Our featured stores</p>
               </div>
               <div class="back-btn-holder frt">
-                <img src="images/next-btn.png"/>
-                <img src="/assetss/back-btn.png"/>
+                <img src="/assets/next-btn.png"/>
+                <img src="/assets/back-btn.png"/>
               </div>
             </div>
             <div class="content-mid-bg flt">
@@ -78,7 +77,6 @@
                                 <a href="#">For more information</a>
 
                                 <div class="w100">
-                                  <!--<img src="/assets/chat.png" alt=""/>-->
                                   <%= link_to image_tag("/assets/visit.png"), root_url(:subdomain =>store.name) %>
                                 </div>
                               </div>
@@ -130,23 +128,6 @@
         <div class="right-content frt">
 
           <%= render :partial => "/shared/right_login_menu" %>
-          <!--<div class="w100 mtop20">-->
-          <!--<div class="links-top-bg flt">Live chat</div>-->
-          <!--<div class="links-mid-bg flt">-->
-          <!--<div class="online flt">15 contacts online</div>-->
-
-          <!--<ul class="online-content flt">-->
-          <!--<li><a href="#">Michael Jordan</a></li>-->
-          <!--<li><a href="#">Michael Jordan</a></li>-->
-          <!--<li><a href="#">Michael Jordan</a></li>-->
-          <!--<li><a href="#">Michael Jordan</a></li>-->
-          <!--<li class="bdr-bot-none"><a href="#">Michael Jordan</a></li>-->
-
-          <!--</ul>-->
-
-          <!--</div>-->
-          <!--<div class="links-bot-bg flt"></div>-->
-          <!--</div>-->
 
         </div>
       </div>
@@ -199,39 +180,10 @@
 
 
 <script type="text/javascript">
-    //jCarouselLite
-    //    $(function() {
-    //        $(".slider").jCarouselLite({
-    //            btnNext: ".next",
-    //            btnPrev: ".prev",
-    //            visible: 3
-    //        });
-    //    });
 
     //Captify
     $(document).ready(function() {
         try {
-//        $('img.captify').captify({
-//            // all of these options are... optional
-//            // speed of the mouseover effect
-//            speedOver: 'fast',
-//            // speed of the mouseout effect
-//            speedOut: 'normal',
-//            // how long to delay the hiding of the caption after mouseout (ms)
-//            hideDelay: 500,
-//            // 'fade', 'slide', 'always-on'
-//            animation: 'slide',
-//            // text/html to be placed at the beginning of every caption
-//            prefix: '',
-//            // opacity of the caption on mouse over
-//            opacity: '0.7',
-//            // the name of the CSS class to apply to the caption box
-//            className: 'caption-bottom',
-//            // position of the caption (top or bottom)
-//            position: 'bottom',
-//            // caption span % of the image
-//            spanWidth: '100%'
-//        });
             offset = 3;
             $("#more_stores").click(function() {
                 $.ajax({
@@ -245,13 +197,24 @@
                     }
                 });
             });
-
+            $(".removeClass").live("click",function(){
+                $(this).parent().parent().parent().parent().slideUp('slow');
+//                $(this).parent().parent().parent().parent().remove();
+            });
             $("#peddle").live("click", function() {
                 if ($("#feed-message").val() != "") {
-                    $('.streaming-div').first().replaceWith("<div class='streaming-div w100 bdr-bot'><div class='w100 mtop20' style='padding-left:10px;'><div class='post-left-hold'></div><div class='post-cont-hold'><h1d></h1><p>" + $("#feed-message").val() + "</p><div class='like-hold'></div></div></div></div>" );
-                    $('.streaming-div').first().slideDown(500);
-                    $('.streaming-div').first().before("<div class='streaming-div w100 bdr-bot'></div>");
-                    $('.streaming-div').first().slideUp(500);
+                <% unless current_user.profile_image.nil? %>
+                    var image = "<%= image_tag(current_user.profile_image.snap, :height => '103px', :width => '103px') %>";
+                <% else %>
+                    var image = "<img src='/assets/no-image.jpg' height='103px' width='103px' alt=''/>";
+                <% end %>
+                    var user_id = "<%= current_user.id %>";
+                    $.post("/feeds/create", { message:  $("#feed-message").val(), id: user_id}).success(function(response) {
+                        $('.streaming-div').first().replaceWith("<div class='streaming-div w100 bdr-bot'><div class='w100 mtop20' style='padding-left:10px;'><div class='post-left-hold'>" + image + "</div><div class='post-cont-hold'><h1>" + $('label').first().text() + "</h1><p>" + $("#feed-message").val() + "</p><div class='like-hold'></div><div class='like-hold'><a class='removeClass' href='#' feed_id='"+response+"' >Remove</a> - 17 minutes ago</div></div></div></div>");
+                        $('.streaming-div').first().slideDown(500);
+                        $('.streaming-div').first().before("<div class='streaming-div w100 bdr-bot'></div>");
+                        $('.streaming-div').first().slideUp(500);
+                    });
                 }
             });
 
@@ -266,11 +229,6 @@
                         $('.main-page').append(response);
                         $('.tab-act').removeClass('tab-act');
                         parent.addClass('tab-act');
-//                    if ($(reference).attr('url','/plans')) {
-//                        alert('yes');
-//                        alert(reference);
-//                        $('.plans').addClass('tab-act');
-//                    }
                     }
                 });
             });

@@ -1,5 +1,7 @@
 Peddle::Application.routes.draw do
 
+  resources :feeds
+
   resources :messages
 
   resources :orders

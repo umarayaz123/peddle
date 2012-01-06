@@ -41,6 +41,16 @@ class FeedsController < ApplicationController
   # POST /feeds.json
   def create
     @feed = Feed.new(params[:feed])
+    if request.xhr?
+      @feed.message    = params[:message]
+      @feed.user_id = params[:id].to_i
+      if @feed.save
+        render :text => @feed.id
+        return
+      else
+        render :text => "failure"
+      end
+    end
 
     respond_to do |format|
       if @feed.save
