@@ -2,12 +2,25 @@ class FeedsController < ApplicationController
   # GET /feeds
   # GET /feeds.json
   def index
-    @feeds = Feed.all
-
+    @feeds = Feed.order("created_at DESC").limit(20)
+    if request.xhr?
+      render :partial => "/shared/feeds", :layout => false
+      return
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @feeds }
     end
+  end
+
+  def your_feeds
+    @feeds = current_user.feeds.order("created_at DESC").limit(20)
+    render :partial => "/shared/feeds", :layout => false
+  end
+
+  def feeds_for_you
+    @feeds = Feed.where(:feed_for => current_user.name).order("created_at DESC").limit(20)
+    render :partial => "/shared/feeds", :layout => false
   end
 
   # GET /feeds/1
@@ -42,8 +55,10 @@ class FeedsController < ApplicationController
   def create
     @feed = Feed.new(params[:feed])
     if request.xhr?
+      @feed_for = params[:message].scan( /@([A-Za-z0-9_]+)/).last.first if params[:message].scan( /@([A-Za-z0-9_]+)/).last
       @feed.message    = params[:message]
       @feed.user_id = params[:id].to_i
+      @feed.feed_for = @feed_for
       if @feed.save
         render :text => @feed.id
         return
@@ -84,8 +99,12 @@ class FeedsController < ApplicationController
   def destroy
     @feed = Feed.find(params[:id])
     @feed.destroy
-
+    if request.xhr?
+      render :text => "success"
+      return
+    end
     respond_to do |format|
+
       format.html { redirect_to feeds_url }
       format.json { head :ok }
     end

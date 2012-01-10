@@ -9,7 +9,7 @@ class HomeController < ApplicationController
       @stores          = @featured_stores.limit(4).offset(0)
       render :action => "home"
     else
-      @feeds = current_user.feeds
+      @feeds = Feed.order('created_at DESC').limit(20)
     end
   end
 

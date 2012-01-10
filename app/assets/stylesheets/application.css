@@ -2103,3 +2103,11 @@ th.txt-center {
     float: left;
     width: 388px;
 }
+
+.stream-heading {
+    margin-right: 20px;
+}
+
+a.active {
+    color: #06E;
+}

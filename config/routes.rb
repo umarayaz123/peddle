@@ -1,6 +1,11 @@
 Peddle::Application.routes.draw do
 
-  resources :feeds
+  resources :feeds do
+    collection do
+      get :your_feeds
+      get :feeds_for_you
+    end
+  end
 
   resources :messages
 
