@@ -9,7 +9,7 @@ class FeedsController < ApplicationController
     end
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @feeds }
+      format.json { render :json => @feeds }
     end
   end
 
@@ -30,7 +30,7 @@ class FeedsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @feed }
+      format.json { render :json => @feed }
     end
   end
 
@@ -41,7 +41,7 @@ class FeedsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @feed }
+      format.json { render :json => @feed }
     end
   end
 
@@ -69,8 +69,8 @@ class FeedsController < ApplicationController
 
     respond_to do |format|
       if @feed.save
-        format.html { redirect_to @feed, notice: 'Feed was successfully created.' }
-        format.json { render json: @feed, status: :created, location: @feed }
+        format.html { redirect_to @feed, :notice => 'Feed was successfully created.' }
+        format.json { render :json => @feed, :status => :created, :location => @feed }
       else
         format.html { render action: "new" }
         format.json { render json: @feed.errors, status: :unprocessable_entity }
@@ -85,11 +85,11 @@ class FeedsController < ApplicationController
 
     respond_to do |format|
       if @feed.update_attributes(params[:feed])
-        format.html { redirect_to @feed, notice: 'Feed was successfully updated.' }
+        format.html { redirect_to @feed, :notice => 'Feed was successfully updated.' }
         format.json { head :ok }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @feed.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json { render :json => @feed.errors, :status => :unprocessable_entity }
       end
     end
   end
