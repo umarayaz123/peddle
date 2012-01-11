@@ -39,7 +39,7 @@ class HomeController < ApplicationController
   end
 
   def plans
-    @package_rules         =Package.all
+    @package_rules         = Package.all
     @allowed_products      = PackageRule.where(:key => "allowed_products")
     @allowed_staff_members = PackageRule.where(:key => "allowed_staff_members")
     @allowed_images        = PackageRule.where(:key => "allowed_images")
@@ -87,6 +87,16 @@ class HomeController < ApplicationController
       exist =true
     end
     render :layout => false, :text => exist
+  end
+
+  def update_tweet
+    client = Twitter::Client.new(:oauth_token => "100017629-JUhGLJOQmZYVBuIDlUyGbqHokm9H9pfypSNyC2ZE", :oauth_token_secret => "qFoEgYYDjNZRKdlvAT8iWSodQi5kW924C2JBP0Q9o")
+    tweet = params[:tweet]
+    client.update(tweet)
+  end
+
+  def tweet_return
+    render :text => "Success"
   end
 
 end

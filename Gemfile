@@ -46,5 +46,6 @@ gem "rails-boilerplate"
 gem 'will_paginate'
 gem 'bluecloth'
 gem "rmagick"
+gem "twitter"
 #gem "oniguruma", :group => :test
 #gem "ultraviolet", :group => :test

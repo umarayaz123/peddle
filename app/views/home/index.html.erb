@@ -16,6 +16,11 @@
               <div class="w100 btn-holder mtop10">
                 <img src="/assets/pic.png" alt=""/>
                 <input id="peddle" type="submit" value=""/>
+
+                <div style="float:right; margin:18px 10px 0 0;">
+                  <input type="checkbox" id="twitter_post"/>
+                  Post on Twitter
+                </div>
               </div>
             </div>
           </div>
@@ -55,6 +60,11 @@
 
             </div>
           </div>
+        </div>
+        <div class="right-content frt">
+
+          <%= render :partial => "/shared/right_login_menu" %>
+
         </div>
 
         <div class="w100 mtop20">
@@ -136,11 +146,7 @@
         </div>
 
       </div>
-      <div class="right-content frt">
 
-        <%= render :partial => "/shared/right_login_menu" %>
-
-      </div>
     </div>
   </div>
   <div class="w100 mtop40">
@@ -285,6 +291,15 @@
                         $('.streaming-div').first().slideDown(500);
                         $('.streaming-div').first().before("<div class='streaming-div w100 bdr-bot'></div>");
                         $('.streaming-div').first().slideUp(500);
+                        if ($("#twitter_post").is(':checked')) {
+                            $.ajax({
+                                url: "/tweet?tweet="$("#feed-message").val(),
+                                success: function(response) {
+                                    alert(response);
+                                }
+                            });
+
+                        }
                     });
                 }
             });
