@@ -42,13 +42,13 @@
                   <div class='streaming-div w100 bdr-bot'>
                     <div class='w100 mtop20' style='padding-left:10px;'>
                       <div class='post-left-hold'>
-                        <% unless current_user.profile_image.nil? %>
-                            <%= image_tag(current_user.profile_image.snap, :height => "103px", :width => "103px") %>
+                        <% unless feed.user.profile_image.nil? %>
+                            <%= image_tag(feed.user.profile_image.snap, :height => "103px", :width => "103px") %>
                         <% else %>
                             <img src="/assets/no-image.jpg" height="103px" width="103px" alt=""/>
                         <% end %>
                       </div>
-                      <div class='post-cont-hold'><h1><%= current_user.name ? current_user.name : "User" %></h1>
+                      <div class='post-cont-hold'><h1><%= feed.user.name ? feed.user.name : "User" %></h1>
 
                         <p><%= feed.message %></p>
 
