@@ -252,7 +252,18 @@
                         $('.stream-heading').removeClass("active");
                         $(ref).parent().addClass("active");
                         $('.feeds').remove();
-                        $('.main-feed').append(response);
+                        if (response == "You need to sign in") {
+                            gritter.add({
+                                // (string | mandatory) the heading of the notification
+                                title: 'Notice!',
+                                // (string | mandatory) the text inside the notification
+                                text: response,
+                                time: 5000
+                            });
+                        } else {
+                            $('.main-feed').append(response);
+                        }
+
                     }
                 });
             });
@@ -265,7 +276,17 @@
                         $('.stream-heading').removeClass("active");
                         $(ref).parent().addClass("active");
                         $('.feeds').remove();
-                        $('.main-feed').append(response);
+                        if (response == "You need to sign in") {
+                            gritter.add({
+                                // (string | mandatory) the heading of the notification
+                                title: 'Notice!',
+                                // (string | mandatory) the text inside the notification
+                                text: response,
+                                time: 5000
+                            });
+                        } else {
+                            $('.main-feed').append(response);
+                        }
                     }
                 });
             });
@@ -277,7 +298,17 @@
                         $('.stream-heading').removeClass("active");
                         $(ref).parent().addClass("active");
                         $('.feeds').remove();
-                        $('.main-feed').append(response);
+                        if (response == "You need to sign in") {
+                            gritter.add({
+                                // (string | mandatory) the heading of the notification
+                                title: 'Notice!',
+                                // (string | mandatory) the text inside the notification
+                                text: response,
+                                time: 5000
+                            });
+                        } else {
+                            $('.main-feed').append(response);
+                        }
                     }
                 });
             });
