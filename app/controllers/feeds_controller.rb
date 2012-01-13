@@ -3,8 +3,11 @@ class FeedsController < ApplicationController
   # GET /feeds.json
   def index
     @feeds = Feed.order("created_at DESC").limit(20)
-    if request.xhr?
+    if request.xhr? && current_user
       render :partial => "/shared/feeds", :layout => false
+      return
+    else
+      render :text => "You need to sign in"
       return
     end
     respond_to do |format|
