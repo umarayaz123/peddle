@@ -14,13 +14,21 @@ class FeedsController < ApplicationController
   end
 
   def your_feeds
-    @feeds = current_user.feeds.order("created_at DESC").limit(20)
-    render :partial => "/shared/feeds", :layout => false
+    if current_user
+      @feeds = current_user.feeds.order("created_at DESC").limit(20)
+      render :partial => "/shared/feeds", :layout => false
+    else
+      render :text => "You need to sign in"
+    end
   end
 
   def feeds_for_you
-    @feeds = Feed.where(:feed_for => current_user.name).order("created_at DESC").limit(20)
-    render :partial => "/shared/feeds", :layout => false
+    if current_user
+      @feeds = Feed.where(:feed_for => current_user.name).order("created_at DESC").limit(20)
+      render :partial => "/shared/feeds", :layout => false
+    else
+      render :text => "You need to sign in"
+    end
   end
 
   # GET /feeds/1
@@ -55,9 +63,9 @@ class FeedsController < ApplicationController
   def create
     @feed = Feed.new(params[:feed])
     if request.xhr?
-      @feed_for = params[:message].scan( /@([A-Za-z0-9_]+)/).last.first if params[:message].scan( /@([A-Za-z0-9_]+)/).last
-      @feed.message    = params[:message]
-      @feed.user_id = params[:id].to_i
+      @feed_for = params[:message].scan(/@([A-Za-z0-9_]+)/).last.first if params[:message].scan(/@([A-Za-z0-9_]+)/).last
+      @feed.message  = params[:message]
+      @feed.user_id  = params[:id].to_i
       @feed.feed_for = @feed_for
       if @feed.save
         render :text => @feed.id

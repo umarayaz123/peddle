@@ -18,8 +18,12 @@
                 <input id="peddle" type="submit" value=""/>
 
                 <div style="float:right; margin:18px 10px 0 0;">
-                  <input type="checkbox" id="twitter_post"/>
-                  Post on Twitter
+                  <% if $token.nil? && $secret.nil? %>
+                      <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+                  <% else %>
+                      <input type="checkbox" id="twitter_post"/>
+                      Post on Twitter
+                  <% end %>
                 </div>
               </div>
             </div>
@@ -293,9 +297,25 @@
                         $('.streaming-div').first().slideUp(500);
                         if ($("#twitter_post").is(':checked')) {
                             $.ajax({
-                                url: "/tweet?tweet="$("#feed-message").val(),
+                                url: "/tweet?tweet=" + $("#feed-message").val(),
                                 success: function(response) {
-                                    alert(response);
+                                    if (response == "Success") {
+                                        $.gritter.add({
+                                            // (string | mandatory) the heading of the notification
+                                            title: 'Notice!',
+                                            // (string | mandatory) the text inside the notification
+                                            text: 'Your last feed has also been posted on twitter',
+                                            time: 5000
+                                        });
+                                    } else {
+                                        $.gritter.add({
+                                            // (string | mandatory) the heading of the notification
+                                            title: 'Notice!',
+                                            // (string | mandatory) the text inside the notification
+                                            text: 'Your last feed has not been posted on twitter',
+                                            time: 5000
+                                        });
+                                    }
                                 }
                             });
 

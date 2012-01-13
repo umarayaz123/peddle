@@ -47,5 +47,7 @@ gem 'will_paginate'
 gem 'bluecloth'
 gem "rmagick"
 gem "twitter"
+gem "twitter_oauth"
+gem 'omniauth-twitter'
 #gem "oniguruma", :group => :test
 #gem "ultraviolet", :group => :test

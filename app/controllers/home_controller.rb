@@ -13,6 +13,14 @@ class HomeController < ApplicationController
     end
   end
 
+  def twitter_sign_in
+    auth = request.env["omniauth.auth"]
+
+    $token = auth["credentials"]["token"] unless auth.blank?
+    $secret = auth["credentials"]["secret"] unless auth.blank?
+    redirect_to root_url
+  end
+
   def index_layout
     @stores          = Store.limit(3).offset(0)
     @featured_stores = Store.where("is_featured = 1")
@@ -90,12 +98,28 @@ class HomeController < ApplicationController
   end
 
   def update_tweet
-    client = Twitter::Client.new(:oauth_token => "100017629-JUhGLJOQmZYVBuIDlUyGbqHokm9H9pfypSNyC2ZE", :oauth_token_secret => "qFoEgYYDjNZRKdlvAT8iWSodQi5kW924C2JBP0Q9o")
-    tweet = params[:tweet]
-    client.update(tweet)
+    #Twitter.configure do |config|
+    #  config.consumer_key       = "rCpzJTK92RiMe75KNXacQ"
+    #  config.consumer_secret    = "CHu0HWARPpaJFzaTg47U387mYFcRcYPKChC97QH5g"
+    #  config.oauth_token        =  $token
+    #  config.oauth_token_secret =  $secret
+    #end
+     Twitter.configure do |config|
+      config.consumer_key       = "Msaz5aB2EZWjA8LJoOuWPQ"
+      config.consumer_secret    = "TC1sATa0vworlTXT0LPmoZWFwoI9r4aSkvcWa41b25I"
+      config.oauth_token        =  $token
+      config.oauth_token_secret =  $secret
+    end
+    Twitter.update(params[:tweet])
+    render :text => "Success"
+  end
+
+  def twitter_reg
+
   end
 
   def tweet_return
+
     render :text => "Success"
   end
 
