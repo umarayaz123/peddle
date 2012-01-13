@@ -18,7 +18,7 @@
 
             <div class='like-hold'></div>
             <div class="like-hold">
-              <% if current_user == feed.user %>
+              <% if current_user.id == feed.user_id %>
                   <a class="removeClass" href="javascript:;" feed_id="<%= feed.id %>">Remove</a>
               <% end %>
               - <%= duration(Time.now - feed.created_at) %>
