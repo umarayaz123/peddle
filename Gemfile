@@ -49,5 +49,8 @@ gem "rmagick"
 gem "twitter"
 gem "twitter_oauth"
 gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+#gem "koala"
+gem "fb_graph"
 #gem "oniguruma", :group => :test
 #gem "ultraviolet", :group => :test

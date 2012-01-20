@@ -22,13 +22,18 @@
 
       <ul class="top-links frt">
         <li class=<%= "active-link" if params[:action] == "sales_floor" %>>
-          <a href="<%= $url+"sales_floor" %>">Sales floor</a></li>
-        <li><a href="#">Sales view</a></li>
+          <a href="<%= $url+"sales_floor" %>">Sales floor</a>
+        </li>
+        <% admin_role = Role.find(:first, :conditions => ["name = ?", "Admin"]) %>
+        <% if current_user.roles.include?(admin_role) %>
+            <li><a href="<%=root_url%>">Sales view</a></li>
+        <% end %>
         <li>
           <a class="header_links <%= "active-link" if params[:controller] == "blog_posts" %>" href="#" url="/blog_posts">Blogs</a>
         </li>
         <!--<li><%#= link_to "Logout", "/sign_out" %></li>-->
-        <li class="bg-r-none"><a href="#">Setting <img class="downarrow" alt="" src="assets/down-arrow.png"></a></li>
+        <li class="bg-r-none"><a href="#">Setting <img class="downarrow" alt="" src="assets/down-arrow.png"></a>
+        </li>
       </ul>
       <div class="setting">
         <div class="setting-top-bg flt"></div>

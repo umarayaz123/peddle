@@ -7,9 +7,9 @@
         <div class='w100 mtop20' style='padding-left:10px;'>
           <div class='post-left-hold'>
             <% unless feed.user.profile_image.nil? %>
-                <%= image_tag(feed.user.profile_image.snap, :height => "103px", :width => "103px") %>
+                <%= image_tag(feed.user.profile_image.snap, :height => "92px", :width => "103px") %>
             <% else %>
-                <img src="/assets/no-image.jpg" height="103px" width="103px" alt=""/>
+                <img src="/assets/no-image.jpg" height="92px" width="103px" alt=""/>
             <% end %>
           </div>
           <div class='post-cont-hold'><h1><%= feed.user.name ? feed.user.name : "User" %></h1>

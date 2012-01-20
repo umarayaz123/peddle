@@ -55,17 +55,17 @@ class ApplicationController < ActionController::Base
     seller_role = Role.find(:first, :conditions => ["name = ?", "Seller"])
     buyer_role = Role.find(:first, :conditions => ["name = ?", "Buyer"])
     unless current_user.store.blank?
-      if current_user.store.name == request.subdomain
-        if current_user.roles.include?(admin_role)
-          admin_url(:subdomain => request.subdomain)
-        elsif current_user.roles.include?(buyer_role)
-          stores_url(:subdomain => request.subdomain)
-        else
-          root_url(:subdomain => request.subdomain)
-        end
-      else
-        sign_out_url
-      end
+      #if current_user.store.name == request.subdomain
+      #  if current_user.roles.include?(admin_role)
+      #    admin_url(:subdomain => request.subdomain)
+      #  elsif current_user.roles.include?(buyer_role)
+      #    stores_url(:subdomain => request.subdomain)
+      #  else
+      #    root_url(:subdomain => request.subdomain)
+      #  end
+      #else
+      #  sign_out_url
+      #end
     else
       #      admin_role = Role.find(:first, :conditions => ["name = ?", "Admin"])
       unless(request.subdomain.blank? or request.subdomain == "www")

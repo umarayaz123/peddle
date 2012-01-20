@@ -55,8 +55,10 @@ Peddle::Application.routes.draw do
   match '/edit2' => 'pages#edit'
   match '/index_layout' => 'home#index_layout'
   match '/tweet' => 'home#update_tweet'
+  match '/fb_update' => 'home#update_fb_status'
   match '/tweet_return' => 'home#tweet_return'
-  match "/auth/:provider/callback" => "home#twitter_sign_in"
+  match "/auth/twitter/callback" => "home#twitter_sign_in"
+  match "/auth/facebook/callback" => "home#fb_sign_in"
 
 
 #  match "admin/product_details/:id" => "admin/product_details#index"
@@ -151,7 +153,7 @@ Peddle::Application.routes.draw do
   #   end
 
   # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.  
+  # just remember to delete public/index.html.
   #  root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"

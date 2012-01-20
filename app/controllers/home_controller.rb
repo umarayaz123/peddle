@@ -21,6 +21,14 @@ class HomeController < ApplicationController
     redirect_to root_url
   end
 
+  def fb_sign_in
+    auth = request.env["omniauth.auth"]
+    puts "****************",auth.inspect
+    $ftoken = auth["credentials"]["token"] unless auth.blank?
+    $fsecret = auth["credentials"]["secret"] unless auth.blank?
+    redirect_to root_url
+  end
+
   def index_layout
     @stores          = Store.limit(3).offset(0)
     @featured_stores = Store.where("is_featured = 1")
@@ -100,19 +108,27 @@ class HomeController < ApplicationController
   end
 
   def update_tweet
-    #Twitter.configure do |config|
-    #  config.consumer_key       = "rCpzJTK92RiMe75KNXacQ"
-    #  config.consumer_secret    = "CHu0HWARPpaJFzaTg47U387mYFcRcYPKChC97QH5g"
-    #  config.oauth_token        =  $token
-    #  config.oauth_token_secret =  $secret
-    #end
-     Twitter.configure do |config|
+    Twitter.configure do |config|
       config.consumer_key       = "Msaz5aB2EZWjA8LJoOuWPQ"
       config.consumer_secret    = "TC1sATa0vworlTXT0LPmoZWFwoI9r4aSkvcWa41b25I"
-      config.oauth_token        =  $token
-      config.oauth_token_secret =  $secret
+      config.oauth_token        = $token
+      config.oauth_token_secret = $secret
     end
     Twitter.update(params[:tweet])
+    render :text => "Success"
+  end
+
+  def update_fb_status
+    #@oauth = Koala::Facebook::OAuth.new("305179209528609", "bb50b9fc56195684033544a378ccf470", "/")
+    user = FbGraph::User.me($ftoken)
+    user.feed!(
+        :message     => 'Updating via FbGraph',
+        :picture     => 'https://graph.facebook.com/matake/picture',
+        :link        => 'https://github.com/nov/fb_graph',
+        :name        => 'Peddle-online',
+        :description => 'A Ruby wrapper for Facebook Graph API',
+        :scope       => 'publish_stream'
+    )
     render :text => "Success"
   end
 

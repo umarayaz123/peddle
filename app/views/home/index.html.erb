@@ -1,204 +1,212 @@
 <div class="main-page">
 
-  <div class="wrapper body-div">
-    <div class="white-bg">
-      <div class="w100 mtop40 bdr-bot">
-        <div class="left-content flt">
-          <div class="w100 bdr-bot">
-            <div class="data-holder-left flt">
-              <h1>Peddle your product</h1>
+<div class="wrapper body-div">
+<div class="white-bg">
+  <div class="w100 mtop40 bdr-bot">
+    <div class="left-content flt">
+      <div class="w100 bdr-bot">
+        <div class="data-holder-left flt">
+          <h1>Peddle your product</h1>
 
-              <p>It can be anything from a photo, video or website.</p>
+          <p>It can be anything from a photo, video or website.</p>
+        </div>
+        <div class="data-holder-right flt">
+          <textarea id="feed-message"></textarea>
+
+          <div class="w100 btn-holder mtop10">
+            <img src="/assets/pic.png" alt=""/>
+            <input id="peddle" type="submit" value=""/>
+
+            <div style="float:right; margin:18px 10px 0 0;">
+              <% if $token.nil? && $secret.nil? %>
+                  <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+              <% else %>
+                  <input type="checkbox" id="twitter_post"/>
+                  Post on Twitter
+              <% end %>
             </div>
-            <div class="data-holder-right flt">
-              <textarea id="feed-message"></textarea>
-
-              <div class="w100 btn-holder mtop10">
-                <img src="/assets/pic.png" alt=""/>
-                <input id="peddle" type="submit" value=""/>
-
-                <div style="float:right; margin:18px 10px 0 0;">
-                  <% if $token.nil? && $secret.nil? %>
-                      <%= link_to "Sign in with Twitter", "/auth/twitter" %>
-                  <% else %>
-                      <input type="checkbox" id="twitter_post"/>
-                      Post on Twitter
-                  <% end %>
-                </div>
-              </div>
+            <div style="float:right; margin:18px 10px 0 0;">
+              <% if $ftoken.nil? && $fsecret.nil? %>
+                  <%= link_to "Sign in with FaceBook", "/auth/facebook" %>
+              <% else %>
+                  <input type="checkbox" id="facebook_post"/>
+                  Post on FaceBook
+              <% end %>
             </div>
           </div>
-          <div class="stream-container">
-            <span class="stream-heading time-line"><a href="javascript:;">TimeLine</a></span>
-            <span class="stream-heading your-feeds"><a href="javascript:;">Your Feeds</a></span>
-            <span class="stream-heading feeds-for-you"><a href="javascript:;">Feeds for you</a></span>
+        </div>
+      </div>
+      <div class="stream-container">
+        <span class="stream-heading time-line"><a href="javascript:;">TimeLine</a></span>
+        <span class="stream-heading your-feeds"><a href="javascript:;">Your Feeds</a></span>
+        <span class="stream-heading feeds-for-you"><a href="javascript:;">Feeds for you</a></span>
+      </div>
+      <div class="main-feed">
+        <div class="feeds">
+          <div id="first-stream"></div>
+          <div class="streaming-div w100 bdr-bot">
           </div>
-          <div class="main-feed">
-            <div class="feeds">
-              <div id="first-stream"></div>
-              <div class="streaming-div w100 bdr-bot">
-              </div>
-              <% @feeds.each do |feed| %>
-                  <div class='streaming-div w100 bdr-bot'>
-                    <div class='w100 mtop20' style='padding-left:10px;'>
-                      <div class='post-left-hold'>
-                        <% unless feed.user.profile_image.nil? %>
-                            <%= image_tag(feed.user.profile_image.snap, :height => "103px", :width => "103px") %>
-                        <% else %>
-                            <img src="/assets/no-image.jpg" height="103px" width="103px" alt=""/>
-                        <% end %>
-                      </div>
-                      <div class='post-cont-hold'><h1><%= feed.user.name ? feed.user.name : "User" %></h1>
+          <% @feeds.each do |feed| %>
+              <div class='streaming-div w100 bdr-bot'>
+                <div class='w100 mtop20' style='padding-left:10px;'>
+                  <div class='post-left-hold'>
+                    <% unless feed.user.profile_image.nil? %>
+                        <%= image_tag(feed.user.profile_image.snap, :height => "92px", :width => "103px") %>
+                    <% else %>
+                        <img src="/assets/no-image.jpg" height="92px" width="103px" alt=""/>
+                    <% end %>
+                  </div>
+                  <div class='post-cont-hold'><h1><%= feed.user.name ? feed.user.name : "User" %></h1>
 
-                        <p><%= feed.message %></p>
+                    <p><%= feed.message %></p>
 
-                        <div class='like-hold'></div>
-                        <div class="like-hold">
-                          <% if current_user.id == feed.user_id %>
-                              <a class="removeClass" href="javascript:;" feed_id="<%= feed.id %>">Remove</a> -
-                          <% end %>
-                          <%= duration(Time.now - feed.created_at) %>
-                        </div>
-                      </div>
+                    <div class='like-hold'></div>
+                    <div class="like-hold">
+                      <% if current_user.id == feed.user_id %>
+                          <a class="removeClass" href="javascript:;" feed_id="<%= feed.id %>">Remove</a> -
+                      <% end %>
+                      <%= duration(Time.now - feed.created_at) %>
                     </div>
                   </div>
-              <% end %>
-
-            </div>
-          </div>
-        </div>
-        <div class="right-content frt">
-
-          <%= render :partial => "/shared/right_login_menu" %>
+                </div>
+              </div>
+          <% end %>
 
         </div>
+      </div>
+    </div>
+    <div class="right-content frt">
 
-        <div class="w100 mtop20">
-          <div class="content-top-bg flt">
-            <div class="heading-top flt">
-              <h1>Sales floor</h1>
+      <%= render :partial => "/shared/right_login_menu" %>
 
-              <p>Our featured stores</p>
-            </div>
-            <div class="back-btn-holder frt">
-              <img src="/assets/next-btn.png"/>
-              <img src="/assets/back-btn.png"/>
-            </div>
-          </div>
-          <div class="content-mid-bg flt">
-            <% unless @stores.blank? %>
-                <% @stores.each do |store| %>
-                    <% unless store.users.first.confirmed_at.blank? %>
-                        <div class="cont bdr-bot flt">
-                          <div class="gellery-left flt">
-                            <div class="gellary-logo flt">
-                              <% unless store.image.blank? %>
-                                  <%= image_tag(store.image.snap) %>
-                              <% else %>
-                                  <img src="/assets/no_img.jpg" alt=""/>
-                              <% end %>
-                              <img src="/assets/larg-fram.png" alt="" class="gellary-frame"/>
-                            </div>
+    </div>
 
-                            <div class="moreinfo w100">
-                              <a href="#">For more information</a>
+    <div class="w100 mtop20">
+      <div class="content-top-bg flt">
+        <div class="heading-top flt">
+          <h1>Sales floor</h1>
 
-                              <div class="w100">
-                                <%= link_to image_tag("/assets/visit.png"), root_url(:subdomain =>store.name) %>
-                              </div>
-                            </div>
+          <p>Our featured stores</p>
+        </div>
+        <div class="back-btn-holder frt">
+          <img src="/assets/next-btn.png"/>
+          <img src="/assets/back-btn.png"/>
+        </div>
+      </div>
+      <div class="content-mid-bg flt">
+        <% unless @stores.blank? %>
+            <% @stores.each do |store| %>
+                <% unless store.users.first.confirmed_at.blank? %>
+                    <div class="cont bdr-bot flt">
+                      <div class="gellery-left flt">
+                        <div class="gellary-logo flt">
+                          <% unless store.image.blank? %>
+                              <%= image_tag(store.image.snap) %>
+                          <% else %>
+                              <img src="/assets/no_img.jpg" alt=""/>
+                          <% end %>
+                          <img src="/assets/larg-fram.png" alt="" class="gellary-frame"/>
+                        </div>
 
+                        <div class="moreinfo w100">
+                          <a href="#">For more information</a>
+
+                          <div class="w100">
+                            <%= link_to image_tag("/assets/visit.png"), root_url(:subdomain =>store.name) %>
                           </div>
-                          <div class="gellery-right frt">
-                            <h1 class="mtop20"><%= store.name %> store</h1>
+                        </div>
 
-                            <p><%= duration(Time.now - store.created_at) %> ago</p>
+                      </div>
+                      <div class="gellery-right frt">
+                        <h1 class="mtop20"><%= store.name %> store</h1>
 
-                            <p class="mtop20"><%= store.description %></p>
+                        <p><%= duration(Time.now - store.created_at) %> ago</p>
 
-                            <p class="mtop20"><%= "http://"+store.url %></p>
+                        <p class="mtop20"><%= store.description %></p>
 
-                            <div class="w100 g-img">
+                        <p class="mtop20"><%= "http://"+store.url %></p>
 
-                              <% unless store.products.nil? %>
-                                  <% prod_count=0 %>
-                                  <label>more photos</label>
-                                  <% store.products.each do |product| %>
-                                      <% unless product.images.nil? %>
-                                          <% product.images.each do |image| %>
-                                              <% if prod_count < 3 %>
-                                                  <div class="small-logo flt">
-                                                    <%= image_tag(image.snap, :width => "60", :height => "60", :class => "small_imgs") %>
-                                                    <img src="/assets/logo-small-frame.png" alt="" class="frame"/>
-                                                    <% prod_count+=1 %>
-                                                  </div>
-                                              <% end %>
+                        <div class="w100 g-img">
+
+                          <% unless store.products.nil? %>
+                              <% prod_count=0 %>
+                              <label>more photos</label>
+                              <% store.products.each do |product| %>
+                                  <% unless product.images.nil? %>
+                                      <% product.images.each do |image| %>
+                                          <% if prod_count < 3 %>
+                                              <div class="small-logo flt">
+                                                <%= image_tag(image.snap, :width => "60", :height => "60", :class => "small_imgs") %>
+                                                <img src="/assets/logo-small-frame.png" alt="" class="frame"/>
+                                                <% prod_count+=1 %>
+                                              </div>
                                           <% end %>
                                       <% end %>
                                   <% end %>
                               <% end %>
-                            </div>
-                          </div>
+                          <% end %>
                         </div>
-                    <% end %>
+                      </div>
+                    </div>
                 <% end %>
             <% end %>
-
-          </div>
-          <div class="content-bot-bg flt">
-            <img id="more_stores" src="/assets/more-stores.png" alt=""/>
-            <label>View more of our stores</label>
-          </div>
-        </div>
+        <% end %>
 
       </div>
-
-    </div>
-  </div>
-  <div class="w100 mtop40">
-    <div class="blue-left flt"></div>
-    <div class="blue-mid flt">
-      <div id="list">
-        <div class="w100">
-          <div class="heading-top flt">
-            <h1>Shopping mall</h1>
-
-            <p>Our featured stores</p>
-          </div>
-          <div class="back-btn-holder frt">
-            <span class="next"><img src="/assets/next-btn.png"></span>
-            <span class="prev"><img src="/assets/back-btn.png"></span>
-          </div>
-        </div>
-        <div class="w100">
-          <div class="slider">
-            <ul>
-              <% @featured_stores.each do |fstore| %>
-                  <li>
-                    <div class="thumb-img flt ml18">
-                      <a href="<%= root_url(:subdomain =>fstore.name) %>">
-                        <% unless fstore.image.blank? %>
-                            <%= image_tag(fstore.image.snap) %>
-                        <% else %>
-                            <img src="/assets/no_img.jpg" alt=""/>
-                        <% end %>
-                      </a>
-
-                      <p><%= fstore.name %></p>
-
-                    </div>
-                  </li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-
+      <div class="content-bot-bg flt">
+        <img id="more_stores" src="/assets/more-stores.png" alt=""/>
+        <label>View more of our stores</label>
       </div>
     </div>
-    <div class="blue-right flt"></div>
+
   </div>
 
 </div>
+<div class="w100 mtop40 body-div">
+  <div class="blue-left flt"></div>
+  <div class="blue-mid flt">
+    <div id="list">
+      <div class="w100">
+        <div class="heading-top flt">
+          <h1>Shopping mall</h1>
+
+          <p>Our featured stores</p>
+        </div>
+        <div class="back-btn-holder frt">
+          <span class="next"><img src="/assets/next-btn.png"></span>
+          <span class="prev"><img src="/assets/back-btn.png"></span>
+        </div>
+      </div>
+      <div class="w100">
+        <div class="slider">
+          <ul>
+            <% @featured_stores.each do |fstore| %>
+                <li>
+                  <div class="thumb-img flt ml18">
+                    <a href="<%= root_url(:subdomain =>fstore.name) %>">
+                      <% unless fstore.image.blank? %>
+                          <%= image_tag(fstore.image.snap) %>
+                      <% else %>
+                          <img src="/assets/no_img.jpg" alt=""/>
+                      <% end %>
+                    </a>
+
+                    <p><%= fstore.name %></p>
+
+                  </div>
+                </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="blue-right flt"></div>
+</div>
+
+</div>
+
 </div>
 
 
@@ -318,9 +326,9 @@
             $("#peddle").live("click", function() {
                 if ($("#feed-message").val() != "") {
                 <% unless current_user.profile_image.nil? %>
-                    var image = "<%= image_tag(current_user.profile_image.snap, :height => '103px', :width => '103px') %>";
+                    var image = "<img src='<%= current_user.profile_image.snap%>' height='92px' width='103px' alt=''/>";
                 <% else %>
-                    var image = "<img src='/assets/no-image.jpg' height='103px' width='103px' alt=''/>";
+                    var image = "<img src='/assets/no-image.jpg' height='92px' width='103px' alt=''/>";
                 <% end %>
                     var user_id = "<%= current_user.id %>";
                     $.post("/feeds/create", { message:  $("#feed-message").val(), id: user_id}).success(function(response) {
