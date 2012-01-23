@@ -361,6 +361,31 @@
                             });
 
                         }
+                        if ($("#facebook_post").is(':checked')) {
+                            $.ajax({
+                                url: "/fb_update?message=" + $("#feed-message").val(),
+                                success: function(response) {
+                                    if (response == "Success") {
+                                        $.gritter.add({
+                                            // (string | mandatory) the heading of the notification
+                                            title: 'Notice!',
+                                            // (string | mandatory) the text inside the notification
+                                            text: 'Your last feed has also been posted on FaceBook',
+                                            time: 5000
+                                        });
+                                    } else {
+                                        $.gritter.add({
+                                            // (string | mandatory) the heading of the notification
+                                            title: 'Notice!',
+                                            // (string | mandatory) the text inside the notification
+                                            text: 'Your last feed has not been posted on FaceBook',
+                                            time: 5000
+                                        });
+                                    }
+                                }
+                            });
+
+                        }
                     });
                 }
             });

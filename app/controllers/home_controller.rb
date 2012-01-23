@@ -120,13 +120,14 @@ class HomeController < ApplicationController
 
   def update_fb_status
     #@oauth = Koala::Facebook::OAuth.new("305179209528609", "bb50b9fc56195684033544a378ccf470", "/")
-    user = FbGraph::User.me($ftoken)
+    user = FbGraph::User.new('me',  :access_token => $ftoken)
     user.feed!(
-        :message     => 'Updating via FbGraph',
-        :picture     => 'https://graph.facebook.com/matake/picture',
-        :link        => 'https://github.com/nov/fb_graph',
+        :message     => params[:message],
+        #:picture     => 'https://graph.facebook.com/matake/picture',
+        :link        => 'http://ilsainteractive.com:3003',
+        #:link        => 'http://lvh.me:3000',
         :name        => 'Peddle-online',
-        :description => 'A Ruby wrapper for Facebook Graph API',
+        :description => 'Updating FB status from peddle-Online',
         :scope       => 'publish_stream'
     )
     render :text => "Success"
