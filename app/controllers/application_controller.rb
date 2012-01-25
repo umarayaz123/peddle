@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :mailer_set_url_options, :recent_stores
+  before_filter :mailer_set_url_options, :recent_stores, :current_cart
 
   def mailer_set_url_options
     #ActionMailer::Base.default_url_options[:host] = request.host_with_port

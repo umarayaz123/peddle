@@ -8,7 +8,7 @@
             <% unless current_user.profile_image.nil? %>
                 <%= image_tag(current_user.profile_image.snap, :width => "50", :height => "50") %>
             <% else %>
-                <img src="/assets/profile-img.png" alt=""/>
+                <img src="/assets/no-image.jpg" alt="" width="50px" height="50px"/>
             <% end %>
             <% unless current_user.name.nil? %>
                 <label><%= current_user.name %></label>
@@ -26,7 +26,7 @@
         </li>
         <% admin_role = Role.find(:first, :conditions => ["name = ?", "Admin"]) %>
         <% if current_user.roles.include?(admin_role) %>
-            <li><a href="<%=root_url%>">Sales view</a></li>
+            <li><a href="<%= root_url(:subdomain => current_user.store.name) %>">Sales view</a></li>
         <% end %>
         <li>
           <a class="header_links <%= "active-link" if params[:controller] == "blog_posts" %>" href="#" url="/blog_posts">Blogs</a>
@@ -35,7 +35,7 @@
         <li class="bg-r-none"><a href="#">Setting <img class="downarrow" alt="" src="assets/down-arrow.png"></a>
         </li>
       </ul>
-      <div class="setting">
+      <div class="setting" style="display:none;">
         <div class="setting-top-bg flt"></div>
         <div class="setting-mid-bg flt">
 
@@ -107,9 +107,11 @@
                     success: function(response) {
 
                         if (response != "") {
+                            $('.left-content').hide();
                             $('.content-mid-bg').replaceWith(response);
                             $('.heading-top p').html('Search Stores');
                             $('.content-bot-bg').children().hide();
+                            $('.content-top-bg').parent().width('300px');
                         }
 
                     }

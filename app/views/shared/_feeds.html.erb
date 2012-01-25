@@ -12,7 +12,13 @@
                 <img src="/assets/no-image.jpg" height="92px" width="103px" alt=""/>
             <% end %>
           </div>
-          <div class='post-cont-hold'><h1><%= feed.user.name ? feed.user.name : "User" %></h1>
+          <% admin_role = Role.find(:first, :conditions => ["name = ?", "Admin"]) %>
+          <div class='post-cont-hold'>
+            <% if feed.user.roles.include?(admin_role) %>
+                <h1><a href="<%= root_url(:subdomain => feed.user.store.name) %>"><%= feed.user.name ? feed.user.name : "User" %></a></h1>
+            <% else %>
+                <h1><%= feed.user.name ? feed.user.name : "User" %></h1>
+            <% end %>
 
             <p><%= feed.message %></p>
 

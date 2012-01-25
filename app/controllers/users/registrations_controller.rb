@@ -111,6 +111,7 @@ class Users::RegistrationsController < ApplicationController
 
   # GET /resource/edit
   def edit
+    @cart = current_cart
     @request_type = "plain"
     if request.xhr?
       @request_type = "ajax"

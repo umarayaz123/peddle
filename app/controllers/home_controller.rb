@@ -1,7 +1,9 @@
 class HomeController < ApplicationController
   layout "application"
+  before_filter :current_cart_create, :only => ["index","sales_floor"]
 
   def index
+    @cart= current_cart
     @stores          = Store.limit(3).offset(0)
     @featured_stores = Store.where("is_featured = 1")
     unless current_user
@@ -76,6 +78,7 @@ class HomeController < ApplicationController
   def sales_floor
     #@featured_stores = Store.where("is_featured = 1")
     #@stores = @featured_stores.limit(4).offset(0)
+    @cart = current_cart
     @stores          = Store.limit(3).offset(0)
     @featured_stores = Store.where("is_featured = 1")
     unless current_user

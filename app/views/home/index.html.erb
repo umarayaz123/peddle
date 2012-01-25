@@ -56,7 +56,15 @@
                         <img src="/assets/no-image.jpg" height="92px" width="103px" alt=""/>
                     <% end %>
                   </div>
-                  <div class='post-cont-hold'><h1><%= feed.user.name ? feed.user.name : "User" %></h1>
+                  <div class='post-cont-hold'>
+                    <% admin_role = Role.find(:first, :conditions => ["name = ?", "Admin"]) %>
+                    <% if feed.user.roles.include?(admin_role) %>
+                        <h1>
+                          <a href="<%= root_url(:subdomain => feed.user.store.name) %>" style="text-decoration:none;"><%= feed.user.name ? feed.user.name : "User" %></a>
+                        </h1>
+                    <% else %>
+                        <h1><%= feed.user.name ? feed.user.name : "User" %></h1>
+                    <% end %>
 
                     <p><%= feed.message %></p>
 
@@ -109,7 +117,7 @@
                         </div>
 
                         <div class="moreinfo w100">
-                          <a href="#">For more information</a>
+                          <a  href="javascript:;">For more information</a>
 
                           <div class="w100">
                             <%= link_to image_tag("/assets/visit.png"), root_url(:subdomain =>store.name) %>
